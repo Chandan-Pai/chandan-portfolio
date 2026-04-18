@@ -3,9 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +20,164 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Typography scale */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.125rem;
+  }
+}
+
+.lead {
+  font-size: 1.125rem;
+  color: #64748b;
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 1.25rem;
+  }
+}
+
+/* Fixed hero text size */
+.fixed-text {
+  font-size: 4.5rem !important;
+  line-height: 1.1;
+}
+
+/* Smooth hover animations */
+.hover-lift {
+  transition: all 300ms ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.hover-scale {
+  transition: transform 200ms ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Custom Cursor ===== */
+* {
+  cursor: none !important;
+}
+
+input, textarea, select, button {
+  cursor: auto !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: #3b82f6;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: width 0.35s ease, height 0.35s ease, border-radius 0.35s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: white;
+  text-transform: uppercase;
+}
+
+.custom-cursor.hover {
+  width: 140px;
+  height: 50px;
+  border-radius: 25px;
+  background: #3b82f6;
+}
+
+.custom-cursor.hover::after {
+  content: 'view project';
+}
+/* Astronaut floating animation */
+.astronaut-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+/* Gradient text for name */
+.gradient-text {
+  background: linear-gradient(135deg, #1e293b 0%, #64748b 50%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fixed sizes that don't scale with zoom */
+@media screen {
+  .gradient-text {
+    font-size: 7rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gradient-text {
+    font-size: 4rem !important;
+  }
+}
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
