@@ -46,7 +46,7 @@ export default function HomePage() {
 ) : (
   <>
     <a href="#work" className="text-white text-sm font-medium hover:text-slate-300 transition">Work</a>
-    <a href="#about" className="text-white text-sm font-medium hover:text-slate-300 transition">About</a>
+    <a href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition">About</a>
     <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition">Resume</a>
     <a href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition">Contact</a>
   </>
@@ -80,8 +80,8 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Campus-Sync */}
-            <a href="/campus-sync" className="group block">
-              <div className="relative overflow-hidden rounded-lg mb-6">
+            <a href="/campus-sync" className="group block project-link">
+              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
                 <div 
                   className="w-full h-[500px] bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
                 >
@@ -100,30 +100,9 @@ export default function HomePage() {
               <p className="text-base text-slate-600 font-medium">40% navigation error reduction • 65% → 95% task completion</p>
             </a>
 
-            {/* Boston Scientific */}
-            <a href="/manufacturing-workflow" className="group block">
-              <div className="relative overflow-hidden rounded-lg mb-6">
-                <div 
-                  className="w-full h-[500px] bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                >
-                  <span className="text-slate-400 text-2xl font-medium">Manufacturing Preview</span>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-                  <span className="text-white font-semibold text-lg">View Project →</span>
-                </div>
-              </div>
-              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Manufacturing Process Optimization</h3>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
-                  Industrial Engineer
-                </span>
-              </div>
-              <p className="text-base text-slate-600 font-medium">Lean workflow analysis • Takt time: 13.47 sec/blade</p>
-            </a>
-
             {/* Initiator Fellowship */}
-            <a href="/initiator-fellowship" className="group block">
-              <div className="relative overflow-hidden rounded-lg mb-6">
+            <a href="/initiator-fellowship" className="group block project-link">
+              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
                 <div 
                   className="w-full h-[500px] bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
                 >
@@ -142,9 +121,31 @@ export default function HomePage() {
               <p className="text-base text-slate-600 font-medium">104% usability increase • 2.3/5 → 4.7/5 rating</p>
             </a>
 
+            {/* Boston Scientific */}
+            <a href="/manufacturing-workflow" className="group block project-link">
+              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
+                <div 
+                  className="w-full h-[500px] bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                >
+                  <span className="text-slate-400 text-2xl font-medium">Manufacturing Preview</span>
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
+                  <span className="text-white font-semibold text-lg">View Project →</span>
+                </div>
+              </div>
+              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Manufacturing Process Optimization</h3>
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
+                  Industrial Engineer
+                </span>
+              </div>
+              <p className="text-base text-slate-600 font-medium">Lean workflow analysis • Takt time: 13.47 sec/blade</p>
+            </a>
+
+
             {/* Mercedes Service Manual */}
-            <a href="/mercedes-service-manual" className="group block">
-              <div className="relative overflow-hidden rounded-lg mb-6">
+            <a href="/mercedes-service-manual" className="group block project-link">
+              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
                 <div 
                   className="w-full h-[500px] bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
                 >
@@ -166,19 +167,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 px-6 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8">About</h2>
-          <p className="text-lg text-slate-600 leading-relaxed mb-6">
-            MS Industrial & Systems Engineering (Human Factors) @ University of Minnesota, graduating May 2026.
-          </p>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            2+ years at Mercedes-Benz R&D India conducting mixed-methods research, ergonomic assessments, and ADAS safety evaluations. 
-            I bridge rigorous engineering analysis with human-centered design to deliver data-driven solutions.
-          </p>
-        </div>
-      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">

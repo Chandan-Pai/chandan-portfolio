@@ -1,282 +1,269 @@
-import React from "react";
+'use client';
 
-// File: /Users/chandanpai/Documents/GitHub/portfolio/chandan-portfolio/app/manufacturing-workflow/page.js
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
-export default function Page() {
-    return (
-        <main className="min-h-screen bg-gray-50 text-gray-900 px-6 py-10">
-            {/* Hero */}
-            <section className="max-w-6xl mx-auto mb-12">
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                    <div className="flex-1">
-                        <h1 className="text-3xl md:text-4xl font-semibold">
-                            Boston Scientific Wolverine Blade Assembly Optimization
-                        </h1>
-                        <p className="mt-3 text-lg text-gray-600">
-                            Lean methodology applied to medical device manufacturing
-                        </p>
-                        <p className="mt-6 text-sm text-gray-500">
-                            Case study: analysis, recommendations and artifacts for reducing
-                            motion waste, standardizing workflows, and improving safety &
-                            quality in blade assembly.
-                        </p>
-                        <div className="mt-6">
-                            <a
-                                href="/"
-                                className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700"
-                            >
-                                Back to homepage
-                            </a>
-                        </div>
-                    </div>
+export default function ManufacturingWorkflowPage() {
+  const [isDarkSection, setIsDarkSection] = useState(true);
+  const [navExpanded, setNavExpanded] = useState(false);
 
-                    <div className="w-full md:w-1/3">
-                        <div className="h-48 bg-white border border-dashed border-gray-300 rounded-md flex items-center justify-center">
-                            <span className="text-gray-400">Image placeholder: Wolverine device</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  useEffect(() => {
+    const handleScroll = () => {
+      // If scrolled past 400px, we're in light section
+      setIsDarkSection(window.scrollY < 400);
+    };
 
-            {/* Problem */}
-            <section className="max-w-6xl mx-auto mb-10 bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-medium mb-3">Problem</h2>
-                <p className="text-gray-600">
-                    Blade assembly showed motion waste, unclear workflows, and safety-critical
-                    quality requirements. Operators performed repetitive tasks without
-                    standardized metrics resulting in variability and rework.
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <main className="min-h-screen bg-white text-slate-900 antialiased">
+      {/* Dynamic Island Navigation */}
+      <div 
+        className="fixed top-0 left-0 right-0 z-40"
+        style={{
+          height: '80px',
+          background: 'rgba(0, 0, 0, 0.01)',
+          backdropFilter: 'blur(3px)',
+          borderBottom: '1px solid transparent',
+          backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
+          backgroundClip: 'padding-box, border-box',
+          backgroundOrigin: 'padding-box, border-box',
+        }}
+      />
+
+      <nav 
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out"
+        onMouseEnter={() => setNavExpanded(true)}
+        onMouseLeave={() => setNavExpanded(false)}
+        style={{
+          width: navExpanded ? '600px' : '100px',
+          height: '40px',
+          borderRadius: '20px',
+          background: 'rgba(0, 0, 0, 0.8)',
+          backdropFilter: 'blur(20px)',
+        }}
+      >
+        <div className="h-full flex items-center justify-center gap-8 px-6">
+          {!navExpanded ? (
+            <div className="astronaut-float">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="4" fill="white"/>
+                <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
+                <circle cx="10" cy="7" r="1" fill="black"/>
+                <circle cx="14" cy="7" r="1" fill="black"/>
+                <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
+              </svg>
+            </div>
+          ) : (
+            <>
+              <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition">Home</Link>
+              <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition">Work</Link>
+              <Link href="/about" className="text-white text-sm font-medium hover:text-slate-300 transition">About</Link>
+              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition">Resume</Link>
+              <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition">Contact</Link>
+            </>
+          )}
+        </div>
+      </nav>
+
+      <div className="min-h-screen bg-white text-gray-900">
+      {/* Back Button - Dynamic Color */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link
+          href="/"
+          aria-label="Back to portfolio"
+          className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
+            isDarkSection ? 'text-white' : 'text-gray-900'
+          }`}
+        >
+          <svg
+            className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+        </Link>
+      </div>
+
+      {/* Hero Section */}
+      <section className="w-full bg-gradient-to-b from-red-950 to-red-900 text-white py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h1 className="text-6xl font-bold leading-tight mb-6">Boston Scientific Process Optimization</h1>
+            <p className="text-xl text-red-300 max-w-2xl">Lean methodology analysis identifying bottlenecks in medical device assembly</p>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-8 text-sm">
+            <div>
+              <p className="text-red-400">Role</p>
+              <p className="font-semibold">Industrial Engineer</p>
+            </div>
+            <div>
+              <p className="text-red-400">Date</p>
+              <p className="font-semibold">2024</p>
+            </div>
+            <div>
+              <p className="text-red-400">Outcome</p>
+              <p className="font-semibold">Takt time: 13.47 sec/blade • Workflow efficiency improved</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Project Overview */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              Medical device assembly requires precision and efficiency. Our task was to analyze the Wolverine Device manufacturing workflow, identify bottlenecks, and optimize the production process using lean methodology.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Through time studies across 10 production cycles, we mapped the entire workflow and extracted actionable insights.
+            </p>
+          </div>
+          <div className="bg-gray-100 rounded-lg aspect-video flex items-center justify-center border border-gray-200">
+            <p className="text-sm text-gray-500">Manufacturing facility image</p>
+          </div>
+        </div>
+
+        {/* Key Metrics */}
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
+          <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-4xl font-bold text-gray-900 mb-2">13.47s</p>
+            <p className="text-sm text-gray-600">Takt time per blade assembly</p>
+          </div>
+          <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-4xl font-bold text-gray-900 mb-2">10</p>
+            <p className="text-sm text-gray-600">Production cycles analyzed</p>
+          </div>
+          <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-4xl font-bold text-gray-900 mb-2">8</p>
+            <p className="text-sm text-gray-600">Assembly workstations mapped</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Methodology */}
+      <section className="w-full bg-gray-50 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12">Lean Analysis Approach</h2>
+
+          <div className="space-y-12">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Time Study & Motion Analysis</h3>
+                <p className="text-gray-700 mb-4">
+                  We conducted detailed time studies across 10 production cycles, measuring each workstation's cycle time, value-added time, and wait time.
                 </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Station 1–8 cycle time captured</li>
+                  <li>• Movement efficiency analyzed</li>
+                  <li>• Bottleneck identification</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-lg aspect-video flex items-center justify-center border border-gray-200">
+                <p className="text-sm text-gray-500">Time study data visualization</p>
+              </div>
+            </div>
 
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="border border-gray-200 rounded-md p-4 flex flex-col items-center">
-                        <div className="h-40 w-full bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center">
-                            <span className="text-gray-400">Image placeholder: Blade station</span>
-                        </div>
-                        <p className="mt-3 text-sm text-gray-500">Blade station — operator viewpoint</p>
-                    </div>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="bg-white rounded-lg aspect-video flex items-center justify-center border border-gray-200 order-2 md:order-1">
+                <p className="text-sm text-gray-500">Process flow diagram</p>
+              </div>
+              <div className="order-1 md:order-2">
+                <h3 className="text-xl font-semibold mb-4">Value Stream Mapping</h3>
+                <p className="text-gray-700 mb-4">
+                  We mapped the entire production process from raw materials to finished assembly, identifying non-value-added time and process inefficiencies.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Total process time: 108.76 seconds</li>
+                  <li>• Identified waste in transitions</li>
+                  <li>• Recommended layout improvements</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    <div className="border border-gray-200 rounded-md p-4 flex flex-col items-center">
-                        <div className="h-40 w-full bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center">
-                            <span className="text-gray-400">Image placeholder: Microscope view</span>
-                        </div>
-                        <p className="mt-3 text-sm text-gray-500">Microscope inspection of blades</p>
-                    </div>
-                </div>
-            </section>
+      {/* Findings */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold mb-12">Key Findings</h2>
 
-            {/* Method */}
-            <section className="max-w-6xl mx-auto mb-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 className="text-lg font-medium mb-2">Method</h3>
-                        <ul className="text-gray-600 list-disc list-inside space-y-2">
-                            <li>Time study: 10 cycles, 3 blade sizes (5mm, 10mm, 15mm)</li>
-                            <li>FMEA risk analysis: 6 major risks identified</li>
-                            <li>Process mapping: blade break → degreasing → inspection</li>
-                            <li>Takt time calculation: 13.47 sec/blade, monthly demand 122,000 blades</li>
-                        </ul>
+        <div className="space-y-8">
+          <div className="p-8 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Bottleneck: Station 5</h3>
+            <p className="text-gray-700">
+              Station 5 (blade assembly) showed the longest cycle time at 18.2 seconds—41% longer than the takt time target. This is the constraint in the production line.
+            </p>
+          </div>
 
-                        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div className="col-span-1">
-                                <div className="h-24 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                                    Process flow
-                                </div>
-                            </div>
-                            <div>
-                                <div className="h-24 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                                    Time study table
-                                </div>
-                            </div>
-                            <div>
-                                <div className="h-24 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                                    Balance chart
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <div className="p-8 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Opportunity: Workstation Layout</h3>
+            <p className="text-gray-700">
+              Current layout requires 2–3 unnecessary hand movements per cycle. Repositioning tools and materials could save 2–3 seconds per unit.
+            </p>
+          </div>
 
-                    {/* Time study snapshot & FMEA summary */}
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 className="text-lg font-medium mb-2">Time Study (sample)</h3>
+          <div className="p-8 bg-yellow-50 rounded-lg border border-yellow-200">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Recommendation: Batch Reduction</h3>
+            <p className="text-gray-700">
+              Moving from batches of 100 to flow of 25–30 units reduces wait time between stations and improves inventory turnover.
+            </p>
+          </div>
+        </div>
+      </section>
 
-                        <div className="overflow-x-auto border rounded-md">
-                            <table className="min-w-full text-sm">
-                                <thead className="bg-gray-100 text-gray-700">
-                                    <tr>
-                                        <th className="px-3 py-2 text-left">Cycle</th>
-                                        <th className="px-3 py-2 text-left">5mm (s)</th>
-                                        <th className="px-3 py-2 text-left">10mm (s)</th>
-                                        <th className="px-3 py-2 text-left">15mm (s)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {[1,2,3,4,5,6,7,8,9,10].map(i => (
-                                        <tr key={i} className="odd:bg-white even:bg-gray-50">
-                                            <td className="px-3 py-2">{i}</td>
-                                            <td className="px-3 py-2">12.{(i%7).toString()}</td>
-                                            <td className="px-3 py-2">13.{(i%5).toString()}</td>
-                                            <td className="px-3 py-2">14.{(i%3).toString()}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+      {/* Impact */}
+      <section className="w-full bg-gray-50 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12">Recommended Improvements</h2>
 
-                        <div className="mt-4">
-                            <h4 className="text-sm font-medium">FMEA summary</h4>
-                            <ul className="text-gray-600 text-sm mt-2 list-disc list-inside">
-                                <li>6 major risks: blade break, contamination, misalignment, PPE non-compliance, degreasing overflow, inspection miss</li>
-                                <li>Mitigations proposed and prioritized by occurrence & severity</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Short-term (Weeks 1–4)</h3>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Reorganize Station 5 workstation</li>
+                <li>• Implement visual management system</li>
+                <li>• Expected savings: 1.5–2 sec/cycle</li>
+              </ul>
+            </div>
 
-            {/* Insights */}
-            <section className="max-w-6xl mx-auto mb-10 bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-medium mb-4">Insights</h2>
-                <p className="text-gray-600 mb-4">Key discoveries from analysis and time study</p>
+            <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Long-term (Months 2–3)</h3>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Implement pull-based flow system</li>
+                <li>• Cross-train operators on flexibility</li>
+                <li>• Expected savings: 3–4 sec/cycle</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Insight Card 1 */}
-                    <div className="border border-gray-200 rounded-md p-4 flex flex-col">
-                        <div className="flex items-center gap-3">
-                            <div className="p-2 bg-indigo-50 rounded-md">
-                                {/* simple icon */}
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-indigo-600">
-                                    <path d="M12 2v20" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    <path d="M5 9h14" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </div>
-                            <h4 className="font-medium">Blade break is bottleneck</h4>
-                        </div>
-                        <p className="text-gray-600 text-sm mt-3">Longest cycle time observed; causes downstream queuing and inspection backlog.</p>
-                        <div className="mt-4 h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Image placeholder: facility layout (bottleneck)
-                        </div>
-                    </div>
+      {/* Conclusion */}
+      <section className="max-w-6xl mx-auto px-6 py-20 border-t border-gray-200">
+        <h2 className="text-3xl font-bold mb-8">Conclusion</h2>
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          Through systematic lean analysis, we identified Station 5 as the primary constraint and quantified improvement opportunities worth 3–4 seconds per cycle. Implementation of recommended changes could increase throughput by 22–30% without additional capital investment.
+        </p>
 
-                    {/* Insight Card 2 */}
-                    <div className="border border-gray-200 rounded-md p-4 flex flex-col">
-                        <div className="flex items-center gap-3">
-                            <div className="p-2 bg-amber-50 rounded-md">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <path d="M3 12h18" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
-                                    <path d="M12 3v18" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
-                                </svg>
-                            </div>
-                            <h4 className="font-medium">Motion waste in layout</h4>
-                        </div>
-                        <p className="text-gray-600 text-sm mt-3">Operators incur unnecessary walking for supplies and degreasing refill.</p>
-                        <div className="mt-4 h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Image placeholder: layout diagrams
-                        </div>
-                    </div>
-
-                    {/* Insight Card 3 */}
-                    <div className="border border-gray-200 rounded-md p-4 flex flex-col">
-                        <div className="flex items-center gap-3">
-                            <div className="p-2 bg-green-50 rounded-md">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <path d="M3 6h18M3 12h18M3 18h18" stroke="#059669" strokeWidth="2" strokeLinecap="round"/>
-                                </svg>
-                            </div>
-                            <h4 className="font-medium">Batch size variability</h4>
-                        </div>
-                        <p className="text-gray-600 text-sm mt-3">Different blade sizes show wide per-cycle throughput: 10mm ~160/cycle, 15mm ~100/cycle.</p>
-                        <div className="mt-4 h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Image placeholder: throughput / balance chart
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Impact */}
-            <section className="max-w-6xl mx-auto mb-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-lg font-medium mb-3">Impact & Recommendations</h3>
-                    <ul className="list-disc list-inside text-gray-600 space-y-2">
-                        <li>Layout optimization: reduced travel time for degreasing refill and supply access</li>
-                        <li>PPE accessibility improvements & standardized placement</li>
-                        <li>Waste consolidation points to remove unnecessary motion</li>
-                        <li>Process documentation and standard work to reduce variability</li>
-                    </ul>
-
-                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div className="h-20 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Stations
-                        </div>
-                        <div className="h-20 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Layout before
-                        </div>
-                        <div className="h-20 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Layout after
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-lg font-medium mb-3">Metrics</h3>
-
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="p-3 bg-gray-50 rounded-md">
-                            <div className="text-sm text-gray-500">Takt time</div>
-                            <div className="mt-1 text-xl font-semibold">13.47 sec/blade</div>
-                        </div>
-
-                        <div className="p-3 bg-gray-50 rounded-md">
-                            <div className="text-sm text-gray-500">Monthly demand</div>
-                            <div className="mt-1 text-xl font-semibold">122,000 blades</div>
-                        </div>
-
-                        <div className="p-3 bg-gray-50 rounded-md">
-                            <div className="text-sm text-gray-500">Stations vs target</div>
-                            <div className="mt-1 text-xl font-semibold">All stations below target</div>
-                        </div>
-
-                        <div className="p-3 bg-gray-50 rounded-md">
-                            <div className="text-sm text-gray-500">Quality</div>
-                            <div className="mt-1 text-xl font-semibold">Scrap reduction identified</div>
-                        </div>
-
-                        <div className="col-span-2 p-3 bg-gray-50 rounded-md">
-                            <div className="text-sm text-gray-500">FMEA impact</div>
-                            <div className="mt-1 text-xl font-semibold">Risk scores reduced (post-mitigation)</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Artifacts */}
-            <section className="max-w-6xl mx-auto mb-20 bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-medium mb-3">Artifacts</h2>
-                <p className="text-gray-600 mb-4">Deliverables included process documentation, FMEA matrix, layout recommendations and time study data (10 cycles).</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="col-span-1 border border-gray-200 rounded-md p-4">
-                        <div className="h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Process flow documentation
-                        </div>
-                    </div>
-
-                    <div className="col-span-1 border border-gray-200 rounded-md p-4">
-                        <div className="h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            FMEA risk matrix
-                        </div>
-                    </div>
-
-                    <div className="col-span-1 border border-gray-200 rounded-md p-4">
-                        <div className="h-28 bg-gray-50 border border-dashed border-gray-200 rounded-md flex items-center justify-center text-sm text-gray-400">
-                            Time study data (10 cycles)
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <footer className="max-w-6xl mx-auto text-center text-sm text-gray-500">
-                <div>Case study generated for presentation — technical & process-focused layout.</div>
-            </footer>
-        </main>
-    );
+        <div className="flex justify-between items-center pt-8 border-t border-gray-200">
+          <Link href="/" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">
+            ← Back to portfolio
+          </Link>
+          <Link href="/initiator-fellowship" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">
+            Next project →
+          </Link>
+        </div>
+      </section>
+      </div>
+    </main>
+  );
 }

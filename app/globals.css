@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #585858;
   --foreground: #171717;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -117,33 +117,42 @@ input, textarea, select, button {
   position: fixed;
   width: 20px;
   height: 20px;
-  background: #3b82f6;
   border-radius: 50%;
+  background-color: #3b82f6;
   pointer-events: none;
-  z-index: 9999;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   opacity: 0;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  transition: width 0.35s ease, height 0.35s ease, border-radius 0.35s ease, opacity 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+}
+
+.custom-cursor::after {
+  content: 'view project';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 12px;
-  letter-spacing: 0.14em;
+  font-weight: 600;
   color: white;
-  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 .custom-cursor.hover {
   width: 140px;
   height: 50px;
   border-radius: 25px;
-  background: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
 }
 
 .custom-cursor.hover::after {
-  content: 'view project';
+  opacity: 1;
 }
+
 /* Astronaut floating animation */
 .astronaut-float {
   animation: float 3s ease-in-out infinite;
@@ -180,4 +189,207 @@ input, textarea, select, button {
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+/* ===== INTERACTIVE CARD ANIMATIONS ===== */
+.card {
+  --bg: #fff;
+  --title-color: #fff;
+  --title-color-hover: #000;
+  --text-color: #666;
+  --button-color: #eee;
+  --button-color-hover: #ddd;
+  
+  background: var(--bg);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 20rem;
+  height: 30rem;
+  overflow: hidden;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.card.dark {
+  --bg: #222;
+  --title-color: #fff;
+  --title-color-hover: #fff;
+  --text-color: #ccc;
+  --button-color: #555;
+  --button-color-hover: #444;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: calc(100% - 1rem);
+  height: 30%;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  mask: linear-gradient(#0000, #000f 80%);
+  backdrop-filter: blur(1rem);
+  border-radius: 0 0 1.5rem 1.5rem;
+  translate: 0 0;
+  transition: translate 0.25s;
+  z-index: 10;
+}
+
+.card > img {
+  max-width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: 50% 5%;
+  border-radius: 1.5rem;
+  display: block;
+  transition: aspect-ratio 0.25s, object-position 0.5s;
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.card > div:first-of-type {
+  flex-shrink: 0;
+  transition: height 0.25s, aspect-ratio 0.25s;
+}
+
+.card > section {
+  margin: 1rem;
+  height: calc(33.3333% - 1rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card section h2 {
+  margin: 0;
+  margin-block-end: 1rem;
+  font-size: 1.5rem;
+  opacity: 1;
+  translate: 0 0;
+  color: var(--title-color);
+  transition: color 0.5s, margin-block-end 0.25s, opacity 1s, translate 0.25s;
+  font-weight: 600;
+}
+
+.card section p {
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text-color);
+  opacity: 1;
+  margin: 0;
+  translate: 0 0;
+  transition: margin-block-end 0.25s, opacity 1s 0.2s, translate 0.25s 0.2s;
+}
+
+.card section > div {
+  flex: 1;
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  translate: 0 0;
+  opacity: 1;
+  transition: translate 0.25s 0.2s, opacity 1s;
+}
+
+.card section .tag {
+  align-self: center;
+  color: var(--title-color-hover);
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.card section button {
+  border: 1px solid transparent;
+  border-radius: 1.25rem 1.25rem 1.5rem 1.25rem;
+  font-size: 1rem;
+  padding: 1rem 1.5rem 1rem 2.75rem;
+  translate: 1rem;
+  background: var(--button-color);
+  transition: background 0.33s;
+  outline-offset: 2px;
+  position: relative;
+  color: var(--title-color-hover);
+  width: 8.2rem;
+  text-align: right;
+  cursor: pointer;
+}
+
+.card section button::before,
+.card section button::after {
+  content: "";
+  width: 0.85rem;
+  height: 0.1rem;
+  background: currentcolor;
+  position: absolute;
+  top: 50%;
+  left: 1.33rem;
+  border-radius: 1rem;
+}
+
+.card section button::after {
+  rotate: 90deg;
+  transition: rotate 0.15s;
+}
+
+.card section button.following::after {
+  rotate: 0deg;
+}
+
+.card section button:hover {
+  background: var(--button-color-hover);
+}
+
+.card section button:focus {
+  outline: 2px solid var(--text-color);
+}
+
+/* HOVER STATE */
+.card:hover,
+.card:focus-within {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  translate: 0 100%;
+}
+
+.card:hover > img,
+.card:focus-within > img {
+  aspect-ratio: 1 / 1;
+  object-position: 50% 10%;
+}
+
+.card:hover > div:first-of-type,
+.card:focus-within > div:first-of-type {
+  height: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+.card:hover section h2,
+.card:focus-within section h2,
+.card:hover section p,
+.card:focus-within section p {
+  translate: 0 0;
+  margin-block-end: 0.5rem;
+  opacity: 1;
+}
+
+.card:hover section h2,
+.card:focus-within section h2 {
+  color: var(--title-color-hover);
+}
+
+.card:hover section > div,
+.card:focus-within section > div {
+  translate: 0 0;
+  opacity: 1;
+  transition: translate 0.25s 0.25s, opacity 0.5s 0.25s;
 }

@@ -1,85 +1,80 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Script from "next/script";
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Script from 'next/script';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Chandan Pai - HF/UX Portfolio",
-  description: "Human Factors Engineer & UX Researcher specializing in data-driven design solutions",
+  title: 'Chandan Pai - UX Designer & Product Engineer',
+  description: 'Portfolio of UX research, product design, and industrial engineering projects',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        {children}
+    <html lang="en">
+      <body className={inter.className}>
+        <Script
+          id="custom-cursor"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const cursor = document.createElement('div');
+                cursor.className = 'custom-cursor';
+                document.body.appendChild(cursor);
 
-        <Script id="custom-cursor" strategy="lazyOnload">{`(function(){
-          function initCursor(){
-            var cursor = document.createElement('div');
-            cursor.className = 'custom-cursor';
-            document.body.appendChild(cursor);
+                let x = 0, y = 0;
+                let targetX = 0, targetY = 0;
+                const speed = 0.2;
 
-            var mouseX = 0;
-            var mouseY = 0;
-            var posX = 0;
-            var posY = 0;
+                document.addEventListener('mousemove', (e) => {
+                  targetX = e.clientX;
+                  targetY = e.clientY;
+                });
 
-            function onMove(e){
-              mouseX = e.clientX;
-              mouseY = e.clientY;
-              cursor.style.opacity = '1';
-            }
+                document.addEventListener('mouseenter', () => {
+                  cursor.style.opacity = '1';
+                });
 
-            function onOver(e){
-              try{
-                if (e.target.closest('.project-link') || e.target.closest('.project-card')){
-                  cursor.classList.add('hover');
-                } else {
-                  cursor.classList.remove('hover');
+                document.addEventListener('mouseleave', () => {
+                  cursor.style.opacity = '0';
+                });
+
+                window.addEventListener('blur', () => {
+                  cursor.style.opacity = '0';
+                });
+
+                window.addEventListener('focus', () => {
+                  cursor.style.opacity = '1';
+                });
+
+                document.addEventListener('mouseover', (e) => {
+                  if (e.target.closest('.project-link') || e.target.closest('.project-card')) {
+                    cursor.classList.add('hover');
+                  } else {
+                    cursor.classList.remove('hover');
+                  }
+                });
+
+                document.addEventListener('mouseout', (e) => {
+                  if (e.target.closest('.project-link') || e.target.closest('.project-card')) {
+                    cursor.classList.remove('hover');
+                  }
+                });
+
+                function animate() {
+                  x += (targetX - x) * speed;
+                  y += (targetY - y) * speed;
+                  cursor.style.left = x + 'px';
+                  cursor.style.top = y + 'px';
+                  requestAnimationFrame(animate);
                 }
-              }catch(err){}
-            }
-
-            function onLeave(){ cursor.style.opacity = '0'; }
-            function onBlur(){ cursor.style.opacity = '0'; }
-            function onFocus(){ if (mouseX > 0 || mouseY > 0) cursor.style.opacity = '1'; }
-
-            function loop(){
-              posX += (mouseX - posX) * 0.2;
-              posY += (mouseY - posY) * 0.2;
-              cursor.style.left = (posX - 10) + 'px';
-              cursor.style.top = (posY - 10) + 'px';
-              requestAnimationFrame(loop);
-            }
-
-            document.addEventListener('mousemove', onMove);
-            document.addEventListener('mouseover', onOver);
-            document.addEventListener('mouseleave', onLeave);
-            window.addEventListener('blur', onBlur);
-            window.addEventListener('focus', onFocus);
-
-            loop();
-          }
-
-          if (typeof document !== 'undefined'){
-            if (document.readyState === 'loading'){
-              document.addEventListener('DOMContentLoaded', initCursor);
-            } else { initCursor(); }
-          }
-        })()`}</Script>
+                animate();
+              })();
+            `,
+          }}
+        />
+        {children}
       </body>
     </html>
   );
