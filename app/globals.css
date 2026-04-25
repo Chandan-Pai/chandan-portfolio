@@ -104,11 +104,11 @@ p {
   transform: scale(1.05);
 }
 
-/* ===== Custom Cursor ===== */
+/* ===== Custom Cursor ===== *
 * {
   cursor: none !important;
 }
-
+*/
 input, textarea, select, button {
   cursor: auto !important;
 }
@@ -202,8 +202,8 @@ html {
   background: var(--bg);
   border-radius: 2rem;
   padding: 0.5rem;
-  width: 20rem;
-  height: 30rem;
+  width: 28rem;
+  height: 40rem;
   overflow: hidden;
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
@@ -215,7 +215,7 @@ html {
 }
 
 .card.dark {
-  --bg: #222;
+  --bg: #222; 
   --title-color: #fff;
   --title-color-hover: #fff;
   --text-color: #ccc;
@@ -223,28 +223,15 @@ html {
   --button-color-hover: #444;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  width: calc(100% - 1rem);
-  height: 30%;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  mask: linear-gradient(#0000, #000f 80%);
-  backdrop-filter: blur(1rem);
-  border-radius: 0 0 1.5rem 1.5rem;
-  translate: 0 0;
-  transition: translate 0.25s;
-  z-index: 10;
-}
 
 .card > img {
   max-width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 1 / 2;
   object-fit: cover;
   object-position: 50% 5%;
   border-radius: 1.5rem;
   display: block;
+  border: 2px solid #e2e8f0; 
   transition: aspect-ratio 0.25s, object-position 0.5s;
   width: 100%;
   height: auto;
@@ -392,4 +379,13 @@ html {
   translate: 0 0;
   opacity: 1;
   transition: translate 0.25s 0.25s, opacity 0.5s 0.25s;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.project-link {
+  opacity: 1;
+
 }

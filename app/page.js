@@ -1,69 +1,175 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+
+function LiveClock() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+  return (
+    <div className="text-right w-20 flex-shrink-0">
+      <div className="text-black text-xs font-medium leading-tight">{timeStr}</div>
+      <div className="text-black-400 text-xs leading-tight">{dateStr}</div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const [navExpanded, setNavExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const projectLinks = document.querySelectorAll('.project-link');
+
+    const onEnter = () => {
+      const cursor = document.querySelector('.custom-cursor');
+      if (cursor) cursor.classList.add('hover');
+    };
+    const onLeave = () => {
+      const cursor = document.querySelector('.custom-cursor');
+      if (cursor) cursor.classList.remove('hover');
+    };
+
+    projectLinks.forEach(el => {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    });
+
+    return () => {
+      projectLinks.forEach(el => {
+        el.removeEventListener('mouseenter', onEnter);
+        el.removeEventListener('mouseleave', onLeave);
+      });
+    };
+  }, []);
+
+  // ── SCROLL-DRIVEN 3D CARD LIFT ──
+  useEffect(() => {
+    const MAX_ROTATE = 75;
+    const MAX_Y = 50;
+    const MAX_Z = -40;
+    const FADE_SPEED = 2.0;
+    const ZONE_SCROLL_PX = 300;
+
+    const cards = Array.from(document.querySelectorAll('.project-link'));
+
+    function clamp(v, lo, hi) {
+      return Math.min(Math.max(v, lo), hi);
+    }
+
+    function updateCards() {
+      const vh = window.innerHeight;
+
+      const rawProgress = cards.map(card => {
+        const rect = card.getBoundingClientRect();
+        const start = rect.bottom - vh;
+        return clamp(1 - (start / ZONE_SCROLL_PX), 0, 1);
+      });
+
+      const seqProgress = [...rawProgress];
+      for (let i = 1; i < cards.length; i++) {
+        seqProgress[i] = Math.min(rawProgress[i], seqProgress[i - 1]);
+      }
+
+      cards.forEach((card, i) => {
+        const p = seqProgress[i];
+        card.style.transform = `perspective(1400px) rotateX(${MAX_ROTATE * (1 - p)}deg) translateY(${MAX_Y * (1 - p)}px) translateZ(${MAX_Z * (1 - p)}px)`;
+        card.style.opacity = clamp(p * FADE_SPEED, 0, 1);
+        card.style.transformOrigin = 'center bottom';
+      });
+    }
+
+    function tick() {
+      updateCards();
+      requestAnimationFrame(tick);
+    }
+
+    tick();
+  }, []); // Re-run if cards change
+
+  const isExpanded = !scrolled || navExpanded;
 
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       {/* Dynamic Island Navigation */}
-        <div 
-          className="fixed top-0 left-0 right-0 z-40"
-          style={{
-            height: '80px', // Adjust height as needed
-            background: 'rgba(0, 0, 0, 0.01)',
-            backdropFilter: 'blur(3px)',
-            borderBottom: '1px solid transparent',
-            backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
-            backgroundClip: 'padding-box, border-box',
-            backgroundOrigin: 'padding-box, border-box',
-          }}
-       />
-
-      <nav 
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out"
-        onMouseEnter={() => setNavExpanded(true)}
-        onMouseLeave={() => setNavExpanded(false)}
+      <div 
+        className="fixed top-0 left-0 right-0 z-40"
         style={{
-          width: navExpanded ? '600px' : '100px',
-          height: '40px',
-          borderRadius: '20px',
-          background: 'rgba(0, 0, 0, 0.8)',
-          backdropFilter: 'blur(20px)',
+          height: '80px',
+          background: 'rgba(0, 0, 0, 0.01)',
+          backdropFilter: 'blur(3px)',
+          borderBottom: '1px solid transparent',
+          backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
+          backgroundClip: 'padding-box, border-box',
+          backgroundOrigin: 'padding-box, border-box',
         }}
-      >
-        <div className="h-full flex items-center justify-center gap-8 px-6">
-          {!navExpanded ? (
-  <div className="astronaut-float">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="8" r="4" fill="white"/>
-      <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
-      <circle cx="10" cy="7" r="1" fill="black"/>
-      <circle cx="14" cy="7" r="1" fill="black"/>
-      <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
-    </svg>
-  </div>
-) : (
-  <>
-    <a href="#work" className="text-white text-sm font-medium hover:text-slate-300 transition">Work</a>
-    <a href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition">About</a>
-    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition">Resume</a>
-    <a href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition">Contact</a>
-  </>
-)}
-        </div>
-      </nav>
+      />
+
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
+        <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
+
+        <nav
+          className="transition-all duration-300 ease-in-out"
+          onMouseEnter={() => setNavExpanded(true)}
+          onMouseLeave={() => setNavExpanded(false)}
+          style={{
+            width: isExpanded ? '480px' : '80px',
+            height: '40px',
+            borderRadius: '20px',
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(20px)',
+            overflow: 'hidden',
+          }}
+        >
+          <div className="h-full flex items-center justify-center gap-8 px-6">
+            {!isExpanded ? (
+              <div className="astronaut-float">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" fill="white"/>
+                  <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
+                  <circle cx="10" cy="7" r="1" fill="black"/>
+                  <circle cx="14" cy="7" r="1" fill="black"/>
+                  <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
+                </svg>
+              </div>
+            ) : (
+              <>
+                <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
+                <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
+                <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
+                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+              </>
+            )}
+          </div>
+        </nav>
+
+        <LiveClock />
+      </div>
 
       {/* Hero Section */}
       <header className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
         <h1 
           className="font-black tracking-tight uppercase gradient-text"
           style={{ 
-                    fontSize: '7rem',
-                    lineHeight: '1',
-                }}
-              >
-                CHANDAN PAI
+            fontSize: '7rem',
+            lineHeight: '1',
+          }}
+        >
+          CHANDAN PAI
         </h1>
         <p className="mt-6 text-sm font-semibold tracking-widest text-slate-600 uppercase">
           Human Factors Engineer • UX Researcher
@@ -77,96 +183,90 @@ export default function HomePage() {
       <section id="work" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-16">Selected Work</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Campus-Sync */}
-            <a href="/campus-sync" className="group block project-link">
-              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
-                <div 
-                  className="w-full h-[500px] bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                >
-                  <span className="text-slate-300 text-2xl font-medium">Campus-Sync Preview</span>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-                  <span className="text-white font-semibold text-lg">View Project →</span>
-                </div>
-              </div>
-              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Campus-Sync Navigation</h3>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
-                  UX Researcher & Designer
-                </span>
-              </div>
-              <p className="text-base text-slate-600 font-medium">40% navigation error reduction • 65% → 95% task completion</p>
-            </a>
+          <div className="h-0.5 w-full bg-gray-300 mb-16"></div>
 
-            {/* Initiator Fellowship */}
-            <a href="/initiator-fellowship" className="group block project-link">
-              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
-                <div 
-                  className="w-full h-[500px] bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
+          <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
+            <div className="space-y-8">
+              {[
+                { id: 'initiator-fellowship', href: '/initiator-fellowship', title: 'Website Accessibility Redesign', role: 'UX Researcher', metric: '104% usability increase • 2.3/5 → 4.7/5 rating', src: '/images/initiator-fellowship/initiator-fellowship.mp4', type: 'video', num: '01' },
+                { id: 'campus-sync', href: '/campus-sync', title: 'Campus-Sync Navigation', role: 'UX Researcher & Designer', metric: '40% navigation error reduction • 65% → 95% task completion', src: '/images/campus sync/home page.mp4', type: 'video', num: '02' },
+                { id: 'mercedes', href: '/mercedes-service-manual', title: 'Interactive Repair Guidance', role: 'Product Researcher', metric: 'Multi-format prototype • n=4 usability validation', type: 'text', bg: 'from-purple-900 to-slate-900', num: '03' },
+                { id: 'boston-scientific', href: '/manufacturing-workflow', title: 'Manufacturing Process Optimization', role: 'Industrial Designer', metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade', type: 'text', bg: 'from-slate-800 to-slate-900', num: '04' },
+              ].map((project) => (
+                <a
+                  key={project.id}
+                  href={project.href}
+                  className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
+                  style={{
+                    willChange: 'transform, opacity',
+                  }}
                 >
-                  <span className="text-slate-300 text-2xl font-medium">Accessibility Redesign Preview</span>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-                  <span className="text-white font-semibold text-lg">View Project →</span>
-                </div>
-              </div>
-              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Website Accessibility Redesign</h3>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
-                  UX Researcher
-                </span>
-              </div>
-              <p className="text-base text-slate-600 font-medium">104% usability increase • 2.3/5 → 4.7/5 rating</p>
-            </a>
+                  <div className="flex items-stretch" style={{ minHeight: '720px' }}>
+                    
+                    {/* LEFT — media */}
+                    <div className="w-2/3 relative overflow-hidden">
+                      {project.type === 'video' ? (
+                        <video
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                        >
+                          <source src={project.src} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <div className={`w-full h-full bg-gradient-to-br ${project.bg} flex items-center justify-center`}>
+                          <p className="text-white/20 text-5xl font-black uppercase tracking-widest text-center px-8">{project.role}</p>
+                        </div>
+                      )}
+                    </div>
 
-            {/* Boston Scientific */}
-            <a href="/manufacturing-workflow" className="group block project-link">
-              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
-                <div 
-                  className="w-full h-[500px] bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                >
-                  <span className="text-slate-400 text-2xl font-medium">Manufacturing Preview</span>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-                  <span className="text-white font-semibold text-lg">View Project →</span>
-                </div>
-              </div>
-              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Manufacturing Process Optimization</h3>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
-                  Industrial Engineer
-                </span>
-              </div>
-              <p className="text-base text-slate-600 font-medium">Lean workflow analysis • Takt time: 13.47 sec/blade</p>
-            </a>
-
-
-            {/* Mercedes Service Manual */}
-            <a href="/mercedes-service-manual" className="group block project-link">
-              <div className="relative overflow-hidden rounded-lg mb-6 project-card">
-                <div 
-                  className="w-full h-[500px] bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                >
-                  <span className="text-slate-300 text-2xl font-medium">Mobile App Preview</span>
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-                  <span className="text-white font-semibold text-lg">View Project →</span>
-                </div>
-              </div>
-              <h3 className="font-semibold mb-3" style={{ fontSize: '2rem' }}>Interactive Repair Guidance</h3>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <span className="px-4 py-1.5 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
-                  Product Designer
-                </span>
-              </div>
-              <p className="text-base text-slate-600 font-medium">Multi-format prototype • n=4 usability validation</p>
-            </a>
+                    {/* RIGHT — text */}
+                    <div className="w-1/3 p-10 flex flex-col justify-between">
+                      <div>
+                        <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">{project.metric}</p>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-4 transition-all duration-300">
+                        <span>View Project</span>
+                        <span>→</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* GitHub Projects */}
+      <section id="work" className="py-24 px-6 border-t border-slate-100">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
+          <h2 className="text-3xl font-bold mb-12">GitHub Projects</h2>
+
+          <div className="space-y-6">
+            {[
+              { title: 'Laptop Sales Data Visualization', desc: 'Interactive data dashboard analyzing sales trends, pricing patterns, and market segments', tech: ['Python', 'Plotly', 'Pandas'], href: 'https://github.com/Chandan-Pai/...' },
+            ].map((proj, i) => (
+              <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-between p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group">
+                <div>
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-slate-700">{proj.title}</h3>
+                  <p className="text-sm text-slate-500 mb-3">{proj.desc}</p>
+                  <div className="flex gap-2">
+                    {proj.tech.map(t => <span key={t} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">{t}</span>)}
+                  </div>
+                </div>
+                <span className="text-slate-400 group-hover:text-slate-700 text-xl ml-6">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6">
@@ -193,6 +293,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       {/* Footer */}
       <footer className="py-12 px-6 text-center text-sm text-slate-500">
         © {new Date().getFullYear()} Chandan Pai — Human Factors & UX Engineering

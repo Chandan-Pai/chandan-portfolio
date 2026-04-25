@@ -3,70 +3,153 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+function LiveClock() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+  return (
+    <div className="text-right w-20 flex-shrink-0">
+      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
+      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
+    </div>
+  );
+}
+
+function ExpandableImage({ src, alt }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <div 
+        onClick={() => setIsOpen(true)}
+        className="relative group cursor-pointer"
+      >
+        <img 
+          src={src} 
+          alt={alt}
+          className="w-full rounded-lg mb-8 transition-all duration-300 group-hover:shadow-2xl"
+        />
+        
+        {/* Hover overlay */}
+        <div className="absolute inset-0 rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+          <div className="text-white text-center">
+            <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 13H9" />
+            </svg>
+            <p className="font-semibold text-sm">Click to expand</p>
+          </div>
+        </div>
+      </div>
+      
+      {isOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setIsOpen(false)}
+        >
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition z-51"
+            aria-label="Close"
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <img 
+            src={src} 
+            alt={alt}
+            className="max-w-4xl max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
+  );
+}
+
 export default function CampusSyncPage() {
   const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);  // ← ADD THIS
 
   useEffect(() => {
     const handleScroll = () => {
-      // If scrolled past 400px, we're in light section
       setIsDarkSection(window.scrollY < 400);
+      setScrolled(window.scrollY > 80);  // ← COMBINED into one handler
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isExpanded = !scrolled || navExpanded;
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
+     <main className="min-h-screen bg-white text-slate-900 antialiased">
       {/* Dynamic Island Navigation */}
-      <div 
-        className="fixed top-0 left-0 right-0 z-40"
-        style={{
-          height: '80px',
-          background: 'rgba(0, 0, 0, 0.01)',
-          backdropFilter: 'blur(3px)',
-          borderBottom: '1px solid transparent',
-          backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
-          backgroundClip: 'padding-box, border-box',
-          backgroundOrigin: 'padding-box, border-box',
-        }}
-      />
+        <div 
+          className="fixed top-0 left-0 right-0 z-40"
+          style={{
+            height: '80px', // Adjust height as needed
+            background: 'rgba(0, 0, 0, 0.01)',
+            backdropFilter: 'blur(3px)',
+            borderBottom: '1px solid transparent',
+            backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
+            backgroundClip: 'padding-box, border-box',
+            backgroundOrigin: 'padding-box, border-box',
+          }}
+       />
 
-      <nav 
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out"
-        onMouseEnter={() => setNavExpanded(true)}
-        onMouseLeave={() => setNavExpanded(false)}
-        style={{
-          width: navExpanded ? '600px' : '100px',
-          height: '40px',
-          borderRadius: '20px',
-          background: 'rgba(0, 0, 0, 0.8)',
-          backdropFilter: 'blur(20px)',
-        }}
-      >
-        <div className="h-full flex items-center justify-center gap-8 px-6">
-          {!navExpanded ? (
-            <div className="astronaut-float">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="8" r="4" fill="white"/>
-                <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
-                <circle cx="10" cy="7" r="1" fill="black"/>
-                <circle cx="14" cy="7" r="1" fill="black"/>
-                <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
-              </svg>
-            </div>
-          ) : (
-            <>
-              <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition">Home</Link>
-              <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition">Work</Link>
-              <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition">About</Link>
-              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition">Resume</Link>
-              <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition">Contact</Link>
-            </>
-          )}
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
+  
+  {/* LEFT — CP, always outside */}
+  <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
+
+  {/* CENTER — The pill */}
+  <nav
+    className="transition-all duration-300 ease-in-out"
+    onMouseEnter={() => setNavExpanded(true)}
+    onMouseLeave={() => setNavExpanded(false)}
+    style={{
+      width: isExpanded ? '480px' : '80px',
+      height: '40px',
+      borderRadius: '20px',
+      background: 'rgba(0, 0, 0, 0.8)',
+      backdropFilter: 'blur(20px)',
+      overflow: 'hidden',
+    }}
+  >
+    <div className="h-full flex items-center justify-center gap-8 px-6">
+      {!isExpanded ? (
+        <div className="astronaut-float">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="4" fill="white"/>
+            <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
+            <circle cx="10" cy="7" r="1" fill="black"/>
+            <circle cx="14" cy="7" r="1" fill="black"/>
+            <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
+          </svg>
         </div>
-      </nav>
+      ) : (
+        <>
+          <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
+          <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
+          <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
+          <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+          <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+        </>
+      )}
+    </div>
+  </nav>
+
+  {/* RIGHT — Clock, always outside */}
+  <LiveClock />
+</div>
 
       <div className="min-h-screen bg-white text-gray-900">
       {/* Back Button - Dynamic Color */}
@@ -74,6 +157,7 @@ export default function CampusSyncPage() {
         <Link
           href="/"
           aria-label="Back to portfolio"
+            data-no-cursor-hover
           className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
             isDarkSection ? 'text-white' : 'text-gray-900'
           }`}
@@ -94,9 +178,7 @@ export default function CampusSyncPage() {
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white py-30 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gray-700 rounded-lg p-16 mb-8 text-center">
-            <p className="text-sm text-gray-300">Hero Image</p>
-          </div>
+          <ExpandableImage src="/images/campus sync/current pdf.png" alt="Campus-Sync hero" />
           <h1 className="text-5xl font-bold mb-4">Campus-Sync</h1>
           <p className="text-xl text-gray-300 mb-8">Solving winter navigation through design and trust</p>
           <div className="space-y-2 text-sm">
@@ -121,9 +203,7 @@ export default function CampusSyncPage() {
               This moment became the central insight for Campus-Sync—the realization that the problem wasn't the tunnel system itself. It was the information gap that made students choose frostbite over uncertainty.
             </p>
           </div>
-          <div className="bg-gray-100 rounded-lg p-12 text-center">
-            <p className="text-sm text-gray-500">Problem scenario GIF</p>
-          </div>
+          <ExpandableImage src="/images/campus sync/problem-scenario.gif" alt="Problem scenario" />
         </div>
       </section>
 
@@ -155,9 +235,7 @@ export default function CampusSyncPage() {
           </div>
         </div>
 
-        <div className="bg-gray-100 rounded-lg p-12 text-center mb-8">
-          <p className="text-sm text-gray-500">Research documentation photo</p>
-        </div>
+       <ExpandableImage src="/images/campus sync/research-docs.jpg" alt="Research documentation" />
 
         <p className="text-gray-700 leading-relaxed">
           Mapping 40+ real navigation scenarios revealed most routes were short—just 1–3 building hops. The insight: <span className="font-semibold">users didn't need perfect routing. They needed reliable routing.</span> Something they could trust instantly, in real time, while wearing gloves at a tunnel entrance.
@@ -172,9 +250,15 @@ export default function CampusSyncPage() {
             CampusSync is live at campus-sync.org. No login. No installation. Built on a single principle: <span className="font-semibold">every route users see must be walkable right now.</span>
           </p>
 
-          <div className="bg-white rounded-lg p-8 mb-8">
-            <p className="text-sm text-gray-500 mb-8 text-center">Demo: Search to result (15 sec GIF)</p>
-          </div>
+          <video 
+                  className="w-full h-[500px] object-cover transition-all duration-500 group-hover:grayscale group-hover:scale-105"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                 <source src="/Images/campus sync/home page.mp4" type="video/mp4" />
+                </video>
 
           <p className="text-gray-600 text-sm">
             The solution wasn't complex. It was precise. Four design decisions—each one solving a specific failure point we watched users encounter.
@@ -196,16 +280,13 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: Zero failed routes in testing.</p>
             </div>
-            <div className="bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-sm text-gray-500">Routing logic diagram</p>
-            </div>
+            <ExpandableImage src="/images/campus sync/routing logic diagram.png" alt="Research documentation" />
           </div>
+
 
           {/* Decision 2 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div className="bg-gray-100 rounded-lg p-8 text-center order-2 md:order-1">
-              <p className="text-sm text-gray-500">Before/after visualization</p>
-            </div>
+             <ExpandableImage src="/images/campus sync/Before:After visualization.png" alt="Campus-Sync hero"  />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Dual-Color Visual System</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
@@ -228,16 +309,12 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: 45% faster than paper maps.</p>
             </div>
-            <div className="bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-sm text-gray-500">Search UI screenshot</p>
-            </div>
+            <ExpandableImage src="/images/campus sync/Search first interface.png" alt="Campus-Sync hero"  />
           </div>
 
           {/* Decision 4 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div className="bg-gray-100 rounded-lg p-8 text-center order-2 md:order-1">
-              <p className="text-sm text-gray-500">Route result with timing</p>
-            </div>
+            <ExpandableImage src="/images/campus sync/Walking time estimates.png" alt="Campus-Sync hero"  />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Walking Time Estimates</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
@@ -250,9 +327,7 @@ export default function CampusSyncPage() {
           </div>
         </div>
 
-        <div className="bg-gray-100 rounded-lg p-12 text-center mt-16">
-          <p className="text-sm text-gray-500">Live product screenshots</p>
-        </div>
+       
       </section>
 
       {/* Validation & Results */}
