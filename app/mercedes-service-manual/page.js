@@ -90,7 +90,7 @@ export default function MercedesServiceManualPage() {
         <LiveClock />
       </div>
         
-            <div className="min-h-screen bg-white text-gray-900">
+      
         {/* Back Button */}
         <div className="fixed top-6 left-6 z-50">
           <Link
@@ -113,7 +113,8 @@ export default function MercedesServiceManualPage() {
             <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
-        </div>
+        
+
 
       {/* HERO — no image needed, type-driven */}
       <section className="w-full min-h-[60vh] bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 flex flex-col justify-end px-12 pb-16 pt-32">
@@ -475,21 +476,51 @@ export default function MercedesServiceManualPage() {
         </div>
 
         <h3 className="text-xl font-bold mb-6">Prototype Screens</h3>
-        <div className="grid grid-cols-2 gap-6 mb-6">
-          <div>
-            <img src="/images/mercedes/wireframe-scan.jpg" alt="QR scan screen" className="w-full rounded-xl border border-slate-200" />
-            <p className="text-xs text-slate-500 mt-2 text-center">QR scan + format selection screen</p>
+        
+        {/* QR Scan Screen */}
+        <div className="mb-12">
+          <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-slate-200">
+            <img src="/images/Repair manual/QR.png" alt="QR scan screen" className="w-full h-auto" />
           </div>
-          <div>
-            <img src="/images/mercedes/wireframe-steps.jpg" alt="Step navigation" className="w-full rounded-xl border border-slate-200" />
-            <p className="text-xs text-slate-500 mt-2 text-center">Safety checklist → step-by-step flow</p>
-          </div>
-        </div>
-        <div>
-          <img src="/images/mercedes/wireframe-ab.jpg" alt="A/B prototype layouts" className="w-full rounded-xl border border-slate-200 mb-2" />
-          <p className="text-xs text-slate-500 text-center">A/B layouts tested for one-handed phone use during repair tasks</p>
+          <p className="text-xs text-slate-500 mt-2 text-center">QR scan + format selection screen</p>
         </div>
 
+        {/* Step Navigation - 3 Images */}
+        <div className="mb-12">
+          <h4 className="text-lg font-semibold text-slate-900 mb-4">Step-by-Step Navigation</h4>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <img src="/images/repair manual/step1.png" alt="Step navigation screen 1" className="w-full h-auto" />
+            </div>
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <img src="/images/repair manual/step2 .png" alt="Step navigation screen 2" className="w-full h-auto" />
+            </div>
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <img src="/images/repair manual/step3.png" alt="Step navigation screen 3" className="w-full h-auto" />
+            </div>
+          </div>
+          <p className="text-xs text-slate-500 mt-2 text-center">Safety checklist → step-by-step flow</p>
+        </div>
+
+        {/* A/B Layout Comparison - 2 Images */}
+        <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-slate-200">
+          <h4 className="text-lg font-semibold text-slate-900 mb-4">A/B Layout Testing</h4>
+          <div className="grid grid-cols-2 gap-10">
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <img src="/images/repair manual/Prototype 1.png" alt="A/B prototype layout A" className="w-full h-auto" />
+              <div className="bg-slate-50 p-3">
+                <p className="text-xs font-semibold text-slate-700">Layout A: Text-first approach</p>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <img src="/images/repair manual/Prototype 2.png" alt="A/B prototype layout B" className="w-full h-auto" />
+              <div className="bg-slate-50 p-3">
+                <p className="text-xs font-semibold text-slate-700">Layout B: Visual-first approach</p>
+              </div>
+            </div>
+          </div>
+          <p className="text-xs text-slate-500 mt-4 text-center">A/B layouts tested for one-handed phone use during repair tasks</p>
+        </div>
       </section>
 
       {/* USABILITY TESTING */}
