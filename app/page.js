@@ -252,10 +252,19 @@ export default function HomePage() {
             {[
               { 
                 title: 'Laptop Sales Data Visualization', 
-                desc: 'Interactive data dashboard analyzing sales trends, pricing patterns, and market segments', 
+                desc: 'Interactive dashboard analyzing sales trends, pricing patterns, and market segments across brands and regions', 
                 tech: ['Tableau', 'Data Visualization', 'Dashboard'], 
-                href: 'https://public.tableau.com/app/profile/chandan.pai4658/viz/DataVizFinalProject4/FinalDashboard?publish=yes&showOnboarding=true' 
+                href: 'https://public.tableau.com/app/profile/chandan.pai4658/viz/DataVizFinalProject4/FinalDashboard?publish=yes&showOnboarding=true',
+                status: 'live'
               },
+              { 
+                title: 'Netflix Content Data Visualization', 
+                desc: 'Visual breakdown of Netflix catalog by genre, country, release year, and content type — uncovering how streaming strategy has shifted over a decade', 
+                tech: ['Tableau', 'Data Visualization', 'Entertainment Analytics'], 
+                href: 'https://public.tableau.com/app/profile/chandan.pai4658/viz/NetflixContentDatavisualisation/Dashboard1?publish=yes',
+                status: 'live'
+              },
+              
             ].map((proj, i) => (
               <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-between p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group">

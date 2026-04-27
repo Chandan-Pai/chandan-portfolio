@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "next build && gh-pages -d out"
   },
   "dependencies": {
     "next": "16.2.4",
@@ -16,7 +17,6 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
     "tailwindcss": "^4"
   }
 }
