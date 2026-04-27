@@ -1,4 +1,4 @@
-/** @type {import('_next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   basePath: '/chandan-portfolio',
