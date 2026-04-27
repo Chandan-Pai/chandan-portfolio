@@ -248,9 +248,14 @@ export default function HomePage() {
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
           <h2 className="text-3xl font-bold mb-12">GitHub Projects</h2>
 
-          <div className="space-y-6">
+         <div className="space-y-6">
             {[
-              { title: 'Laptop Sales Data Visualization', desc: 'Interactive data dashboard analyzing sales trends, pricing patterns, and market segments', tech: ['Python', 'Plotly', 'Pandas'], href: 'https://github.com/Chandan-Pai/...' },
+              { 
+                title: 'Laptop Sales Data Visualization', 
+                desc: 'Interactive data dashboard analyzing sales trends, pricing patterns, and market segments', 
+                tech: ['Tableau', 'Data Visualization', 'Dashboard'], 
+                href: 'https://public.tableau.com/app/profile/chandan.pai4658/viz/DataVizFinalProject4/FinalDashboard?publish=yes&showOnboarding=true' 
+              },
             ].map((proj, i) => (
               <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-between p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group">
