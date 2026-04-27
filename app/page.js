@@ -188,10 +188,10 @@ export default function HomePage() {
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
             <div className="space-y-8">
               {[
-  { id: 'initiator-fellowship', href: '/initiator-fellowship', title: 'Website Accessibility Redesign', role: 'UX Researcher', metric: '104% usability increase • 2.3/5 → 4.7/5 rating', src: '/images/initiator-fellowship/initiator-fellowship.mp4', type: 'video', num: '01' },
-  { id: 'campus-sync', href: '/campus-sync', title: 'Campus-Sync Navigation', role: 'UX Researcher & Designer', metric: '40% navigation error reduction • 65% → 95% task completion', src: '/images/campus sync/home page.mp4', type: 'video', num: '02' },
-  { id: 'mercedes', href: '/mercedes-service-manual', title: 'Interactive Repair Guidance', role: 'Product Researcher', metric: 'Multi-format prototype • n=4 usability validation', src: '/images/Repair manual/Repair manual.png', type: 'image', num: '03' },
-  { id: 'boston-scientific', href: '/manufacturing-workflow', title: 'Manufacturing Process Optimization', role: 'Industrial Designer', metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade',src: '/images/wolverine blade assembly.png', type: 'image', num: '04' },
+  { id: 'initiator-fellowship', href: '/initiator-fellowship', title: 'Website Accessibility Redesign', role: 'UX Researcher', metric: '104% usability increase • 2.3/5 → 4.7/5 rating', src: '/chandan-portfolio/images/initiator-fellowship/initiator-fellowship.mp4', type: 'video', num: '01' },
+  { id: 'campus-sync', href: '/campus-sync', title: 'Campus-Sync Navigation', role: 'UX Researcher & Designer', metric: '40% navigation error reduction • 65% → 95% task completion', src: '/chandan-portfolio/images/campus sync/home page.mp4', type: 'video', num: '02' },
+  { id: 'mercedes', href: '/mercedes-service-manual', title: 'Interactive Repair Guidance', role: 'Product Researcher', metric: 'Multi-format prototype • n=4 usability validation', src: '/chandan-portfolio/images/Repair manual/Repair manual.png', type: 'image', num: '03' },
+  { id: 'boston-scientific', href: '/manufacturing-workflow', title: 'Manufacturing Process Optimization', role: 'Industrial Designer', metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade',src: '/chandan-portfolio/images/wolverine blade assembly.png', type: 'image', num: '04' },
 ].map((project) => (
   <Link
     key={project.id}
