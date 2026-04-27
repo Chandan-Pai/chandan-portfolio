@@ -1,0 +1,11 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  basePath: '/chandan-portfolio',
+  assetPrefix: '/chandan-portfolio/',
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+};
+
+module.exports = nextConfig;
