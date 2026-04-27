@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/ChandanUmeshPai',
-    images: {
-    unoptimized: true },
+  basePath: '/chandan-portfolio',
+  images: {
+    unoptimized: true,
+  },
 };
-
 export default nextConfig;

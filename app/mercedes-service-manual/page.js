@@ -81,8 +81,8 @@ export default function MercedesServiceManualPage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
-                <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}
           </div>
@@ -259,8 +259,8 @@ export default function MercedesServiceManualPage() {
               </ul>
             </div>
           ))}
-          <img src="/Images/Repair manual/AEIOU Field observations.png" alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200 mb-16" />
-          <img src="/Images/Repair manual/Observation sheets.png" alt="Observation sheets" className="w-full rounded-xl border border-slate-200 mt-8" />
+          <img src="/chandan-portfolio/Images/Repair manual/AEIOU Field observations.png" alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200 mb-16" />
+          <img src="/chandan-portfolio/Images/Repair manual/Observation sheets.png" alt="Observation sheets" className="w-full rounded-xl border border-slate-200 mt-8" />
         </div>
         
       </section>
@@ -312,8 +312,8 @@ export default function MercedesServiceManualPage() {
               </tbody>
             </table>
           </div>
-          <img src="/images/repair manual/Journey Map.png" alt="Journey Map" className="w-full rounded-xl border border-slate-200 mt-8" />
-          <img src="/images/repair manual/Affinity Diagraming.png" alt="Affinity Diagram" className="w-full rounded-xl border border-slate-200 mt-6" />    
+          <img src="/chandan-portfolio/images/repair manual/Journey Map.png" alt="Journey Map" className="w-full rounded-xl border border-slate-200 mt-8" />
+          <img src="/chandan-portfolio/images/repair manual/Affinity Diagraming.png" alt="Affinity Diagram" className="w-full rounded-xl border border-slate-200 mt-6" />    
         </div>
       </section>
 
@@ -338,7 +338,7 @@ export default function MercedesServiceManualPage() {
         <div className="mb-12">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">Reference: How the pig should look</h3>
           <div className="rounded-xl overflow-hidden border border-slate-200 max-w-2xl">
-            <img src="/images/repair manual/Pig drawing reference.png" alt="Correct pig drawing reference" className="w-full h-auto" />
+            <img src="/chandan-portfolio/images/repair manual/Pig drawing reference.png" alt="Correct pig drawing reference" className="w-full h-auto" />
             <div className="bg-blue-50 p-3">
               <p className="text-xs font-semibold text-blue-700">Target outcome with visual guidance</p>
             </div>
@@ -371,13 +371,13 @@ export default function MercedesServiceManualPage() {
         {/* Images - horizontal layout */}
         <div className="grid grid-cols-2 gap-6 mb-12">
           <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src="/images/repair manual/Pig drawing test text.jpg" alt="Text-only pig instructions" className="w-full h-auto" />
+            <img src="/chandan-portfolio/images/repair manual/Pig drawing test text.jpg" alt="Text-only pig instructions" className="w-full h-auto" />
             <div className="bg-red-50 p-3">
               <p className="text-xs font-semibold text-red-700">Text-only instructions — chaotic results</p>
             </div>
           </div>
           <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src="/images/repair manual/Pig drawing test visual.jpg" alt="Visual-guided pig drawings" className="w-full h-auto" />
+            <img src="/chandan-portfolio/images/repair manual/Pig drawing test visual.jpg" alt="Visual-guided pig drawings" className="w-full h-auto" />
             <div className="bg-green-50 p-3">
               <p className="text-xs font-semibold text-green-700">Visual + text steps — consistent, recognizable</p>
             </div>
@@ -441,9 +441,9 @@ export default function MercedesServiceManualPage() {
             ))}
           </div>
           <div className="grid grid-cols-2 gap-6 mt-8">
-            <img src="/images/repair manual/Age Group Distribution.jpg" alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
-            <img src="/images/repair manual/Top Frustrations.jpg" alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
-            <img src="/images/repair manual/where are manuals used.png" alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
+            <img src="/chandan-portfolio/images/repair manual/Age Group Distribution.jpg" alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
+            <img src="/chandan-portfolio/images/repair manual/Top Frustrations.jpg" alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
+            <img src="/chandan-portfolio/images/repair manual/where are manuals used.png" alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
           </div>
         </div>
       </section>
@@ -480,7 +480,7 @@ export default function MercedesServiceManualPage() {
         {/* QR Scan Screen */}
         <div className="mb-12">
           <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-slate-200">
-            <img src="/images/Repair manual/QR.png" alt="QR scan screen" className="w-full h-auto" />
+            <img src="/chandan-portfolio/images/Repair manual/QR.png" alt="QR scan screen" className="w-full h-auto" />
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">QR scan + format selection screen</p>
         </div>
@@ -490,13 +490,13 @@ export default function MercedesServiceManualPage() {
           <h4 className="text-lg font-semibold text-slate-900 mb-4">Step-by-Step Navigation</h4>
           <div className="grid grid-cols-3 gap-4">
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src="/images/repair manual/step1.png" alt="Step navigation screen 1" className="w-full h-auto" />
+              <img src="/chandan-portfolio/images/repair manual/step1.png" alt="Step navigation screen 1" className="w-full h-auto" />
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src="/images/repair manual/step2 .png" alt="Step navigation screen 2" className="w-full h-auto" />
+              <img src="/chandan-portfolio/images/repair manual/step2 .png" alt="Step navigation screen 2" className="w-full h-auto" />
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src="/images/repair manual/step3.png" alt="Step navigation screen 3" className="w-full h-auto" />
+              <img src="/chandan-portfolio/images/repair manual/step3.png" alt="Step navigation screen 3" className="w-full h-auto" />
             </div>
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">Safety checklist → step-by-step flow</p>
@@ -507,13 +507,13 @@ export default function MercedesServiceManualPage() {
           <h4 className="text-lg font-semibold text-slate-900 mb-4">A/B Layout Testing</h4>
           <div className="grid grid-cols-2 gap-10">
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src="/images/repair manual/Prototype 1.png" alt="A/B prototype layout A" className="w-full h-auto" />
+              <img src="/chandan-portfolio/images/repair manual/Prototype 1.png" alt="A/B prototype layout A" className="w-full h-auto" />
               <div className="bg-slate-50 p-3">
                 <p className="text-xs font-semibold text-slate-700">Layout A: Text-first approach</p>
               </div>
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src="/images/repair manual/Prototype 2.png" alt="A/B prototype layout B" className="w-full h-auto" />
+              <img src="/chandan-portfolio/images/repair manual/Prototype 2.png" alt="A/B prototype layout B" className="w-full h-auto" />
               <div className="bg-slate-50 p-3">
                 <p className="text-xs font-semibold text-slate-700">Layout B: Visual-first approach</p>
               </div>

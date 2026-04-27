@@ -196,8 +196,8 @@ useEffect(() => {
                       <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                       <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                       <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                      <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
-                      <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+                      <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                      <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
                     </>
                   )}
                 </div>
@@ -297,7 +297,7 @@ useEffect(() => {
                 }}
                 >
                 <img 
-                    src="/images/about/fall photo.jpg"
+                    src="/chandan-portfolio/images/about/fall photo.jpg"
                     alt="Chandan Pai"
                     className="w-full h-full object-cover"
                 />
@@ -311,11 +311,11 @@ useEffect(() => {
             
             <div className="flex flex-wrap gap-4 overflow-x-auto pb-4">
                 {[
-                { label: 'Hiking', src: '/images/about/duluth trip sunrise.jpg' },
-                { label: 'India', src: '/images/about/me at mercedes .jpg' },
-                { label: 'Community', src: '/images/about/aagumbe.jpg' },
-                { label: 'Moments', src: '/images/about/minigolf at stone mountain.jpg' },
-                { label: 'More', src: '/images/about/ooty.jpg' },
+                { label: 'Hiking', src: '/chandan-portfolio/images/about/duluth trip sunrise.jpg' },
+                { label: 'India', src: '/chandan-portfolio/images/about/me at mercedes .jpg' },
+                { label: 'Community', src: '/chandan-portfolio/images/about/aagumbe.jpg' },
+                { label: 'Moments', src: '/chandan-portfolio/images/about/minigolf at stone mountain.jpg' },
+                { label: 'More', src: '/chandan-portfolio/images/about/ooty.jpg' },
                 ].map((item, idx) => (
                 <div 
                     key={idx}

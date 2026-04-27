@@ -141,7 +141,7 @@ export default function CampusSyncPage() {
           <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
           <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
           <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
-          <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+          <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
         </>
       )}
     </div>
@@ -178,7 +178,7 @@ export default function CampusSyncPage() {
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white py-30 px-4">
         <div className="max-w-6xl mx-auto">
-          <ExpandableImage src="/images/campus sync/current pdf.png" alt="Campus-Sync hero" />
+          <ExpandableImage src="/chandan-portfolio/images/campus sync/current pdf.png" alt="Campus-Sync hero" />
           <h1 className="text-5xl font-bold mb-4">Campus-Sync</h1>
           <p className="text-xl text-gray-300 mb-8">Solving winter navigation through design and trust</p>
           <div className="space-y-2 text-sm">
@@ -203,7 +203,7 @@ export default function CampusSyncPage() {
               This moment became the central insight for Campus-Sync—the realization that the problem wasn't the tunnel system itself. It was the information gap that made students choose frostbite over uncertainty.
             </p>
           </div>
-          <ExpandableImage src="/images/campus sync/problem-scenario.gif" alt="Problem scenario" />
+          <ExpandableImage src="/chandan-portfolio/images/campus sync/images.jpeg" alt="Problem scenario" />
         </div>
       </section>
 
@@ -235,7 +235,7 @@ export default function CampusSyncPage() {
           </div>
         </div>
 
-       <ExpandableImage src="/images/campus sync/research-docs.jpg" alt="Research documentation" />
+       <ExpandableImage src="/chandan-portfolio/images/campus sync/research-docs.jpg" alt="Research documentation" />
 
         <p className="text-gray-700 leading-relaxed">
           Mapping 40+ real navigation scenarios revealed most routes were short—just 1–3 building hops. The insight: <span className="font-semibold">users didn't need perfect routing. They needed reliable routing.</span> Something they could trust instantly, in real time, while wearing gloves at a tunnel entrance.
@@ -257,7 +257,7 @@ export default function CampusSyncPage() {
                   muted
                   playsInline
                 >
-                 <source src="/Images/campus sync/home page.mp4" type="video/mp4" />
+                 <source src="/chandan-portfolio/images/campus sync/home page.mp4" type="video/mp4" />
                 </video>
 
           <p className="text-gray-600 text-sm">
@@ -280,13 +280,13 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: Zero failed routes in testing.</p>
             </div>
-            <ExpandableImage src="/images/campus sync/routing logic diagram.png" alt="Research documentation" />
+            <ExpandableImage src="/chandan-portfolio/images/campus sync/routing logic diagram.png" alt="Research documentation" />
           </div>
 
 
           {/* Decision 2 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-             <ExpandableImage src="/images/campus sync/Before:After visualization.png" alt="Campus-Sync hero"  />
+             <ExpandableImage src="/chandan-portfolio/images/campus sync/Before:After visualization.png" alt="Campus-Sync hero"  />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Dual-Color Visual System</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
@@ -309,12 +309,12 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: 45% faster than paper maps.</p>
             </div>
-            <ExpandableImage src="/images/campus sync/Search first interface.png" alt="Campus-Sync hero"  />
+            <ExpandableImage src="/chandan-portfolio/images/campus sync/Search first interface.png" alt="Campus-Sync hero"  />
           </div>
 
           {/* Decision 4 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-            <ExpandableImage src="/images/campus sync/Walking time estimates.png" alt="Campus-Sync hero"  />
+            <ExpandableImage src="/chandan-portfolio/images/campus sync/Walking time estimates.png" alt="Campus-Sync hero"  />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Walking Time Estimates</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>

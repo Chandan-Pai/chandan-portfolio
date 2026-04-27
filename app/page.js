@@ -150,8 +150,8 @@ export default function HomePage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
-                <Link href="mailto:pai00040@umn.edu" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
+                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}
           </div>
@@ -188,55 +188,48 @@ export default function HomePage() {
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
             <div className="space-y-8">
               {[
-                { id: 'initiator-fellowship', href: '/initiator-fellowship', title: 'Website Accessibility Redesign', role: 'UX Researcher', metric: '104% usability increase • 2.3/5 → 4.7/5 rating', src: '/images/initiator-fellowship/initiator-fellowship.mp4', type: 'video', num: '01' },
-                { id: 'campus-sync', href: '/campus-sync', title: 'Campus-Sync Navigation', role: 'UX Researcher & Designer', metric: '40% navigation error reduction • 65% → 95% task completion', src: '/images/campus sync/home page.mp4', type: 'video', num: '02' },
-                { id: 'mercedes', href: '/mercedes-service-manual', title: 'Interactive Repair Guidance', role: 'Product Researcher', metric: 'Multi-format prototype • n=4 usability validation', type: 'text', bg: 'from-purple-900 to-slate-900', num: '03' },
-                { id: 'boston-scientific', href: '/manufacturing-workflow', title: 'Manufacturing Process Optimization', role: 'Industrial Designer', metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade', type: 'text', bg: 'from-slate-800 to-slate-900', num: '04' },
-              ].map((project) => (
-                <a
-                  key={project.id}
-                  href={project.href}
-                  className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
-                  style={{
-                    willChange: 'transform, opacity',
-                  }}
-                >
-                  <div className="flex items-stretch" style={{ minHeight: '720px' }}>
-                    
-                    {/* LEFT — media */}
-                    <div className="w-2/3 relative overflow-hidden">
-                      {project.type === 'video' ? (
-                        <video
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                        >
-                          <source src={project.src} type="video/mp4" />
-                        </video>
-                      ) : (
-                        <div className={`w-full h-full bg-gradient-to-br ${project.bg} flex items-center justify-center`}>
-                          <p className="text-white/20 text-5xl font-black uppercase tracking-widest text-center px-8">{project.role}</p>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* RIGHT — text */}
-                    <div className="w-1/3 p-10 flex flex-col justify-between">
-                      <div>
-                        <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">{project.metric}</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-4 transition-all duration-300">
-                        <span>View Project</span>
-                        <span>→</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              ))}
+  { id: 'initiator-fellowship', href: '/initiator-fellowship', title: 'Website Accessibility Redesign', role: 'UX Researcher', metric: '104% usability increase • 2.3/5 → 4.7/5 rating', src: '/images/initiator-fellowship/initiator-fellowship.mp4', type: 'video', num: '01' },
+  { id: 'campus-sync', href: '/campus-sync', title: 'Campus-Sync Navigation', role: 'UX Researcher & Designer', metric: '40% navigation error reduction • 65% → 95% task completion', src: '/images/campus sync/home page.mp4', type: 'video', num: '02' },
+  { id: 'mercedes', href: '/mercedes-service-manual', title: 'Interactive Repair Guidance', role: 'Product Researcher', metric: 'Multi-format prototype • n=4 usability validation', src: '/images/Repair manual/Repair manual.png', type: 'image', num: '03' },
+  { id: 'boston-scientific', href: '/manufacturing-workflow', title: 'Manufacturing Process Optimization', role: 'Industrial Designer', metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade',src: '/images/wolverine blade assembly.png', type: 'image', num: '04' },
+].map((project) => (
+  <Link
+    key={project.id}
+    href={project.href}
+    className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
+    style={{ willChange: 'transform, opacity' }}
+  >
+    <div className="flex items-stretch" style={{ minHeight: '720px' }}>
+      <div className="w-2/3 relative overflow-hidden">
+        {project.type === 'video' ? (
+          <video
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            autoPlay loop muted playsInline
+          >
+            <source src={project.src} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={project.src}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
+      </div>
+      <div className="w-1/3 p-10 flex flex-col justify-between">
+        <div>
+          <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
+          <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
+          <p className="text-sm text-slate-500 leading-relaxed">{project.metric}</p>
+        </div>
+        <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-4 transition-all duration-300">
+          <span>View Project</span>
+          <span>→</span>
+        </div>
+      </div>
+    </div>
+  </Link>
+))}
             </div>
           </div>
         </div>
