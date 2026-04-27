@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/chandan-portfolio',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/chandan-portfolio/' : '',
   output: 'export',
+  basePath: '/chandan-portfolio',
   images: {
     unoptimized: true,
   },
