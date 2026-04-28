@@ -272,8 +272,8 @@ export default function InitiatorFellowshipPage() {
             </div>
             <div className="grid grid-cols-3 gap-4">
               <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/screenshot-rocks.png" alt="Screenshot 1" />
-              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/screenshot-rocks (1).png" alt="Screenshot 2" />
-              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/screenshot-rocks (2).png" alt="Screenshot 3" />
+              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/screenshot-rocks(1).png" alt="Screenshot 2" />
+              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/screenshot-rocks(2).png" alt="Screenshot 3" />
             </div>
           </div>
         </section>
@@ -402,7 +402,7 @@ export default function InitiatorFellowshipPage() {
                 metric: 'Scenario 1: 6m 24s avg',
                 detail: 'Scenario 2: 4m 18s avg | Scenario 3: 5m 12s avg',
                 figs: [
-                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/timetake(old website).png', alt: 'Time per Participant - Old Website' }
+                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/timetake(oldwebsite).png', alt: 'Time per Participant - Old Website' }
                 ]
               },
               {
