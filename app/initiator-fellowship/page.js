@@ -155,7 +155,6 @@ export default function InitiatorFellowshipPage() {
           backgroundOrigin: 'padding-box, border-box',
         }}
       />
- 
       {/* Nav */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
         <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
@@ -298,9 +297,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-3 gap-6">
-              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/graphical task analysis.png" alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
-              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/Card sorting.png" alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
-              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/time take (old website).png" alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
+              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/graphicaltaskanalysis.png" alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
+              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/Cardsorting.png" alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
+              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/timetake(oldwebsite).png" alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
             </div>
           </div>
         </section>
@@ -314,10 +313,8 @@ export default function InitiatorFellowshipPage() {
               problem: "Users couldn't track where they were in the application workflow. Timeline, criteria, and tracking were scattered across pages.", 
               solution: "Unified 'Apply' section with integrated criteria, timeline, application form, and tracking—all in one pathway.", 
               figs: [
-                { num: 4.1, src: '/chandan-portfolio/images/initiator-fellowship/Current user flow.png', alt: 'Disconnected application process - before' },
-
-                { num: 4.3, src: '/chandan-portfolio/images/initiator-fellowship/new user flow.png', alt: 'New application flow' },
-
+                { num: 4.1, src: '/chandan-portfolio/images/initiator-fellowship/Currentuserflow.png', alt: 'Disconnected application process - before' },
+                { num: 4.3, src: '/chandan-portfolio/images/initiator-fellowship/newuserflow.png', alt: 'New application flow' },
               ] 
             },
             { 
@@ -325,10 +322,10 @@ export default function InitiatorFellowshipPage() {
               problem: "Large text blocks, no visual hierarchy. Users couldn't identify what to do first.", 
               solution: 'Redesigned as central navigation hub with clear section blocks: Program, Apply, Members, Contact.', 
               figs: [
-                { num: 4.5, src: '/chandan-portfolio/Images/initiator-fellowship/screenshot-rocks.png', alt: 'Homepage - before' },
-                { num: 4.6, src: '/chandan-portfolio/Images/initiator-fellowship/Current user flow.png', alt: 'Homepage - after' },
-                { num: 4.7, src: '/chandan-portfolio/Images/initiator-fellowship/homepagenew.png', alt: 'Navigation blocks' },
-                { num: 4.8, src: '/chandan-portfolio/Images/initiator-fellowship/new user flow.png', alt: 'Homepage details' }
+                { num: 4.5, src: '/chandan-portfolio/images/initiator-fellowship/screenshot-rocks.png', alt: 'Homepage - before' },
+                { num: 4.6, src: '/chandan-portfolio/images/initiator-fellowship/Currentuserflow.png', alt: 'Homepage - after' },
+                { num: 4.7, src: '/chandan-portfolio/images/initiator-fellowship/homepagenew.png', alt: 'Navigation blocks' },
+                { num: 4.8, src: '/chandan-portfolio/images/initiator-fellowship/newuserflow.png', alt: 'Homepage details' }
               ] 
             },
             { 
@@ -336,8 +333,8 @@ export default function InitiatorFellowshipPage() {
               problem: 'Benefits and coverage areas scattered inside long paragraphs across multiple pages.', 
               solution: 'Consolidated Program page with structured sections, timeline graphic, bite-sized content chunks.', 
               figs: [
-                { num: 4.9, src: '/chandan-portfolio/images/initiator-fellowship/screenshot-rocks (1).png', alt: 'Program page - before' },
-                { num: 4.10, src: '/chandan-portfolio/images/initiator-fellowship/screenshot-rocks (2).png', alt: 'Program page - after' }
+                { num: 4.9, src: '/chandan-portfolio/images/initiator-fellowship/screenshot-rocks(1).png', alt: 'Program page - before' },
+                { num: 4.10, src: '/chandan-portfolio/images/initiator-fellowship/screenshot-rocks(2).png', alt: 'Program page - after' }
               ] 
             },
             { 
@@ -345,10 +342,10 @@ export default function InitiatorFellowshipPage() {
               problem: 'Program manager info buried in general contact section. No confirmation after form submission.', 
               solution: "Manager details moved to Resources page. Contact Us button in top nav. Confirmation message: 'Message received, response in 2-3 business days.'", 
               figs: [
-                { num: 4.11, src: '/chandan-portfolio/images/initiator-fellowship/contact before.png', alt: 'Contact section - before' },
-                { num: 4.12, src: '/chandan-portfolio/images/initiator-fellowship/contact after.png', alt: 'Contact section - after' },
-                { num: 4.13, src: '/chandan-portfolio/images/initiator-fellowship/manager after.png', alt: 'Manager details' },
-                { num: 4.14, src: '/chandan-portfolio/images/initiator-fellowship/confirmation message.png', alt: 'Confirmation message' }
+                { num: 4.11, src: '/chandan-portfolio/images/initiator-fellowship/contactbefore.png', alt: 'Contact section - before' },
+                { num: 4.12, src: '/chandan-portfolio/images/initiator-fellowship/contactafter.png', alt: 'Contact section - after' },
+                { num: 4.13, src: '/chandan-portfolio/images/initiator-fellowship/managerafter.png', alt: 'Manager details' },
+                { num: 4.14, src: '/chandan-portfolio/images/initiator-fellowship/confirmationmessage.png', alt: 'Confirmation message' }
               ] 
             }
           ].map((insight, i) => (
@@ -370,7 +367,7 @@ export default function InitiatorFellowshipPage() {
                     <HoverableImage 
                       src={fig.src} 
                       alt={fig.alt}
-                      className="h-80 w-full"  // Changed from h-48 to h-80
+                      className="h-80 w-full"
                     />
                     <p className="text-xs text-slate-500 text-center mt-2">Figure {fig.num}</p>
                   </div>
@@ -393,9 +390,9 @@ export default function InitiatorFellowshipPage() {
                 increase: '+104% improvement',
                 detail: 'Post-task System Usability Scale (SUS) scores across n=5 participants',
                 figs: [
-                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/post task old.png', alt: 'Old Website Post-Task Ratings' },
-                  { num: 'Prototype', src: '/chandan-portfolio/images/initiator-fellowship/post task new.png', alt: 'Prototype Post-Task Ratings' },
-                  { num: 'Average', src: '/chandan-portfolio/images/initiator-fellowship/avg post task rating .png', alt: 'Average Post-Task Rating Comparison' }
+                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/posttaskold.png', alt: 'Old Website Post-Task Ratings' },
+                  { num: 'Prototype', src: '/chandan-portfolio/images/initiator-fellowship/posttasknew.png', alt: 'Prototype Post-Task Ratings' },
+                  { num: 'Average', src: '/chandan-portfolio/images/initiator-fellowship/avgposttaskrating.png', alt: 'Average Post-Task Rating Comparison' }
                 ]
               },
               {
@@ -405,7 +402,7 @@ export default function InitiatorFellowshipPage() {
                 metric: 'Scenario 1: 6m 24s avg',
                 detail: 'Scenario 2: 4m 18s avg | Scenario 3: 5m 12s avg',
                 figs: [
-                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/time take (old website).png', alt: 'Time per Participant - Old Website' }
+                  { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/timetake(old website).png', alt: 'Time per Participant - Old Website' }
                 ]
               },
               {
@@ -415,8 +412,8 @@ export default function InitiatorFellowshipPage() {
                 metric: 'Scenario 1: 2m 45s avg',
                 detail: 'Scenario 2: 1m 52s avg | Scenario 3: 3m 08s avg (larger due to Macbook screen constraints)',
                 figs: [
-                  { num: 5.5, src: '/chandan-portfolio/images/initiator-fellowship/time take (old website).png', alt: 'Time per Participant - Prototype' },
-                  { num: 5.6, src: '/chandan-portfolio/images/initiator-fellowship/avg time taken.png', alt: 'Average Time Comparison by Scenario' }
+                  { num: 5.5, src: '/chandan-portfolio/images/initiator-fellowship/timetake(newwebsite).png', alt: 'Time per Participant - Prototype' },
+                  { num: 5.6, src: '/chandan-portfolio/images/initiator-fellowship/avgtimetaken.png', alt: 'Average Time Comparison by Scenario' }
                 ]
               },
               
@@ -489,10 +486,10 @@ export default function InitiatorFellowshipPage() {
             <h3 className="text-2xl font-semibold mb-6">Prototype Screens</h3>
             <div className="grid grid-cols-2 gap-6">
               {[
-                { num: 'Home', src: '/chandan-portfolio/images/initiator-fellowship/proto home.png', alt: 'Home Page - Prototype', title: 'Home' },
-                { num: 'Program', src: '/chandan-portfolio/images/initiator-fellowship/proto program.png', alt: 'Program Page - Prototype', title: 'Program' },
-                { num: 'Fellows', src: '/chandan-portfolio/images/initiator-fellowship/proto fellows.png', alt: 'Fellows Page - Prototype', title: 'Fellows' },
-                { num: 'Resources', src: '/chandan-portfolio/images/initiator-fellowship/proto resources.png', alt: 'Resources Page - Prototype', title: 'Resources' }
+                { num: 'Home', src: '/chandan-portfolio/images/initiator-fellowship/protohome.png', alt: 'Home Page - Prototype', title: 'Home' },
+                { num: 'Program', src: '/chandan-portfolio/images/initiator-fellowship/proprogram.png', alt: 'Program Page - Prototype', title: 'Program' },
+                { num: 'Fellows', src: '/chandan-portfolio/images/initiator-fellowship/protofellows.png', alt: 'Fellows Page - Prototype', title: 'Fellows' },
+                { num: 'Resources', src: '/chandan-portfolio/images/initiator-fellowship/protoresources.png', alt: 'Resources Page - Prototype', title: 'Resources' }
               ].map((fig) => (
                 <div key={fig.num} className="relative group">
                   <HoverableImage
