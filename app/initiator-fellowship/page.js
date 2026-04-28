@@ -298,9 +298,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-3 gap-6">
-              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/graphical task analysis.png" alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
-              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/Card sorting.png" alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
-              <HoverableImage src="/chandan-portfolio/images/initiator-fellowship/time take (old website).png" alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
+              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/graphical task analysis.png" alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
+              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/Card sorting.png" alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
+              <HoverableImage src="/chandan-portfolio/Images/initiator-fellowship/time take (old website).png" alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
             </div>
           </div>
         </section>
@@ -327,7 +327,7 @@ export default function InitiatorFellowshipPage() {
               figs: [
                 { num: 4.5, src: '/chandan-portfolio/Images/initiator-fellowship/screenshot-rocks.png', alt: 'Homepage - before' },
                 { num: 4.6, src: '/chandan-portfolio/Images/initiator-fellowship/Current user flow.png', alt: 'Homepage - after' },
-                { num: 4.7, src: '/chandan-portfolio/images/initiator-fellowship/homepagenew.png', alt: 'Navigation blocks' },
+                { num: 4.7, src: '/chandan-portfolio/Images/initiator-fellowship/homepagenew.png', alt: 'Navigation blocks' },
                 { num: 4.8, src: '/chandan-portfolio/Images/initiator-fellowship/new user flow.png', alt: 'Homepage details' }
               ] 
             },
