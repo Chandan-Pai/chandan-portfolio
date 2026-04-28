@@ -246,8 +246,10 @@ export default function HomePage() {
                           loop
                           muted
                           playsInline
+                          preload="metadata"
                         >
                           <source src={project.src} type="video/mp4" />
+                          Your browser does not support the video tag.
                         </video>
                       ) : (
                         <img
