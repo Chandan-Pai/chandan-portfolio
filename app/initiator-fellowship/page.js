@@ -392,7 +392,7 @@ export default function InitiatorFellowshipPage() {
                 figs: [
                   { num: 'Old Website', src: '/chandan-portfolio/images/initiator-fellowship/posttaskold.png', alt: 'Old Website Post-Task Ratings' },
                   { num: 'Prototype', src: '/chandan-portfolio/images/initiator-fellowship/posttasknew.png', alt: 'Prototype Post-Task Ratings' },
-                  { num: 'Average', src: '/chandan-portfolio/public/images/initiator-fellowship/avgposttaskrating.png', alt: 'Average Post-Task Rating Comparison' }
+                  { num: 'Average', src: '/chandan-portfolio/images/initiator-fellowship/avgposttaskrating.png', alt: 'Average Post-Task Rating Comparison' }
                 ]
               },
               {
