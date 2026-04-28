@@ -241,7 +241,11 @@ export default function HomePage() {
                     <div className="w-2/3 relative overflow-hidden">
                       {project.type === 'video' ? (
                         <video
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoPlay loop muted playsInline
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
                         >
                           <source src={project.src} type="video/mp4" />
                         </video>
