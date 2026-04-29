@@ -1,5 +1,8 @@
 'use client';
 
+export { default } from '../About/page';
+'use client';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -125,6 +128,7 @@ function HoverableImage({ src, alt, className = "" }) {
   );
 }
 export default function AboutPage() {
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -297,7 +301,7 @@ useEffect(() => {
                 }}
                 >
                 <img 
-                    src="/chandan-portfolio/images/about/fall photo.jpg"
+                    src={`${BASE_PATH}/images/about/fall photo.jpg`}
                     alt="Chandan Pai"
                     className="w-full h-full object-cover"
                 />
@@ -311,11 +315,11 @@ useEffect(() => {
             
             <div className="flex flex-wrap gap-4 overflow-x-auto pb-4">
                 {[
-                { label: 'Hiking', src: '/chandan-portfolio/images/about/duluth trip sunrise.jpg' },
-                { label: 'India', src: '/chandan-portfolio/images/about/me at mercedes .jpg' },
-                { label: 'Community', src: '/chandan-portfolio/images/about/aagumbe.jpg' },
-                { label: 'Moments', src: '/chandan-portfolio/images/about/minigolf at stone mountain.jpg' },
-                { label: 'More', src: '/chandan-portfolio/images/about/ooty.jpg' },
+                { label: 'Hiking', src: `${BASE_PATH}/images/about/duluth trip sunrise.jpg` },
+                { label: 'India', src: `${BASE_PATH}/images/about/me at mercedes .jpg` },
+                { label: 'Community', src: `${BASE_PATH}/images/about/aagumbe.jpg` },
+                { label: 'Moments', src: `${BASE_PATH}/images/about/minigolf at stone mountain.jpg` },
+                { label: 'More', src: `${BASE_PATH}/images/about/ooty.jpg` },
                 ].map((item, idx) => (
                 <div 
                     key={idx}

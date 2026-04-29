@@ -22,6 +22,7 @@ function LiveClock() {
 }
 
 export default function HomePage() {
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -109,7 +110,7 @@ export default function HomePage() {
       title: 'Website Accessibility Redesign', 
       role: 'UX Researcher', 
       metric: '104% usability increase • 2.3/5 → 4.7/5 rating', 
-      src: '/chandan-portfolio/images/initiator-fellowship/initiator-fellowship.mp4', 
+      src: `${BASE_PATH}/images/initiator-fellowship/initiator-fellowship.mp4`,
       type: 'video', 
       num: '01' 
     },
@@ -119,7 +120,7 @@ export default function HomePage() {
       title: 'Campus-Sync Navigation', 
       role: 'UX Researcher & Designer', 
       metric: '40% navigation error reduction • 65% → 95% task completion', 
-      src: '/chandan-portfolio/images/campus sync/home page.mp4', 
+      src: `${BASE_PATH}/images/campus sync/home page.mp4`,
       type: 'video', 
       num: '02' 
     },
@@ -129,7 +130,7 @@ export default function HomePage() {
       title: 'Interactive Repair Guidance', 
       role: 'Product Researcher', 
       metric: 'Multi-format prototype • n=4 usability validation', 
-      src: '/chandan-portfolio/images/Repair manual/Repair manual.png', 
+      src: `${BASE_PATH}/images/repair manual/Repair manual.png`,
       type: 'image', 
       num: '03' 
     },
@@ -139,7 +140,7 @@ export default function HomePage() {
       title: 'Manufacturing Process Optimization', 
       role: 'Industrial Designer', 
       metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade', 
-      src: '/chandan-portfolio/images/wolverine blade assembly.png', 
+      src: `${BASE_PATH}/images/wolverine blade assembly.png`,
       type: 'image', 
       num: '04' 
     },
