@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NEXT_DISABLE_TURBOPACK=1 next build",
     "start": "NEXT_DISABLE_TURBOPACK=1 next start",
     "lint": "eslint",
-    "deploy": "next build && gh-pages -d out"
+    "deploy": "NEXT_DISABLE_TURBOPACK=1 next build && gh-pages -d out"
   },
   "dependencies": {
     "next": "16.2.4",
