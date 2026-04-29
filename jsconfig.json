@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": false,
     "paths": {
       "@/*": ["./*"]
     }
-  }
+  },
+  "include": ["app/**/*", "components/**/*", "lib/**/*", "public/**/*", ".next/types/**/*.ts"]
 }
