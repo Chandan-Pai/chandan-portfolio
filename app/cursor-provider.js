@@ -19,6 +19,8 @@ export default function CursorProvider() {
 
     // Handle all interactive elements with cursor effects
     const handleMouseEnter = (e) => {
+      if (!(e.target instanceof Element)) return;
+      
       const target = e.target.closest('[data-cursor-hover], .project-link, .card, [class*="cursor-pointer"]');
       if (target && !target.hasAttribute('data-no-cursor-hover')) {
         cursor.classList.add('hover');
