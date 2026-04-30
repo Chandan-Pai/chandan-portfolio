@@ -24,11 +24,7 @@ export default function CursorProvider() {
       const addHoverToProjects = () => {
         const projectLinks = document.querySelectorAll('.project-link');
         projectLinks.forEach(el => {
-          el.addEventListener('mouseenter', () => {
-            if (!el.hasAttribute('data-no-cursor-hover')) {
-              cursor.classList.add('hover');
-            }
-          });
+          el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
           el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
       };
