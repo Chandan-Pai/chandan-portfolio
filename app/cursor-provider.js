@@ -21,14 +21,27 @@ export default function CursorProvider() {
     const handleMouseEnter = (e) => {
       if (!(e.target instanceof Element)) return;
       
-      const target = e.target.closest('[data-cursor-hover], .project-link, .card, [class*="cursor-pointer"]');
+      const isImage = e.target.closest('[data-cursor-expand]');
+      const isProject = e.target.closest('[data-cursor-hover], .project-link');
+      const target = e.target.closest('[data-cursor-hover], [data-cursor-expand], .project-link, .card, [class*="cursor-pointer"]');
+      
       if (target && !target.hasAttribute('data-no-cursor-hover')) {
         cursor.classList.add('hover');
+        
+        // Update text based on element type
+        if (isImage) {
+          cursor.textContent = 'Expand';
+          cursor.style.setProperty('--cursor-text', '"Expand"');
+        } else if (isProject) {
+          cursor.textContent = 'view project';
+          cursor.style.setProperty('--cursor-text', '"view project"');
+        }
       }
     };
 
     const handleMouseLeave = () => {
       cursor.classList.remove('hover');
+      cursor.textContent = '';
     };
 
     document.addEventListener('mouseenter', handleMouseEnter, true);
