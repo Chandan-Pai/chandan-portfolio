@@ -25,6 +25,8 @@ function ImageWithStats({ src, alt, statValue, statDetail }) {
     <>
       <div
         className="card cursor-pointer"
+        data-no-cursor-hover
+        data-cursor-expand
         onClick={() => setIsOpen(true)}
         style={{ textDecoration: 'none', color: 'inherit' }}
       >
@@ -107,6 +109,8 @@ function HoverableImage({ src, alt, className = "" }) {
     <>
       <div
         className={`cursor-pointer group relative overflow-hidden rounded border border-slate-300 transition-all duration-300 hover:shadow-lg hover:scale-105 ${className}`}
+        data-no-cursor-hover
+        data-cursor-expand
         onClick={() => setIsOpen(true)}
       >
         <img
