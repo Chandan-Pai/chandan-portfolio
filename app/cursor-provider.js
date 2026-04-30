@@ -17,28 +17,26 @@ export default function CursorProvider() {
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseleave', onLeave);
 
-    // Only add hover effect on homepage project cards (not on project detail pages)
-    const isHomePage = window.location.pathname === '/';
-    
-    if (isHomePage) {
-      const addHoverToProjects = () => {
-        const projectLinks = document.querySelectorAll('.project-link');
-        projectLinks.forEach(el => {
-          el.addEventListener('mouseenter', () => {
-            if (!el.hasAttribute('data-no-cursor-hover')) {
-              cursor.classList.add('hover');
-            }
-          });
-          el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-      };
-      
-      setTimeout(addHoverToProjects, 100);
-    }
+    // Handle all interactive elements with cursor effects
+    const handleMouseEnter = (e) => {
+      const target = e.target.closest('[data-cursor-hover], .project-link, .card, [class*="cursor-pointer"]');
+      if (target && !target.hasAttribute('data-no-cursor-hover')) {
+        cursor.classList.add('hover');
+      }
+    };
+
+    const handleMouseLeave = () => {
+      cursor.classList.remove('hover');
+    };
+
+    document.addEventListener('mouseenter', handleMouseEnter, true);
+    document.addEventListener('mouseleave', handleMouseLeave, true);
 
     return () => {
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter, true);
+      document.removeEventListener('mouseleave', handleMouseLeave, true);
       cursor.remove();
     };
   }, []);
