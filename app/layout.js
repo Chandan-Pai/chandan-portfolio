@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
-import CursorProvider from './cursor-provider';
+import CursorProvider from './components/CursorProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 

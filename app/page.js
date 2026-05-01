@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import CursorProvider from './components/CursorProvider';
 
 function LiveClock() {
   const [time, setTime] = useState(new Date());
