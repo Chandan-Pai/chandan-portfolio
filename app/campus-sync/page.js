@@ -27,16 +27,19 @@ function ExpandableImage({ src, alt }) {
 
   return (
     <>
-      <div 
+      <div
+        className="card cursor-pointer"
+        data-no-cursor-hover
+        data-cursor-expand
         onClick={() => setIsOpen(true)}
-        className="relative group cursor-pointer"
+        style={{ textDecoration: 'none', color: 'inherit' }}
       >
-        <img 
-          src={src} 
+        <img
+          src={src}
           alt={alt}
           className="w-full rounded-lg mb-8 transition-all duration-300 group-hover:shadow-2xl"
         />
-        
+
         {/* Hover overlay */}
         <div className="absolute inset-0 rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <div className="text-white text-center">
@@ -47,9 +50,9 @@ function ExpandableImage({ src, alt }) {
           </div>
         </div>
       </div>
-      
+
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setIsOpen(false)}
         >
@@ -62,8 +65,8 @@ function ExpandableImage({ src, alt }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <img 
-            src={src} 
+          <img
+            src={src}
             alt={alt}
             className="max-w-4xl max-h-[90vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
@@ -93,7 +96,7 @@ export default function CampusSyncPage() {
   return (
      <main className="min-h-screen bg-white text-slate-900 antialiased">
       {/* Dynamic Island Navigation */}
-        <div 
+        <div
           className="fixed top-0 left-0 right-0 z-40"
           style={{
             height: '80px', // Adjust height as needed
