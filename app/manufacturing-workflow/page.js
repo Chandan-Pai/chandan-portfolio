@@ -122,7 +122,7 @@ export default function ManufacturingWorkflowPage() {
         </div>
 
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-b from-slate-950 to-slate-900 text-white py-24 px-6">
+        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white py-24 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="mb-12">
               <h1 className="text-6xl font-bold leading-tight mb-6">Boston Scientific Wolverine Blade Manufacturing</h1>
@@ -249,9 +249,9 @@ export default function ManufacturingWorkflowPage() {
                 <div className="bg-white p-8 rounded-lg border border-slate-200 order-2 md:order-1">
                   <h4 className="font-semibold text-gray-900 mb-4">Station Cycle Times</h4>
                   <div className="space-y-2 text-sm">
-                    <div className="flex justify-between items-center p-2 bg-red-50 rounded border border-red-200">
+                    <div className="flex justify-between items-center p-2 bg-slate-800/80 rounded border border-slate-600">
                       <span className="text-gray-700">Station 5: Blade Break</span>
-                      <span className="font-bold text-red-700">18.2s</span>
+                      <span className="font-bold text-sky-300">18.2s</span>
                     </div>
                     <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
                       <span className="text-gray-700">Station 6: Degreasing</span>
@@ -261,9 +261,9 @@ export default function ManufacturingWorkflowPage() {
                       <span className="text-gray-700">Station 7: Inspection</span>
                       <span className="font-bold">11.4s</span>
                     </div>
-                    <div className="flex justify-between items-center p-2 bg-blue-50 rounded border border-blue-200 mt-3">
+                    <div className="flex justify-between items-center p-2 bg-sky-950/50 rounded border border-sky-700/50 mt-3">
                       <span className="text-gray-700"><strong>Takt Time Target</strong></span>
-                      <span className="font-bold text-blue-700">13.47s</span>
+                      <span className="font-bold text-sky-300">13.47s</span>
                     </div>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ export default function ManufacturingWorkflowPage() {
           <h2 className="text-3xl font-bold mb-12">Waste Identification & Key Insights</h2>
 
           <div className="space-y-6">
-            <div className="p-8 bg-red-50 rounded-lg border border-red-200">
+            <div className="p-8 bg-slate-100 rounded-lg border border-slate-300">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">🔴 Critical Bottleneck: Station 5</h3>
               <p className="text-gray-700 mb-3">
                 Blade break station cycle time of 18.2 seconds exceeds takt time by 4.73 seconds (41% excess). This is the constraint limiting overall throughput.
@@ -300,7 +300,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-gray-600"><strong>Root causes:</strong> Microscope-dependent precision, manual tweezers separation, container non-conformance checks</p>
             </div>
 
-            <div className="p-8 bg-orange-50 rounded-lg border border-orange-200">
+            <div className="p-8 bg-slate-100 rounded-lg border border-slate-300">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">⚠️ Motion & Transportation Waste</h3>
               <p className="text-gray-700 mb-3">
                 Operators engage in unnecessary reaching for tools, searching for supplies, and non-value-added movements across the three stations.
@@ -308,7 +308,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-gray-600"><strong>Opportunity:</strong> Workstation layout optimization could save 2–3 seconds per cycle</p>
             </div>
 
-            <div className="p-8 bg-yellow-50 rounded-lg border border-yellow-200">
+            <div className="p-8 bg-slate-50 rounded-lg border border-slate-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">⏳ Waiting Waste</h3>
               <p className="text-gray-700 mb-3">
                 Operators experience delays waiting for degreasing machine cycles to complete and for parts to arrive from upstream EDM machining (3.5-hour batches).
@@ -316,7 +316,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-gray-600"><strong>Note:</strong> EDM machine excluded from analysis—operates independently with 3.5-hour cycle, impractical for real-time observation</p>
             </div>
 
-            <div className="p-8 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="p-8 bg-sky-50 rounded-lg border border-sky-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">💡 Recent Improvements (Layout Optimization)</h3>
               <p className="text-gray-700 mb-3">
                 Boston Scientific recently repositioned workstations closer together, reducing travel distances between stations.
@@ -382,11 +382,11 @@ export default function ManufacturingWorkflowPage() {
                 </div>
                 <div>
                   <p className="text-slate-400">Target improvement (short-term)</p>
-                  <p className="text-2xl font-bold text-green-400">+114 blades/shift</p>
+                  <p className="text-2xl font-bold text-sky-300">+114 blades/shift</p>
                 </div>
                 <div>
                   <p className="text-slate-400">Potential (long-term)</p>
-                  <p className="text-2xl font-bold text-green-400">+426 blades/shift</p>
+                  <p className="text-2xl font-bold text-sky-300">+426 blades/shift</p>
                 </div>
               </div>
             </div>

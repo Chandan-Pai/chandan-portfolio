@@ -55,10 +55,10 @@ function ImageWithStats({ src, alt, statValue, statDetail }) {
               />
             </div>
             <div className="w-64 flex items-center">
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg w-full">
-                <p className="text-sm font-semibold text-blue-900 mb-2">Research Method</p>
-                <p className="text-3xl font-bold text-blue-700 mb-3">{statValue}</p>
-                <p className="text-sm text-blue-600">{statDetail}</p>
+              <div className="bg-sky-50 border-l-4 border-sky-500 p-6 rounded-lg w-full">
+                <p className="text-sm font-semibold text-sky-900 mb-2">Research Method</p>
+                <p className="text-3xl font-bold text-sky-800 mb-3">{statValue}</p>
+                <p className="text-sm text-sky-700">{statDetail}</p>
               </div>
             </div>
             <button
@@ -218,7 +218,7 @@ export default function InitiatorFellowshipPage() {
         </div>
 
         {/* HERO IMAGE */}
-        <section className="w-full bg-gradient-to-r from-green-900 to-green-700 py-20">
+        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 py-20">
           <div className="max-w-5xl mx-auto px-6">
             <img
               src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`}
@@ -269,8 +269,8 @@ export default function InitiatorFellowshipPage() {
                 { title: 'Dual Navigation Bars', desc: 'Confusing layout in half-screen view' },
                 { title: 'No Form Feedback', desc: "Users couldn't tell what they did wrong when submitting" }
               ].map((issue, i) => (
-                <div key={i} className="border-l-4 border-red-500 pl-4 py-2">
-                  <p className="font-semibold text-red-700">{issue.title}</p>
+                <div key={i} className="border-l-4 border-slate-400 pl-4 py-2">
+                  <p className="font-semibold text-slate-800">{issue.title}</p>
                   <p className="text-sm text-slate-600">{issue.desc}</p>
                 </div>
               ))}
@@ -295,8 +295,8 @@ export default function InitiatorFellowshipPage() {
                 { title: 'Card Sorting (n=5)', desc: 'Participants organized content to reveal natural information architecture patterns.' },
                 { title: 'User Testing (n=5)', desc: '3 scenarios tested on both old and new sites. Measured task completion time, post-task ratings, qualitative feedback.' }
               ].map((method, i) => (
-                <div key={i} className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="font-semibold text-blue-900 mb-2">{method.title}</p>
+                <div key={i} className="bg-sky-50 border border-sky-200 rounded-lg p-4">
+                  <p className="font-semibold text-sky-900 mb-2">{method.title}</p>
                   <p className="text-sm text-slate-700">{method.desc}</p>
                 </div>
               ))}
@@ -358,11 +358,11 @@ export default function InitiatorFellowshipPage() {
               <h3 className="text-2xl font-semibold mb-4">{insight.title}</h3>
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
-                  <p className="text-sm font-semibold text-red-700 mb-2">PROBLEM</p>
+                  <p className="text-sm font-semibold text-slate-600 mb-2">PROBLEM</p>
                   <p className="text-slate-700">{insight.problem}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-green-700 mb-2">SOLUTION</p>
+                  <p className="text-sm font-semibold text-sky-700 mb-2">SOLUTION</p>
                   <p className="text-slate-700">{insight.solution}</p>
                 </div>
               </div>
@@ -427,18 +427,18 @@ export default function InitiatorFellowshipPage() {
                 <h3 className="text-2xl font-semibold mb-4">{metric.title}</h3>
                 <div className="grid grid-cols-2 gap-6 mb-6">
                   <div>
-                    <p className="text-sm font-semibold text-red-700 mb-2">CHALLENGE</p>
+                    <p className="text-sm font-semibold text-slate-600 mb-2">CHALLENGE</p>
                     <p className="text-slate-700">{metric.problem}</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-green-700 mb-2">SOLUTION</p>
+                    <p className="text-sm font-semibold text-sky-700 mb-2">SOLUTION</p>
                     <p className="text-slate-700">{metric.solution}</p>
                   </div>
                 </div>
-                <div className="mb-6 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
+                <div className="mb-6 bg-gradient-to-r from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-6">
                   <p className="text-sm text-slate-600 uppercase tracking-wide mb-2">Measured Impact</p>
-                  <p className="text-4xl font-bold text-green-700 mb-1">{metric.metric}</p>
-                  <p className="text-lg font-semibold text-green-600">{metric.increase}</p>
+                  <p className="text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
+                  <p className="text-lg font-semibold text-sky-700">{metric.increase}</p>
                   {metric.detail && <p className="text-sm text-slate-600 mt-3">{metric.detail}</p>}
                 </div>
                 {metric.figs && (
@@ -463,7 +463,7 @@ export default function InitiatorFellowshipPage() {
         {/* USER QUOTE */}
         <section id="quote" className="w-full px-6 py-12 border-t border-slate-200">
           <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Most Impactful Change</h3>
-          <blockquote className="text-2xl font-semibold italic text-slate-800 mb-3 pl-6 border-l-4 border-green-500">
+          <blockquote className="text-2xl font-semibold italic text-slate-800 mb-3 pl-6 border-l-4 border-sky-500">
             "The new site made me feel like the fellowship actually wanted me to apply. Everything was clear, organized, and I knew exactly what to do next."
           </blockquote>
           <p className="text-sm text-slate-600">Participant feedback, Round 3 user testing</p>

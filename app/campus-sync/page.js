@@ -209,7 +209,7 @@ export default function CampusSyncPage() {
         </div>
 
         {/* Hero */}
-        <header className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
@@ -292,7 +292,7 @@ export default function CampusSyncPage() {
           />
 
           <Subheading>Develop: Three Stages, Three Deployed Versions</Subheading>
-          <Body className="font-semibold text-[#8B1538]">October 15 — Figma Prototype</Body>
+          <Body className="font-semibold text-sky-700">October 15 — Figma Prototype</Body>
           <Body>
             Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code — saving weeks of implementation rework.
           </Body>
@@ -302,15 +302,15 @@ export default function CampusSyncPage() {
             <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
             <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
           </div>
-          <Body className="font-semibold text-[#8B1538]">November 3 — MVP</Body>
+          <Body className="font-semibold text-sky-700">November 3 — MVP</Body>
           <Body>
             Live at{' '}
-            <a href="https://campus-sync.org" className="text-[#8B1538] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://campus-sync.org" className="text-sky-700 underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               campus-sync.org
             </a>
             . Basic routing, map overlay, and the dual-color system. Maroon for tunnels. Gold for outdoor segments. University of Minnesota brand colors — immediately readable without a legend.
           </Body>
-          <Body className="font-semibold text-[#8B1538]">November 17 — Functional Prototype</Body>
+          <Body className="font-semibold text-sky-700">November 17 — Functional Prototype</Body>
           <Body>
             Building-hour filtering integrated directly into the routing engine. The algorithm queries current building access status before pathfinding, so it never suggests a route through a locked building. Validated at 90%+ accuracy against 20 manually-verified routes.
           </Body>
@@ -347,7 +347,7 @@ export default function CampusSyncPage() {
         <Section id="solution" title="What We Built" className="bg-white">
           <Body className="text-lg">
             CampusSync is live at{' '}
-            <a href="https://campus-sync.org" className="text-[#8B1538] font-semibold underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://campus-sync.org" className="text-sky-700 font-semibold underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               campus-sync.org
             </a>
             . No login. No installation. Open it, type where you are, type where you&apos;re going, get a route you can actually trust.
@@ -466,10 +466,10 @@ export default function CampusSyncPage() {
 
         <section className="max-w-5xl mx-auto px-5 sm:px-8 py-10 border-t border-gray-100">
           <div className="flex flex-wrap justify-between gap-4 items-center">
-            <Link href="/" className="text-[#8B1538] hover:underline font-semibold text-sm">
+            <Link href="/" className="text-sky-700 hover:text-sky-800 hover:underline font-semibold text-sm">
               ← Back to Portfolio
             </Link>
-            <Link href="/mercedes-service-manual" className="text-[#8B1538] hover:underline font-semibold text-sm">
+            <Link href="/mercedes-service-manual" className="text-sky-700 hover:text-sky-800 hover:underline font-semibold text-sm">
               Next project →
             </Link>
           </div>

@@ -118,8 +118,8 @@ export default function MercedesServiceManualPage() {
 
 
       {/* HERO — no image needed, type-driven */}
-      <section className="w-full min-h-[60vh] bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 flex flex-col justify-end px-12 pb-16 pt-32">
-        <p className="text-xs font-mono tracking-widest text-purple-400 uppercase mb-4">
+      <section className="w-full min-h-[60vh] bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 flex flex-col justify-end px-12 pb-16 pt-32">
+        <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
           HUMF 5874 — Human Centered Design
         </p>
         <div className="flex gap-12 text-sm">
@@ -162,8 +162,8 @@ export default function MercedesServiceManualPage() {
               {
                 phase: 'DISCOVER',
                 label: '01',
-                color: 'bg-purple-100 border-purple-300',
-                accent: 'text-purple-700',
+                color: 'bg-sky-100 border-sky-300',
+                accent: 'text-sky-800',
                 items: ['Personal story — why manuals fail', 'AEIOU field observation', 'Stakeholder interviews', 'Qualtrics survey (18–34 yr olds)'],
               },
               {
@@ -176,8 +176,8 @@ export default function MercedesServiceManualPage() {
               {
                 phase: 'DEVELOP',
                 label: '03',
-                color: 'bg-blue-100 border-blue-300',
-                accent: 'text-blue-700',
+                color: 'bg-slate-100 border-slate-300',
+                accent: 'text-slate-800',
                 items: ['Participatory design sessions', 'Pig drawing test (key insight)', 'Two prototype concepts', 'QR-scan app selected'],
               },
               {
@@ -236,14 +236,14 @@ export default function MercedesServiceManualPage() {
               name: 'First-Time Assembler',
               age: '22, Student',
               pains: ['Confusing images cause frustration', 'No clear safety warnings → minor injuries', 'Struggles with part alignment', 'Relies on YouTube when manual fails'],
-              color: 'border-purple-400',
+              color: 'border-sky-500',
             },
             {
               type: 'Persona 2',
               name: 'Part-Time Technician',
               age: '34, Independent Repair',
               pains: ['Different manual formats = inconsistent experience', 'Wiring diagrams hard to interpret', 'No troubleshooting guidance', 'No multilingual support'],
-              color: 'border-blue-400',
+              color: 'border-slate-400',
             },
           ].map((p, i) => (
             <div key={i} className={`border-l-4 ${p.color} pl-6 py-4`}>
@@ -253,7 +253,7 @@ export default function MercedesServiceManualPage() {
               <ul className="space-y-2">
                 {p.pains.map((pain, j) => (
                   <li key={j} className="text-sm text-slate-600 flex gap-2">
-                    <span className="text-red-400 mt-0.5 flex-shrink-0">✗</span>
+                    <span className="text-slate-500 mt-0.5 flex-shrink-0">✗</span>
                     {pain}
                   </li>
                 ))}
@@ -277,8 +277,8 @@ export default function MercedesServiceManualPage() {
               <thead>
                 <tr className="border-b border-slate-300">
                   <th className="text-left py-3 pr-6 text-slate-500 font-mono text-xs uppercase tracking-widest w-32">Phase</th>
-                  <th className="text-left py-3 pr-6 text-red-600 font-semibold">Current State ✗</th>
-                  <th className="text-left py-3 text-green-700 font-semibold">Ideal State ✓</th>
+                  <th className="text-left py-3 pr-6 text-slate-700 font-semibold">Current State ✗</th>
+                  <th className="text-left py-3 text-sky-800 font-semibold">Ideal State ✓</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
@@ -340,8 +340,8 @@ export default function MercedesServiceManualPage() {
           <h3 className="text-lg font-semibold text-slate-900 mb-4">Reference: How the pig should look</h3>
           <div className="rounded-xl overflow-hidden border border-slate-200 max-w-2xl">
             <img src={`${BASE_PATH}/images/repair manual/Pig drawing reference.png`} alt="Correct pig drawing reference" className="w-full h-auto" />
-            <div className="bg-blue-50 p-3">
-              <p className="text-xs font-semibold text-blue-700">Target outcome with visual guidance</p>
+            <div className="bg-sky-100 p-3">
+              <p className="text-xs font-semibold text-sky-900">Target outcome with visual guidance</p>
             </div>
           </div>
         </div>
@@ -366,21 +366,21 @@ export default function MercedesServiceManualPage() {
               <li key={i}>{step}</li>
             ))}
           </ol>
-          <p className="text-sm text-red-600 font-semibold mt-4">→ Result: Every participant produced a different, unrecognizable drawing.</p>
+          <p className="text-sm text-slate-700 font-semibold mt-4">→ Result: Every participant produced a different, unrecognizable drawing.</p>
         </div>
         
         {/* Images - horizontal layout */}
         <div className="grid grid-cols-2 gap-6 mb-12">
           <div className="rounded-xl overflow-hidden border border-slate-200">
             <img src={`${BASE_PATH}/images/repair manual/Pig drawing test text.jpg`} alt="Text-only pig instructions" className="w-full h-auto" />
-            <div className="bg-red-50 p-3">
-              <p className="text-xs font-semibold text-red-700">Text-only instructions — chaotic results</p>
+            <div className="bg-slate-200 p-3">
+              <p className="text-xs font-semibold text-slate-800">Text-only instructions — chaotic results</p>
             </div>
           </div>
           <div className="rounded-xl overflow-hidden border border-slate-200">
             <img src={`${BASE_PATH}/images/repair manual/Pig drawing test visual.jpg`} alt="Visual-guided pig drawings" className="w-full h-auto" />
-            <div className="bg-green-50 p-3">
-              <p className="text-xs font-semibold text-green-700">Visual + text steps — consistent, recognizable</p>
+            <div className="bg-sky-100 p-3">
+              <p className="text-xs font-semibold text-sky-900">Visual + text steps — consistent, recognizable</p>
             </div>
           </div>
         </div>
@@ -468,7 +468,7 @@ export default function MercedesServiceManualPage() {
             'Confirm completion',
           ].map((step, i, arr) => (
             <div key={i} className="flex items-center gap-2 flex-shrink-0">
-              <div className="bg-purple-900 text-white text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap">
+              <div className="bg-slate-800 text-sky-200 text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap">
                 {step}
               </div>
               {i < arr.length - 1 && <span className="text-slate-300">→</span>}
@@ -542,8 +542,8 @@ export default function MercedesServiceManualPage() {
               <div key={i} className="bg-white rounded-xl p-6 border border-slate-200">
                 <p className="text-slate-700 italic mb-4 text-sm leading-relaxed">{item.quote}</p>
                 <div className="flex gap-2 items-start">
-                  <span className="text-green-600 flex-shrink-0 mt-0.5">→</span>
-                  <p className="text-xs text-green-700 font-semibold">{item.change}</p>
+                  <span className="text-sky-600 flex-shrink-0 mt-0.5">→</span>
+                  <p className="text-xs text-sky-800 font-semibold">{item.change}</p>
                 </div>
               </div>
             ))}
@@ -561,7 +561,7 @@ export default function MercedesServiceManualPage() {
             <p className="text-lg leading-relaxed text-slate-700 mb-6">
               Better manuals reduce product returns, lower support call volume, prevent user injuries, and support regulatory compliance. This isn't just UX — it's safety, cost savings, and accessibility.
             </p>
-            <blockquote className="text-xl font-semibold text-slate-800 italic border-l-4 border-purple-500 pl-6">
+            <blockquote className="text-xl font-semibold text-slate-800 italic border-l-4 border-sky-500 pl-6">
               "The best manual is the one users never notice they're following."
             </blockquote>
           </div>
@@ -572,9 +572,9 @@ export default function MercedesServiceManualPage() {
               { icon: '🌍', label: 'Supports accessibility', desc: 'Benefits a broader user base' },
               { icon: '🔄', label: 'Enables iteration', desc: 'Analytics-driven improvement' },
             ].map((item, i) => (
-              <div key={i} className="p-4 bg-purple-50 rounded-xl">
+              <div key={i} className="p-4 bg-sky-50 rounded-xl">
                 <p className="text-2xl mb-2">{item.icon}</p>
-                <p className="text-sm font-semibold text-purple-900">{item.label}</p>
+                <p className="text-sm font-semibold text-sky-900">{item.label}</p>
                 <p className="text-xs text-slate-500 mt-1">{item.desc}</p>
               </div>
             ))}

@@ -4,7 +4,7 @@ export default function SiteContactFooter() {
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Contact</p>
       <a
         href="mailto:2000chandanpai@gmail.com"
-        className="inline-flex text-sm font-semibold text-[#8B1538] hover:underline"
+        className="inline-flex text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline"
       >
         2000chandanpai@gmail.com
       </a>
