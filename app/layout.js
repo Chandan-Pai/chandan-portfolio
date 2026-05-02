@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import CursorProvider from './components/CursorProvider';
 import ConditionalSiteContactFooter from './components/ConditionalSiteContactFooter';
+import SiteIslandNav from './components/SiteIslandNav';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         style={{ backgroundColor: '#ffffff' }}
       >
         <CursorProvider />
+        <SiteIslandNav />
         <div
           className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip bg-[rgb(255,255,255)]"
           style={{ backgroundColor: '#ffffff', width: '100%' }}

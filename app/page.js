@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import LiveClock from "./components/LiveClock";
 
 /** Encode each path segment so spaces (e.g. `Repair manual/`) work on GitHub Pages and strict hosts. */
 function publicAssetUrl(basePath, relativePath) {
@@ -16,17 +15,13 @@ function publicAssetUrl(basePath, relativePath) {
 
 export default function HomePage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const [navExpanded, setNavExpanded] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
     setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 80);
-      setScrollY(y);
+      setScrollY(window.scrollY);
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -110,8 +105,6 @@ export default function HomePage() {
     tick();
   }, []); // Re-run if cards change
 
-  const isExpanded = !scrolled || navExpanded;
-
   const projects = [
     { 
       id: 'initiator-fellowship', 
@@ -157,103 +150,39 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
-      {/* Dynamic Island Navigation */}
-      <div 
-        className="fixed top-0 left-0 right-0 z-40"
-        style={{
-          height: '80px',
-          background: 'rgba(0, 0, 0, 0.01)',
-          backdropFilter: 'blur(3px)',
-          borderBottom: '1px solid transparent',
-          backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
-          backgroundClip: 'padding-box, border-box',
-          backgroundOrigin: 'padding-box, border-box',
-        }}
-      />
-
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
-        <span
-          className={`text-sm font-semibold tracking-widest transition-colors ${scrolled ? 'text-slate-900' : 'text-white drop-shadow-sm'}`}
-        >
-          CP
-        </span>
-
-        <nav
-          className="transition-all duration-300 ease-in-out"
-          onMouseEnter={() => setNavExpanded(true)}
-          onMouseLeave={() => setNavExpanded(false)}
-          style={{
-            width: isExpanded ? '480px' : '80px',
-            height: '40px',
-            borderRadius: '20px',
-            background: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(20px)',
-            overflow: 'hidden',
-          }}
-        >
-          <div className="h-full flex items-center justify-center gap-8 px-6">
-            {!isExpanded ? (
-              <div className="astronaut-float">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="8" r="4" fill="white"/>
-                  <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
-                  <circle cx="10" cy="7" r="1" fill="black"/>
-                  <circle cx="14" cy="7" r="1" fill="black"/>
-                  <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
-                </svg>
-              </div>
-            ) : (
-              <>
-                <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
-                <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
-                <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <a
-                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
-                >
-                  Resume
-                </a>
-                <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
-              </>
-            )}
-          </div>
-        </nav>
-
-        <LiveClock />
-      </div>
-
-      {/* Hero — parallax background (same pattern as About fall-photo hero) */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url('${publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: `translateY(${reduceMotion ? 0 : scrollY * 0.5}px) scale(1.1)`,
-            willChange: 'transform',
-          }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 z-[1] bg-black/40" aria-hidden />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1
-            className="font-black tracking-tight uppercase text-white drop-shadow-md"
+      {/* Hero — full image (no cover crop); width fits viewport, height from aspect ratio */}
+      <header className="relative overflow-hidden bg-neutral-900">
+        <div className="relative w-full">
+          <img
+            src={publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}
+            alt=""
+            className="w-full h-auto max-w-full block select-none pointer-events-none"
             style={{
-              fontSize: 'clamp(2.75rem, 11vw, 7rem)',
-              lineHeight: '1',
+              transform: `translateY(${reduceMotion ? 0 : scrollY * 0.35}px)`,
+              willChange: 'transform',
             }}
-          >
-            CHANDAN PAI
-          </h1>
-          <p className="mt-6 text-sm font-semibold tracking-widest text-white/90 uppercase">
-            Human Factors Engineer • UX Researcher
-          </p>
-          <p className="mt-8 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed">
-            Building data-driven design solutions at the intersection of engineering and human behavior
-          </p>
+            draggable={false}
+          />
+          <div className="absolute inset-0 z-[1] bg-black/40 pointer-events-none" aria-hidden />
+          <div className="absolute inset-0 z-10 flex flex-col justify-center items-start pl-6 sm:pl-10 md:pl-14 lg:pl-20 pr-6 text-left">
+            <div className="max-w-[min(28rem,85vw)] sm:max-w-md md:max-w-lg">
+              <h1
+                className="font-black tracking-tight uppercase text-white drop-shadow-md"
+                style={{
+                  fontSize: 'clamp(2.75rem, 10vw, 5.5rem)',
+                  lineHeight: '1',
+                }}
+              >
+                CHANDAN PAI
+              </h1>
+              <p className="mt-6 text-sm font-semibold tracking-widest text-white/90 uppercase">
+                Human Factors Engineer • UX Researcher
+              </p>
+              <p className="mt-8 text-lg text-white/90 leading-relaxed">
+                Building data-driven design solutions at the intersection of engineering and human behavior
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
