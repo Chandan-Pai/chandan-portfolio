@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import CursorProvider from './components/CursorProvider';
+import SiteContactFooter from './components/SiteContactFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <CursorProvider />
         {children}
+        <SiteContactFooter />
       </body>
     </html>
   );

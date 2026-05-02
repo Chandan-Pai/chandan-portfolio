@@ -344,11 +344,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Chandan Pai — Human Factors & UX Engineering
-      </footer>
     </main>
   );
 }
