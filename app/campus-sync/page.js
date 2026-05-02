@@ -22,6 +22,17 @@ function LiveClock() {
   );
 }
 
+/** Path under `public/` (e.g. `images/campus sync/file.png`). Encodes spaces and `:` so assets work on GitHub Pages and all browsers. */
+function publicUrl(basePath, relativePath) {
+  const encoded = relativePath
+    .split('/')
+    .map((part) => encodeURIComponent(part))
+    .join('/');
+  if (!basePath) return `/${encoded}`;
+  const base = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${base}/${encoded}`;
+}
+
 function HoverableImage({ src, alt }) {
   return (
     <figure
@@ -142,7 +153,7 @@ export default function CampusSyncPage() {
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white py-30 px-4">
         <div className="max-w-6xl mx-auto">
-          <HoverableImage src={`${BASE_PATH}/images/campus sync/current pdf.png`} alt="Campus-Sync hero" />
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus-Sync hero" />
           <h1 className="text-5xl font-bold mb-4">Campus-Sync</h1>
           <p className="text-xl text-gray-300 mb-8">Solving winter navigation through design and trust</p>
           <div className="space-y-2 text-sm">
@@ -167,7 +178,7 @@ export default function CampusSyncPage() {
               This moment became the central insight for Campus-Sync—the realization that the problem wasn't the tunnel system itself. It was the information gap that made students choose frostbite over uncertainty.
             </p>
           </div>
-          <HoverableImage src={`${BASE_PATH}/images/campus sync/images.jpeg`} alt="Problem scenario" />
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Problem scenario" />
         </div>
       </section>
 
@@ -199,7 +210,7 @@ export default function CampusSyncPage() {
           </div>
         </div>
 
-       <HoverableImage src={`${BASE_PATH}/images/campus sync/research-docs.jpg`} alt="Research documentation" />
+       <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/research-docs.jpg')} alt="Research documentation" />
 
         <p className="text-gray-700 leading-relaxed">
           Mapping 40+ real navigation scenarios revealed most routes were short—just 1–3 building hops. The insight: <span className="font-semibold">users didn't need perfect routing. They needed reliable routing.</span> Something they could trust instantly, in real time, while wearing gloves at a tunnel entrance.
@@ -221,7 +232,7 @@ export default function CampusSyncPage() {
                   muted
                   playsInline
                 >
-                 <source src={`${BASE_PATH}/images/campus sync/home page.mp4`} type="video/mp4" />
+                 <source src={publicUrl(BASE_PATH, 'images/campus sync/home page.mp4')} type="video/mp4" />
                 </video>
 
           <p className="text-gray-600 text-sm">
@@ -244,13 +255,13 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: Zero failed routes in testing.</p>
             </div>
-            <HoverableImage src={`${BASE_PATH}/images/campus sync/Routing Logic Diagram.png`} alt="Research documentation" />
+            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Research documentation" />
           </div>
 
 
           {/* Decision 2 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-             <HoverableImage src={`${BASE_PATH}/images/campus sync/Before:after visualization.png`} alt="Campus-Sync hero"  />
+             <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Campus-Sync hero" />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Dual-Color Visual System</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
@@ -273,12 +284,12 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: 45% faster than paper maps.</p>
             </div>
-            <HoverableImage src={`${BASE_PATH}/images/campus sync/Search first interface.png`} alt="Campus-Sync hero"  />
+            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')} alt="Campus-Sync hero" />
           </div>
 
           {/* Decision 4 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-            <HoverableImage src={`${BASE_PATH}/images/campus sync/Walking time estimates.png`} alt="Campus-Sync hero"  />
+            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')} alt="Campus-Sync hero" />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Walking Time Estimates</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
