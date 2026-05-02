@@ -3,7 +3,19 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import LiveClock from '../components/LiveClock';
- 
+
+/** Encode path segments so filenames with spaces or parens work on GitHub Pages. */
+function publicAssetUrl(basePath, relativePath) {
+  const encoded = relativePath
+    .split('/')
+    .filter(Boolean)
+    .map((part) => encodeURIComponent(part))
+    .join('/');
+  if (!basePath) return `/${encoded}`;
+  const base = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${base}/${encoded}`;
+}
+
 function ImageWithStats({ src, alt, statValue, statDetail }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -117,7 +129,8 @@ function HoverableImage({ src, alt, className = "" }) {
 
  
 export default function InitiatorFellowshipPage() {
-  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const asset = (rel) => publicAssetUrl(BASE_PATH, rel);
   const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -182,7 +195,7 @@ export default function InitiatorFellowshipPage() {
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
                 <a
-                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
+                  href={asset('Chandan_Pai_HF_Engineer.pdf')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
@@ -237,7 +250,7 @@ export default function InitiatorFellowshipPage() {
 
         <div className="max-w-5xl mx-auto px-5 sm:px-8 -mt-8 relative z-10">
           <img
-            src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`}
+            src={asset('images/initiator-fellowship/screenshot-rocks.png')}
             alt="Initiator Fellowship website before and after"
             className="w-full rounded-xl shadow-lg border border-slate-200/80"
           />
@@ -271,9 +284,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-3 gap-4">
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`} alt="Screenshot 1" />
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks(1).png`} alt="Screenshot 2" />
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks(2).png`} alt="Screenshot 3" />
+              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" />
+              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" />
+              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" />
             </div>
           </div>
         </section>
@@ -297,9 +310,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-3 gap-6">
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/graphicaltaskanalysis.png`} alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/Cardsorting.png`} alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
-              <HoverableImage src={`${BASE_PATH}/images/initiator-fellowship/timetake(oldwebsite).png`} alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
+              <HoverableImage src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
+              <HoverableImage src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
+              <HoverableImage src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
             </div>
           </div>
         </section>
@@ -313,8 +326,8 @@ export default function InitiatorFellowshipPage() {
               problem: "Users couldn't track where they were in the application workflow. Timeline, criteria, and tracking were scattered across pages.", 
               solution: "Unified 'Apply' section with integrated criteria, timeline, application form, and tracking—all in one pathway.", 
               figs: [
-                { num: 4.1, src: `${BASE_PATH}/images/initiator-fellowship/currentuserflow.png`, alt: 'Disconnected application process - before' },
-                { num: 4.3, src: `${BASE_PATH}/images/initiator-fellowship/newuserflow.png`, alt: 'New application flow' },
+                { num: 4.1, src: asset('images/initiator-fellowship/currentuserflow.png'), alt: 'Disconnected application process - before' },
+                { num: 4.3, src: asset('images/initiator-fellowship/newuserflow.png'), alt: 'New application flow' },
               ] 
             },
             { 
@@ -322,10 +335,10 @@ export default function InitiatorFellowshipPage() {
               problem: "Large text blocks, no visual hierarchy. Users couldn't identify what to do first.", 
               solution: 'Redesigned as central navigation hub with clear section blocks: Program, Apply, Members, Contact.', 
               figs: [
-                { num: 4.5, src: `${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`, alt: 'Homepage - before' },
-                { num: 4.6, src: `${BASE_PATH}/images/initiator-fellowship/currentuserflow.png`, alt: 'Homepage - after' },
-                { num: 4.7, src: `${BASE_PATH}/images/initiator-fellowship/homepagenew.png`, alt: 'Navigation blocks' },
-                { num: 4.8, src: `${BASE_PATH}/images/initiator-fellowship/newuserflow.png`, alt: 'Homepage details' }
+                { num: 4.5, src: asset('images/initiator-fellowship/screenshot-rocks.png'), alt: 'Homepage - before' },
+                { num: 4.6, src: asset('images/initiator-fellowship/currentuserflow.png'), alt: 'Homepage - after' },
+                { num: 4.7, src: asset('images/initiator-fellowship/homepagenew.png'), alt: 'Navigation blocks' },
+                { num: 4.8, src: asset('images/initiator-fellowship/newuserflow.png'), alt: 'Homepage details' }
               ] 
             },
             { 
@@ -333,8 +346,8 @@ export default function InitiatorFellowshipPage() {
               problem: 'Benefits and coverage areas scattered inside long paragraphs across multiple pages.', 
               solution: 'Consolidated Program page with structured sections, timeline graphic, bite-sized content chunks.', 
               figs: [
-                { num: 4.9, src: `${BASE_PATH}/images/initiator-fellowship/screenshot-rocks(1).png`, alt: 'Program page - before' },
-                { num: 4.10, src: `${BASE_PATH}/images/initiator-fellowship/screenshot-rocks(2).png`, alt: 'Program page - after' }
+                { num: 4.9, src: asset('images/initiator-fellowship/screenshot-rocks(1).png'), alt: 'Program page - before' },
+                { num: 4.10, src: asset('images/initiator-fellowship/screenshot-rocks(2).png'), alt: 'Program page - after' }
               ] 
             },
             { 
@@ -342,10 +355,10 @@ export default function InitiatorFellowshipPage() {
               problem: 'Program manager info buried in general contact section. No confirmation after form submission.', 
               solution: "Manager details moved to Resources page. Contact Us button in top nav. Confirmation message: 'Message received, response in 2-3 business days.'", 
               figs: [
-                { num: 4.11, src: `${BASE_PATH}/images/initiator-fellowship/ContactBefore.png`, alt: 'Contact section - before' },
-                { num: 4.12, src: `${BASE_PATH}/images/initiator-fellowship/ContactAfter.png`, alt: 'Contact section - after' },
-                { num: 4.13, src: `${BASE_PATH}/images/initiator-fellowship/managerafter.png`, alt: 'Manager details' },
-                { num: 4.14, src: `${BASE_PATH}/images/initiator-fellowship/confirmationmessage.png`, alt: 'Confirmation message' }
+                { num: 4.11, src: asset('images/initiator-fellowship/ContactBefore.png'), alt: 'Contact section - before' },
+                { num: 4.12, src: asset('images/initiator-fellowship/ContactAfter.png'), alt: 'Contact section - after' },
+                { num: 4.13, src: asset('images/initiator-fellowship/managerafter.png'), alt: 'Manager details' },
+                { num: 4.14, src: asset('images/initiator-fellowship/confirmationmessage.png'), alt: 'Confirmation message' }
               ] 
             }
           ].map((insight, i) => (
@@ -390,9 +403,9 @@ export default function InitiatorFellowshipPage() {
                 increase: '+104% improvement',
                 detail: 'Post-task System Usability Scale (SUS) scores across n=5 participants',
                 figs: [
-                  { num: 'Old Website', src: `${BASE_PATH}/images/initiator-fellowship/posttaskold.png`, alt: 'Old Website Post-Task Ratings' },
-                  { num: 'Prototype', src: `${BASE_PATH}/images/initiator-fellowship/posttasknew.png`, alt: 'Prototype Post-Task Ratings' },
-                  { num: 'Average', src: `${BASE_PATH}/images/initiator-fellowship/avgposttaskrating.png`, alt: 'Average Post-Task Rating Comparison' }
+                  { num: 'Old Website', src: asset('images/initiator-fellowship/posttaskold.png'), alt: 'Old Website Post-Task Ratings' },
+                  { num: 'Prototype', src: asset('images/initiator-fellowship/posttasknew.png'), alt: 'Prototype Post-Task Ratings' },
+                  { num: 'Average', src: asset('images/initiator-fellowship/avgposttaskrating.png'), alt: 'Average Post-Task Rating Comparison' }
                 ]
               },
               {
@@ -402,7 +415,7 @@ export default function InitiatorFellowshipPage() {
                 metric: 'Scenario 1: 6m 24s avg',
                 detail: 'Scenario 2: 4m 18s avg | Scenario 3: 5m 12s avg',
                 figs: [
-                  { num: 'Old Website', src: `${BASE_PATH}/images/initiator-fellowship/timetake(oldwebsite).png`, alt: 'Time per Participant - Old Website' }
+                  { num: 'Old Website', src: asset('images/initiator-fellowship/timetake(oldwebsite).png'), alt: 'Time per Participant - Old Website' }
                 ]
               },
               {
@@ -412,8 +425,8 @@ export default function InitiatorFellowshipPage() {
                 metric: 'Scenario 1: 2m 45s avg',
                 detail: 'Scenario 2: 1m 52s avg | Scenario 3: 3m 08s avg (larger due to Macbook screen constraints)',
                 figs: [
-                  { num: 5.5, src: `${BASE_PATH}/images/initiator-fellowship/timetake(newwebsite).png`, alt: 'Time per Participant - Prototype' },
-                  { num: 5.6, src: `${BASE_PATH}/images/initiator-fellowship/avgtimetaken.png`, alt: 'Average Time Comparison by Scenario' }
+                  { num: 5.5, src: asset('images/initiator-fellowship/timetake(newwebsite).png'), alt: 'Time per Participant - Prototype' },
+                  { num: 5.6, src: asset('images/initiator-fellowship/avgtimetaken.png'), alt: 'Average Time Comparison by Scenario' }
                 ]
               },
               
