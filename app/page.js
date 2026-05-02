@@ -18,10 +18,18 @@ export default function HomePage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener('scroll', handleScroll);
+    setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 80);
+      setScrollY(y);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -164,7 +172,11 @@ export default function HomePage() {
       />
 
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
-        <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
+        <span
+          className={`text-sm font-semibold tracking-widest transition-colors ${scrolled ? 'text-slate-900' : 'text-white drop-shadow-sm'}`}
+        >
+          CP
+        </span>
 
         <nav
           className="transition-all duration-300 ease-in-out"
@@ -212,23 +224,37 @@ export default function HomePage() {
         <LiveClock />
       </div>
 
-      {/* Hero Section */}
-      <header className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-        <h1 
-          className="font-black tracking-tight uppercase gradient-text"
-          style={{ 
-            fontSize: '7rem',
-            lineHeight: '1',
+      {/* Hero — parallax background (same pattern as About fall-photo hero) */}
+      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('${publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: `translateY(${reduceMotion ? 0 : scrollY * 0.5}px) scale(1.1)`,
+            willChange: 'transform',
           }}
-        >
-          CHANDAN PAI
-        </h1>
-        <p className="mt-6 text-sm font-semibold tracking-widest text-slate-600 uppercase">
-          Human Factors Engineer • UX Researcher
-        </p>
-        <p className="mt-8 max-w-2xl text-lg text-slate-600 leading-relaxed">
-          Building data-driven design solutions at the intersection of engineering and human behavior
-        </p>
+          aria-hidden
+        />
+        <div className="absolute inset-0 z-[1] bg-black/40" aria-hidden />
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1
+            className="font-black tracking-tight uppercase text-white drop-shadow-md"
+            style={{
+              fontSize: 'clamp(2.75rem, 11vw, 7rem)',
+              lineHeight: '1',
+            }}
+          >
+            CHANDAN PAI
+          </h1>
+          <p className="mt-6 text-sm font-semibold tracking-widest text-white/90 uppercase">
+            Human Factors Engineer • UX Researcher
+          </p>
+          <p className="mt-8 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed">
+            Building data-driven design solutions at the intersection of engineering and human behavior
+          </p>
+        </div>
       </header>
 
       {/* Projects Gallery */}
