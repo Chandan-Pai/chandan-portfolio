@@ -12,12 +12,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#ffffff' }}>
       <head></head>
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} m-0 min-h-dvh bg-white text-slate-900 antialiased [background-color:rgb(255,255,255)]`}
+        style={{ backgroundColor: '#ffffff' }}
+      >
         <CursorProvider />
-        {children}
-        <SiteContactFooter />
+        <div
+          className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip bg-[rgb(255,255,255)]"
+          style={{ backgroundColor: '#ffffff', width: '100%' }}
+        >
+          <div className="min-h-0 min-w-0 flex-1">{children}</div>
+          <SiteContactFooter />
+        </div>
       </body>
     </html>
   );

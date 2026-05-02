@@ -2,38 +2,22 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
-}
+import LiveClock from '../components/LiveClock';
 
 export default function ManufacturingWorkflowPage() {
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsDarkSection(window.scrollY < 400);
+      setIsDarkSection(window.scrollY < 640);
       setScrolled(window.scrollY > 80);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -87,7 +71,14 @@ export default function ManufacturingWorkflowPage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <a
+                  href={`${BASE_PATH}/resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
+                  Resume
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}
@@ -121,26 +112,27 @@ export default function ManufacturingWorkflowPage() {
           </Link>
         </div>
 
-        {/* Hero Section */}
-        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-12">
-              <h1 className="text-6xl font-bold leading-tight mb-6">Boston Scientific Wolverine Blade Manufacturing</h1>
-              <p className="text-xl text-slate-400 max-w-2xl">Lean methodology analysis identifying bottlenecks and optimization opportunities in medical device assembly</p>
+        {/* Hero Section — aligned with campus-sync case study header */}
+        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Boston Scientific Wolverine Blade Manufacturing
+              </h1>
+              <p className="text-gray-200 text-lg leading-relaxed max-w-3xl">
+                Lean methodology analysis identifying bottlenecks and optimization opportunities in medical device assembly
+              </p>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-8 text-sm">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <div>
-                <p className="text-slate-500">Role</p>
-                <p className="font-semibold">Industrial Engineer</p>
+                <span className="font-semibold text-white">Role:</span> Industrial Engineer
               </div>
-              <div>
-                <p className="text-slate-500">Team</p>
-                <p className="font-semibold">Olasubomi Omoyeni, Chandan Pai, Jason Phan</p>
-              </div>
-              <div>
-                <p className="text-slate-500">Date</p>
-                <p className="font-semibold">December 2024</p>
-              </div>
+              <span>
+                <span className="font-semibold text-white">Team:</span> Olasubomi Omoyeni, Chandan Pai, Jason Phan
+              </span>
+              <span>
+                <span className="font-semibold text-white">Date:</span> December 2024
+              </span>
             </div>
           </div>
         </section>
@@ -413,10 +405,10 @@ export default function ManufacturingWorkflowPage() {
           </div>
 
           <div className="flex justify-between items-center pt-8 border-t border-gray-200">
-            <Link href="/" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">
+            <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
               ← Back to portfolio
             </Link>
-            <Link href="/initiator-fellowship" className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition">
+            <Link href="/initiator-fellowship" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
               Next project →
             </Link>
           </div>

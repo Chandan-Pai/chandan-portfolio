@@ -2,25 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
-}
+import LiveClock from '../components/LiveClock';
 
 /** Path under `public/` (e.g. `images/campus sync/file.png`). Encodes spaces and `:` so assets work on GitHub Pages and all browsers. */
 function publicUrl(basePath, relativePath) {
@@ -172,9 +154,14 @@ export default function CampusSyncPage() {
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
                   About
                 </Link>
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                <a
+                  href={`${BASE_PATH}/resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
                   Resume
-                </Link>
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
                   Contact
                 </Link>

@@ -1,24 +1,17 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import LiveClock from "./components/LiveClock";
 
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-black text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-black-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
+/** Encode each path segment so spaces (e.g. `Repair manual/`) work on GitHub Pages and strict hosts. */
+function publicAssetUrl(basePath, relativePath) {
+  const encoded = relativePath
+    .split('/')
+    .map((part) => encodeURIComponent(part))
+    .join('/');
+  if (!basePath) return `/${encoded}`;
+  const base = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  return `${base}/${encoded}`;
 }
 
 export default function HomePage() {
@@ -110,7 +103,7 @@ export default function HomePage() {
       title: 'Website Accessibility Redesign', 
       role: 'UX Researcher', 
       metric: '104% usability increase • 2.3/5 → 4.7/5 rating', 
-      src: `${BASE_PATH}/images/initiator-fellowship/initiator-fellowship.mp4`,
+      src: publicAssetUrl(BASE_PATH, 'images/initiator-fellowship/initiator-fellowship.mp4'),
       type: 'video', 
       num: '01' 
     },
@@ -120,7 +113,7 @@ export default function HomePage() {
       title: 'Campus-Sync Navigation', 
       role: 'UX Researcher & Designer', 
       metric: '40% navigation error reduction • 65% → 95% task completion', 
-      src: `${BASE_PATH}/images/campus sync/home page.mp4`,
+      src: publicAssetUrl(BASE_PATH, 'images/campus sync/home page.mp4'),
       type: 'video', 
       num: '02' 
     },
@@ -130,7 +123,7 @@ export default function HomePage() {
       title: 'Interactive Repair Guidance', 
       role: 'Product Researcher', 
       metric: 'Multi-format prototype • n=4 usability validation', 
-      src: `${BASE_PATH}/images/repair manual/Repair manual.png`,
+      src: publicAssetUrl(BASE_PATH, 'images/Repair manual/Repair manual.png'),
       type: 'image', 
       num: '03' 
     },
@@ -140,7 +133,7 @@ export default function HomePage() {
       title: 'Manufacturing Process Optimization', 
       role: 'Industrial Designer', 
       metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade', 
-      src: `${BASE_PATH}/images/wolverine blade assembly.png`,
+      src: publicAssetUrl(BASE_PATH, 'images/wolverine blade assembly.png'),
       type: 'image', 
       num: '04' 
     },
@@ -194,7 +187,14 @@ export default function HomePage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <a
+                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
+                  Resume
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}

@@ -2,22 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
-}
+import LiveClock from '../components/LiveClock';
 
 export default function AboutPage() {
   const [navExpanded, setNavExpanded] = useState(false);
@@ -94,7 +79,14 @@ export default function AboutPage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <a
+                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
+                  Resume
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}

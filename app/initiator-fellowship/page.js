@@ -2,22 +2,7 @@
  
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
- 
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
-}
+import LiveClock from '../components/LiveClock';
  
 function ImageWithStats({ src, alt, statValue, statDetail }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,8 +123,12 @@ export default function InitiatorFellowshipPage() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+      setIsDarkSection(window.scrollY < 640);
+    };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -192,7 +181,14 @@ export default function InitiatorFellowshipPage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <a
+                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
+                  Resume
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}
@@ -210,43 +206,42 @@ export default function InitiatorFellowshipPage() {
             data-no-cursor-hover
             className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
           >
-            <svg className={`w-4 h-4 ${isDarkSection ? 'text-black' : 'text-gray-900'}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`text-sm font-semibold ${isDarkSection ? 'text-black' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
 
-        {/* HERO IMAGE */}
-        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 py-20">
-          <div className="max-w-5xl mx-auto px-6">
-            <img
-              src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`}
-              alt="Initiator Fellowship website before and after"
-              className="w-full rounded-lg shadow-lg"
-            />
-          </div>
-        </section>
- 
-        {/* TITLE SECTION */}
-        <section className="w-full px-6 py-12 border-t border-slate-200">
-          <h1 className="text-5xl font-bold mb-4">Initiator Fellowship Website Redesign</h1>
-          <p className="text-xl text-slate-600 mb-8">Accessibility-first redesign bridging WCAG compliance and usable navigation</p>
-          <div className="grid grid-cols-3 gap-6">
-            <div>
-              <p className="text-sm text-slate-500 uppercase tracking-wide">Role</p>
-              <p className="text-base font-medium">UX Researcher & Accessibility Specialist</p>
-            </div>
-            <div>
-              <p className="text-sm text-slate-500 uppercase tracking-wide">Team</p>
-              <p className="text-base font-medium">Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja</p>
-            </div>
-            <div>
-              <p className="text-sm text-slate-500 uppercase tracking-wide">Impact</p>
-              <p className="text-base font-medium">2.3/5 → 4.7/5 usability • 104% increase • WCAG 2.1 AA</p>
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Initiator Fellowship Website Redesign
+            </h1>
+            <p className="text-gray-200 text-lg leading-relaxed mb-6">
+              Accessibility-first redesign bridging WCAG compliance and usable navigation
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+              <span>
+                <span className="font-semibold text-white">Role:</span> UX Researcher &amp; Accessibility Specialist
+              </span>
+              <span>
+                <span className="font-semibold text-white">Team:</span> Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja
+              </span>
+              <span>
+                <span className="font-semibold text-white">Impact:</span> 2.3/5 → 4.7/5 usability • 104% increase • WCAG 2.1 AA
+              </span>
             </div>
           </div>
-        </section>
+        </header>
+
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 -mt-8 relative z-10">
+          <img
+            src={`${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`}
+            alt="Initiator Fellowship website before and after"
+            className="w-full rounded-xl shadow-lg border border-slate-200/80"
+          />
+        </div>
  
         {/* OPENING PROBLEM */}
         <section id="problem" className="w-full px-6 py-12 border-t border-slate-200">
@@ -522,11 +517,11 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* FOOTER NAV */}
-        <footer className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200 flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center text-sm text-slate-600 hover:text-slate-800 transition">
+        <footer className="max-w-5xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200 flex items-center justify-between">
+          <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             ← Back to Portfolio
           </Link>
-          <Link href="/mercedes-service-manual" className="inline-flex items-center text-sm text-slate-600 hover:text-slate-800 transition">
+          <Link href="/mercedes-service-manual" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             Next Project →
           </Link>
         </footer>

@@ -2,22 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-  const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  const dateStr = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  return (
-    <div className="text-right w-20 flex-shrink-0">
-      <div className="text-white text-xs font-medium leading-tight">{timeStr}</div>
-      <div className="text-slate-400 text-xs leading-tight">{dateStr}</div>
-    </div>
-  );
-}
+import LiveClock from '../components/LiveClock';
 
 export default function MercedesServiceManualPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -28,9 +13,10 @@ export default function MercedesServiceManualPage() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
-      setIsDarkSection(window.scrollY < 400);
+      setIsDarkSection(window.scrollY < 640);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -82,7 +68,14 @@ export default function MercedesServiceManualPage() {
                 <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
                 <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
                 <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-                <Link href="/Chandan_Pai_HF_Engineer.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
+                <a
+                  href={`${BASE_PATH}/Chandan_Pai_HF_Engineer.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap"
+                >
+                  Resume
+                </a>
                 <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
               </>
             )}
@@ -90,8 +83,8 @@ export default function MercedesServiceManualPage() {
         </nav>
         <LiveClock />
       </div>
-        
-      
+
+      <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
         <div className="fixed top-6 left-6 z-50">
           <Link
@@ -114,29 +107,31 @@ export default function MercedesServiceManualPage() {
             <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
-        
 
-
-      {/* HERO — no image needed, type-driven */}
-      <section className="w-full min-h-[60vh] bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 flex flex-col justify-end px-12 pb-16 pt-32">
-        <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
-          HUMF 5874 — Human Centered Design
-        </p>
-        <div className="flex gap-12 text-sm">
-          <div>
-            <p className="text-slate-500 uppercase tracking-widest text-xs mb-1">Role</p>
-            <p className="text-white font-medium">Product Researcher</p>  {/* ← changed */}
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
+              HUMF 5874 — Human Centered Design
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Interactive Repair Guidance
+            </h1>
+            <p className="text-gray-200 text-lg leading-relaxed mb-6 max-w-3xl">
+              Product research and participatory design for clearer, safer assembly manuals — from field observation to a validated QR-based prototype.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+              <span>
+                <span className="font-semibold text-white">Role:</span> Product Researcher
+              </span>
+              <span>
+                <span className="font-semibold text-white">Methods:</span> AEIOU · Participatory design · Usability testing
+              </span>
+              <span>
+                <span className="font-semibold text-white">Output:</span> QR-based app prototype · n=4 validated
+              </span>
+            </div>
           </div>
-          <div>
-            <p className="text-slate-500 uppercase tracking-widest text-xs mb-1">Methods</p>
-            <p className="text-white font-medium">AEIOU · Participatory Design · Usability Testing</p>
-          </div>
-          <div>
-            <p className="text-slate-500 uppercase tracking-widest text-xs mb-1">Output</p>
-            <p className="text-white font-medium">QR-based app prototype · n=4 validated</p>
-          </div>
-        </div>
-      </section>
+        </header>
 
       {/* OPENING STORY */}
       <section className="max-w-4xl mx-auto px-6 py-20">
@@ -169,8 +164,8 @@ export default function MercedesServiceManualPage() {
               {
                 phase: 'DEFINE',
                 label: '02',
-                color: 'bg-indigo-100 border-indigo-300',
-                accent: 'text-indigo-700',
+                color: 'bg-slate-100 border-slate-300',
+                accent: 'text-slate-800',
                 items: ['Journey map (current vs ideal state)', 'Two personas identified', 'Core pain points clustered', 'Problem statement formalized'],
               },
               {
@@ -260,8 +255,8 @@ export default function MercedesServiceManualPage() {
               </ul>
             </div>
           ))}
-          <img src={`${BASE_PATH}/images/repair manual/AEIOU Field observations.png`} alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200 mb-16" />
-          <img src={`${BASE_PATH}/images/repair manual/Observation sheets.png`} alt="Observation sheets" className="w-full rounded-xl border border-slate-200 mt-8" />
+          <img src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`} alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200 mb-16" />
+          <img src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`} alt="Observation sheets" className="w-full rounded-xl border border-slate-200 mt-8" />
         </div>
         
       </section>
@@ -313,8 +308,8 @@ export default function MercedesServiceManualPage() {
               </tbody>
             </table>
           </div>
-          <img src={`${BASE_PATH}/images/repair manual/Journey Map.png`} alt="Journey Map" className="w-full rounded-xl border border-slate-200 mt-8" />
-          <img src={`${BASE_PATH}/images/repair manual/Affinity Diagraming.png`} alt="Affinity Diagram" className="w-full rounded-xl border border-slate-200 mt-6" />    
+          <img src={`${BASE_PATH}/images/Repair manual/Journey Map.png`} alt="Journey Map" className="w-full rounded-xl border border-slate-200 mt-8" />
+          <img src={`${BASE_PATH}/images/Repair manual/Affinity Diagraming.png`} alt="Affinity Diagram" className="w-full rounded-xl border border-slate-200 mt-6" />    
         </div>
       </section>
 
@@ -339,7 +334,7 @@ export default function MercedesServiceManualPage() {
         <div className="mb-12">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">Reference: How the pig should look</h3>
           <div className="rounded-xl overflow-hidden border border-slate-200 max-w-2xl">
-            <img src={`${BASE_PATH}/images/repair manual/Pig drawing reference.png`} alt="Correct pig drawing reference" className="w-full h-auto" />
+            <img src={`${BASE_PATH}/images/Repair manual/pig drawing reference.png`} alt="Correct pig drawing reference" className="w-full h-auto" />
             <div className="bg-sky-100 p-3">
               <p className="text-xs font-semibold text-sky-900">Target outcome with visual guidance</p>
             </div>
@@ -372,13 +367,13 @@ export default function MercedesServiceManualPage() {
         {/* Images - horizontal layout */}
         <div className="grid grid-cols-2 gap-6 mb-12">
           <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/repair manual/Pig drawing test text.jpg`} alt="Text-only pig instructions" className="w-full h-auto" />
+            <img src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`} alt="Text-only pig instructions" className="w-full h-auto" />
             <div className="bg-slate-200 p-3">
               <p className="text-xs font-semibold text-slate-800">Text-only instructions — chaotic results</p>
             </div>
           </div>
           <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/repair manual/Pig drawing test visual.jpg`} alt="Visual-guided pig drawings" className="w-full h-auto" />
+            <img src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`} alt="Visual-guided pig drawings" className="w-full h-auto" />
             <div className="bg-sky-100 p-3">
               <p className="text-xs font-semibold text-sky-900">Visual + text steps — consistent, recognizable</p>
             </div>
@@ -442,9 +437,9 @@ export default function MercedesServiceManualPage() {
             ))}
           </div>
           <div className="grid grid-cols-2 gap-6 mt-8">
-            <img src={`${BASE_PATH}/images/repair manual/Age Group Distribution.jpg`} alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
-            <img src={`${BASE_PATH}/images/repair manual/Top Frustrations.jpg`} alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
-            <img src={`${BASE_PATH}/images/repair manual/where are manuals used.png`} alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
+            <img src={`${BASE_PATH}/images/Repair manual/Age Group Distribution.jpg`} alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
+            <img src={`${BASE_PATH}/images/Repair manual/Top Frustrations.jpg`} alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
+            <img src={`${BASE_PATH}/images/Repair manual/where are manuals used.png`} alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
           </div>
         </div>
       </section>
@@ -481,7 +476,7 @@ export default function MercedesServiceManualPage() {
         {/* QR Scan Screen */}
         <div className="mb-12">
           <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/repair manual/QR.png`} alt="QR scan screen" className="w-full h-auto" />
+            <img src={`${BASE_PATH}/images/Repair manual/QR.png`} alt="QR scan screen" className="w-full h-auto" />
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">QR scan + format selection screen</p>
         </div>
@@ -491,13 +486,13 @@ export default function MercedesServiceManualPage() {
           <h4 className="text-lg font-semibold text-slate-900 mb-4">Step-by-Step Navigation</h4>
           <div className="grid grid-cols-3 gap-4">
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/repair manual/step1.png`} alt="Step navigation screen 1" className="w-full h-auto" />
+              <img src={`${BASE_PATH}/images/Repair manual/STEP1.png`} alt="Step navigation screen 1" className="w-full h-auto" />
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/repair manual/step2 .png`} alt="Step navigation screen 2" className="w-full h-auto" />
+              <img src={`${BASE_PATH}/images/Repair manual/step2 .png`} alt="Step navigation screen 2" className="w-full h-auto" />
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/repair manual/step3.png`} alt="Step navigation screen 3" className="w-full h-auto" />
+              <img src={`${BASE_PATH}/images/Repair manual/step3.png`} alt="Step navigation screen 3" className="w-full h-auto" />
             </div>
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">Safety checklist → step-by-step flow</p>
@@ -508,13 +503,13 @@ export default function MercedesServiceManualPage() {
           <h4 className="text-lg font-semibold text-slate-900 mb-4">A/B Layout Testing</h4>
           <div className="grid grid-cols-2 gap-10">
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/repair manual/Prototype 1.png`} alt="A/B prototype layout A" className="w-full h-auto" />
+              <img src={`${BASE_PATH}/images/Repair manual/Prototype 1.png`} alt="A/B prototype layout A" className="w-full h-auto" />
               <div className="bg-slate-50 p-3">
                 <p className="text-xs font-semibold text-slate-700">Layout A: Text-first approach</p>
               </div>
             </div>
             <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/repair manual/Prototype 2.png`} alt="A/B prototype layout B" className="w-full h-auto" />
+              <img src={`${BASE_PATH}/images/Repair manual/Prototype 2.png`} alt="A/B prototype layout B" className="w-full h-auto" />
               <div className="bg-slate-50 p-3">
                 <p className="text-xs font-semibold text-slate-700">Layout B: Visual-first approach</p>
               </div>
@@ -597,10 +592,15 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* FOOTER NAV */}
-      <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 flex items-center justify-between">
-        <Link href="/" className="text-sm text-slate-600 hover:text-slate-800 transition">← Back to Portfolio</Link>
-        <Link href="/campus-sync" className="text-sm text-slate-600 hover:text-slate-800 transition">Next Project →</Link>
+      <footer className="max-w-5xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200 flex items-center justify-between">
+        <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+          ← Back to Portfolio
+        </Link>
+        <Link href="/campus-sync" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+          Next Project →
+        </Link>
       </footer>
+      </div>
     </main>
   );
 }
