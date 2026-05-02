@@ -200,6 +200,14 @@ html {
   /* Avoid 100vw overflow exposing gutters beside full-bleed sections */
   overflow-x: clip;
 }
+
+/* Home — first Selected Work card: no 3D scroll tilt (JS skips inline transform for index 0) */
+#work .project-link:first-of-type {
+  opacity: 1;
+  transform: none;
+  transform-origin: center bottom;
+}
+
 /* ===== INTERACTIVE CARD ANIMATIONS ===== */
 .card {
   --bg: #fff;

@@ -74,11 +74,19 @@ export default function HomePage() {
       });
 
       const seqProgress = [...rawProgress];
+      // First card is not scroll-animated; treat as fully "revealed" for the chain so 02–04 still sequence.
+      seqProgress[0] = 1;
       for (let i = 1; i < cards.length; i++) {
         seqProgress[i] = Math.min(rawProgress[i], seqProgress[i - 1]);
       }
 
       cards.forEach((card, i) => {
+        if (i === 0) {
+          card.style.removeProperty('transform');
+          card.style.removeProperty('opacity');
+          card.style.removeProperty('transform-origin');
+          return;
+        }
         const p = seqProgress[i];
         card.style.transform = `perspective(1400px) rotateX(${MAX_ROTATE * (1 - p)}deg) translateY(${MAX_Y * (1 - p)}px) translateZ(${MAX_Z * (1 - p)}px)`;
         card.style.opacity = clamp(p * FADE_SPEED, 0, 1);
@@ -231,18 +239,18 @@ export default function HomePage() {
 
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
             <div className="space-y-8">
-              {projects.map((project) => (
+              {projects.map((project, index) => (
                 <Link
                   key={project.id}
                   href={project.href}
                   className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
-                  style={{ willChange: 'transform, opacity' }}
+                  style={{ willChange: index === 0 ? 'auto' : 'transform, opacity' }}
                 >
                   <div className="flex items-stretch" style={{ minHeight: '720px' }}>
-                    <div className="w-2/3 relative overflow-hidden">
+                    <div className="w-2/3 h-full min-h-[720px] flex items-center justify-center bg-slate-100 px-3 py-4 sm:px-5 sm:py-6">
                       {project.type === 'video' ? (
                         <video
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="max-h-full w-full max-w-full object-contain object-center transition-opacity duration-300 group-hover:opacity-95"
                           autoPlay
                           loop
                           muted
@@ -256,7 +264,7 @@ export default function HomePage() {
                         <img
                           src={project.src}
                           alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="max-h-full w-full max-w-full object-contain object-center transition-opacity duration-300 group-hover:opacity-95"
                         />
                       )}
                     </div>
