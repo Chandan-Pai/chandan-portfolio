@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import CursorProvider from './components/CursorProvider';
-import SiteContactFooter from './components/SiteContactFooter';
+import ConditionalSiteContactFooter from './components/ConditionalSiteContactFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
           style={{ backgroundColor: '#ffffff', width: '100%' }}
         >
           <div className="min-h-0 min-w-0 flex-1">{children}</div>
-          <SiteContactFooter />
+          <ConditionalSiteContactFooter />
         </div>
       </body>
     </html>
