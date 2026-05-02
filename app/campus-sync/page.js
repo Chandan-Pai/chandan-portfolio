@@ -357,30 +357,7 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        {/* Projects + contact */}
         <footer className="max-w-3xl mx-auto px-4 py-16 border-t border-gray-200">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Projects</p>
-          <ul className="space-y-3 mb-10">
-            <li>
-              <span className="text-gray-900 font-medium">Campus-Sync: Gopher Tunnel Navigation System</span>
-              <span className="text-gray-400 text-sm ml-2">(this case study)</span>
-            </li>
-            <li>
-              <Link href="/initiator-fellowship" className="text-[#8B1538] font-medium hover:underline">
-                Initiators Fellowship Website Redesign
-              </Link>
-            </li>
-            <li>
-              <Link href="/mercedes-service-manual" className="text-[#8B1538] font-medium hover:underline">
-                Enhancing clarity &amp; safety in repair assembly manuals
-              </Link>
-            </li>
-            <li>
-              <Link href="/manufacturing-workflow" className="text-[#8B1538] font-medium hover:underline">
-                Manufacturing process optimization
-              </Link>
-            </li>
-          </ul>
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Contact</p>
           <a
             href="mailto:2000chandanpai@gmail.com"
