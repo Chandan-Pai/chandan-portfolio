@@ -246,11 +246,11 @@ export default function HomePage() {
                   className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
                   style={{ willChange: index === 0 ? 'auto' : 'transform, opacity' }}
                 >
-                  <div className="flex items-stretch" style={{ minHeight: '720px' }}>
-                    <div className="w-2/3 h-full min-h-[720px] flex items-center justify-center bg-slate-100 px-3 py-4 sm:px-5 sm:py-6">
+                  <div className="flex flex-col md:flex-row items-stretch">
+                    <div className="w-full md:w-2/3 shrink-0 bg-slate-100 flex items-start justify-center">
                       {project.type === 'video' ? (
                         <video
-                          className="max-h-full w-full max-w-full object-contain object-center transition-opacity duration-300 group-hover:opacity-95"
+                          className="w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95"
                           autoPlay
                           loop
                           muted
@@ -264,11 +264,11 @@ export default function HomePage() {
                         <img
                           src={project.src}
                           alt={project.title}
-                          className="max-h-full w-full max-w-full object-contain object-center transition-opacity duration-300 group-hover:opacity-95"
+                          className="w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95"
                         />
                       )}
                     </div>
-                    <div className="w-1/3 p-10 flex flex-col justify-between">
+                    <div className="w-full md:w-1/3 p-8 md:p-10 flex flex-col justify-between gap-8 min-h-0 min-w-0">
                       <div>
                         <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
                         <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
