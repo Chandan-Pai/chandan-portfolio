@@ -48,6 +48,40 @@ function HoverableImage({ src, alt, className = '', imgClassName = '' }) {
   );
 }
 
+/** iPhone 16 (6.1") logical portrait ≈ 393 × 852 pt — frame height for prototype strip. */
+const UX_MOBILE_PROTOTYPES = [
+  { file: 'images/campus sync/ux mobile prototye.png', alt: 'Mobile UX prototype screen 1' },
+  { file: 'images/campus sync/ux mobile prototype 1.png', alt: 'Mobile UX prototype screen 2' },
+  { file: 'images/campus sync/ux mobile prototype 2.png', alt: 'Mobile UX prototype screen 3' },
+  { file: 'images/campus sync/ux mobile prototype 3.png', alt: 'Mobile UX prototype screen 4' },
+  { file: 'images/campus sync/ux mobile protytpe 4.png', alt: 'Mobile UX prototype screen 5' },
+];
+
+function PrototypeIphoneRow({ basePath }) {
+  return (
+    <div
+      className="flex flex-row flex-nowrap items-stretch gap-3 sm:gap-4 my-10 overflow-x-auto pb-4 snap-x snap-mandatory [-webkit-overflow-scrolling:touch]"
+      role="list"
+      aria-label="Mobile prototype screens, each framed at iPhone 16 portrait height (852pt max)"
+    >
+      {UX_MOBILE_PROTOTYPES.map(({ file, alt }) => (
+        <figure
+          key={file}
+          role="listitem"
+          className="group relative shrink-0 snap-start overflow-hidden rounded-[2.25rem] border-[10px] border-slate-900 bg-slate-900 shadow-2xl [aspect-ratio:393/852] h-[min(852px,82svh)]"
+          data-no-cursor-hover
+        >
+          <img
+            src={publicUrl(basePath, file)}
+            alt={alt}
+            className="h-full w-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+          />
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 function Section({ id, title, children, className = '' }) {
   return (
     <section id={id} className={`max-w-5xl mx-auto px-5 sm:px-8 py-14 ${className}`}>
@@ -196,7 +230,7 @@ export default function CampusSyncPage() {
 
         <Section id="problem" title="The Problem">
           <Body>
-            We watched a student walk to a tunnel entrance, pause, look uncertain — then turn around and go outside in -20°F weather. She knew the tunnels existed. She just couldn&apos;t trust them.
+            We watched a student walk to a tunnel entrance, pause, look uncertain, then turn around and go outside in -20°F weather. She knew the tunnels existed. She just couldn&apos;t trust them.
           </Body>
           <Body>
             That one moment defined the project. The University of Minnesota&apos;s Gopher Way connects 7+ miles of underground tunnels and skyways across campus. On paper, it means students never have to brave a Minnesota winter between classes. In practice? Most students avoided it entirely.
@@ -205,13 +239,13 @@ export default function CampusSyncPage() {
             Not because they didn&apos;t know it existed. Because they couldn&apos;t predict whether their route would actually work. Building hours change. Doors lock without warning. One blocked entrance mid-route costs more time than just going outside. So students kept making the rational choice: take the guaranteed bad option over the uncertain good one.
           </Body>
           <Body>
-            The data backed it up. Building hours were scattered across 12 different department websites. Official tunnel maps were static PDFs last updated in 2019. Google Maps routed outdoors. There was no single tool that put it together — and students were paying the price every winter.
+            The data backed it up. Building hours were scattered across 12 different department websites. Official tunnel maps were static PDFs last updated in 2019. Google Maps routed outdoors. There was no single tool that put it together and students were paying the price every winter.
           </Body>
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Winter campus navigation context" />
         </Section>
 
         <Section id="research" title="How We Found the Real Problem" className="bg-gray-50/80">
-          <Subheading>Before we opened Figma, we went outside. In January. With the students.</Subheading>
+          <Subheading>Before we opened Figma, we went outside in September with the students.</Subheading>
 
           <Subheading>What We Saw vs. What We Expected</Subheading>
           <Body>
@@ -228,7 +262,7 @@ export default function CampusSyncPage() {
           <Body>
             The HTA also showed us exactly when building hours mattered: not at the start of a journey, but in the middle of one. Students weren&apos;t pre-planning routes at their desk — they were making decisions at tunnel entrances, in real time, in coats and gloves. The solution had to work in that moment.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/ux mobile prototype 1.png')} alt="Research and prototype documentation snapshots" />
+          <PrototypeIphoneRow basePath={BASE_PATH} />
 
           <Subheading>Three Rounds of Testing</Subheading>
           <Body>
