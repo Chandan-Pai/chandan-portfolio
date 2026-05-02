@@ -521,7 +521,7 @@ export default function InitiatorFellowshipPage() {
           <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             ← Back to Portfolio
           </Link>
-          <Link href="/mercedes-service-manual" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+          <Link href="/campus-sync" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             Next Project →
           </Link>
         </footer>

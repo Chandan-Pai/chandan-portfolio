@@ -408,8 +408,8 @@ export default function ManufacturingWorkflowPage() {
             <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
               ← Back to portfolio
             </Link>
-            <Link href="/initiator-fellowship" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
-              Next project →
+            <Link href="/stay-tuned" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+              What&apos;s next →
             </Link>
           </div>
         </section>
