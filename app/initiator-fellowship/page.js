@@ -313,7 +313,7 @@ export default function InitiatorFellowshipPage() {
               problem: "Users couldn't track where they were in the application workflow. Timeline, criteria, and tracking were scattered across pages.", 
               solution: "Unified 'Apply' section with integrated criteria, timeline, application form, and tracking—all in one pathway.", 
               figs: [
-                { num: 4.1, src: `${BASE_PATH}/images/initiator-fellowship/Currentuserflow.png`, alt: 'Disconnected application process - before' },
+                { num: 4.1, src: `${BASE_PATH}/images/initiator-fellowship/currentuserflow.png`, alt: 'Disconnected application process - before' },
                 { num: 4.3, src: `${BASE_PATH}/images/initiator-fellowship/newuserflow.png`, alt: 'New application flow' },
               ] 
             },
@@ -323,7 +323,7 @@ export default function InitiatorFellowshipPage() {
               solution: 'Redesigned as central navigation hub with clear section blocks: Program, Apply, Members, Contact.', 
               figs: [
                 { num: 4.5, src: `${BASE_PATH}/images/initiator-fellowship/screenshot-rocks.png`, alt: 'Homepage - before' },
-                { num: 4.6, src: `${BASE_PATH}/images/initiator-fellowship/Currentuserflow.png`, alt: 'Homepage - after' },
+                { num: 4.6, src: `${BASE_PATH}/images/initiator-fellowship/currentuserflow.png`, alt: 'Homepage - after' },
                 { num: 4.7, src: `${BASE_PATH}/images/initiator-fellowship/homepagenew.png`, alt: 'Navigation blocks' },
                 { num: 4.8, src: `${BASE_PATH}/images/initiator-fellowship/newuserflow.png`, alt: 'Homepage details' }
               ] 
@@ -342,8 +342,8 @@ export default function InitiatorFellowshipPage() {
               problem: 'Program manager info buried in general contact section. No confirmation after form submission.', 
               solution: "Manager details moved to Resources page. Contact Us button in top nav. Confirmation message: 'Message received, response in 2-3 business days.'", 
               figs: [
-                { num: 4.11, src: `${BASE_PATH}/images/initiator-fellowship/contactbefore.png`, alt: 'Contact section - before' },
-                { num: 4.12, src: `${BASE_PATH}/images/initiator-fellowship/contactafter.png`, alt: 'Contact section - after' },
+                { num: 4.11, src: `${BASE_PATH}/images/initiator-fellowship/ContactBefore.png`, alt: 'Contact section - before' },
+                { num: 4.12, src: `${BASE_PATH}/images/initiator-fellowship/ContactAfter.png`, alt: 'Contact section - after' },
                 { num: 4.13, src: `${BASE_PATH}/images/initiator-fellowship/managerafter.png`, alt: 'Manager details' },
                 { num: 4.14, src: `${BASE_PATH}/images/initiator-fellowship/confirmationmessage.png`, alt: 'Confirmation message' }
               ] 
