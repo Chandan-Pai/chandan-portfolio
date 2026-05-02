@@ -19,13 +19,38 @@ export default function HomePage() {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleMotionPreference = () => setReduceMotion(mediaQuery.matches);
+    handleMotionPreference();
+
+    let targetY = window.scrollY;
+    let currentY = targetY;
+    let rafId = null;
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      targetY = window.scrollY;
+      if (mediaQuery.matches) setScrollY(targetY);
     };
+
+    const animate = () => {
+      if (!mediaQuery.matches) {
+        currentY += (targetY - currentY) * 0.12;
+        if (Math.abs(targetY - currentY) < 0.1) currentY = targetY;
+        setScrollY(currentY);
+      }
+      rafId = requestAnimationFrame(animate);
+    };
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    mediaQuery.addEventListener?.('change', handleMotionPreference);
+    rafId = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      mediaQuery.removeEventListener?.('change', handleMotionPreference);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
@@ -55,7 +80,7 @@ export default function HomePage() {
 
   // ── SCROLL-DRIVEN 3D CARD LIFT ──
   useEffect(() => {
-    const MAX_ROTATE = 75;
+    const MAX_ROTATE = 45;
     const MAX_Y = 50;
     const MAX_Z = -40;
     const FADE_SPEED = 2.0;
@@ -70,14 +95,13 @@ export default function HomePage() {
     function updateCards() {
       const vh = window.innerHeight;
 
-      const rawProgress = cards.map(card => {
+      const rawProgress = cards.map((card) => {
         const rect = card.getBoundingClientRect();
         const start = rect.bottom - vh;
-        return clamp(1 - (start / ZONE_SCROLL_PX), 0, 1);
+        return clamp(1 - start / ZONE_SCROLL_PX, 0, 1);
       });
 
       const seqProgress = [...rawProgress];
-      // First card is not scroll-animated; treat as fully "revealed" for the chain so 02–04 still sequence.
       seqProgress[0] = 1;
       for (let i = 1; i < cards.length; i++) {
         seqProgress[i] = Math.min(rawProgress[i], seqProgress[i - 1]);
@@ -97,13 +121,17 @@ export default function HomePage() {
       });
     }
 
+    let rafId = null;
     function tick() {
       updateCards();
-      requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
     }
 
     tick();
-  }, []); // Re-run if cards change
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []); 
 
   const projects = [
     { 
@@ -156,7 +184,7 @@ export default function HomePage() {
           <img
             src={publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}
             alt=""
-            className="w-full h-auto max-w-full block select-none pointer-events-none"
+            className="w-full h-auto max-w-full block select-none pointer-events-none grayscale"
             style={{
               transform: `translateY(${reduceMotion ? 0 : scrollY * 0.35}px)`,
               willChange: 'transform',
@@ -165,9 +193,9 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 z-[1] bg-black/40 pointer-events-none" aria-hidden />
           <div className="absolute inset-0 z-10 flex flex-col justify-center items-start pl-6 sm:pl-10 md:pl-14 lg:pl-20 pr-6 text-left">
-            <div className="max-w-[min(28rem,85vw)] sm:max-w-md md:max-w-lg">
+            <div className="max-w-[min(44rem,92vw)]">
               <h1
-                className="font-black tracking-tight uppercase text-white drop-shadow-md"
+                className="font-black tracking-tight uppercase whitespace-nowrap bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent drop-shadow-md"
                 style={{
                   fontSize: 'clamp(2.75rem, 10vw, 5.5rem)',
                   lineHeight: '1',
@@ -189,7 +217,7 @@ export default function HomePage() {
       {/* Projects Gallery */}
       <section id="work" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-16">Selected Work</h2>
+          <h2 className="text-4xl font-bold mb-16">Work</h2>
           <div className="h-0.5 w-full bg-gray-300 mb-16"></div>
 
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
@@ -246,7 +274,7 @@ export default function HomePage() {
       <section id="work" className="py-24 px-6 border-t border-slate-100">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
-          <h2 className="text-3xl font-bold mb-12">GitHub Projects</h2>
+          <h2 className="text-3xl font-bold mb-12">Projects</h2>
 
          <div className="space-y-6">
             {[
