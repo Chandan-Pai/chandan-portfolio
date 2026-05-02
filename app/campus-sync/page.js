@@ -244,7 +244,7 @@ export default function CampusSyncPage() {
               </p>
               <p className="text-sm font-semibold text-gray-900">Outcome: Zero failed routes in testing.</p>
             </div>
-            <HoverableImage src={`${BASE_PATH}/images/campus sync/routing logic diagram.png`} alt="Research documentation" />
+            <HoverableImage src={`${BASE_PATH}/images/campus sync/Routing Logic Diagram.png`} alt="Research documentation" />
           </div>
 
 
