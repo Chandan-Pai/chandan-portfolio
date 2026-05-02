@@ -33,16 +33,16 @@ function publicUrl(basePath, relativePath) {
   return `${base}/${encoded}`;
 }
 
-function HoverableImage({ src, alt }) {
+function HoverableImage({ src, alt, className = '', imgClassName = '' }) {
   return (
     <figure
-      className="group relative my-10 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md"
+      className={`group relative my-10 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md ${className}`}
       data-no-cursor-hover
     >
       <img
         src={src}
         alt={alt}
-        className="block w-full h-auto rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+        className={`block w-full h-auto rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.02] ${imgClassName}`}
       />
     </figure>
   );
@@ -50,7 +50,7 @@ function HoverableImage({ src, alt }) {
 
 function Section({ id, title, children, className = '' }) {
   return (
-    <section id={id} className={`max-w-3xl mx-auto px-4 py-14 ${className}`}>
+    <section id={id} className={`max-w-5xl mx-auto px-5 sm:px-8 py-14 ${className}`}>
       {title ? (
         <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
       ) : null}
@@ -59,8 +59,8 @@ function Section({ id, title, children, className = '' }) {
   );
 }
 
-function Subheading({ children }) {
-  return <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-3">{children}</h3>;
+function Subheading({ children, className = '' }) {
+  return <h3 className={`text-xl font-semibold text-gray-900 mt-10 mb-3 ${className}`}>{children}</h3>;
 }
 
 function Body({ children, className = '' }) {
@@ -175,8 +175,8 @@ export default function CampusSyncPage() {
         </div>
 
         {/* Hero */}
-        <header className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white px-4 pt-28 pb-20 md:pt-32 md:pb-24">
-          <div className="max-w-3xl mx-auto">
+        <header className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
             </h1>
@@ -190,7 +190,7 @@ export default function CampusSyncPage() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto px-4 -mt-8 relative z-10">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 -mt-8 relative z-10">
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
         </div>
 
@@ -228,7 +228,7 @@ export default function CampusSyncPage() {
           <Body>
             The HTA also showed us exactly when building hours mattered: not at the start of a journey, but in the middle of one. Students weren&apos;t pre-planning routes at their desk — they were making decisions at tunnel entrances, in real time, in coats and gloves. The solution had to work in that moment.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/research-docs.jpg')} alt="Research documentation and task analysis" />
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/ux mobile prototype 1.png')} alt="Research and prototype documentation snapshots" />
 
           <Subheading>Three Rounds of Testing</Subheading>
           <Body>
@@ -249,12 +249,25 @@ export default function CampusSyncPage() {
           <Body>
             Scope discipline is a design skill. We wrote a Project Scope Statement, got team sign-off on it in week two, and referenced it every time someone suggested adding a feature.
           </Body>
+          <Body>
+            On the ground, students were still reconciling scattered building hours and static PDF maps with what they saw on tunnel walls — official Gopher Way signage helped orient people, but it could not answer &quot;is this entire route open right now?&quot; That gap is what we designed against.
+          </Body>
+          <HoverableImage
+            src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')}
+            alt="Existing Gopher Way tunnel and on-campus wayfinding context students navigated alongside physical signage"
+          />
 
           <Subheading>Develop: Three Stages, Three Deployed Versions</Subheading>
           <Body className="font-semibold text-[#8B1538]">October 15 — Figma Prototype</Body>
           <Body>
             Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code — saving weeks of implementation rework.
           </Body>
+          <p className="text-sm font-medium text-gray-500 mb-3">Selected Figma prototype screens (pre-code)</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
+            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks.png')} alt="Figma prototype screen 1" />
+            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
+            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
+          </div>
           <Body className="font-semibold text-[#8B1538]">November 3 — MVP</Body>
           <Body>
             Live at{' '}
@@ -307,11 +320,54 @@ export default function CampusSyncPage() {
           </Body>
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')} alt="Search-first interface" />
 
-          <Subheading>The Walking Time Estimate</Subheading>
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-10 my-10">
+            <div className="min-w-0 flex-1">
+              <Subheading>The Walking Time Estimate</Subheading>
+              <Body className="mb-0">
+                Added in response to a specific pilot testing question: &quot;Is this actually faster than going outside?&quot; Students needed to make that comparison in real time. The time estimate displays prominently for both indoor and outdoor segments, so the decision is instant.
+              </Body>
+            </div>
+            <figure
+              className="shrink-0 w-full max-w-xs sm:max-w-sm mx-auto md:mx-0 md:mt-2 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm"
+              data-no-cursor-hover
+            >
+              <img
+                src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')}
+                alt="Walking time estimates for indoor vs outdoor route comparison in the product UI"
+                className="block w-full h-auto object-contain max-h-56 md:max-h-64"
+              />
+            </figure>
+          </div>
+        </Section>
+
+        <Section id="devices" title="Devices &amp; visual feedback" className="bg-gray-50/80">
           <Body>
-            Added in response to a specific pilot testing question: &quot;Is this actually faster than going outside?&quot; Students needed to make that comparison in real time. The time estimate displays prominently for both indoor and outdoor segments, so the decision is instant.
+            We validated the live product on the hardware students actually carry — not lab desktops — and captured quick visual-appeal signal after task-based sessions.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')} alt="Walking time estimates for route comparison" />
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start mt-6">
+            <div>
+              <Subheading className="mt-0 md:mt-0">Devices used to check the website</Subheading>
+              <Body>
+                Sessions were run on participants&apos; own phones and a shared set of common screen sizes (including narrower devices under 390px width) so layout, tap targets, and route legibility matched real winter use.
+              </Body>
+              <HoverableImage
+                className="my-6"
+                src={publicUrl(BASE_PATH, 'images/campus sync/device used to check the website.png')}
+                alt="Phones and devices participants used to test CampusSync in usability sessions"
+              />
+            </div>
+            <div>
+              <Subheading className="mt-10 md:mt-0">Visual appeal (post-task survey)</Subheading>
+              <Body>
+                In a short follow-up survey (n=10), 90% of participants said they found the website visually appealing — a useful sanity check alongside task metrics that the interface felt credible, not just functional.
+              </Body>
+              <HoverableImage
+                className="my-6"
+                src={publicUrl(BASE_PATH, 'images/campus sync/visually apealling .png')}
+                alt="Survey results: 90% of respondents found the website visually appealing"
+              />
+            </div>
+          </div>
         </Section>
 
         <Section id="impact" title="What Changed" className="bg-gray-50/80">
@@ -357,7 +413,7 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        <footer className="max-w-3xl mx-auto px-4 py-16 border-t border-gray-200">
+        <footer className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t border-gray-200">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Contact</p>
           <a
             href="mailto:2000chandanpai@gmail.com"
@@ -368,7 +424,7 @@ export default function CampusSyncPage() {
           <p className="text-sm text-gray-500 mt-2">Reach out by email — happy to talk research, product, or collaboration.</p>
         </footer>
 
-        <section className="max-w-6xl mx-auto px-4 py-10 border-t border-gray-100">
+        <section className="max-w-5xl mx-auto px-5 sm:px-8 py-10 border-t border-gray-100">
           <div className="flex flex-wrap justify-between gap-4 items-center">
             <Link href="/" className="text-[#8B1538] hover:underline font-semibold text-sm">
               ← Back to Portfolio
