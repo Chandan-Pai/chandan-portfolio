@@ -36,7 +36,7 @@ function publicUrl(basePath, relativePath) {
 function HoverableImage({ src, alt }) {
   return (
     <figure
-      className="group relative mb-8 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md"
+      className="group relative my-10 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md"
       data-no-cursor-hover
     >
       <img
@@ -48,365 +48,359 @@ function HoverableImage({ src, alt }) {
   );
 }
 
+function Section({ id, title, children, className = '' }) {
+  return (
+    <section id={id} className={`max-w-3xl mx-auto px-4 py-14 ${className}`}>
+      {title ? (
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
+      ) : null}
+      {children}
+    </section>
+  );
+}
+
+function Subheading({ children }) {
+  return <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-3">{children}</h3>;
+}
+
+function Body({ children, className = '' }) {
+  return <p className={`text-gray-700 leading-relaxed mb-4 ${className}`}>{children}</p>;
+}
+
 export default function CampusSyncPage() {
-  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
-  const [scrolled, setScrolled] = useState(false);  // ← ADD THIS
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsDarkSection(window.scrollY < 400);
-      setScrolled(window.scrollY > 80);  // ← COMBINED into one handler
+      setIsDarkSection(window.scrollY < 640);
+      setScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const isExpanded = !scrolled || navExpanded;
+
   return (
-     <main className="min-h-screen bg-white text-slate-900 antialiased">
-      {/* Dynamic Island Navigation */}
-        <div
-          className="fixed top-0 left-0 right-0 z-40"
-          style={{
-            height: '80px', // Adjust height as needed
-            background: 'rgba(0, 0, 0, 0.01)',
-            backdropFilter: 'blur(3px)',
-            borderBottom: '1px solid transparent',
-            backgroundImage: 'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
-            backgroundClip: 'padding-box, border-box',
-            backgroundOrigin: 'padding-box, border-box',
-          }}
-       />
+    <main className="min-h-screen bg-white text-slate-900 antialiased">
+      <div
+        className="fixed top-0 left-0 right-0 z-40"
+        style={{
+          height: '80px',
+          background: 'rgba(0, 0, 0, 0.01)',
+          backdropFilter: 'blur(3px)',
+          borderBottom: '1px solid transparent',
+          backgroundImage:
+            'linear-gradient(to right, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.4) 50%, rgba(100, 100, 100, 0.1) 100%)',
+          backgroundClip: 'padding-box, border-box',
+          backgroundOrigin: 'padding-box, border-box',
+        }}
+      />
 
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
-  
-  {/* LEFT — CP, always outside */}
-  <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
-
-  {/* CENTER — The pill */}
-  <nav
-    className="transition-all duration-300 ease-in-out"
-    onMouseEnter={() => setNavExpanded(true)}
-    onMouseLeave={() => setNavExpanded(false)}
-    style={{
-      width: isExpanded ? '480px' : '80px',
-      height: '40px',
-      borderRadius: '20px',
-      background: 'rgba(0, 0, 0, 0.8)',
-      backdropFilter: 'blur(20px)',
-      overflow: 'hidden',
-    }}
-  >
-    <div className="h-full flex items-center justify-center gap-8 px-6">
-      {!isExpanded ? (
-        <div className="astronaut-float">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="8" r="4" fill="white"/>
-            <ellipse cx="12" cy="16" rx="6" ry="4" fill="white"/>
-            <circle cx="10" cy="7" r="1" fill="black"/>
-            <circle cx="14" cy="7" r="1" fill="black"/>
-            <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none"/>
-          </svg>
-        </div>
-      ) : (
-        <>
-          <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Home</Link>
-          <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Work</Link>
-          <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">About</Link>
-          <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Resume</Link>
-          <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">Contact</Link>
-        </>
-      )}
-    </div>
-  </nav>
-
-  {/* RIGHT — Clock, always outside */}
-  <LiveClock />
-</div>
-
-      <div className="min-h-screen bg-white text-gray-900">
-      {/* Back Button - Dynamic Color */}
-      <div className="fixed top-6 left-6 z-50">
-        <Link
-          href="/"
-          aria-label="Back to portfolio"
-            data-no-cursor-hover
-          className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
-            isDarkSection ? 'text-white' : 'text-gray-900'
-          }`}
+        <span className="text-slate-900 text-sm font-semibold tracking-widest">CP</span>
+        <nav
+          className="transition-all duration-300 ease-in-out"
+          onMouseEnter={() => setNavExpanded(true)}
+          onMouseLeave={() => setNavExpanded(false)}
+          style={{
+            width: isExpanded ? '480px' : '80px',
+            height: '40px',
+            borderRadius: '20px',
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(20px)',
+            overflow: 'hidden',
+          }}
         >
-          <svg
-            className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
-        </Link>
+          <div className="h-full flex items-center justify-center gap-8 px-6">
+            {!isExpanded ? (
+              <div className="astronaut-float">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" fill="white" />
+                  <ellipse cx="12" cy="16" rx="6" ry="4" fill="white" />
+                  <circle cx="10" cy="7" r="1" fill="black" />
+                  <circle cx="14" cy="7" r="1" fill="black" />
+                  <path d="M10 10 Q12 11 14 10" stroke="black" strokeWidth="0.5" fill="none" />
+                </svg>
+              </div>
+            ) : (
+              <>
+                <Link href="/" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                  Home
+                </Link>
+                <Link href="/#work" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                  Work
+                </Link>
+                <Link href="/About" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                  About
+                </Link>
+                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                  Resume
+                </Link>
+                <Link href="mailto:2000chandanpai@gmail.com" className="text-white text-sm font-medium hover:text-slate-300 transition whitespace-nowrap">
+                  Contact
+                </Link>
+              </>
+            )}
+          </div>
+        </nav>
+        <LiveClock />
       </div>
 
-      {/* Hero Section */}
-      <section className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white py-30 px-4">
-        <div className="max-w-6xl mx-auto">
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus-Sync hero" />
-          <h1 className="text-5xl font-bold mb-4">Campus-Sync</h1>
-          <p className="text-xl text-gray-300 mb-8">Solving winter navigation through design and trust</p>
-          <div className="space-y-2 text-sm">
-            <p><span className="font-semibold">Role:</span> Lead UX Researcher & Product Designer</p>
-            <p><span className="font-semibold">Team:</span> Chandan Umesh Pai, Nick Kanning, Saad Saleem, David Tomlinson</p>
-            <p><span className="font-semibold">Impact:</span> 90% routing accuracy • 82 SUS score • Live product</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Opening Story */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              A student stands at a tunnel entrance on a February morning. It's –20°F outside. She looks at the tunnel opening, pauses for several seconds, then turns around and walks outside into the cold.
-            </p>
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              She wasn't avoiding the tunnel because she didn't know it existed. She was avoiding it because she couldn't trust what was on the other side.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              This moment became the central insight for Campus-Sync—the realization that the problem wasn't the tunnel system itself. It was the information gap that made students choose frostbite over uncertainty.
-            </p>
-          </div>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Problem scenario" />
-        </div>
-      </section>
-
-      {/* Context & Research Woven In */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-12 text-gray-900">Understanding the Real Problem</h2>
-        
-        <div className="mb-12">
-          <p className="text-lg text-gray-700 mb-4">
-            The University of Minnesota's Gopher Way connects 7+ miles of tunnels. Students knew about it. But they didn't use it.
-          </p>
-          <p className="text-gray-600 mb-8">
-            When we shadowed 15 students across winter weeks, the pattern was unmissable. Every hesitation at a tunnel entrance came down to the same question: <span className="font-semibold text-gray-900">Can I trust that this path is actually open?</span>
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="font-semibold text-gray-900 mb-2 text-sm">Building Hours Scattered</p>
-            <p className="text-sm text-gray-600">No single source of real-time access information</p>
-          </div>
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="font-semibold text-gray-900 mb-2 text-sm">Static Maps Outdated</p>
-            <p className="text-sm text-gray-600">Paper maps don't reflect seasonal closures</p>
-          </div>
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="font-semibold text-gray-900 mb-2 text-sm">Fragmented Data</p>
-            <p className="text-sm text-gray-600">Students make risky assumptions</p>
-          </div>
-        </div>
-
-       <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/research-docs.jpg')} alt="Research documentation" />
-
-        <p className="text-gray-700 leading-relaxed">
-          Mapping 40+ real navigation scenarios revealed most routes were short—just 1–3 building hops. The insight: <span className="font-semibold">users didn't need perfect routing. They needed reliable routing.</span> Something they could trust instantly, in real time, while wearing gloves at a tunnel entrance.
-        </p>
-      </section>
-
-      {/* Solution Intro */}
-      <section className="max-w-6xl mx-auto px-4 py-16 bg-white/40 backdrop-blur-md rounded-2xl mx-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">What We Built</h2>
-          <p className="text-gray-700 mb-8">
-            CampusSync is live at campus-sync.org. No login. No installation. Built on a single principle: <span className="font-semibold">every route users see must be walkable right now.</span>
-          </p>
-
-          <video 
-                  className="w-full h-[500px] object-cover transition-all duration-500 group-hover:grayscale group-hover:scale-105"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                 <source src={publicUrl(BASE_PATH, 'images/campus sync/home page.mp4')} type="video/mp4" />
-                </video>
-
-          <p className="text-gray-600 text-sm">
-            The solution wasn't complex. It was precise. Four design decisions—each one solving a specific failure point we watched users encounter.
-          </p>
-        </div>
-      </section>
-
-      {/* Design Decisions - Simplified */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="space-y-16">
-          {/* Decision 1 */}
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Real-Time Routing Engine</h3>
-              <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
-              <p className="text-gray-700 mb-6">Routes through closed buildings destroy trust.</p>
-              <p className="text-sm text-gray-600 mb-4">
-                We query building access status at routing time, filtering out any path users can't actually walk. Users never see a route they can't take.
-              </p>
-              <p className="text-sm font-semibold text-gray-900">Outcome: Zero failed routes in testing.</p>
-            </div>
-            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Research documentation" />
-          </div>
-
-
-          {/* Decision 2 */}
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-             <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Campus-Sync hero" />
-            <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Dual-Color Visual System</h3>
-              <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
-              <p className="text-gray-700 mb-6">Users followed routes without realizing they went outside.</p>
-              <p className="text-sm text-gray-600 mb-4">
-                <span className="text-[#8B1538] font-semibold">Maroon</span> for tunnels, <span className="text-[#FDB913] font-semibold">gold</span> for outdoor segments. In Round 2 testing, users immediately recognized the distinction.
-              </p>
-              <p className="text-sm font-semibold text-gray-900">Outcome: No more misunderstood routes.</p>
-            </div>
-          </div>
-
-          {/* Decision 3 */}
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Search-First Interface</h3>
-              <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
-              <p className="text-gray-700 mb-6">Map tapping is too slow for someone in motion.</p>
-              <p className="text-sm text-gray-600 mb-4">
-                Autocomplete search restricted to navigable buildings. Users make decisions at tunnel entrances in real time, in coats and gloves.
-              </p>
-              <p className="text-sm font-semibold text-gray-900">Outcome: 45% faster than paper maps.</p>
-            </div>
-            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')} alt="Campus-Sync hero" />
-          </div>
-
-          {/* Decision 4 */}
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')} alt="Campus-Sync hero" />
-            <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Walking Time Estimates</h3>
-              <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
-              <p className="text-gray-700 mb-6">Students need to compare indoor vs. outdoor instantly.</p>
-              <p className="text-sm text-gray-600 mb-4">
-                Walking time displayed for both route types. Users see the actual time cost of each choice.
-              </p>
-              <p className="text-sm font-semibold text-gray-900">Outcome: Enables informed, real-time decisions.</p>
-            </div>
-          </div>
-        </div>
-
-       
-      </section>
-
-      {/* Validation & Results */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">What Changed</h2>
-        
-        <p className="text-gray-700 mb-12 leading-relaxed">
-          We tested with 25 users across three rounds. The metrics were secondary—what mattered was the behavior shift. Users stopped hesitating at tunnel entrances.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="text-3xl font-bold text-[#8B1538] mb-2">82/100</p>
-            <p className="text-sm font-semibold text-gray-900">System Usability Score</p>
-            <p className="text-xs text-gray-600">Industry avg: 68</p>
-          </div>
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="text-3xl font-bold text-[#8B1538] mb-2">~90%</p>
-            <p className="text-sm font-semibold text-gray-900">Routing Accuracy</p>
-            <p className="text-xs text-gray-600">Target: ≥90% ✓</p>
-          </div>
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="text-3xl font-bold text-[#8B1538] mb-2">45%</p>
-            <p className="text-sm font-semibold text-gray-900">Task Completion Speed</p>
-            <p className="text-xs text-gray-600">vs. paper maps</p>
-          </div>
-          <div className="p-6 bg-gray-50 rounded-lg">
-            <p className="text-3xl font-bold text-[#8B1538] mb-2">70%</p>
-            <p className="text-sm font-semibold text-gray-900">Mobile Adoption</p>
-            <p className="text-xs text-gray-600">Real-world usage</p>
-          </div>
-        </div>
-
-        <div className="bg-[#FDB913] p-6 rounded-lg mb-8">
-          <p className="font-semibold text-gray-900 text-sm mb-2">Most Significant Finding</p>
-          <p className="text-gray-800 text-sm">"The dual-color route visualization was the thing that made it actually useful. Immediately obvious."</p>
-        </div>
-
-        <div className="bg-white border-l-4 border-[#8B1538] p-6 rounded">
-          <p className="font-semibold text-gray-900 text-sm mb-2">Known Scope</p>
-          <p className="text-gray-700 text-sm">Minneapolis/St. Paul cross-linking excluded by design. Campus-specific solution, intentionally narrow.</p>
-        </div>
-      </section>
-
-      {/* The Process */}
-      <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-50 -mx-4 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">How We Got Here</h2>
-          
-          <div className="space-y-4 mb-8">
-            <div className="flex gap-4">
-              <div className="font-semibold text-[#8B1538] text-sm min-w-24">Oct 15</div>
-              <p className="text-sm text-gray-700">Figma prototype revealed map-tapping was too slow. Pivot to search.</p>
-            </div>
-            <div className="flex gap-4">
-              <div className="font-semibold text-[#8B1538] text-sm min-w-24">Nov 3</div>
-              <p className="text-sm text-gray-700">MVP shipped with basic routing + dual-color system.</p>
-            </div>
-            <div className="flex gap-4">
-              <div className="font-semibold text-[#8B1538] text-sm min-w-24">Nov 17</div>
-              <p className="text-sm text-gray-700">Functional prototype added building-hour filtering.</p>
-            </div>
-            <div className="flex gap-4">
-              <div className="font-semibold text-[#8B1538] text-sm min-w-24">Dec 9</div>
-              <p className="text-sm text-gray-700">Final release. Two iterations from pilot feedback implemented.</p>
-            </div>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg border-l-4 border-[#FDB913]">
-            <p className="font-semibold text-gray-900 text-sm mb-2">Deliberate Scope</p>
-            <p className="text-gray-700 text-sm mb-3">What we didn't build: real-time API syncing, turn-by-turn navigation, schedule integration. We cut to ship a reliable core.</p>
-            <p className="text-gray-600 text-xs italic">"Cut deliberately to own something, not to save time."</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Live & Forward */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="border-t border-gray-200 pt-12">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">Now</h2>
-          <p className="text-gray-700 mb-8 leading-relaxed">
-            Campus-Sync launched December 9, 2025. The product is live at campus-sync.org and currently serving 50,000+ students daily.
-          </p>
-          <p className="text-gray-600 text-sm mb-8">
-            The next phase will integrate real-time API updates with facilities management. We've already identified the integration points. But first, we're observing how students use the core product in the wild.
-          </p>
-          <div className="space-y-1 text-sm text-gray-600">
-            <p><span className="font-semibold text-gray-900">Team:</span> Nick Kanning, Chandan Umesh Pai, Saad Saleem, David Tomlinson</p>
-            <p><span className="font-semibold text-gray-900">Guided by:</span> Prof. Kathryn Wust & Prof. Scott Hareland</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Navigation */}
-      <section className="max-w-6xl mx-auto px-4 py-12 border-t border-gray-200 mt-8">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="text-[#8B1538] hover:underline font-semibold text-sm">
-            ← Back to Portfolio
-          </Link>
-          <Link href="/manufacturing-workflow" className="text-[#8B1538] hover:underline font-semibold text-sm">
-            Next Project →
+      <div className="min-h-screen bg-white text-gray-900">
+        <div className="fixed top-6 left-6 z-50">
+          <Link
+            href="/"
+            aria-label="Back to portfolio"
+            data-no-cursor-hover
+            className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
+              isDarkSection ? 'text-white' : 'text-gray-900'
+            }`}
+          >
+            <svg
+              className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
-      </section>
+
+        {/* Hero */}
+        <header className="w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white px-4 pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Campus-Sync: Gopher Tunnel Navigation System
+            </h1>
+            <p className="text-gray-200 text-lg leading-relaxed mb-6">
+              Led end-to-end UX research and product design for a web application solving real navigation challenges for 50,000+ University of Minnesota students traversing 7+ miles of underground tunnels in harsh winters. Applied mixed-methods approach: contextual inquiry (shadowing 15 users in extreme weather), task analysis (mapping 40+ navigation scenarios), and iterative usability testing (3 rounds, n=25). Integrated campus mapping API with building access hours database. Achieved 80% user satisfaction (SUS: 82/100), 90% routing accuracy, 70% mobile adoption. Product deployed and serving daily active users.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+              <span className="font-semibold text-white">UX Research &amp; Product Design</span>
+              <span>December 9, 2025</span>
+            </div>
+          </div>
+        </header>
+
+        <div className="max-w-4xl mx-auto px-4 -mt-8 relative z-10">
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
+        </div>
+
+        <Section id="problem" title="The Problem">
+          <Body>
+            We watched a student walk to a tunnel entrance, pause, look uncertain — then turn around and go outside in -20°F weather. She knew the tunnels existed. She just couldn&apos;t trust them.
+          </Body>
+          <Body>
+            That one moment defined the project. The University of Minnesota&apos;s Gopher Way connects 7+ miles of underground tunnels and skyways across campus. On paper, it means students never have to brave a Minnesota winter between classes. In practice? Most students avoided it entirely.
+          </Body>
+          <Body>
+            Not because they didn&apos;t know it existed. Because they couldn&apos;t predict whether their route would actually work. Building hours change. Doors lock without warning. One blocked entrance mid-route costs more time than just going outside. So students kept making the rational choice: take the guaranteed bad option over the uncertain good one.
+          </Body>
+          <Body>
+            The data backed it up. Building hours were scattered across 12 different department websites. Official tunnel maps were static PDFs last updated in 2019. Google Maps routed outdoors. There was no single tool that put it together — and students were paying the price every winter.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Winter campus navigation context" />
+        </Section>
+
+        <Section id="research" title="How We Found the Real Problem" className="bg-gray-50/80">
+          <Subheading>Before we opened Figma, we went outside. In January. With the students.</Subheading>
+
+          <Subheading>What We Saw vs. What We Expected</Subheading>
+          <Body>
+            We shadowed 15 students navigating campus during actual winter conditions — not in a lab, not via survey. What we expected: students struggling to find tunnel entrances. What we actually saw: students finding entrances just fine, then turning around anyway.
+          </Body>
+          <Body>
+            The hesitation was the data point. Students were doing a mental risk calculation at every tunnel entrance: &quot;If this route is blocked halfway through, I&apos;ve lost more time than if I just go outside now.&quot; The problem wasn&apos;t awareness. It was predictability. That single insight changed everything about what we built.
+          </Body>
+
+          <Subheading>Mapping 40+ Scenarios</Subheading>
+          <Body>
+            We ran Hierarchical Task Analysis across 40+ navigation scenarios — from a simple 2-building hop to a complex multi-stop route during a building closure. The HTA revealed something counterintuitive: most campus navigation isn&apos;t long cross-campus trips. It&apos;s short 1–3 building hops. That meant our UI needed to optimize for a 10-second lookup, not a trip planner.
+          </Body>
+          <Body>
+            The HTA also showed us exactly when building hours mattered: not at the start of a journey, but in the middle of one. Students weren&apos;t pre-planning routes at their desk — they were making decisions at tunnel entrances, in real time, in coats and gloves. The solution had to work in that moment.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/research-docs.jpg')} alt="Research documentation and task analysis" />
+
+          <Subheading>Three Rounds of Testing</Subheading>
+          <Body>
+            We tested at every stage — Figma prototype, MVP, functional prototype — with 8, 10, and 7 participants respectively. Round 2 gave us our most important finding: users were following routes without realizing they&apos;d been sent outdoors. Single-color map lines looked identical whether they represented a tunnel or a sidewalk. That&apos;s where the maroon/gold visual system came from — not a design preference, a usability failure we observed and fixed.
+          </Body>
+        </Section>
+
+        <Section id="process" title="How We Built It">
+          <Subheading>Discover: The Predictability Problem</Subheading>
+          <Body>
+            Three weeks of field research produced one sentence that drove every decision: students don&apos;t avoid tunnels because they don&apos;t know about them — they avoid them because they can&apos;t trust them. Once we had that, scope became obvious. The product needed to guarantee route completeness, not just show tunnel paths.
+          </Body>
+
+          <Subheading>Define: What We Would and Wouldn&apos;t Build</Subheading>
+          <Body>
+            We made an explicit list of features we were NOT building: real-time building hour API updates, turn-by-turn indoor navigation, Minneapolis/St. Paul campus cross-linking, schedule integration. Every one of these was a real request from early user interviews. Every one of them was cut deliberately — not because they weren&apos;t valuable, but because they would have made it impossible to ship a reliable core product by December.
+          </Body>
+          <Body>
+            Scope discipline is a design skill. We wrote a Project Scope Statement, got team sign-off on it in week two, and referenced it every time someone suggested adding a feature.
+          </Body>
+
+          <Subheading>Develop: Three Stages, Three Deployed Versions</Subheading>
+          <Body className="font-semibold text-[#8B1538]">October 15 — Figma Prototype</Body>
+          <Body>
+            Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code — saving weeks of implementation rework.
+          </Body>
+          <Body className="font-semibold text-[#8B1538]">November 3 — MVP</Body>
+          <Body>
+            Live at{' '}
+            <a href="https://campus-sync.org" className="text-[#8B1538] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+              campus-sync.org
+            </a>
+            . Basic routing, map overlay, and the dual-color system. Maroon for tunnels. Gold for outdoor segments. University of Minnesota brand colors — immediately readable without a legend.
+          </Body>
+          <Body className="font-semibold text-[#8B1538]">November 17 — Functional Prototype</Body>
+          <Body>
+            Building-hour filtering integrated directly into the routing engine. The algorithm queries current building access status before pathfinding, so it never suggests a route through a locked building. Validated at 90%+ accuracy against 20 manually-verified routes.
+          </Body>
+
+          <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm my-10">
+            <video className="w-full h-auto max-h-[520px] object-cover" autoPlay loop muted playsInline>
+              <source src={publicUrl(BASE_PATH, 'images/campus sync/home page.mp4')} type="video/mp4" />
+            </video>
+          </div>
+
+          <Subheading>Deliver: Two Fixes That Mattered</Subheading>
+          <Body>
+            Pilot testing gave us 10+ feedback responses. We implemented exactly two improvements — chosen by impact, not by ease. First: tunnel overlay visual weight increased so segments were distinguishable from building outlines on mobile screens. Second: dropdown menus rebuilt as bottom-sheet components on mobile, eliminating the overflow issue affecting phones under 390px width. Both fixes were regression-tested before the December 9 final release.
+          </Body>
+        </Section>
+
+        <Section id="solution" title="What We Built" className="bg-white">
+          <Body className="text-lg">
+            CampusSync is live at{' '}
+            <a href="https://campus-sync.org" className="text-[#8B1538] font-semibold underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+              campus-sync.org
+            </a>
+            . No login. No installation. Open it, type where you are, type where you&apos;re going, get a route you can actually trust.
+          </Body>
+
+          <Subheading>The Routing Engine</Subheading>
+          <Body>
+            The core innovation isn&apos;t the map — it&apos;s what happens before the map renders. The routing engine queries building access status at routing time, filters out any path that goes through a currently-closed building, then runs pathfinding on the remaining graph. Users never see a route they can&apos;t walk. That&apos;s the feature that changed behavior.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Routing engine logic" />
+
+          <Subheading>The Visual System</Subheading>
+          <Body>
+            Maroon lines = tunnels. Gold lines = outdoors. Two colors, zero ambiguity. Round 2 usability testing showed users following routes without realizing they&apos;d gone outside — the original single-color overlay gave no signal. The dual-color system made the distinction impossible to miss, even on a small mobile screen while walking.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Before and after dual-color route visualization" />
+
+          <Subheading>The Input Model</Subheading>
+          <Body>
+            Search-first, not map-click. Round 1 testing showed that tapping a small building on a map while moving was too slow and too error-prone. The search field uses autocomplete restricted to buildings in the navigable network — so users only see options that the routing engine can actually connect.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')} alt="Search-first interface" />
+
+          <Subheading>The Walking Time Estimate</Subheading>
+          <Body>
+            Added in response to a specific pilot testing question: &quot;Is this actually faster than going outside?&quot; Students needed to make that comparison in real time. The time estimate displays prominently for both indoor and outdoor segments, so the decision is instant.
+          </Body>
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')} alt="Walking time estimates for route comparison" />
+        </Section>
+
+        <Section id="impact" title="What Changed" className="bg-gray-50/80">
+          <Body>
+            Every metric we defined before building anything, we hit or beat. That matters — these weren&apos;t goals we set after seeing the results.
+          </Body>
+          <ul className="list-disc pl-5 space-y-3 text-gray-700 leading-relaxed mb-10">
+            <li>
+              <strong className="text-gray-900">SUS Score: 82/100.</strong> The industry average is 68. For a first-semester product with no prior version to iterate from, 82 is a strong result.
+            </li>
+            <li>
+              <strong className="text-gray-900">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections — a known scope exclusion documented before we started building.
+            </li>
+            <li>
+              <strong className="text-gray-900">Task completion: 45% faster</strong> than the existing combination of PDF maps and scattered building-hours pages.
+            </li>
+            <li>
+              <strong className="text-gray-900">Mobile adoption: 70%.</strong> Students used it on their phones while physically navigating. Not at their desks. The mobile-first design decision was validated by the people it was designed for.
+            </li>
+            <li>
+              <strong className="text-gray-900">User satisfaction: 80%+.</strong> Meeting the pre-defined threshold exactly.
+            </li>
+          </ul>
+
+          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/usability .png')} alt="Usability testing summary" />
+
+          <Body className="mt-8">
+            The qualitative feedback was equally useful. The dual-color route visualization was the single most-cited positive feature — described as &quot;immediately obvious&quot; and &quot;the thing that made it actually useful.&quot; The most-cited limitation was Minneapolis/St. Paul routing — which the team had documented as a user misconception before launch. The tunnels don&apos;t connect the campuses. That&apos;s not a missing feature. That&apos;s a geography problem.
+          </Body>
+        </Section>
+
+        <Section id="launch" title="">
+          <Body className="text-lg">
+            CampusSync launched December 9, 2025 and is actively serving University of Minnesota students.
+          </Body>
+          <div className="mt-6 space-y-1 text-sm text-gray-600 border-t border-gray-200 pt-6">
+            <p>
+              <span className="font-semibold text-gray-900">Team:</span> Nick Kanning, Chandan Umesh Pai, Saad Saleem, David Tomlinson
+            </p>
+            <p>
+              <span className="font-semibold text-gray-900">Guided by:</span> Prof. Kathryn Wust &amp; Prof. Scott Hareland
+            </p>
+          </div>
+        </Section>
+
+        {/* Projects + contact */}
+        <footer className="max-w-3xl mx-auto px-4 py-16 border-t border-gray-200">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Projects</p>
+          <ul className="space-y-3 mb-10">
+            <li>
+              <span className="text-gray-900 font-medium">Campus-Sync: Gopher Tunnel Navigation System</span>
+              <span className="text-gray-400 text-sm ml-2">(this case study)</span>
+            </li>
+            <li>
+              <Link href="/initiator-fellowship" className="text-[#8B1538] font-medium hover:underline">
+                Initiators Fellowship Website Redesign
+              </Link>
+            </li>
+            <li>
+              <Link href="/mercedes-service-manual" className="text-[#8B1538] font-medium hover:underline">
+                Enhancing clarity &amp; safety in repair assembly manuals
+              </Link>
+            </li>
+            <li>
+              <Link href="/manufacturing-workflow" className="text-[#8B1538] font-medium hover:underline">
+                Manufacturing process optimization
+              </Link>
+            </li>
+          </ul>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Contact</p>
+          <a
+            href="mailto:2000chandanpai@gmail.com"
+            className="inline-flex text-sm font-semibold text-[#8B1538] hover:underline"
+          >
+            2000chandanpai@gmail.com
+          </a>
+          <p className="text-sm text-gray-500 mt-2">Reach out by email — happy to talk research, product, or collaboration.</p>
+        </footer>
+
+        <section className="max-w-6xl mx-auto px-4 py-10 border-t border-gray-100">
+          <div className="flex flex-wrap justify-between gap-4 items-center">
+            <Link href="/" className="text-[#8B1538] hover:underline font-semibold text-sm">
+              ← Back to Portfolio
+            </Link>
+            <Link href="/mercedes-service-manual" className="text-[#8B1538] hover:underline font-semibold text-sm">
+              Next project →
+            </Link>
+          </div>
+        </section>
       </div>
     </main>
   );
