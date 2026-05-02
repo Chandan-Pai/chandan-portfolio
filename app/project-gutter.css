@@ -1,0 +1,7 @@
+/* Plain CSS — do not @import tailwind here; Tailwind would drop these rules from the bundle.
+   Case studies: ~15vw side inset (min 1rem), content in the center ~70vw band. */
+.project-gutter-x {
+  padding-left: max(1rem, 15vw);
+  padding-right: max(1rem, 15vw);
+  box-sizing: border-box;
+}

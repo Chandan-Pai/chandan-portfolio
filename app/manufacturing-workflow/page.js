@@ -44,13 +44,13 @@ export default function ManufacturingWorkflowPage() {
         </div>
 
         {/* Hero Section — aligned with campus-sync case study header */}
-        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
-          <div className="max-w-5xl mx-auto">
+        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="project-gutter-x w-full min-w-0">
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
                 Boston Scientific Wolverine Blade Manufacturing
               </h1>
-              <p className="text-gray-200 text-lg leading-relaxed max-w-3xl">
+              <p className="text-gray-200 text-lg leading-relaxed">
                 Lean methodology analysis identifying bottlenecks and optimization opportunities in medical device assembly
               </p>
             </div>
@@ -69,7 +69,7 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Key Metrics */}
-        <section className="max-w-6xl mx-auto px-6 py-20">
+        <section className="project-gutter-x w-full min-w-0 py-20">
           <div className="grid md:grid-cols-3 gap-6 mb-20">
             <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
               <p className="text-5xl font-bold text-white mb-2">13.47s</p>
@@ -90,7 +90,7 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Problem Statement */}
-        <section className="max-w-6xl mx-auto px-6 py-20">
+        <section className="project-gutter-x w-full min-w-0 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
@@ -125,8 +125,8 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Methodology */}
-        <section className="w-full bg-gray-50 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section className="w-full bg-gray-50 py-20">
+          <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl font-bold mb-12">Lean Analysis: Data Collection & Methodology</h2>
 
             <div className="space-y-12">
@@ -211,7 +211,7 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Key Findings */}
-        <section className="max-w-6xl mx-auto px-6 py-20">
+        <section className="project-gutter-x w-full min-w-0 py-20">
           <h2 className="text-3xl font-bold mb-12">Waste Identification & Key Insights</h2>
 
           <div className="space-y-6">
@@ -250,8 +250,8 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Recommendations */}
-        <section className="w-full bg-slate-900 text-white py-20 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section className="w-full bg-slate-900 text-white py-20">
+          <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl font-bold mb-12">Recommended Improvements: Station 5 Focus</h2>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -317,7 +317,7 @@ export default function ManufacturingWorkflowPage() {
         </section>
 
         {/* Conclusion */}
-        <section className="max-w-6xl mx-auto px-6 py-20 border-t border-gray-200">
+        <section className="project-gutter-x w-full min-w-0 py-20 border-t border-gray-200">
           <h2 className="text-3xl font-bold mb-8">Conclusion</h2>
           
           <p className="text-lg text-gray-700 leading-relaxed mb-6">

@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
+import './project-gutter.css';
 import CursorProvider from './components/CursorProvider';
 import ConditionalSiteContactFooter from './components/ConditionalSiteContactFooter';
 import SiteIslandNav from './components/SiteIslandNav';

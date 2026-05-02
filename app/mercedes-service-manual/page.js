@@ -43,15 +43,15 @@ export default function MercedesServiceManualPage() {
           </Link>
         </div>
 
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
-          <div className="max-w-5xl mx-auto">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="project-gutter-x w-full min-w-0">
             <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
               HUMF 5874 — Human Centered Design
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Interactive Repair Guidance
             </h1>
-            <p className="text-gray-200 text-lg leading-relaxed mb-6 max-w-3xl">
+            <p className="text-gray-200 text-lg leading-relaxed mb-6">
               Product research and participatory design for clearer, safer assembly manuals — from field observation to a validated QR-based prototype.
             </p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
@@ -69,7 +69,7 @@ export default function MercedesServiceManualPage() {
         </header>
 
       {/* OPENING STORY */}
-      <section className="max-w-4xl mx-auto px-6 py-20">
+      <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-2xl leading-relaxed text-slate-700 mb-6">
           A technician flips through a 200-page repair manual searching for a wiring diagram buried in Section 7. Oil stains smudge the pages. A critical safety warning sits in 8-point font at the bottom of page 143.
         </p>
@@ -82,8 +82,8 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* DOUBLE DIAMOND PROCESS */}
-      <section className="w-full bg-slate-50 border-y border-slate-200 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="w-full bg-slate-50 border-y border-slate-200 py-16">
+        <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-8">Process</p>
           <h2 className="text-3xl font-bold mb-12">Double Diamond</h2>
 
@@ -136,10 +136,10 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* PROBLEM — stat cards instead of images */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Discover</p>
         <h2 className="text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
-        <p className="text-lg text-slate-600 mb-12 max-w-3xl">
+        <p className="text-lg text-slate-600 mb-12">
           Repair and assembly manuals are safety-critical documents. Yet they're designed like legal contracts — dense text, unclear visuals, buried warnings. When users can't follow them, they turn to YouTube.
         </p>
 
@@ -197,8 +197,8 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* DEFINE — Journey Map */}
-      <section className="w-full bg-slate-50 border-y border-slate-200 py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="w-full bg-slate-50 border-y border-slate-200 py-20">
+        <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Define</p>
           <h2 className="text-4xl font-bold mb-12">Journey Map — Current vs Ideal State</h2>
 
@@ -249,7 +249,7 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* THE PIG DRAWING TEST — hero moment */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop — Key Insight</p>
         <h2 className="text-4xl font-bold mb-8">The Pig Drawing Test</h2>
 
@@ -334,8 +334,8 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* KEY INSIGHTS */}
-      <section className="w-full bg-slate-900 py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="w-full bg-slate-900 py-20">
+        <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Key Discoveries</p>
           <h2 className="text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
 
@@ -380,10 +380,10 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* SOLUTION */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver — Prototype</p>
         <h2 className="text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
-        <p className="text-lg text-slate-600 mb-12 max-w-3xl">
+        <p className="text-lg text-slate-600 mb-12">
           Users scan a QR code on the product part. The app opens directly to that component's manual — no login, no search, no guessing.
         </p>
 
@@ -455,8 +455,8 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* USABILITY TESTING */}
-      <section className="w-full bg-slate-50 border-y border-slate-200 py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="w-full bg-slate-50 border-y border-slate-200 py-20">
+        <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Usability Testing</p>
           <h2 className="text-4xl font-bold mb-4">What We Learned from n=4</h2>
           <p className="text-lg text-slate-600 mb-12">Think-aloud protocol, scenario-based tasks, post-task reflection.</p>
@@ -482,7 +482,7 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* IMPACT */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Impact</p>
         <h2 className="text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
 
@@ -513,7 +513,7 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* REFLECTION */}
-      <section className="max-w-4xl mx-auto px-6 py-12 border-t border-slate-200">
+      <section className="project-gutter-x w-full min-w-0 py-12 border-t border-slate-200">
         <h2 className="text-3xl font-bold mb-6">Reflection</h2>
         <p className="text-lg leading-relaxed text-slate-700 mb-4">
           This project taught me that design research isn't about asking users what they want — it's about watching where they fail and designing systems that prevent those failures. Participatory design revealed problems I never would have found through interviews alone.
@@ -527,13 +527,15 @@ export default function MercedesServiceManualPage() {
       </section>
 
       {/* FOOTER NAV */}
-      <footer className="max-w-5xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200 flex items-center justify-between">
+      <footer className="w-full border-t border-slate-200 py-12">
+        <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
         <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
           ← Back to Portfolio
         </Link>
         <Link href="/manufacturing-workflow" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
           Next Project →
         </Link>
+        </div>
       </footer>
       </div>
     </main>

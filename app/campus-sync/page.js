@@ -29,6 +29,48 @@ function HoverableImage({ src, alt, className = '', imgClassName = '' }) {
   );
 }
 
+/** Live iframe embed; may be blank if campus-sync.org sets X-Frame-Options / CSP frame-ancestors. */
+function LiveCampusSyncEmbed() {
+  return (
+    <div
+      className="my-10 overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-lg"
+      data-no-cursor-hover
+    >
+      <div className="flex items-center gap-2 border-b border-slate-300/80 bg-slate-200/90 px-3 py-2.5">
+        <span className="flex gap-1.5" aria-hidden="true">
+          <span className="size-2.5 rounded-full bg-red-400/90" />
+          <span className="size-2.5 rounded-full bg-amber-400/90" />
+          <span className="size-2.5 rounded-full bg-green-400/90" />
+        </span>
+        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-200/80 bg-white px-3 py-1 font-mono text-xs text-slate-600">
+          https://campus-sync.org
+        </div>
+      </div>
+      <div className="relative h-[min(70svh,640px)] min-h-[320px] w-full bg-white">
+        <iframe
+          title="CampusSync — live Gopher Way navigation web app"
+          src="https://campus-sync.org/"
+          className="absolute inset-0 h-full w-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+      <p className="border-t border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-500">
+        Live embed. If this area stays blank, framing may be blocked — use{' '}
+        <a
+          href="https://campus-sync.org"
+          className="font-medium text-sky-700 underline hover:text-sky-800"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          campus-sync.org
+        </a>{' '}
+        in a new tab.
+      </p>
+    </div>
+  );
+}
+
 /** iPhone 16 (6.1") logical portrait ≈ 393 × 852 pt — frame height for prototype strip. */
 const UX_MOBILE_PROTOTYPES = [
   { file: 'images/campus sync/ux mobile prototye.png', alt: 'Mobile UX prototype screen 1' },
@@ -65,11 +107,13 @@ function PrototypeIphoneRow({ basePath }) {
 
 function Section({ id, title, children, className = '' }) {
   return (
-    <section id={id} className={`max-w-5xl mx-auto px-5 sm:px-8 py-14 ${className}`}>
-      {title ? (
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
-      ) : null}
-      {children}
+    <section id={id} className={`w-full py-14 ${className}`}>
+      <div className="project-gutter-x w-full min-w-0">
+        {title ? (
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
+        ) : null}
+        {children}
+      </div>
     </section>
   );
 }
@@ -121,8 +165,8 @@ export default function CampusSyncPage() {
         </div>
 
         {/* Hero */}
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
-          <div className="max-w-5xl mx-auto">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="project-gutter-x w-full min-w-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
             </h1>
@@ -136,7 +180,7 @@ export default function CampusSyncPage() {
           </div>
         </header>
 
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 -mt-8 relative z-10">
+        <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
         </div>
 
@@ -227,11 +271,7 @@ export default function CampusSyncPage() {
             Building-hour filtering integrated directly into the routing engine. The algorithm queries current building access status before pathfinding, so it never suggests a route through a locked building. Validated at 90%+ accuracy against 20 manually-verified routes.
           </Body>
 
-          <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm my-10">
-            <video className="w-full h-auto max-h-[520px] object-cover" autoPlay loop muted playsInline>
-              <source src={publicUrl(BASE_PATH, 'images/campus sync/home page.mp4')} type="video/mp4" />
-            </video>
-          </div>
+          <LiveCampusSyncEmbed />
 
           <Subheading className="mt-14 border-t border-gray-200 pt-12 scroll-mt-24">
             The Decision That Changed Everything
@@ -277,11 +317,20 @@ export default function CampusSyncPage() {
           </Body>
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Before and after dual-color route visualization" />
 
-          <Subheading>The Input Model</Subheading>
-          <Body>
-            Search-first, not map-click. Round 1 testing showed that tapping a small building on a map while moving was too slow and too error-prone. The search field uses autocomplete restricted to buildings in the navigable network — so users only see options that the routing engine can actually connect.
-          </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')} alt="Search-first interface" />
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-10 my-10">
+            <HoverableImage
+              className="my-0 shrink-0 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[260px] mx-auto md:mx-0"
+              imgClassName="max-h-[min(380px,50svh)] w-full object-contain object-top"
+              src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')}
+              alt="Search-first interface"
+            />
+            <div className="min-w-0 flex-1">
+              <Subheading className="!mt-0">The Input Model</Subheading>
+              <Body className="mb-0">
+                Search-first, not map-click. Round 1 testing showed that tapping a small building on a map while moving was too slow and too error-prone. The search field uses autocomplete restricted to buildings in the navigable network — so users only see options that the routing engine can actually connect.
+              </Body>
+            </div>
+          </div>
 
           <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-10 my-10">
             <div className="min-w-0 flex-1">
@@ -376,8 +425,8 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        <section className="max-w-5xl mx-auto px-5 sm:px-8 py-10 border-t border-gray-100">
-          <div className="flex flex-wrap justify-between gap-4 items-center">
+        <section className="w-full border-t border-gray-100 py-10">
+          <div className="project-gutter-x w-full min-w-0 flex flex-wrap justify-between gap-4 items-center">
             <Link href="/" className="text-sky-700 hover:text-sky-800 hover:underline font-semibold text-sm">
               ← Back to Portfolio
             </Link>

@@ -159,8 +159,8 @@ export default function InitiatorFellowshipPage() {
           </Link>
         </div>
 
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white px-5 sm:px-8 pt-28 pb-20 md:pt-32 md:pb-24">
-          <div className="max-w-5xl mx-auto">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+          <div className="project-gutter-x w-full min-w-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Initiator Fellowship Website Redesign
             </h1>
@@ -181,7 +181,7 @@ export default function InitiatorFellowshipPage() {
           </div>
         </header>
 
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 -mt-8 relative z-10">
+        <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
           <img
             src={asset('images/initiator-fellowship/screenshot-rocks.png')}
             alt="Initiator Fellowship website before and after"
@@ -190,17 +190,19 @@ export default function InitiatorFellowshipPage() {
         </div>
  
         {/* OPENING PROBLEM */}
-        <section id="problem" className="w-full px-6 py-12 border-t border-slate-200">
-          <div className="prose prose-sm max-w-3xl">
+        <section id="problem" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
+          <div className="prose prose-sm max-w-none">
             <p>A potential fellowship applicant visits the Initiator Fellowship website, excited to learn about the program. Within 90 seconds, she closes the tab.</p>
             <p>Not because she wasn't qualified. Not because the program wasn't right for her. But because she couldn't find the eligibility criteria.</p>
             <p>When we tested the site, this pattern repeated. Every single participant struggled with the same task: figure out if they could apply. The information existed—buried at the bottom of a page, hidden in an FAQ section, wrapped in confusing navigation.</p>
           </div>
+          </div>
         </section>
  
         {/* PROBLEM SECTION */}
-        <section id="usability-crisis" className="w-full px-6 py-12 border-t border-slate-200">
-          <div className="max-w-8xl mx-auto">
+        <section id="usability-crisis" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
             <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website—their primary recruitment tool—was actively preventing qualified candidates from applying.</p>
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -225,8 +227,8 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* RESEARCH APPROACH */}
-        <section id="research" className="w-full px-6 py-12 border-t border-slate-200">
-          <div className="max-w-8xl mx-auto">
+        <section id="research" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
             <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes—not just symptoms.</p>
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -251,7 +253,8 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* KEY INSIGHTS */}
-        <section id="insights" className="w-full px-10 py-12 border-t border-slate-200">
+        <section id="insights" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-8">Key Insights</h2>
           {[
             { 
@@ -321,11 +324,12 @@ export default function InitiatorFellowshipPage() {
               </div>
             </div>
           ))}
+          </div>
         </section>
  
         {/* IMPACT METRICS */}
-        <section id="impact" className="w-full px-10 py-12 border-t border-slate-200">
-          <div className="max-w-8xl mx-auto">
+        <section id="impact" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-8">Impact Metrics</h2>
             {[
               {
@@ -402,16 +406,19 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* USER QUOTE */}
-        <section id="quote" className="w-full px-6 py-12 border-t border-slate-200">
+        <section id="quote" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
           <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Most Impactful Change</h3>
           <blockquote className="text-2xl font-semibold italic text-slate-800 mb-3 pl-6 border-l-4 border-sky-500">
             "The new site made me feel like the fellowship actually wanted me to apply. Everything was clear, organized, and I knew exactly what to do next."
           </blockquote>
           <p className="text-sm text-slate-600">Participant feedback, Round 3 user testing</p>
+          </div>
         </section>
  
         {/* DELIVERABLES */}
-        <section id="deliverables" className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
+        <section id="deliverables" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
           <div className="grid grid-cols-2 gap-6 mb-8">
             {[
@@ -428,11 +435,11 @@ export default function InitiatorFellowshipPage() {
           </div>
           
           {/* PROTOTYPE SCREENSHOTS */}
-          <div className="mb-8 max-w-8xl mx-auto">
+          <div className="mb-8 w-full min-w-0">
             <h3 className="text-2xl font-semibold mb-6">Interactive Prototype Screens</h3>
             
             {/* Interactive Figma Embed */}
-              <div className="mb-12 max-w-8xl mx-auto aspect-video rounded-lg overflow-hidden border border-slate-300 shadow-lg">
+              <div className="mb-12 w-full min-w-0 aspect-video rounded-lg overflow-hidden border border-slate-300 shadow-lg">
               <iframe
                 style={{
                   border: '1px solid rgba(0, 0, 0, 0.1)',
@@ -445,12 +452,14 @@ export default function InitiatorFellowshipPage() {
               />
             </div>
           </div>
+          </div>
         </section>
  
         {/* REFLECTION */}
-        <section id="reflection" className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
+        <section id="reflection" className="w-full py-12 border-t border-slate-200">
+          <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
-          <div className="prose prose-sm max-w-3xl mb-8">
+          <div className="prose prose-sm max-w-none mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist—it's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
           </div>
           <blockquote className="text-lg italic text-slate-700 pl-6 border-l-4 border-slate-300 mb-6">
@@ -460,16 +469,19 @@ export default function InitiatorFellowshipPage() {
             <p className="mb-2"><span className="font-semibold">Team:</span> Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja</p>
             <p><span className="font-semibold">Course:</span> IE 4511 — December 2024</p>
           </div>
+          </div>
         </section>
  
         {/* FOOTER NAV */}
-        <footer className="max-w-5xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200 flex items-center justify-between">
+        <footer className="w-full border-t border-slate-200 py-12">
+          <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
           <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             ← Back to Portfolio
           </Link>
           <Link href="/campus-sync" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             Next Project →
           </Link>
+          </div>
         </footer>
       </div>
     </main>
