@@ -321,6 +321,23 @@ export default function CampusSyncPage() {
             </video>
           </div>
 
+          <Subheading className="mt-14 border-t border-gray-200 pt-12 scroll-mt-24">
+            The Decision That Changed Everything
+          </Subheading>
+          <p className="text-lg font-semibold text-gray-900 mb-4">Why We Moved from Mobile App to Web Product</p>
+          <Body>
+            The Figma prototype started as a native mobile app — login screen, bottom navigation bar, map-tap input. It felt like the right instinct: students use their phones, so build for phones. But the first prototype wasn&apos;t really about the interface. It was about answering a more fundamental question: would students actually use a tool like this at all, or would they keep defaulting to going outside?
+          </Body>
+          <Body>
+            That phase gave us our answer — and something we didn&apos;t expect. Students found the app concept intuitive enough to navigate, but the learning curve of a new installed app created friction before they even got to the routing. They needed to understand what the product did before they could trust it. A native app asks users to commit before they&apos;ve seen the value.
+          </Body>
+          <Body>
+            So we made the call to ship as a web product instead. No download. No login. Open a link, type two buildings, get a route. The barrier to first use dropped to zero — which mattered enormously for a product that students had to trust enough to use mid-route, in a coat, in the cold. The web format let the product prove itself before asking anything of the user.
+          </Body>
+          <Body className="mb-0">
+            The first prototype wasn&apos;t a failed design. It was the research that made the right design obvious.
+          </Body>
+
           <Subheading>Deliver: Two Fixes That Mattered</Subheading>
           <Body>
             Pilot testing gave us 10+ feedback responses. We implemented exactly two improvements — chosen by impact, not by ease. First: tunnel overlay visual weight increased so segments were distinguishable from building outlines on mobile screens. Second: dropdown menus rebuilt as bottom-sheet components on mobile, eliminating the overflow issue affecting phones under 390px width. Both fixes were regression-tested before the December 9 final release.
