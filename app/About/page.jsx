@@ -36,7 +36,7 @@ export default function AboutPage() {
     { label: 'Hiking', src: imgBase + '/duluth trip sunrise.jpg' },
     { label: 'India', src: imgBase + '/me at mercedes .jpg' },
     { label: 'Community', src: imgBase + '/aagumbe.jpg' },
-    { label: 'Moments', src: imgBase + '/minigolf at stone mountain.jpg' },
+    { label: 'Moments', src: imgBase + '/minigolf at stone mountain.JPG' },
     { label: 'More', src: imgBase + '/ooty.jpg' },
   ];
 
