@@ -128,7 +128,7 @@ input, textarea, select, button {
 }
 
 .custom-cursor::after {
-  content: 'view project';
+  content: attr(data-cursor-text);
   position: absolute;
   top: 50%;
   left: 50%;

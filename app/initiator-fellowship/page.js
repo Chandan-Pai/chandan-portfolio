@@ -128,23 +128,23 @@ function HoverableImage({ src, alt, className = "" }) {
     </>
   );
 }
+
+
  
 export default function InitiatorFellowshipPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [isDarkSection, setIsDarkSection] = useState(true);
   const [navExpanded, setNavExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState({ src: '', alt: '' });
- 
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
- 
+
   const isExpanded = !scrolled || navExpanded;
- 
+
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       {/* Top blur bar */}
@@ -200,7 +200,7 @@ export default function InitiatorFellowshipPage() {
         </nav>
         <LiveClock />
       </div>
- 
+
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
         <div className="fixed top-6 left-6 z-50">
@@ -216,7 +216,7 @@ export default function InitiatorFellowshipPage() {
             <span className={`text-sm font-semibold ${isDarkSection ? 'text-black' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
- 
+
         {/* HERO IMAGE */}
         <section className="w-full bg-gradient-to-r from-green-900 to-green-700 py-20">
           <div className="max-w-5xl mx-auto px-6">
@@ -249,7 +249,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* OPENING PROBLEM */}
-        <section className="w-full px-6 py-12 border-t border-slate-200">
+        <section id="problem" className="w-full px-6 py-12 border-t border-slate-200">
           <div className="prose prose-sm max-w-3xl">
             <p>A potential fellowship applicant visits the Initiator Fellowship website, excited to learn about the program. Within 90 seconds, she closes the tab.</p>
             <p>Not because she wasn't qualified. Not because the program wasn't right for her. But because she couldn't find the eligibility criteria.</p>
@@ -258,7 +258,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* PROBLEM SECTION */}
-        <section className="w-full px-6 py-12 border-t border-slate-200">
+        <section id="usability-crisis" className="w-full px-6 py-12 border-t border-slate-200">
           <div className="max-w-8xl mx-auto">
             <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
             <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website—their primary recruitment tool—was actively preventing qualified candidates from applying.</p>
@@ -284,7 +284,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* RESEARCH APPROACH */}
-        <section className="w-full px-6 py-12 border-t border-slate-200">
+        <section id="research" className="w-full px-6 py-12 border-t border-slate-200">
           <div className="max-w-8xl mx-auto">
             <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
             <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes—not just symptoms.</p>
@@ -310,7 +310,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* KEY INSIGHTS */}
-        <section className="w-full px-10 py-12 border-t border-slate-200">
+        <section id="insights" className="w-full px-10 py-12 border-t border-slate-200">
           <h2 className="text-4xl font-bold mb-8">Key Insights</h2>
           {[
             { 
@@ -383,7 +383,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* IMPACT METRICS */}
-        <section className="w-full px-10 py-12 border-t border-slate-200">
+        <section id="impact" className="w-full px-10 py-12 border-t border-slate-200">
           <div className="max-w-8xl mx-auto">
             <h2 className="text-4xl font-bold mb-8">Impact Metrics</h2>
             {[
@@ -461,7 +461,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* USER QUOTE */}
-        <section className="w-full px-6 py-12 border-t border-slate-200">
+        <section id="quote" className="w-full px-6 py-12 border-t border-slate-200">
           <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Most Impactful Change</h3>
           <blockquote className="text-2xl font-semibold italic text-slate-800 mb-3 pl-6 border-l-4 border-green-500">
             "The new site made me feel like the fellowship actually wanted me to apply. Everything was clear, organized, and I knew exactly what to do next."
@@ -470,7 +470,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* DELIVERABLES */}
-        <section className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
+        <section id="deliverables" className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
           <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
           <div className="grid grid-cols-2 gap-6 mb-8">
             {[
@@ -487,32 +487,27 @@ export default function InitiatorFellowshipPage() {
           </div>
           
           {/* PROTOTYPE SCREENSHOTS */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold mb-6">Prototype Screens</h3>
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { num: 'Home', src: `${BASE_PATH}/images/initiator-fellowship/protohome.png`, alt: 'Home Page - Prototype', title: 'Home' },
-                { num: 'Program', src: `${BASE_PATH}/images/initiator-fellowship/proprogram.png`, alt: 'Program Page - Prototype', title: 'Program' },
-                { num: 'Fellows', src: `${BASE_PATH}/images/initiator-fellowship/protofellows.png`, alt: 'Fellows Page - Prototype', title: 'Fellows' },
-                { num: 'Resources', src: `${BASE_PATH}/images/initiator-fellowship/protoresources.png`, alt: 'Resources Page - Prototype', title: 'Resources' }
-              ].map((fig) => (
-                <div key={fig.num} className="relative group">
-                  <HoverableImage
-                    src={fig.src}
-                    alt={fig.alt}
-                    className="h-96 w-full rounded-lg border border-slate-300"
-                  />
-                  <div className="mt-3">
-                    <p className="font-semibold text-slate-900 mb-1">{fig.title}</p>
-                  </div>
-                </div>
-              ))}
+          <div className="mb-8 max-w-8xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6">Interactive Prototype Screens</h3>
+            
+            {/* Interactive Figma Embed */}
+              <div className="mb-12 max-w-8xl mx-auto aspect-video rounded-lg overflow-hidden border border-slate-300 shadow-lg">
+              <iframe
+                style={{
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  borderRadius: '8px',
+                  width: '100%',
+                  height: '100%'
+                }}
+                src="https://embed.figma.com/proto/dHJku6xJ448RkamNTetvyD/IE4511_GroupProject--Copy-?node-id=23-3&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=23%3A3&embed-host=share"
+                allowFullScreen
+              />
             </div>
           </div>
         </section>
  
         {/* REFLECTION */}
-        <section className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
+        <section id="reflection" className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
           <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
           <div className="prose prose-sm max-w-3xl mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist—it's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>

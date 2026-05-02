@@ -17,24 +17,39 @@ export default function CursorProvider() {
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseleave', onLeave);
 
-    // Only add hover effect on homepage project cards (not on project detail pages)
-    const isHomePage = window.location.pathname === '/';
-    
-    if (isHomePage) {
-      const addHoverToProjects = () => {
-        const projectLinks = document.querySelectorAll('.project-link');
-        projectLinks.forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-      };
+    // Handle all interactive elements with cursor effects
+    const handleMouseEnter = (e) => {
+      if (!(e.target instanceof Element)) return;
       
-      setTimeout(addHoverToProjects, 100);
-    }
+      const isImage = e.target.closest('[data-cursor-expand]');
+      const isProject = e.target.closest('.project-link');
+      const target = e.target.closest('[data-cursor-expand], .project-link');
+      
+      if (target && !target.hasAttribute('data-no-cursor-hover')) {
+        cursor.classList.add('hover');
+        
+        // Update text based on element type
+        if (isImage) {
+          cursor.setAttribute('data-cursor-text', 'Expand');
+        } else if (isProject) {
+          cursor.setAttribute('data-cursor-text', 'view project');
+        }
+      }
+    };
+
+    const handleMouseLeave = () => {
+      cursor.classList.remove('hover');
+      cursor.removeAttribute('data-cursor-text');
+    };
+
+    document.addEventListener('mouseenter', handleMouseEnter, true);
+    document.addEventListener('mouseleave', handleMouseLeave, true);
 
     return () => {
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter, true);
+      document.removeEventListener('mouseleave', handleMouseLeave, true);
       cursor.remove();
     };
   }, []);
