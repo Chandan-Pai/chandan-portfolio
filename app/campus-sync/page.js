@@ -250,7 +250,7 @@ export default function CampusSyncPage() {
 
           {/* Decision 2 */}
           <div className="grid md:grid-cols-2 gap-8 items-start">
-             <HoverableImage src={`${BASE_PATH}/images/campus sync/Before:After visualization.png`} alt="Campus-Sync hero"  />
+             <HoverableImage src={`${BASE_PATH}/images/campus sync/Before:after visualization.png`} alt="Campus-Sync hero"  />
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Dual-Color Visual System</h3>
               <p className="text-sm text-[#8B1538] font-semibold mb-3">Insight</p>
