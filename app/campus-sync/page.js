@@ -23,57 +23,17 @@ function LiveClock() {
 }
 
 function HoverableImage({ src, alt }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <>
-      <div
-        className="card cursor-pointer"
-        data-no-cursor-hover
-        data-cursor-expand
-        onClick={() => setIsOpen(true)}
-        style={{ textDecoration: 'none', color: 'inherit' }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="w-full rounded-lg mb-8 transition-all duration-300 group-hover:shadow-2xl"
-        />
-
-        {/* Hover overlay */}
-        <div className="absolute inset-0 rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-          <div className="text-white text-center">
-            <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 13H9" />
-            </svg>
-            <p className="font-semibold text-sm">Click to expand</p>
-          </div>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setIsOpen(false)}
-        >
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition z-51"
-            aria-label="Close"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          <img
-            src={src}
-            alt={alt}
-            className="max-w-4xl max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-    </>
+    <figure
+      className="group relative mb-8 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md"
+      data-no-cursor-hover
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="block w-full h-auto rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+      />
+    </figure>
   );
 }
 
