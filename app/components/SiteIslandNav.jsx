@@ -39,12 +39,11 @@ export default function SiteIslandNav() {
       <div className="pointer-events-none fixed top-6 left-0 right-0 z-50">
         <div className="relative mx-auto h-10 w-full max-w-[100vw]">
           <div className="pointer-events-auto absolute left-[25%] top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Link
-              href="/"
+            <span
               className={`text-sm font-semibold tracking-widest transition-colors ${scrolled ? 'text-slate-900' : 'text-white drop-shadow-sm'}`}
             >
               CP
-            </Link>
+            </span>
           </div>
 
           <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

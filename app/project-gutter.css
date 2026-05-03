@@ -1,20 +1,7 @@
-/* Case studies: wide side inset on large screens; comfortable reading width on phones & tablets. */
+/* Plain CSS — do not @import tailwind here; Tailwind would drop these rules from the bundle.
+   Case studies: ~15vw side inset (min 1rem), content in the center ~70vw band. */
 .project-gutter-x {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: max(1rem, 15vw);
+  padding-right: max(1rem, 15vw);
   box-sizing: border-box;
-}
-
-@media (min-width: 640px) {
-  .project-gutter-x {
-    padding-left: max(1.25rem, 5vw);
-    padding-right: max(1.25rem, 5vw);
-  }
-}
-
-@media (min-width: 1024px) {
-  .project-gutter-x {
-    padding-left: max(1rem, 15vw);
-    padding-right: max(1rem, 15vw);
-  }
 }

@@ -156,24 +156,6 @@ input, textarea, select, button {
   opacity: 1;
 }
 
-/* Touch / coarse pointer: hide custom cursor (no mouse trail on phones/tablets). */
-@media (pointer: coarse) {
-  .custom-cursor {
-    display: none !important;
-  }
-}
-
-/* About page: fixed backgrounds jitter on many mobile browsers; use fixed only on large screens. */
-.about-hero-bg {
-  background-attachment: scroll;
-}
-
-@media (min-width: 1024px) {
-  .about-hero-bg {
-    background-attachment: fixed;
-  }
-}
-
 /* Astronaut floating animation */
 .astronaut-float {
   animation: float 3s ease-in-out infinite;

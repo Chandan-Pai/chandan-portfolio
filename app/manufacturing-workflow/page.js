@@ -21,7 +21,7 @@ export default function ManufacturingWorkflowPage() {
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed left-4 z-[45] lg:left-6 top-[calc(env(safe-area-inset-top,0px)+5rem)] lg:top-6">
+        <div className="fixed top-6 left-6 z-50">
           <Link
             href="/"
             aria-label="Back to portfolio"
@@ -72,17 +72,17 @@ export default function ManufacturingWorkflowPage() {
         <section className="project-gutter-x w-full min-w-0 py-20">
           <div className="grid md:grid-cols-3 gap-6 mb-20">
             <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
-              <p className="text-4xl sm:text-5xl font-bold text-white mb-2">13.47s</p>
+              <p className="text-5xl font-bold text-white mb-2">13.47s</p>
               <p className="text-sm text-slate-400">Takt time per blade assembly</p>
               <p className="text-xs text-slate-500 mt-3">Customer demand: 122,000 blades/month</p>
             </div>
             <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
-              <p className="text-4xl sm:text-5xl font-bold text-white mb-2">18.2s</p>
+              <p className="text-5xl font-bold text-white mb-2">18.2s</p>
               <p className="text-sm text-slate-400">Station 5 bottleneck (blade break)</p>
               <p className="text-xs text-slate-500 mt-3">41% longer than takt time target</p>
             </div>
             <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
-              <p className="text-4xl sm:text-5xl font-bold text-white mb-2">142</p>
+              <p className="text-5xl font-bold text-white mb-2">142</p>
               <p className="text-sm text-slate-400">Average batch size per cycle</p>
               <p className="text-xs text-slate-500 mt-3">Mix of 10mm and 15mm blades</p>
             </div>

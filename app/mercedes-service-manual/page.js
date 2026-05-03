@@ -21,7 +21,7 @@ export default function MercedesServiceManualPage() {
 
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed left-4 z-[45] lg:left-6 top-[calc(env(safe-area-inset-top,0px)+5rem)] lg:top-6">
+        <div className="fixed top-6 left-6 z-50">
           <Link
             href="/"
             aria-label="Back to portfolio"
@@ -138,7 +138,7 @@ export default function MercedesServiceManualPage() {
       {/* PROBLEM — stat cards instead of images */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Discover</p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
+        <h2 className="text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
         <p className="text-lg text-slate-600 mb-12">
           Repair and assembly manuals are safety-critical documents. Yet they're designed like legal contracts — dense text, unclear visuals, buried warnings. When users can't follow them, they turn to YouTube.
         </p>
@@ -200,7 +200,7 @@ export default function MercedesServiceManualPage() {
       <section className="w-full bg-slate-50 border-y border-slate-200 py-20">
         <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Define</p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12">Journey Map — Current vs Ideal State</h2>
+          <h2 className="text-4xl font-bold mb-12">Journey Map — Current vs Ideal State</h2>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -251,7 +251,7 @@ export default function MercedesServiceManualPage() {
       {/* THE PIG DRAWING TEST — hero moment */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop — Key Insight</p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">The Pig Drawing Test</h2>
+        <h2 className="text-4xl font-bold mb-8">The Pig Drawing Test</h2>
 
         {/* Narrative text */}
         <div className="mb-12">
@@ -337,7 +337,7 @@ export default function MercedesServiceManualPage() {
       <section className="w-full bg-slate-900 py-20">
         <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Key Discoveries</p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
+          <h2 className="text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
 
           <div className="grid grid-cols-2 gap-6">
             {[
@@ -382,7 +382,7 @@ export default function MercedesServiceManualPage() {
       {/* SOLUTION */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver — Prototype</p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
+        <h2 className="text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
         <p className="text-lg text-slate-600 mb-12">
           Users scan a QR code on the product part. The app opens directly to that component's manual — no login, no search, no guessing.
         </p>
@@ -458,7 +458,7 @@ export default function MercedesServiceManualPage() {
       <section className="w-full bg-slate-50 border-y border-slate-200 py-20">
         <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Usability Testing</p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">What We Learned from n=4</h2>
+          <h2 className="text-4xl font-bold mb-4">What We Learned from n=4</h2>
           <p className="text-lg text-slate-600 mb-12">Think-aloud protocol, scenario-based tasks, post-task reflection.</p>
 
           {/* Direct user quotes */}
@@ -484,7 +484,7 @@ export default function MercedesServiceManualPage() {
       {/* IMPACT */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Impact</p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
+        <h2 className="text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
 
         <div className="grid grid-cols-2 gap-8 mb-12">
           <div>

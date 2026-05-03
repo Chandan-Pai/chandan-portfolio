@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 
 export default function CursorProvider() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (!window.matchMedia('(pointer: fine)').matches) return;
-
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);

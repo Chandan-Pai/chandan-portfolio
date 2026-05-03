@@ -93,15 +93,6 @@ export default function HomePage() {
     }
 
     function updateCards() {
-      if (window.matchMedia('(max-width: 1023px)').matches) {
-        cards.forEach((card) => {
-          card.style.removeProperty('transform');
-          card.style.removeProperty('opacity');
-          card.style.removeProperty('transform-origin');
-        });
-        return;
-      }
-
       const vh = window.innerHeight;
 
       const rawProgress = cards.map((card) => {
@@ -188,8 +179,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       {/* Hero — full image (no cover crop); width fits viewport, height from aspect ratio */}
-      <header className="relative w-full max-w-[100%] overflow-x-clip overflow-y-visible bg-neutral-900">
-        <div className="relative w-full min-w-0">
+      <header className="relative overflow-hidden bg-neutral-900">
+        <div className="relative w-full">
           <img
             src={publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}
             alt=""
@@ -201,23 +192,21 @@ export default function HomePage() {
             draggable={false}
           />
           <div className="absolute inset-0 z-[1] bg-black/40 pointer-events-none" aria-hidden />
-          <div
-            className="absolute inset-0 z-10 box-border flex w-full min-w-0 max-w-full flex-col items-start justify-start text-left pt-[max(5.5rem,env(safe-area-inset-top,0px)+4.5rem)] pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] sm:pl-8 sm:pr-8 md:justify-center md:pt-0 md:pb-0 md:pl-14 md:pr-10 lg:pl-20 lg:pr-16"
-          >
-            <div className="w-full min-w-0 max-w-[44rem]">
+          <div className="absolute inset-0 z-10 flex flex-col justify-center items-start pl-6 sm:pl-10 md:pl-14 lg:pl-20 pr-6 text-left">
+            <div className="max-w-[min(44rem,92vw)]">
               <h1
-                className="font-black tracking-tight uppercase text-pretty bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent drop-shadow-md [overflow-wrap:anywhere]"
+                className="font-black tracking-tight uppercase whitespace-nowrap bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent drop-shadow-md"
                 style={{
-                  fontSize: 'clamp(1.75rem, 8.5vw, 5.5rem)',
-                  lineHeight: '1.05',
+                  fontSize: 'clamp(2.75rem, 10vw, 5.5rem)',
+                  lineHeight: '1',
                 }}
               >
                 CHANDAN PAI
               </h1>
-              <p className="mt-4 sm:mt-6 max-w-full text-[0.7rem] font-semibold uppercase leading-snug tracking-wide text-white/90 sm:text-xs sm:tracking-widest md:text-sm [overflow-wrap:anywhere]">
+              <p className="mt-6 text-sm font-semibold tracking-widest text-white/90 uppercase">
                 Human Factors Engineer • UX Researcher
               </p>
-              <p className="mt-6 max-w-full break-words text-base leading-relaxed text-white/90 sm:mt-8 sm:text-lg">
+              <p className="mt-8 text-lg text-white/90 leading-relaxed">
                 Building data-driven design solutions at the intersection of engineering and human behavior
               </p>
             </div>
@@ -226,13 +215,13 @@ export default function HomePage() {
       </header>
 
       {/* Projects Gallery */}
-      <section id="work" className="py-14 px-4 sm:py-20 sm:px-6 md:py-24">
+      <section id="work" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-16">Work</h2>
-          <div className="h-0.5 w-full bg-gray-300 mb-10 sm:mb-16"></div>
+          <h2 className="text-4xl font-bold mb-16">Work</h2>
+          <div className="h-0.5 w-full bg-gray-300 mb-16"></div>
 
-          <div className="scene lg:[perspective:1400px] lg:[perspective-origin:50%_30%]">
-            <div className="space-y-6 sm:space-y-8">
+          <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
+            <div className="space-y-8">
               {projects.map((project, index) => (
                 <Link
                   key={project.id}
@@ -262,10 +251,10 @@ export default function HomePage() {
                         />
                       )}
                     </div>
-                    <div className="w-full md:w-1/3 p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 min-h-0 min-w-0">
+                    <div className="w-full md:w-1/3 p-8 md:p-10 flex flex-col justify-between gap-8 min-h-0 min-w-0">
                       <div>
                         <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
-                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
                         <p className="text-sm text-slate-500 leading-relaxed">{project.metric}</p>
                       </div>
                       <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-4 transition-all duration-300">
@@ -282,12 +271,12 @@ export default function HomePage() {
       </section>
 
       {/* GitHub Projects */}
-      <section className="py-14 px-4 sm:py-20 sm:px-6 md:py-24 border-t border-slate-100">
+      <section id="work" className="py-24 px-6 border-t border-slate-100">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12">Projects</h2>
+          <h2 className="text-3xl font-bold mb-12">Projects</h2>
 
-         <div className="space-y-4 sm:space-y-6">
+         <div className="space-y-6">
             {[
               { 
                 title: 'Laptop Sales Data Visualization', 
@@ -306,15 +295,15 @@ export default function HomePage() {
               
             ].map((proj, i) => (
               <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
-                className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between p-4 sm:p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group touch-manipulation">
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-base sm:text-lg mb-1 group-hover:text-slate-700">{proj.title}</h3>
+                className="flex items-center justify-between p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group">
+                <div>
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-slate-700">{proj.title}</h3>
                   <p className="text-sm text-slate-500 mb-3">{proj.desc}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex gap-2">
                     {proj.tech.map(t => <span key={t} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">{t}</span>)}
                   </div>
                 </div>
-                <span className="text-slate-400 group-hover:text-slate-700 text-xl shrink-0 sm:ml-6 self-end sm:self-auto" aria-hidden>→</span>
+                <span className="text-slate-400 group-hover:text-slate-700 text-xl ml-6">→</span>
               </a>
             ))}
           </div>
@@ -322,10 +311,10 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-14 px-4 sm:py-20 sm:px-6 md:py-24">
+      <section id="contact" className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Let's Connect</h2>
-          <p className="text-base sm:text-lg text-slate-600 mb-8 px-1">
+          <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
+          <p className="text-lg text-slate-600 mb-8">
             Open to HF/UX roles, industrial engineering positions, and collaborative research opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
