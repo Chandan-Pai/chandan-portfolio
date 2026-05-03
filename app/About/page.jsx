@@ -90,12 +90,11 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       <div
-        className="fixed inset-0 z-0"
+        className="about-hero-bg fixed inset-0 z-0"
         style={{
           backgroundImage: 'url("https://images5.alphacoders.com/492/492784.jpg")',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          backgroundAttachment: 'fixed',
           filter: 'grayscale(100%) brightness(0.3)',
         }}
       />
@@ -270,6 +269,17 @@ export default function AboutPage() {
           position: absolute;
           padding-top: 150px;
           display: block;
+        }
+        @media (max-width: 639px) {
+          .astronaut {
+            padding-top: 80px;
+            opacity: 0.4;
+            pointer-events: none;
+          }
+          .astronaut img {
+            width: 120px !important;
+            height: auto !important;
+          }
         }
         .astronaut1 {
           left: 60%;

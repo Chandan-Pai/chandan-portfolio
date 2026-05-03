@@ -145,7 +145,7 @@ export default function InitiatorFellowshipPage() {
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed left-4 z-[45] lg:left-6 top-[calc(env(safe-area-inset-top,0px)+5rem)] lg:top-6">
           <Link
             href="/"
             aria-label="Back to portfolio"
@@ -203,7 +203,7 @@ export default function InitiatorFellowshipPage() {
         {/* PROBLEM SECTION */}
         <section id="usability-crisis" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">The Usability Crisis</h2>
             <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website—their primary recruitment tool—was actively preventing qualified candidates from applying.</p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               {[
@@ -229,7 +229,7 @@ export default function InitiatorFellowshipPage() {
         {/* RESEARCH APPROACH */}
         <section id="research" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
             <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes—not just symptoms.</p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               {[
@@ -255,7 +255,7 @@ export default function InitiatorFellowshipPage() {
         {/* KEY INSIGHTS */}
         <section id="insights" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-8">Key Insights</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">Key Insights</h2>
           {[
             { 
               title: 'Disconnected Application Process', 
@@ -330,7 +330,7 @@ export default function InitiatorFellowshipPage() {
         {/* IMPACT METRICS */}
         <section id="impact" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-8">Impact Metrics</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">Impact Metrics</h2>
             {[
               {
                 title: 'Average Post-Task Rating Improvement',
@@ -382,7 +382,7 @@ export default function InitiatorFellowshipPage() {
                 </div>
                 <div className="mb-6 bg-gradient-to-r from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-6">
                   <p className="text-sm text-slate-600 uppercase tracking-wide mb-2">Measured Impact</p>
-                  <p className="text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
                   <p className="text-lg font-semibold text-sky-700">{metric.increase}</p>
                   {metric.detail && <p className="text-sm text-slate-600 mt-3">{metric.detail}</p>}
                 </div>
@@ -419,7 +419,7 @@ export default function InitiatorFellowshipPage() {
         {/* DELIVERABLES */}
         <section id="deliverables" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">What We Shipped</h2>
           <div className="grid grid-cols-2 gap-6 mb-8">
             {[
               { title: 'Figma Prototype', desc: 'Interactive high-fidelity prototype with full user flows' },
@@ -458,7 +458,7 @@ export default function InitiatorFellowshipPage() {
         {/* REFLECTION */}
         <section id="reflection" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Designing for Real Impact</h2>
           <div className="prose prose-sm max-w-none mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist—it's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
           </div>

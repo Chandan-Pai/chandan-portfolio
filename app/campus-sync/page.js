@@ -107,10 +107,10 @@ function PrototypeIphoneRow({ basePath }) {
 
 function Section({ id, title, children, className = '' }) {
   return (
-    <section id={id} className={`w-full py-14 ${className}`}>
+    <section id={id} className={`w-full py-10 sm:py-14 ${className}`}>
       <div className="project-gutter-x w-full min-w-0">
         {title ? (
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 tracking-tight">{title}</h2>
         ) : null}
         {children}
       </div>
@@ -142,7 +142,7 @@ export default function CampusSyncPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed left-4 z-[45] lg:left-6 top-[calc(env(safe-area-inset-top,0px)+5rem)] lg:top-6">
           <Link
             href="/"
             aria-label="Back to portfolio"

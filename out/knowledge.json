@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "description": "Curated snippets for local retrieval on this portfolio only — not a general knowledge base.",
+  "chunks": [
+    {
+      "id": "project-campus-sync",
+      "title": "Campus-Sync Navigation",
+      "path": "/campus-sync",
+      "tags": ["campus", "campus-sync", "navigation", "sync", "mobile", "wayfinding", "errors", "task completion"],
+      "body": "Research-led campus navigation redesign with measurable gains in wayfinding and task success on the case study page."
+    },
+    {
+      "id": "project-initiator-fellowship",
+      "title": "Initiator Fellowship — Website Accessibility Redesign",
+      "path": "/initiator-fellowship",
+      "tags": ["initiator", "fellowship", "accessibility", "wcag", "a11y", "usability", "redesign", "UX research"],
+      "body": "Accessibility-focused UX research and redesign documented with methods, artifacts, and outcomes on the full case study."
+    },
+    {
+      "id": "project-mercedes-service-manual",
+      "title": "Mercedes Interactive Service Manual",
+      "path": "/mercedes-service-manual",
+      "tags": ["mercedes", "service manual", "repair", "automotive", "prototype", "guided repair", "usability"],
+      "body": "Interactive repair-guidance research and prototyping, including usability validation, summarized on the Mercedes service manual case study."
+    },
+    {
+      "id": "skills-methods",
+      "title": "Skills & methods",
+      "path": "/About",
+      "tags": ["human factors", "HF", "UX research", "usability", "industrial design", "prototype", "methods", "lean", "workflow", "surveys", "interviews"],
+      "body": "Chandan works at the intersection of human factors, UX research, and product design — see About for background and how research informs design decisions."
+    },
+    {
+      "id": "about-bio",
+      "title": "About & bio",
+      "path": "/About",
+      "tags": ["about", "bio", "background", "who", "story", "portfolio", "chandan pai"],
+      "body": "Personal narrative, interests, and professional focus live on the About page with supporting imagery and context."
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "path": "/#contact",
+      "tags": ["contact", "email", "linkedin", "hire", "collaborate", "reach", "connect"],
+      "body": "Reach out via the site contact section for HF/UX, research collaboration, or roles — email and LinkedIn are listed there."
+    }
+  ]
+}
