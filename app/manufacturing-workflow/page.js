@@ -21,17 +21,17 @@ export default function ManufacturingWorkflowPage() {
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
-            className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
+            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
               isDarkSection ? 'text-white' : 'text-gray-900'
             }`}
           >
             <svg
-              className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -39,12 +39,14 @@ export default function ManufacturingWorkflowPage() {
             >
               <path d="M15 18L9 12L15 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>
+              Back to Portfolio
+            </span>
           </Link>
         </div>
 
-        {/* Hero Section — aligned with campus-sync case study header */}
-        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+        {/* Hero Section: aligned with campus-sync case study header */}
+        <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
           <div className="project-gutter-x w-full min-w-0">
             <div className="mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
@@ -95,7 +97,7 @@ export default function ManufacturingWorkflowPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                Boston Scientific's Wolverine cutting balloon blade production requires precision and efficiency. The coronary cutting balloon opens coronary arteries when standard balloon angioplasty cannot address blockages—a critical medical device where manufacturing quality directly impacts patient outcomes.
+                Boston Scientific's Wolverine cutting balloon blade production requires precision and efficiency. The coronary cutting balloon opens coronary arteries when standard balloon angioplasty cannot address blockages: a critical medical device where manufacturing quality directly impacts patient outcomes.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
                 Our task: Analyze the three-station production workflow (blade break, degreasing, dimensional inspection), identify bottlenecks, and optimize using lean methodology.
@@ -193,7 +195,7 @@ export default function ManufacturingWorkflowPage() {
                 <div className="order-1 md:order-2">
                   <h3 className="text-xl font-semibold mb-4">Process Balance & Bottleneck Identification</h3>
                   <p className="text-gray-700 mb-4">
-                    Analysis of all three stations revealed that Station 5 (blade break) operates at 18.2 seconds per blade—<strong>41% above takt time.</strong>
+                    Analysis of all three stations revealed that Station 5 (blade break) operates at 18.2 seconds per blade: <strong>41% above takt time.</strong>
                   </p>
                   <p className="text-gray-700 mb-4">
                     Stations 6 and 7 operate below takt time, meaning they can keep pace with customer demand when Station 5 is unconstrained. This identifies blade break as the production constraint.
@@ -228,7 +230,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-gray-700 mb-3">
                 Operators engage in unnecessary reaching for tools, searching for supplies, and non-value-added movements across the three stations.
               </p>
-              <p className="text-sm text-gray-600"><strong>Opportunity:</strong> Workstation layout optimization could save 2–3 seconds per cycle</p>
+              <p className="text-sm text-gray-600"><strong>Opportunity:</strong> Workstation layout optimization could save 2-3 seconds per cycle</p>
             </div>
 
             <div className="p-8 bg-slate-50 rounded-lg border border-slate-200">
@@ -236,7 +238,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-gray-700 mb-3">
                 Operators experience delays waiting for degreasing machine cycles to complete and for parts to arrive from upstream EDM machining (3.5-hour batches).
               </p>
-              <p className="text-sm text-gray-600"><strong>Note:</strong> EDM machine excluded from analysis—operates independently with 3.5-hour cycle, impractical for real-time observation</p>
+              <p className="text-sm text-gray-600"><strong>Note:</strong> EDM machine excluded from analysis; it operates independently with 3.5-hour cycle, impractical for real-time observation</p>
             </div>
 
             <div className="p-8 bg-sky-50 rounded-lg border border-sky-200">
@@ -257,7 +259,7 @@ export default function ManufacturingWorkflowPage() {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                  <span className="text-lg">⚡</span> Short-term (Weeks 1–4)
+                  <span className="text-lg">⚡</span> Short-term (Weeks 1-4)
                 </h3>
                 <ul className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-2">
@@ -270,19 +272,19 @@ export default function ManufacturingWorkflowPage() {
                   </li>
                   <li className="flex gap-2">
                     <span>✓</span>
-                    <span><strong>Expected savings:</strong> 1.5–2 seconds/cycle (8–11% throughput improvement)</span>
+                    <span><strong>Expected savings:</strong> 1.5-2 seconds/cycle (8-11% throughput improvement)</span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                  <span className="text-lg">🔄</span> Long-term (Months 2–3)
+                  <span className="text-lg">🔄</span> Long-term (Months 2-3)
                 </h3>
                 <ul className="space-y-3 text-sm text-slate-300">
                   <li className="flex gap-2">
                     <span>✓</span>
-                    <span><strong>Pull-based flow system:</strong> Shift from batch processing to smaller batch sizes (25–30 units) to reduce wait time</span>
+                    <span><strong>Pull-based flow system:</strong> Shift from batch processing to smaller batch sizes (25-30 units) to reduce wait time</span>
                   </li>
                   <li className="flex gap-2">
                     <span>✓</span>
@@ -290,7 +292,7 @@ export default function ManufacturingWorkflowPage() {
                   </li>
                   <li className="flex gap-2">
                     <span>✓</span>
-                    <span><strong>Expected savings:</strong> 3–4 seconds/cycle (22–30% throughput improvement)</span>
+                    <span><strong>Expected savings:</strong> 3-4 seconds/cycle (22-30% throughput improvement)</span>
                   </li>
                 </ul>
               </div>
@@ -325,13 +327,13 @@ export default function ManufacturingWorkflowPage() {
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            We quantified improvement opportunities worth 3–4 seconds per cycle through workstation reorganization, visual management, and pull-based flow systems. Implementation could increase throughput by 22–30% without additional capital investment—translating to 426 additional blades per shift or 9,372 blades per month (additional revenue at scale).
+            We quantified improvement opportunities worth 3-4 seconds per cycle through workstation reorganization, visual management, and pull-based flow systems. Implementation could increase throughput by 22-30% without additional capital investment, translating to 426 additional blades per shift or 9,372 blades per month (additional revenue at scale).
           </p>
 
           <div className="bg-slate-50 p-6 rounded-lg border border-slate-200 mb-8">
             <p className="text-sm font-semibold text-gray-900 mb-2">Key Takeaway</p>
             <p className="text-gray-700">
-              This analysis demonstrates that visibility into actual cycle times, batch composition, and operator variability is essential for targeting improvement efforts. The blade break station's constraint status was quantifiable—and therefore solvable.
+              This analysis demonstrates that visibility into actual cycle times, batch composition, and operator variability is essential for targeting improvement efforts. The blade break station's constraint status was quantifiable, and therefore solvable.
             </p>
           </div>
 

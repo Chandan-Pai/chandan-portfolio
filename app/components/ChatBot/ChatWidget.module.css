@@ -230,7 +230,7 @@
   outline-offset: 2px;
 }
 
-/* Sheet fallback — plain text, no card chrome */
+/* Sheet fallback: plain text, no card chrome */
 .sheetAnswer {
   margin: 0;
   padding: 0.5rem 0.25rem;

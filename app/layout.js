@@ -12,13 +12,23 @@ export const metadata = {
   description: 'Human Factors Engineer & UX Researcher',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" style={{ backgroundColor: '#ffffff' }}>
       <head></head>
       <body
         className={`${inter.className} m-0 min-h-dvh bg-white text-slate-900 antialiased [background-color:rgb(255,255,255)]`}
-        style={{ backgroundColor: '#ffffff' }}
+        style={{
+          backgroundColor: '#ffffff',
+          paddingLeft: 'env(safe-area-inset-left, 0px)',
+          paddingRight: 'env(safe-area-inset-right, 0px)',
+        }}
       >
         <CursorProvider />
         <SiteIslandNav />

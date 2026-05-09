@@ -91,7 +91,7 @@ function retrieve(chunks, query, topK) {
   return out;
 }
 
-/** All chunks with scores (including zero), descending — for trace and threshold check. */
+/** All chunks with scores (including zero), descending, for trace and threshold check. */
 function scoreAllChunks(chunks, query) {
   const queryTokens = tokenize(query);
   const scored = chunks.map((chunk) => ({
@@ -570,7 +570,7 @@ export default function FloatingChatWidget() {
                   Local retrieval
                 </p>
                 <p className={styles.paletteHint}>
-                  Keyword match on this site’s JSON, then optional published sheet Q&amp;A — not an LLM.{' '}
+                  Keyword match on this site’s JSON, then optional published sheet Q&amp;A, not an LLM.{' '}
                   <span className={styles.kbd} aria-hidden>⌘</span>
                   <span className={styles.kbd}>K</span> /{' '}
                   <span className={styles.kbd}>Ctrl</span>
@@ -623,7 +623,7 @@ export default function FloatingChatWidget() {
 
                 {debouncedQuery && !loading && result.kind === 'kb' && result.topChunk && (
                   <>
-                    <p className={styles.labelLocal}>Local retrieval — knowledge pack</p>
+                    <p className={styles.labelLocal}>Local retrieval: knowledge pack</p>
                     <article className={styles.card} aria-label={result.topChunk.title}>
                       <h2 className={styles.cardTitle}>{result.topChunk.title}</h2>
                       <p className={styles.cardBody}>{firstSentence(result.topChunk.body)}</p>
@@ -647,7 +647,7 @@ export default function FloatingChatWidget() {
 
                 {debouncedQuery && !loading && result.kind === 'none' && (
                   <p className={styles.noneMessage}>
-                    I don&apos;t have that info — contact Chandan directly
+                    I don&apos;t have that info. Contact Chandan directly
                   </p>
                 )}
               </div>
@@ -655,7 +655,7 @@ export default function FloatingChatWidget() {
               <div className={styles.paletteFooter}>
                 <details className={styles.traceDetails}>
                   <summary className={styles.traceSummary}>Reasoning trace</summary>
-                  <pre className={styles.tracePre}>{result.traceText || '—'}</pre>
+                  <pre className={styles.tracePre}>{result.traceText || '…'}</pre>
                 </details>
               </div>
             </div>

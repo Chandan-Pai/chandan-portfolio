@@ -207,7 +207,7 @@ export default function HomePage() {
 
   /** Edit this object to change the statement below Work. */
   const homeStatement = {
-    label: 'Statement',
+    label: 'How I built this portfolio',
     body:
       'Three AI tools, three different problems. One week to ship. Content stayed mine throughout.',
     /** Set to null to hide. Use Next `Link` below; do not put raw <a> tags in `body` (they will not work). */
@@ -346,7 +346,7 @@ export default function HomePage() {
             />
             <p
               id="home-statement-heading"
-              className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase mb-8"
+              className="text-xs font-semibold tracking-[0.12em] text-slate-500 mb-8 sm:tracking-[0.16em]"
             >
               {homeStatement.label}
             </p>

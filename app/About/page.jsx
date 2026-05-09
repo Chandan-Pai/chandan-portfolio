@@ -24,7 +24,7 @@ const JOURNEY = [
     range: '2025',
     items: [
       'Refreshed this portfolio site',
-      'CampusSync shipped for University of Minnesota students — tunnel navigation, mixed-methods UX, live product',
+      'CampusSync shipped for University of Minnesota students: tunnel navigation, mixed-methods UX, live product',
       'Major Personal events Travelled to India Twice for parents and family visits',
       'Became a Graduate Teaching Assistant for the Human Factors Engineering course at the University of Minnesota',
     ],
@@ -54,8 +54,8 @@ const JOURNEY = [
   {
     range: 'Earlier',
     items: [
-      'Mercedes-Benz internship — repair throughput, cognitive load on the line; learned how bottlenecks hide in real workflows',
-      'Built habit of validating systems in the real world — from go-kart steering to production constraints, not just slides',
+      'Mercedes-Benz internship: repair throughput, cognitive load on the line; learned how bottlenecks hide in real workflows',
+      'Built habit of validating systems in the real world, from go-kart steering to production constraints, not just slides',
     ],
   },
 ];
@@ -63,11 +63,11 @@ const JOURNEY = [
 const LIFE_OUTSIDE = [
   {
     src: 'images/about/duluth trip sunrise.jpg',
-    caption: 'Duluth sunrise hike — cold air, early light, good reset before a busy semester.',
+    caption: 'Duluth sunrise hike: cold air, early light, good reset before a busy semester.',
   },
   {
     src: 'images/about/me at mercedes .jpg',
-    caption: 'India —First day at mercedes benz research and development india pvt ltd',
+    caption: 'India. First day at mercedes benz research and development india pvt ltd',
   },
   {
     src: 'images/about/aagumbe.jpg',
@@ -75,11 +75,11 @@ const LIFE_OUTSIDE = [
   },
   {
     src: 'images/about/minigolf at stone mountain.JPG',
-    caption: 'Stone Mountain mini-golf — low-stakes competition with Family.',
+    caption: 'Stone Mountain mini-golf: low-stakes competition with Family.',
   },
   {
     src: 'images/about/ooty.jpg',
-    caption: 'Ooty — hills, mist, and slowing down when screens get too loud.',
+    caption: 'Ooty: hills, mist, and slowing down when screens get too loud.',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function AboutPage() {
       />
 
       <div className="relative z-10">
-        <section className="flex flex-col items-center justify-center px-6 pt-20 pb-8 relative" style={{ minHeight: '50vh' }}>
+        <section className="flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-8 relative" style={{ minHeight: '50vh' }}>
           <h1
             className="font-black tracking-tight uppercase text-center"
             style={{
@@ -114,7 +114,7 @@ export default function AboutPage() {
             CHANDAN PAI
           </h1>
 
-          <div className="astronaut astronaut1">
+          <div className="astronaut astronaut1 hidden md:block">
             <img
               src="https://images.vexels.com/media/users/3/152639/isolated/preview/506b575739e90613428cdb399175e2c8-space-astronaut-cartoon-by-vexels.png"
               alt=""
@@ -122,7 +122,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="astronaut astronaut2">
+          <div className="astronaut astronaut2 hidden md:block">
             <img
               src="https://images.vexels.com/media/users/3/152641/isolated/preview/2b3d63661f0d7fe62c36168604985f26-space-cosmonaut-cartoon-by-vexels.png"
               alt=""
@@ -131,8 +131,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Intro + portrait — side by side on large screens */}
-        <section className="max-w-6xl mx-auto px-6 pb-16">
+        {/* Intro + portrait, side by side on large screens */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div
               className="rounded-2xl border p-8 sm:p-10 backdrop-blur-md"
@@ -156,7 +156,7 @@ export default function AboutPage() {
                   Every conversation is not perfect and you cannot get everything out of it, but it could prepare you for
                   next.
                 </q>{' '}
-                That&apos;s how I think now — every failed assumption, every moment you realize you were wrong, that&apos;s
+                That&apos;s how I think now: every failed assumption, every moment you realize you were wrong, that&apos;s
                 not failure. That&apos;s preparation.
               </p>
               <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-4">
@@ -165,7 +165,7 @@ export default function AboutPage() {
                 <strong className="text-white font-semibold">public-sector design</strong>,{' '}
                 <strong className="text-white font-semibold">automotive repair</strong>, and{' '}
                 <strong className="text-white font-semibold">medical device manufacturing</strong>. Every project taught me
-                where friction actually lives — and it&apos;s never just the interface.
+                where friction actually lives, and it&apos;s never just the interface.
               </p>
               <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-4">
                 I&apos;m based around the Twin Cities at University of Minnesota. If you care about real workflows, real
@@ -188,7 +188,7 @@ export default function AboutPage() {
         </section>
 
         {/* MY JOURNEY */}
-        <section className="max-w-3xl mx-auto px-6 pb-20">
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
           <h2 className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase mb-10">My journey</h2>
           <div className="space-y-12">
             {JOURNEY.map((block) => (
@@ -205,7 +205,7 @@ export default function AboutPage() {
         </section>
 
         {/* MY LIFE OUTSIDE WORK */}
-        <section className="max-w-5xl mx-auto px-6 pb-28">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-[max(7rem,env(safe-area-inset-bottom))]">
           <h2 className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase mb-6">My life outside work</h2>
           <p className="text-white/80 text-base leading-relaxed max-w-3xl mb-12">
             I make time to travel, be outside, and reset away from screens. Here are a few moments that keep me
@@ -235,7 +235,7 @@ export default function AboutPage() {
 
           <p className="mt-16 text-base text-white/90 leading-relaxed max-w-2xl">
             <span className="font-semibold text-sky-300">P.S.</span> When I am stuck on a problem, I still reach for a
-            pen before a new slide — drawing helps me see the system.
+            pen before a new slide. Drawing helps me see the system.
           </p>
         </section>
       </div>

@@ -48,7 +48,7 @@ function LiveCampusSyncEmbed() {
       </div>
       <div className="relative h-[min(70svh,640px)] min-h-[320px] w-full bg-white">
         <iframe
-          title="CampusSync — live Gopher Way navigation web app"
+          title="CampusSync: live Gopher Way navigation web app"
           src="https://campus-sync.org/"
           className="absolute inset-0 h-full w-full border-0"
           loading="lazy"
@@ -56,7 +56,7 @@ function LiveCampusSyncEmbed() {
         />
       </div>
       <p className="border-t border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-500">
-        Live embed. If this area stays blank, framing may be blocked — use{' '}
+        Live embed. If this area stays blank, framing may be blocked; use{' '}
         <a
           href="https://campus-sync.org"
           className="font-medium text-sky-700 underline hover:text-sky-800"
@@ -71,7 +71,7 @@ function LiveCampusSyncEmbed() {
   );
 }
 
-/** iPhone 16 (6.1") logical portrait ≈ 393 × 852 pt — frame height for prototype strip. */
+/** iPhone 16 (6.1") logical portrait ≈ 393 × 852 pt; frame height for prototype strip. */
 const UX_MOBILE_PROTOTYPES = [
   { file: 'images/campus sync/ux mobile prototye.png', alt: 'Mobile UX prototype screen 1' },
   { file: 'images/campus sync/ux mobile prototype 1.png', alt: 'Mobile UX prototype screen 2' },
@@ -110,7 +110,7 @@ function Section({ id, title, children, className = '' }) {
     <section id={id} className={`w-full py-14 ${className}`}>
       <div className="project-gutter-x w-full min-w-0">
         {title ? (
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
         ) : null}
         {children}
       </div>
@@ -142,17 +142,17 @@ export default function CampusSyncPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
-            className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
+            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
               isDarkSection ? 'text-white' : 'text-gray-900'
             }`}
           >
             <svg
-              className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -160,12 +160,14 @@ export default function CampusSyncPage() {
             >
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>
+              Back to Portfolio
+            </span>
           </Link>
         </div>
 
         {/* Hero */}
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
           <div className="project-gutter-x w-full min-w-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
@@ -205,7 +207,7 @@ export default function CampusSyncPage() {
 
           <Subheading>What We Saw vs. What We Expected</Subheading>
           <Body>
-            We shadowed 15 students navigating campus during actual winter conditions — not in a lab, not via survey. What we expected: students struggling to find tunnel entrances. What we actually saw: students finding entrances just fine, then turning around anyway.
+            We shadowed 15 students navigating campus during actual winter conditions, not in a lab, not via survey. What we expected: students struggling to find tunnel entrances. What we actually saw: students finding entrances just fine, then turning around anyway.
           </Body>
           <Body>
             The hesitation was the data point. Students were doing a mental risk calculation at every tunnel entrance: &quot;If this route is blocked halfway through, I&apos;ve lost more time than if I just go outside now.&quot; The problem wasn&apos;t awareness. It was predictability. That single insight changed everything about what we built.
@@ -213,34 +215,34 @@ export default function CampusSyncPage() {
 
           <Subheading>Mapping 40+ Scenarios</Subheading>
           <Body>
-            We ran Hierarchical Task Analysis across 40+ navigation scenarios — from a simple 2-building hop to a complex multi-stop route during a building closure. The HTA revealed something counterintuitive: most campus navigation isn&apos;t long cross-campus trips. It&apos;s short 1–3 building hops. That meant our UI needed to optimize for a 10-second lookup, not a trip planner.
+            We ran Hierarchical Task Analysis across 40+ navigation scenarios, from a simple 2-building hop to a complex multi-stop route during a building closure. The HTA revealed something counterintuitive: most campus navigation isn&apos;t long cross-campus trips. It&apos;s short 1-3 building hops. That meant our UI needed to optimize for a 10-second lookup, not a trip planner.
           </Body>
           <Body>
-            The HTA also showed us exactly when building hours mattered: not at the start of a journey, but in the middle of one. Students weren&apos;t pre-planning routes at their desk — they were making decisions at tunnel entrances, in real time, in coats and gloves. The solution had to work in that moment.
+            The HTA also showed us exactly when building hours mattered: not at the start of a journey, but in the middle of one. Students weren&apos;t pre-planning routes at their desk. They were making decisions at tunnel entrances, in real time, in coats and gloves. The solution had to work in that moment.
           </Body>
           <PrototypeIphoneRow basePath={BASE_PATH} />
 
           <Subheading>Three Rounds of Testing</Subheading>
           <Body>
-            We tested at every stage — Figma prototype, MVP, functional prototype — with 8, 10, and 7 participants respectively. Round 2 gave us our most important finding: users were following routes without realizing they&apos;d been sent outdoors. Single-color map lines looked identical whether they represented a tunnel or a sidewalk. That&apos;s where the maroon/gold visual system came from — not a design preference, a usability failure we observed and fixed.
+            We tested at every stage (Figma prototype, MVP, functional prototype) with 8, 10, and 7 participants respectively. Round 2 gave us our most important finding: users were following routes without realizing they&apos;d been sent outdoors. Single-color map lines looked identical whether they represented a tunnel or a sidewalk. That&apos;s where the maroon/gold visual system came from: not a design preference, a usability failure we observed and fixed.
           </Body>
         </Section>
 
         <Section id="process" title="How We Built It">
           <Subheading>Discover: The Predictability Problem</Subheading>
           <Body>
-            Three weeks of field research produced one sentence that drove every decision: students don&apos;t avoid tunnels because they don&apos;t know about them — they avoid them because they can&apos;t trust them. Once we had that, scope became obvious. The product needed to guarantee route completeness, not just show tunnel paths.
+            Three weeks of field research produced one sentence that drove every decision: students don&apos;t avoid tunnels because they don&apos;t know about them. They avoid them because they can&apos;t trust them. Once we had that, scope became obvious. The product needed to guarantee route completeness, not just show tunnel paths.
           </Body>
 
           <Subheading>Define: What We Would and Wouldn&apos;t Build</Subheading>
           <Body>
-            We made an explicit list of features we were NOT building: real-time building hour API updates, turn-by-turn indoor navigation, Minneapolis/St. Paul campus cross-linking, schedule integration. Every one of these was a real request from early user interviews. Every one of them was cut deliberately — not because they weren&apos;t valuable, but because they would have made it impossible to ship a reliable core product by December.
+            We made an explicit list of features we were NOT building: real-time building hour API updates, turn-by-turn indoor navigation, Minneapolis/St. Paul campus cross-linking, schedule integration. Every one of these was a real request from early user interviews. Every one of them was cut deliberately, not because they weren&apos;t valuable, but because they would have made it impossible to ship a reliable core product by December.
           </Body>
           <Body>
             Scope discipline is a design skill. We wrote a Project Scope Statement, got team sign-off on it in week two, and referenced it every time someone suggested adding a feature.
           </Body>
           <Body>
-            On the ground, students were still reconciling scattered building hours and static PDF maps with what they saw on tunnel walls — official Gopher Way signage helped orient people, but it could not answer &quot;is this entire route open right now?&quot; That gap is what we designed against.
+            On the ground, students were still reconciling scattered building hours and static PDF maps with what they saw on tunnel walls. Official Gopher Way signage helped orient people, but it could not answer &quot;is this entire route open right now?&quot; That gap is what we designed against.
           </Body>
           <HoverableImage
             src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')}
@@ -248,9 +250,9 @@ export default function CampusSyncPage() {
           />
 
           <Subheading>Develop: Three Stages, Three Deployed Versions</Subheading>
-          <Body className="font-semibold text-sky-700">October 15 — Figma Prototype</Body>
+          <Body className="font-semibold text-sky-700">October 15: Figma Prototype</Body>
           <Body>
-            Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code — saving weeks of implementation rework.
+            Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code, saving weeks of implementation rework.
           </Body>
           <p className="text-sm font-medium text-gray-500 mb-3">Selected Figma prototype screens (pre-code)</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
@@ -258,15 +260,15 @@ export default function CampusSyncPage() {
             <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
             <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
           </div>
-          <Body className="font-semibold text-sky-700">November 3 — MVP</Body>
+          <Body className="font-semibold text-sky-700">November 3: MVP</Body>
           <Body>
             Live at{' '}
             <a href="https://campus-sync.org" className="text-sky-700 underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               campus-sync.org
             </a>
-            . Basic routing, map overlay, and the dual-color system. Maroon for tunnels. Gold for outdoor segments. University of Minnesota brand colors — immediately readable without a legend.
+            . Basic routing, map overlay, and the dual-color system. Maroon for tunnels. Gold for outdoor segments. University of Minnesota brand colors, immediately readable without a legend.
           </Body>
-          <Body className="font-semibold text-sky-700">November 17 — Functional Prototype</Body>
+          <Body className="font-semibold text-sky-700">November 17: Functional Prototype</Body>
           <Body>
             Building-hour filtering integrated directly into the routing engine. The algorithm queries current building access status before pathfinding, so it never suggests a route through a locked building. Validated at 90%+ accuracy against 20 manually-verified routes.
           </Body>
@@ -278,13 +280,13 @@ export default function CampusSyncPage() {
           </Subheading>
           <p className="text-lg font-semibold text-gray-900 mb-4">Why We Moved from Mobile App to Web Product</p>
           <Body>
-            The Figma prototype started as a native mobile app — login screen, bottom navigation bar, map-tap input. It felt like the right instinct: students use their phones, so build for phones. But the first prototype wasn&apos;t really about the interface. It was about answering a more fundamental question: would students actually use a tool like this at all, or would they keep defaulting to going outside?
+            The Figma prototype started as a native mobile app: login screen, bottom navigation bar, map-tap input. It felt like the right instinct: students use their phones, so build for phones. But the first prototype wasn&apos;t really about the interface. It was about answering a more fundamental question: would students actually use a tool like this at all, or would they keep defaulting to going outside?
           </Body>
           <Body>
-            That phase gave us our answer — and something we didn&apos;t expect. Students found the app concept intuitive enough to navigate, but the learning curve of a new installed app created friction before they even got to the routing. They needed to understand what the product did before they could trust it. A native app asks users to commit before they&apos;ve seen the value.
+            That phase gave us our answer, and something we didn&apos;t expect. Students found the app concept intuitive enough to navigate, but the learning curve of a new installed app created friction before they even got to the routing. They needed to understand what the product did before they could trust it. A native app asks users to commit before they&apos;ve seen the value.
           </Body>
           <Body>
-            So we made the call to ship as a web product instead. No download. No login. Open a link, type two buildings, get a route. The barrier to first use dropped to zero — which mattered enormously for a product that students had to trust enough to use mid-route, in a coat, in the cold. The web format let the product prove itself before asking anything of the user.
+            So we made the call to ship as a web product instead. No download. No login. Open a link, type two buildings, get a route. The barrier to first use dropped to zero, which mattered enormously for a product that students had to trust enough to use mid-route, in a coat, in the cold. The web format let the product prove itself before asking anything of the user.
           </Body>
           <Body className="mb-0">
             The first prototype wasn&apos;t a failed design. It was the research that made the right design obvious.
@@ -292,7 +294,7 @@ export default function CampusSyncPage() {
 
           <Subheading>Deliver: Two Fixes That Mattered</Subheading>
           <Body>
-            Pilot testing gave us 10+ feedback responses. We implemented exactly two improvements — chosen by impact, not by ease. First: tunnel overlay visual weight increased so segments were distinguishable from building outlines on mobile screens. Second: dropdown menus rebuilt as bottom-sheet components on mobile, eliminating the overflow issue affecting phones under 390px width. Both fixes were regression-tested before the December 9 final release.
+            Pilot testing gave us 10+ feedback responses. We implemented exactly two improvements, chosen by impact, not by ease. First: tunnel overlay visual weight increased so segments were distinguishable from building outlines on mobile screens. Second: dropdown menus rebuilt as bottom-sheet components on mobile, eliminating the overflow issue affecting phones under 390px width. Both fixes were regression-tested before the December 9 final release.
           </Body>
         </Section>
 
@@ -307,13 +309,13 @@ export default function CampusSyncPage() {
 
           <Subheading>The Routing Engine</Subheading>
           <Body>
-            The core innovation isn&apos;t the map — it&apos;s what happens before the map renders. The routing engine queries building access status at routing time, filters out any path that goes through a currently-closed building, then runs pathfinding on the remaining graph. Users never see a route they can&apos;t walk. That&apos;s the feature that changed behavior.
+            The core innovation isn&apos;t the map. It&apos;s what happens before the map renders. The routing engine queries building access status at routing time, filters out any path that goes through a currently-closed building, then runs pathfinding on the remaining graph. Users never see a route they can&apos;t walk. That&apos;s the feature that changed behavior.
           </Body>
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Routing engine logic" />
 
           <Subheading>The Visual System</Subheading>
           <Body>
-            Maroon lines = tunnels. Gold lines = outdoors. Two colors, zero ambiguity. Round 2 usability testing showed users following routes without realizing they&apos;d gone outside — the original single-color overlay gave no signal. The dual-color system made the distinction impossible to miss, even on a small mobile screen while walking.
+            Maroon lines = tunnels. Gold lines = outdoors. Two colors, zero ambiguity. Round 2 usability testing showed users following routes without realizing they&apos;d gone outside. The original single-color overlay gave no signal. The dual-color system made the distinction impossible to miss, even on a small mobile screen while walking.
           </Body>
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Before and after dual-color route visualization" />
 
@@ -327,7 +329,7 @@ export default function CampusSyncPage() {
             <div className="min-w-0 flex-1">
               <Subheading className="!mt-0">The Input Model</Subheading>
               <Body className="mb-0">
-                Search-first, not map-click. Round 1 testing showed that tapping a small building on a map while moving was too slow and too error-prone. The search field uses autocomplete restricted to buildings in the navigable network — so users only see options that the routing engine can actually connect.
+                Search-first, not map-click. Round 1 testing showed that tapping a small building on a map while moving was too slow and too error-prone. The search field uses autocomplete restricted to buildings in the navigable network, so users only see options that the routing engine can actually connect.
               </Body>
             </div>
           </div>
@@ -354,7 +356,7 @@ export default function CampusSyncPage() {
 
         <Section id="devices" title="Devices &amp; visual feedback" className="bg-gray-50/80">
           <Body>
-            We validated the live product on the hardware students actually carry — not lab desktops — and captured quick visual-appeal signal after task-based sessions.
+            We validated the live product on the hardware students actually carry (not lab desktops) and captured quick visual-appeal signal after task-based sessions.
           </Body>
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start mt-6">
             <div>
@@ -371,7 +373,7 @@ export default function CampusSyncPage() {
             <div>
               <Subheading className="mt-10 md:mt-0">Visual appeal (post-task survey)</Subheading>
               <Body>
-                In a short follow-up survey (n=10), 90% of participants said they found the website visually appealing — a useful sanity check alongside task metrics that the interface felt credible, not just functional.
+                In a short follow-up survey (n=10), 90% of participants said they found the website visually appealing, a useful sanity check alongside task metrics that the interface felt credible, not just functional.
               </Body>
               <HoverableImage
                 className="my-6"
@@ -384,14 +386,14 @@ export default function CampusSyncPage() {
 
         <Section id="impact" title="What Changed" className="bg-gray-50/80">
           <Body>
-            Every metric we defined before building anything, we hit or beat. That matters — these weren&apos;t goals we set after seeing the results.
+            Every metric we defined before building anything, we hit or beat. That matters: these weren&apos;t goals we set after seeing the results.
           </Body>
           <ul className="list-disc pl-5 space-y-3 text-gray-700 leading-relaxed mb-10">
             <li>
               <strong className="text-gray-900">SUS Score: 82/100.</strong> The industry average is 68. For a first-semester product with no prior version to iterate from, 82 is a strong result.
             </li>
             <li>
-              <strong className="text-gray-900">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections — a known scope exclusion documented before we started building.
+              <strong className="text-gray-900">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections, a known scope exclusion documented before we started building.
             </li>
             <li>
               <strong className="text-gray-900">Task completion: 45% faster</strong> than the existing combination of PDF maps and scattered building-hours pages.
@@ -407,7 +409,7 @@ export default function CampusSyncPage() {
           <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/usability .png')} alt="Usability testing summary" />
 
           <Body className="mt-8">
-            The qualitative feedback was equally useful. The dual-color route visualization was the single most-cited positive feature — described as &quot;immediately obvious&quot; and &quot;the thing that made it actually useful.&quot; The most-cited limitation was Minneapolis/St. Paul routing — which the team had documented as a user misconception before launch. The tunnels don&apos;t connect the campuses. That&apos;s not a missing feature. That&apos;s a geography problem.
+            The qualitative feedback was equally useful. The dual-color route visualization was the single most-cited positive feature, described as &quot;immediately obvious&quot; and &quot;the thing that made it actually useful.&quot; The most-cited limitation was Minneapolis/St. Paul routing, which the team had documented as a user misconception before launch. The tunnels don&apos;t connect the campuses. That&apos;s not a missing feature. That&apos;s a geography problem.
           </Body>
         </Section>
 

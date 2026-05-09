@@ -1,7 +1,15 @@
-/* Plain CSS — do not @import tailwind here; Tailwind would drop these rules from the bundle.
-   Case studies: ~15vw side inset (min 1rem), content in the center ~70vw band. */
+/* Plain CSS: do not @import tailwind here; Tailwind would drop these rules from the bundle.
+   Case studies: ~15vw side inset (min 1rem), content in the center ~70vw band.
+   Safe-area insets keep text off notched phones; capped vw avoids excessive inset on tablets. */
 .project-gutter-x {
-  padding-left: max(1rem, 15vw);
-  padding-right: max(1rem, 15vw);
+  padding-left: max(1rem, 15vw, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, 15vw, env(safe-area-inset-right, 0px));
   box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .project-gutter-x {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
 }

@@ -23,19 +23,19 @@ export default function LiveClock({ variant = 'onDark', layout = 'stack' }) {
   if (layout === 'inline') {
     return (
       <div className="flex flex-shrink-0 items-baseline justify-end gap-1.5 whitespace-nowrap text-xs">
-        <span className={`${timeClass} font-medium tabular-nums`}>{mounted ? timeStr : '—'}</span>
+        <span className={`${timeClass} font-medium tabular-nums`}>{mounted ? timeStr : '…'}</span>
         <span className={dateClass} aria-hidden="true">
           ·
         </span>
-        <span className={`${dateClass} tabular-nums`}>{mounted ? dateStr : '—'}</span>
+        <span className={`${dateClass} tabular-nums`}>{mounted ? dateStr : '…'}</span>
       </div>
     );
   }
 
   return (
     <div className="w-20 flex-shrink-0 text-right">
-      <div className={`${timeClass} text-xs font-medium leading-tight`}>{mounted ? timeStr : '—'}</div>
-      <div className={`${dateClass} text-xs leading-tight`}>{mounted ? dateStr : '—'}</div>
+      <div className={`${timeClass} text-xs font-medium leading-tight`}>{mounted ? timeStr : '…'}</div>
+      <div className={`${dateClass} text-xs leading-tight`}>{mounted ? dateStr : '…'}</div>
     </div>
   );
 }

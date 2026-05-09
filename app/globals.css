@@ -130,6 +130,22 @@ input, textarea, select, button {
   z-index: 9999;
 }
 
+/* Touch-first devices: never show custom cursor if it exists (e.g. hybrid / emulator). */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+
+/* Phone widths: hide regardless of pointer (desktop mode / odd reports). */
+@media (max-width: 639px) {
+  .custom-cursor {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+
 .custom-cursor::after {
   content: attr(data-cursor-text);
   position: absolute;
@@ -201,7 +217,16 @@ html {
   overflow-x: clip;
 }
 
-/* Home — first Selected Work card: no 3D scroll tilt (JS skips inline transform for index 0) */
+/* Horizontal nav link strip on small screens (SiteIslandNav) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Home: first Selected Work card: no 3D scroll tilt (JS skips inline transform for index 0) */
 #work .project-link:first-of-type {
   opacity: 1;
   transform: none;

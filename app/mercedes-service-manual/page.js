@@ -21,17 +21,20 @@ export default function MercedesServiceManualPage() {
 
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed top-6 left-6 z-50">
+        <div
+          className="fixed z-50 left-4 sm:left-6"
+          style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}
+        >
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
-            className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
+            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
               isDarkSection ? 'text-white' : 'text-gray-900'
             }`}
           >
             <svg
-              className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -39,20 +42,22 @@ export default function MercedesServiceManualPage() {
             >
               <path d="M15 18L9 12L15 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>
+              Back to Portfolio
+            </span>
           </Link>
         </div>
 
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
           <div className="project-gutter-x w-full min-w-0">
             <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
-              HUMF 5874 — Human Centered Design
+              HUMF 5874: Human Centered Design
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Interactive Repair Guidance
             </h1>
             <p className="text-gray-200 text-lg leading-relaxed mb-6">
-              Product research and participatory design for clearer, safer assembly manuals — from field observation to a validated QR-based prototype.
+              Product research and participatory design for clearer, safer assembly manuals, from field observation to a validated QR-based prototype.
             </p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span>
@@ -70,13 +75,13 @@ export default function MercedesServiceManualPage() {
 
       {/* OPENING STORY */}
       <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-2xl leading-relaxed text-slate-700 mb-6">
+        <p className="text-lg sm:text-2xl leading-relaxed text-slate-700 mb-6">
           A technician flips through a 200-page repair manual searching for a wiring diagram buried in Section 7. Oil stains smudge the pages. A critical safety warning sits in 8-point font at the bottom of page 143.
         </p>
-        <p className="text-2xl leading-relaxed text-slate-700 mb-6">
+        <p className="text-lg sm:text-2xl leading-relaxed text-slate-700 mb-6">
           Meanwhile, a first-time assembler stares at an instruction sheet, unable to tell which screw goes where because everything is drawn from the same angle.
         </p>
-        <p className="text-2xl font-semibold text-slate-900">
+        <p className="text-lg sm:text-2xl font-semibold text-slate-900">
           Both failures share one root cause: manuals are designed for documentation, not for use.
         </p>
       </section>
@@ -87,14 +92,14 @@ export default function MercedesServiceManualPage() {
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-8">Process</p>
           <h2 className="text-3xl font-bold mb-12">Double Diamond</h2>
 
-          <div className="grid grid-cols-4 gap-0 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-0 relative">
             {[
               {
                 phase: 'DISCOVER',
                 label: '01',
                 color: 'bg-sky-100 border-sky-300',
                 accent: 'text-sky-800',
-                items: ['Personal story — why manuals fail', 'AEIOU field observation', 'Stakeholder interviews', 'Qualtrics survey (18–34 yr olds)'],
+                items: ['Personal story: why manuals fail', 'AEIOU field observation', 'Stakeholder interviews', 'Qualtrics survey (18-34 yr olds)'],
               },
               {
                 phase: 'DEFINE',
@@ -118,7 +123,10 @@ export default function MercedesServiceManualPage() {
                 items: ['Wireframe prototype built', 'Usability testing n=4', 'Think-aloud protocol', 'Iterated on findings'],
               },
             ].map((d, i) => (
-              <div key={i} className={`border ${d.color} p-6 ${i === 0 ? 'rounded-l-xl' : ''} ${i === 3 ? 'rounded-r-xl' : ''}`}>
+              <div
+                key={i}
+                className={`border ${d.color} p-5 sm:p-6 rounded-xl xl:rounded-none ${i === 0 ? 'xl:rounded-l-xl' : ''} ${i === 3 ? 'xl:rounded-r-xl' : ''}`}
+              >
                 <p className={`text-xs font-mono font-bold tracking-widest uppercase mb-1 ${d.accent}`}>{d.label}</p>
                 <p className="text-sm font-bold text-slate-900 mb-4">{d.phase}</p>
                 <ul className="space-y-2">
@@ -135,12 +143,12 @@ export default function MercedesServiceManualPage() {
         </div>
       </section>
 
-      {/* PROBLEM — stat cards instead of images */}
+      {/* PROBLEM: stat cards instead of images */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Discover</p>
-        <h2 className="text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
+        <h2 className="text-2xl sm:text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
         <p className="text-lg text-slate-600 mb-12">
-          Repair and assembly manuals are safety-critical documents. Yet they're designed like legal contracts — dense text, unclear visuals, buried warnings. When users can't follow them, they turn to YouTube.
+          Repair and assembly manuals are safety-critical documents. Yet they're designed like legal contracts: dense text, unclear visuals, buried warnings. When users can't follow them, they turn to YouTube.
         </p>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
@@ -159,7 +167,7 @@ export default function MercedesServiceManualPage() {
         </div>
 
         {/* Two personas as text cards */}
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             {
               type: 'Persona 1',
@@ -176,7 +184,7 @@ export default function MercedesServiceManualPage() {
               color: 'border-slate-400',
             },
           ].map((p, i) => (
-            <div key={i} className={`border-l-4 ${p.color} pl-6 py-4`}>
+            <div key={i} className={`border-l-4 ${p.color} pl-4 sm:pl-6 py-4`}>
               <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">{p.type}</p>
               <h3 className="text-xl font-bold mb-1">{p.name}</h3>
               <p className="text-sm text-slate-500 mb-4">{p.age}</p>
@@ -190,20 +198,22 @@ export default function MercedesServiceManualPage() {
               </ul>
             </div>
           ))}
-          <img src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`} alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200 mb-16" />
-          <img src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`} alt="Observation sheets" className="w-full rounded-xl border border-slate-200 mt-8" />
+        </div>
+        <div className="mt-8 space-y-8">
+          <img src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`} alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200" />
+          <img src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`} alt="Observation sheets" className="w-full rounded-xl border border-slate-200" />
         </div>
         
       </section>
 
-      {/* DEFINE — Journey Map */}
+      {/* DEFINE: Journey Map */}
       <section className="w-full bg-slate-50 border-y border-slate-200 py-20">
         <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Define</p>
-          <h2 className="text-4xl font-bold mb-12">Journey Map — Current vs Ideal State</h2>
+          <h2 className="text-2xl sm:text-4xl font-bold mb-12">Journey Map: Current vs Ideal State</h2>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto -mx-1 px-1">
+            <table className="w-full text-sm min-w-[520px]">
               <thead>
                 <tr className="border-b border-slate-300">
                   <th className="text-left py-3 pr-6 text-slate-500 font-mono text-xs uppercase tracking-widest w-32">Phase</th>
@@ -248,10 +258,10 @@ export default function MercedesServiceManualPage() {
         </div>
       </section>
 
-      {/* THE PIG DRAWING TEST — hero moment */}
+      {/* THE PIG DRAWING TEST (hero moment) */}
       <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop — Key Insight</p>
-        <h2 className="text-4xl font-bold mb-8">The Pig Drawing Test</h2>
+        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop: Key Insight</p>
+        <h2 className="text-2xl sm:text-4xl font-bold mb-8">The Pig Drawing Test</h2>
 
         {/* Narrative text */}
         <div className="mb-12">
@@ -277,7 +287,7 @@ export default function MercedesServiceManualPage() {
         </div>
 
         {/* The actual pig drawing instructions */}
-        <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 mb-8">
+        <div className="bg-slate-50 rounded-xl p-4 sm:p-8 border border-slate-200 mb-8">
           <p className="text-sm font-semibold text-slate-700 mb-4">The actual instructions participants received (text-only condition):</p>
           <ol className="space-y-2 text-sm text-slate-600 list-decimal list-inside">
             {[
@@ -300,25 +310,25 @@ export default function MercedesServiceManualPage() {
         </div>
         
         {/* Images - horizontal layout */}
-        <div className="grid grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           <div className="rounded-xl overflow-hidden border border-slate-200">
             <img src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`} alt="Text-only pig instructions" className="w-full h-auto" />
             <div className="bg-slate-200 p-3">
-              <p className="text-xs font-semibold text-slate-800">Text-only instructions — chaotic results</p>
+              <p className="text-xs font-semibold text-slate-800">Text-only instructions: chaotic results</p>
             </div>
           </div>
           <div className="rounded-xl overflow-hidden border border-slate-200">
             <img src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`} alt="Visual-guided pig drawings" className="w-full h-auto" />
             <div className="bg-sky-100 p-3">
-              <p className="text-xs font-semibold text-sky-900">Visual + text steps — consistent, recognizable</p>
+              <p className="text-xs font-semibold text-sky-900">Visual + text steps: consistent, recognizable</p>
             </div>
           </div>
         </div>
 
         {/* Participatory design summary */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: '❌', text: 'Instructions too vague — users can\'t tell what the product should look like after each step' },
+            { icon: '❌', text: 'Instructions too vague: users can\'t tell what the product should look like after each step' },
             { icon: '❌', text: 'Too much text, not enough visual guidance at point of need' },
             { icon: '⚠', text: 'Switching between formats (text, audio, video) is clunky or missing entirely' },
             { icon: '✅', text: 'Users love clear visuals paired with simple, non-detailed text' },
@@ -337,9 +347,9 @@ export default function MercedesServiceManualPage() {
       <section className="w-full bg-slate-900 py-20">
         <div className="project-gutter-x w-full min-w-0">
           <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Key Discoveries</p>
-          <h2 className="text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 title: 'Visual-First, Not Text-Heavy',
@@ -371,7 +381,7 @@ export default function MercedesServiceManualPage() {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
             <img src={`${BASE_PATH}/images/Repair manual/Age Group Distribution.jpg`} alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
             <img src={`${BASE_PATH}/images/Repair manual/Top Frustrations.jpg`} alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
             <img src={`${BASE_PATH}/images/Repair manual/where are manuals used.png`} alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
@@ -381,10 +391,10 @@ export default function MercedesServiceManualPage() {
 
       {/* SOLUTION */}
       <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver — Prototype</p>
-        <h2 className="text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
+        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver: Prototype</p>
+        <h2 className="text-2xl sm:text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
         <p className="text-lg text-slate-600 mb-12">
-          Users scan a QR code on the product part. The app opens directly to that component's manual — no login, no search, no guessing.
+          Users scan a QR code on the product part. The app opens directly to that component's manual: no login, no search, no guessing.
         </p>
 
         {/* User flow */}
@@ -419,7 +429,7 @@ export default function MercedesServiceManualPage() {
         {/* Step Navigation - 3 Images */}
         <div className="mb-12">
           <h4 className="text-lg font-semibold text-slate-900 mb-4">Step-by-Step Navigation</h4>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="rounded-xl overflow-hidden border border-slate-200">
               <img src={`${BASE_PATH}/images/Repair manual/STEP1.png`} alt="Step navigation screen 1" className="w-full h-auto" />
             </div>
@@ -436,7 +446,7 @@ export default function MercedesServiceManualPage() {
         {/* A/B Layout Comparison - 2 Images */}
         <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-slate-200">
           <h4 className="text-lg font-semibold text-slate-900 mb-4">A/B Layout Testing</h4>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
             <div className="rounded-xl overflow-hidden border border-slate-200">
               <img src={`${BASE_PATH}/images/Repair manual/Prototype 1.png`} alt="A/B prototype layout A" className="w-full h-auto" />
               <div className="bg-slate-50 p-3">
@@ -462,11 +472,11 @@ export default function MercedesServiceManualPage() {
           <p className="text-lg text-slate-600 mb-12">Think-aloud protocol, scenario-based tasks, post-task reflection.</p>
 
           {/* Direct user quotes */}
-          <div className="grid grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
               { quote: '"I got a little confused with the tools and safety checklist… maybe we can simplify that process."', change: 'Merged into "Preparation Checklist"' },
               { quote: '"Layout should be compatible with small phones too."', change: 'Redesigned for mobile-first layout' },
-              { quote: '"The question mark visually implies being stuck — that\'s much better than a lightbulb."', change: '? icon chosen over 💡 for help' },
+              { quote: '"The question mark visually implies being stuck. That\'s much better than a lightbulb."', change: '? icon chosen over 💡 for help' },
               { quote: '"If steps are clearly defined, then I don\'t think that should be an issue."', change: 'Confirmed step-by-step structure works' },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-6 border border-slate-200">
@@ -484,18 +494,18 @@ export default function MercedesServiceManualPage() {
       {/* IMPACT */}
       <section className="project-gutter-x w-full min-w-0 py-20">
         <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Impact</p>
-        <h2 className="text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
+        <h2 className="text-2xl sm:text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
 
-        <div className="grid grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <div>
             <p className="text-lg leading-relaxed text-slate-700 mb-6">
-              Better manuals reduce product returns, lower support call volume, prevent user injuries, and support regulatory compliance. This isn't just UX — it's safety, cost savings, and accessibility.
+              Better manuals reduce product returns, lower support call volume, prevent user injuries, and support regulatory compliance. This isn't just UX. It's safety, cost savings, and accessibility.
             </p>
             <blockquote className="text-xl font-semibold text-slate-800 italic border-l-4 border-sky-500 pl-6">
               "The best manual is the one users never notice they're following."
             </blockquote>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {[
               { icon: '🏷', label: 'Reduces product returns', desc: 'Saves company resources' },
               { icon: '🛡', label: 'Lowers injury risk', desc: 'Supports regulatory compliance' },
@@ -516,13 +526,13 @@ export default function MercedesServiceManualPage() {
       <section className="project-gutter-x w-full min-w-0 py-12 border-t border-slate-200">
         <h2 className="text-3xl font-bold mb-6">Reflection</h2>
         <p className="text-lg leading-relaxed text-slate-700 mb-4">
-          This project taught me that design research isn't about asking users what they want — it's about watching where they fail and designing systems that prevent those failures. Participatory design revealed problems I never would have found through interviews alone.
+          This project taught me that design research isn't about asking users what they want. It's about watching where they fail and designing systems that prevent those failures. Participatory design revealed problems I never would have found through interviews alone.
         </p>
         <p className="text-lg leading-relaxed text-slate-700 mb-8">
-          The pig drawing test became the turning point: proof that our hypothesis wasn't theory — it was observable truth. One exercise replaced 20 slides of literature review.
+          The pig drawing test became the turning point: proof that our hypothesis wasn't theory; it was observable truth. One exercise replaced 20 slides of literature review.
         </p>
         <p className="text-sm text-slate-500">
-          <span className="font-semibold text-slate-700">Course:</span> HUMF 5874 — Human Centered Design, December 2024
+          <span className="font-semibold text-slate-700">Course:</span> HUMF 5874: Human Centered Design, December 2024
         </p>
       </section>
 

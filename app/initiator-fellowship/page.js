@@ -145,21 +145,21 @@ export default function InitiatorFellowshipPage() {
     <main className="min-h-screen bg-white text-slate-900 antialiased">
       <div className="min-h-screen bg-white text-gray-900">
         {/* Back Button */}
-        <div className="fixed top-6 left-6 z-50">
+        <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
-            className={`inline-flex items-center gap-3 rounded-full px-4 py-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
           >
-            <svg className={`w-4 h-4 ${isDarkSection ? 'text-white' : 'text-gray-900'}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
           </Link>
         </div>
 
-        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24">
+        <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
           <div className="project-gutter-x w-full min-w-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Initiator Fellowship Website Redesign
@@ -195,7 +195,7 @@ export default function InitiatorFellowshipPage() {
           <div className="prose prose-sm max-w-none">
             <p>A potential fellowship applicant visits the Initiator Fellowship website, excited to learn about the program. Within 90 seconds, she closes the tab.</p>
             <p>Not because she wasn't qualified. Not because the program wasn't right for her. But because she couldn't find the eligibility criteria.</p>
-            <p>When we tested the site, this pattern repeated. Every single participant struggled with the same task: figure out if they could apply. The information existed—buried at the bottom of a page, hidden in an FAQ section, wrapped in confusing navigation.</p>
+            <p>When we tested the site, this pattern repeated. Every single participant struggled with the same task: figure out if they could apply. The information existed, but it was buried at the bottom of a page, hidden in an FAQ section, wrapped in confusing navigation.</p>
           </div>
           </div>
         </section>
@@ -204,8 +204,8 @@ export default function InitiatorFellowshipPage() {
         <section id="usability-crisis" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
-            <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website—their primary recruitment tool—was actively preventing qualified candidates from applying.</p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
+            <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website, their primary recruitment tool, was actively preventing qualified candidates from applying.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'WCAG Non-Compliance', desc: 'Color contrast failures, no accessibility standards met' },
                 { title: 'Hidden Eligibility', desc: 'Application criteria buried in FAQ at page bottom' },
@@ -218,7 +218,7 @@ export default function InitiatorFellowshipPage() {
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" />
               <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" />
               <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" />
@@ -230,8 +230,8 @@ export default function InitiatorFellowshipPage() {
         <section id="research" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
-            <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes—not just symptoms.</p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
+            <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes, not just symptoms.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'Heuristic Evaluation', desc: "Applied Nielsen's 10 usability principles. Identified violations across consistency, feedback, and recognition heuristics." },
                 { title: 'Hierarchical Task Analysis', desc: 'Mapped 4 critical user flows: learning about fellowship, finding eligibility, applying, contacting staff.' },
@@ -244,7 +244,7 @@ export default function InitiatorFellowshipPage() {
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <HoverableImage src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
               <HoverableImage src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
               <HoverableImage src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
@@ -260,7 +260,7 @@ export default function InitiatorFellowshipPage() {
             { 
               title: 'Disconnected Application Process', 
               problem: "Users couldn't track where they were in the application workflow. Timeline, criteria, and tracking were scattered across pages.", 
-              solution: "Unified 'Apply' section with integrated criteria, timeline, application form, and tracking—all in one pathway.", 
+              solution: "Unified 'Apply' section with integrated criteria, timeline, application form, and tracking, all in one pathway.", 
               figs: [
                 { num: 4.1, src: asset('images/initiator-fellowship/currentuserflow.png'), alt: 'Disconnected application process - before' },
                 { num: 4.3, src: asset('images/initiator-fellowship/newuserflow.png'), alt: 'New application flow' },
@@ -300,7 +300,7 @@ export default function InitiatorFellowshipPage() {
           ].map((insight, i) => (
             <div key={i} className="mb-12 pb-12 border-b border-slate-200 last:border-b-0">
               <h3 className="text-2xl font-semibold mb-4">{insight.title}</h3>
-              <div className="grid grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <p className="text-sm font-semibold text-slate-600 mb-2">PROBLEM</p>
                   <p className="text-slate-700">{insight.problem}</p>
@@ -310,7 +310,7 @@ export default function InitiatorFellowshipPage() {
                   <p className="text-slate-700">{insight.solution}</p>
                 </div>
               </div>
-              <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${insight.figs.length}, 1fr)` }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 {insight.figs.map((fig) => (
                   <div key={fig.num} className="relative">
                     <HoverableImage 
@@ -370,7 +370,7 @@ export default function InitiatorFellowshipPage() {
             ].map((metric, i) => (
               <div key={i} className="mb-12 pb-12 border-b border-slate-200 last:border-b-0">
                 <h3 className="text-2xl font-semibold mb-4">{metric.title}</h3>
-                <div className="grid grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <p className="text-sm font-semibold text-slate-600 mb-2">CHALLENGE</p>
                     <p className="text-slate-700">{metric.problem}</p>
@@ -380,14 +380,14 @@ export default function InitiatorFellowshipPage() {
                     <p className="text-slate-700">{metric.solution}</p>
                   </div>
                 </div>
-                <div className="mb-6 bg-gradient-to-r from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-6">
+                <div className="mb-6 bg-gradient-to-r from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-4 sm:p-6">
                   <p className="text-sm text-slate-600 uppercase tracking-wide mb-2">Measured Impact</p>
-                  <p className="text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
                   <p className="text-lg font-semibold text-sky-700">{metric.increase}</p>
                   {metric.detail && <p className="text-sm text-slate-600 mt-3">{metric.detail}</p>}
                 </div>
                 {metric.figs && (
-                  <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${metric.figs.length}, 1fr)` }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                     {metric.figs.map((fig) => (
                       <div key={fig.num} className="relative">
                         <HoverableImage 
@@ -420,7 +420,7 @@ export default function InitiatorFellowshipPage() {
         <section id="deliverables" className="w-full py-12 border-t border-slate-200">
           <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             {[
               { title: 'Figma Prototype', desc: 'Interactive high-fidelity prototype with full user flows' },
               { title: 'Accessibility Audit', desc: 'WCAG 2.1 AA compliance documentation' },
@@ -460,14 +460,14 @@ export default function InitiatorFellowshipPage() {
           <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
           <div className="prose prose-sm max-w-none mb-8">
-            <p>This project reinforced something critical: accessibility isn't a checklist—it's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
+            <p>This project reinforced something critical: accessibility isn't a checklist. It's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
           </div>
           <blockquote className="text-lg italic text-slate-700 pl-6 border-l-4 border-slate-300 mb-6">
             "Good UX research doesn't just find problems. It builds consensus around solutions."
           </blockquote>
           <div className="text-sm text-slate-600">
             <p className="mb-2"><span className="font-semibold">Team:</span> Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja</p>
-            <p><span className="font-semibold">Course:</span> IE 4511 — December 2024</p>
+            <p><span className="font-semibold">Course:</span> IE 4511, December 2024</p>
           </div>
           </div>
         </section>
