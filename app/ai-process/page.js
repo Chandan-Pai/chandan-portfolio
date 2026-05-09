@@ -92,10 +92,13 @@ export default function AiProcessPage() {
           >
             Building this portfolio with AI
           </h1>
-          <p className="mt-8 text-lg sm:text-xl text-white/85 text-center max-w-2xl leading-relaxed">
-            Three acts: fast setup, a full day lost to interaction bugs, then a week on deployment, finished when tooling
-            could see the whole repo.
-          </p>
+          <div className="mt-8 flex justify-center w-full px-2">
+            <ul className="list-disc list-outside space-y-2 text-lg sm:text-xl text-white/90 text-left max-w-2xl leading-relaxed pl-5 sm:pl-6 marker:text-sky-400">
+              <li>Fast setup, then a full day lost to interaction and editor bugs.</li>
+              <li>A week on deployment and static hosting edge cases.</li>
+              <li>Finished when tooling could reason over the whole repo, not just open files.</li>
+            </ul>
+          </div>
         </section>
 
         {/* Stat cards */}

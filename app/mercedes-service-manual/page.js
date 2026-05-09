@@ -56,9 +56,10 @@ export default function MercedesServiceManualPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Interactive Repair Guidance
             </h1>
-            <p className="text-gray-200 text-lg leading-relaxed mb-6">
-              Product research and participatory design for clearer, safer assembly manuals, from field observation to a validated QR-based prototype.
-            </p>
+            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+              <li>Product research and participatory design for clearer, safer assembly manuals.</li>
+              <li>From field observation (AEIOU) through a validated QR-based prototype (usability testing, n=4).</li>
+            </ul>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span>
                 <span className="font-semibold text-white">Role:</span> Product Researcher

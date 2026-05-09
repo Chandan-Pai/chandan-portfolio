@@ -11,14 +11,12 @@ export default function StayTunedPage() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-20 md:py-28 pb-[max(5rem,env(safe-area-inset-bottom))]">
         <p className="text-xs font-semibold tracking-[0.25em] text-sky-600 uppercase mb-6">Overview</p>
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Stay tuned</h1>
-        <p className="text-lg text-slate-600 leading-relaxed mb-4">
-          You&apos;ve seen the four featured projects on this portfolio. I&apos;m working on additional write-ups and
-          experiments in human factors, field research, and product work that doesn&apos;t fit neatly into a single case
-          study yet.
-        </p>
-        <p className="text-lg text-slate-600 leading-relaxed mb-10">
-          Check back here for updates, or reach out if you want to talk through something in progress.
-        </p>
+        <ul className="list-disc list-outside space-y-2 text-lg text-slate-600 leading-relaxed mb-10 pl-5 marker:text-sky-600 max-w-xl">
+          <li>
+            More write-ups coming: human factors, field research, and product work that is not a single case study yet.
+          </li>
+          <li>Check back for updates, or reach out to talk through something in progress.</li>
+        </ul>
         <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-slate-200">
           <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
             ← Back to portfolio

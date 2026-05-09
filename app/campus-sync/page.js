@@ -172,9 +172,18 @@ export default function CampusSyncPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
             </h1>
-            <p className="text-gray-200 text-lg leading-relaxed mb-6">
-              Led end-to-end UX research and product design for a web application solving real navigation challenges for 50,000+ University of Minnesota students traversing 7+ miles of underground tunnels in harsh winters. Applied mixed-methods approach: contextual inquiry (shadowing 15 users in extreme weather), task analysis (mapping 40+ navigation scenarios), and iterative usability testing (3 rounds, n=25). Integrated campus mapping API with building access hours database. Achieved 80% user satisfaction (SUS: 82/100), 90% routing accuracy, 70% mobile adoption. Product deployed and serving daily active users.
-            </p>
+            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+              <li>
+                End-to-end UX research and design for Gopher Way navigation: 50,000+ students, 7+ miles of tunnels and skyways, extreme winter use cases.
+              </li>
+              <li>
+                Mixed methods: contextual inquiry (15 users), task analysis (40+ scenarios), iterative usability testing (3 rounds, n=25).
+              </li>
+              <li>Shipped product integrating campus mapping API with building access hours.</li>
+              <li>
+                Outcomes: 80% satisfaction, SUS 82, 90% routing accuracy, 70% mobile adoption, deployed with daily active users.
+              </li>
+            </ul>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span className="font-semibold text-white">UX Research &amp; Product Design</span>
               <span>December 9, 2025</span>

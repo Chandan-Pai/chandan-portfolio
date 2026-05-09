@@ -164,9 +164,10 @@ export default function InitiatorFellowshipPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Initiator Fellowship Website Redesign
             </h1>
-            <p className="text-gray-200 text-lg leading-relaxed mb-6">
-              Accessibility-first redesign bridging WCAG compliance and usable navigation
-            </p>
+            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+              <li>Accessibility-first redesign of the Initiator Fellowship website.</li>
+              <li>Bridging WCAG 2.1 AA alignment with navigation people can actually use.</li>
+            </ul>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span>
                 <span className="font-semibold text-white">Role:</span> UX Researcher &amp; Accessibility Specialist

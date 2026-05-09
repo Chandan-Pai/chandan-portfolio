@@ -52,9 +52,10 @@ export default function ManufacturingWorkflowPage() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
                 Boston Scientific Wolverine Blade Manufacturing
               </h1>
-              <p className="text-gray-200 text-lg leading-relaxed">
-                Lean methodology analysis identifying bottlenecks and optimization opportunities in medical device assembly
-              </p>
+              <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+                <li>Lean methodology analysis of Wolverine blade medical device assembly.</li>
+                <li>Mapped bottlenecks and optimization opportunities across the line.</li>
+              </ul>
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <div>
