@@ -17,6 +17,16 @@ export default function HomePage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [scrollY, setScrollY] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
+  /** Matches `SiteIslandNav` mobile breakpoint; disables hero parallax and drives layout tweaks. */
+  const [isNarrowViewport, setIsNarrowViewport] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)');
+    const sync = () => setIsNarrowViewport(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -78,7 +88,7 @@ export default function HomePage() {
     };
   }, []);
 
-  // ── SCROLL-DRIVEN 3D CARD LIFT ──
+  // ── SCROLL-DRIVEN 3D CARD LIFT (disabled below 768px for readability and performance) ──
   useEffect(() => {
     const MAX_ROTATE = 45;
     const MAX_Y = 50;
@@ -86,16 +96,32 @@ export default function HomePage() {
     const FADE_SPEED = 2.0;
     const ZONE_SCROLL_PX = 300;
 
-    const cards = Array.from(document.querySelectorAll('.project-link'));
+    const mq = window.matchMedia('(min-width: 768px)');
+
+    const cards = () => Array.from(document.querySelectorAll('.project-link'));
 
     function clamp(v, lo, hi) {
       return Math.min(Math.max(v, lo), hi);
     }
 
+    function clearCardStyles(list) {
+      list.forEach((card) => {
+        card.style.removeProperty('transform');
+        card.style.removeProperty('opacity');
+        card.style.removeProperty('transform-origin');
+      });
+    }
+
     function updateCards() {
+      const list = cards();
+      if (!mq.matches) {
+        clearCardStyles(list);
+        return;
+      }
+
       const vh = window.innerHeight;
 
-      const rawProgress = cards.map((card) => {
+      const rawProgress = list.map((card) => {
         const rect = card.getBoundingClientRect();
         const start = rect.bottom - vh;
         return clamp(1 - start / ZONE_SCROLL_PX, 0, 1);
@@ -103,11 +129,11 @@ export default function HomePage() {
 
       const seqProgress = [...rawProgress];
       seqProgress[0] = 1;
-      for (let i = 1; i < cards.length; i++) {
+      for (let i = 1; i < list.length; i++) {
         seqProgress[i] = Math.min(rawProgress[i], seqProgress[i - 1]);
       }
 
-      cards.forEach((card, i) => {
+      list.forEach((card, i) => {
         if (i === 0) {
           card.style.removeProperty('transform');
           card.style.removeProperty('opacity');
@@ -127,8 +153,11 @@ export default function HomePage() {
       rafId = requestAnimationFrame(tick);
     }
 
+    const onMq = () => updateCards();
+    mq.addEventListener('change', onMq);
     tick();
     return () => {
+      mq.removeEventListener('change', onMq);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []); 
@@ -176,46 +205,71 @@ export default function HomePage() {
     },
   ];
 
+  /** Edit this object to change the statement below Work. */
+  const homeStatement = {
+    label: 'Statement',
+    body:
+      'Three AI tools, three different problems. One week to ship. Content stayed mine throughout.',
+    /** Set to null to hide. Use Next `Link` below; do not put raw <a> tags in `body` (they will not work). */
+    aiBuildLink: {
+      label: 'How this portfolio was built with AI',
+      href: '/ai-process',
+    },
+  };
+
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
-      {/* Hero — full image (no cover crop); width fits viewport, height from aspect ratio */}
-      <header className="relative overflow-hidden bg-neutral-900">
+      {/* Hero: full image; mobile clears fixed nav + text limited to left half so portrait stays visible */}
+      <header className="relative overflow-hidden bg-neutral-900 max-sm:pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-0">
         <div className="relative w-full">
           <img
             src={publicAssetUrl(BASE_PATH, 'images/about/hero home.png')}
             alt=""
             className="w-full h-auto max-w-full block select-none pointer-events-none grayscale"
             style={{
-              transform: `translateY(${reduceMotion ? 0 : scrollY * 0.35}px)`,
-              willChange: 'transform',
+              transform: `translateY(${reduceMotion || isNarrowViewport ? 0 : scrollY * 0.35}px)`,
+              willChange: reduceMotion || isNarrowViewport ? 'auto' : 'transform',
             }}
             draggable={false}
           />
-          <div className="absolute inset-0 z-[1] bg-black/40 pointer-events-none" aria-hidden />
-          <div className="absolute inset-0 z-10 flex flex-col justify-center items-start pl-6 sm:pl-10 md:pl-14 lg:pl-20 pr-6 text-left">
-            <div className="max-w-[min(44rem,92vw)]">
-              <h1
-                className="font-black tracking-tight uppercase whitespace-nowrap bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent drop-shadow-md"
-                style={{
-                  fontSize: 'clamp(2.75rem, 10vw, 5.5rem)',
-                  lineHeight: '1',
-                }}
-              >
-                CHANDAN PAI
+          <div
+            className="pointer-events-none absolute inset-0 z-[1] bg-black/40 max-sm:bg-gradient-to-r max-sm:from-black/75 max-sm:via-black/45 max-sm:to-transparent"
+            aria-hidden
+          />
+          {/* Mobile: bottom scrim so copy stays readable; in-flow spacer below extends hero past the photo */}
+          <div
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-neutral-900/35 to-neutral-900 sm:hidden"
+            aria-hidden
+          />
+          <div className="absolute inset-0 z-10 flex flex-col items-start justify-center text-left max-sm:justify-start max-sm:items-start max-sm:pt-6 max-sm:pb-8 max-sm:pl-3 max-sm:pr-3 sm:pb-20 sm:pl-4 sm:pr-4 sm:justify-center sm:pt-0 sm:pl-10 md:pl-14 lg:pl-20 sm:pr-6">
+            <div className="w-full min-w-0 max-w-[min(44rem,100%)] max-sm:max-w-[min(78vw,18rem)]">
+              <h1 className="font-black uppercase text-left leading-[1.05] text-[clamp(1.2rem,5.5vw,1.6rem)] text-sky-200 [text-shadow:0_2px_24px_rgba(0,0,0,0.85)] sm:leading-none sm:whitespace-nowrap sm:tracking-tight sm:text-[clamp(2.75rem,10vw,5.5rem)] sm:bg-gradient-to-r sm:from-blue-400 sm:to-white sm:bg-clip-text sm:text-transparent sm:[text-shadow:none] sm:drop-shadow-md">
+                <span className="max-sm:block">CHANDAN</span>
+                <span className="hidden sm:inline" aria-hidden>
+                  {' '}
+                </span>
+                <span className="max-sm:block sm:inline">PAI</span>
               </h1>
-              <p className="mt-6 text-sm font-semibold tracking-widest text-white/90 uppercase">
-                Human Factors Engineer • UX Researcher
+              <p className="mt-3 text-left text-[0.6875rem] font-semibold tracking-wide leading-snug text-white uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.9)] sm:mt-6 sm:text-sm sm:tracking-wider sm:tracking-widest sm:leading-relaxed sm:text-white/90 sm:[text-shadow:none]">
+                <span className="max-sm:block">Human Factors Engineer</span>
+                <span className="max-sm:hidden"> • </span>
+                <span className="max-sm:block">UX Researcher</span>
               </p>
-              <p className="mt-8 text-lg text-white/90 leading-relaxed">
+              <p className="mt-4 text-left text-[0.8125rem] leading-relaxed text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.88)] sm:mt-8 sm:text-lg sm:text-white/90 sm:[text-shadow:none]">
                 Building data-driven design solutions at the intersection of engineering and human behavior
               </p>
             </div>
           </div>
+          {/* In-flow: absolute copy does not grow height; extends dark hero for mobile tagline */}
+          <div
+            className="w-full shrink-0 bg-neutral-900 sm:hidden h-[clamp(6.25rem,28vw,10.5rem)]"
+            aria-hidden
+          />
         </div>
       </header>
 
       {/* Projects Gallery */}
-      <section id="work" className="py-24 px-6">
+      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-16">Work</h2>
           <div className="h-0.5 w-full bg-gray-300 mb-16"></div>
@@ -251,7 +305,7 @@ export default function HomePage() {
                         />
                       )}
                     </div>
-                    <div className="w-full md:w-1/3 p-8 md:p-10 flex flex-col justify-between gap-8 min-h-0 min-w-0">
+                    <div className="w-full md:w-1/3 p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 min-h-0 min-w-0">
                       <div>
                         <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
                         <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
@@ -270,8 +324,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Statement: editable copy in `homeStatement` above */}
+      <section
+        id="statement"
+        aria-labelledby="home-statement-heading"
+        className="relative py-14 sm:py-20 px-4 sm:px-6 overflow-hidden border-t border-slate-100 bg-gradient-to-b from-white via-slate-50/90 to-white"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.18), transparent 55%), radial-gradient(ellipse 60% 40% at 100% 100%, rgba(15, 23, 42, 0.06), transparent 50%)',
+          }}
+          aria-hidden
+        />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="relative rounded-3xl border border-slate-200/90 bg-white/80 backdrop-blur-sm shadow-[0_24px_48px_-12px_rgba(15,23,42,0.12)] p-6 sm:p-12 md:p-14">
+            <div
+              className="absolute top-0 left-8 right-8 sm:left-12 sm:right-12 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent rounded-full"
+              aria-hidden
+            />
+            <p
+              id="home-statement-heading"
+              className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase mb-8"
+            >
+              {homeStatement.label}
+            </p>
+            <p className="relative text-xl sm:text-2xl md:text-[1.65rem] font-medium text-slate-800 leading-[1.45] tracking-tight">
+              <span
+                className="absolute -left-1 sm:-left-2 top-0 -translate-y-1 text-5xl sm:text-6xl font-serif text-sky-400/25 leading-none select-none"
+                aria-hidden
+              >
+                “
+              </span>
+              <span className="relative z-[1] pl-6 sm:pl-8">{homeStatement.body}</span>
+            </p>
+            {homeStatement.aiBuildLink ? (
+              <div className="relative z-[1] mt-10 pl-6 sm:pl-8">
+                <Link
+                  href={homeStatement.aiBuildLink.href}
+                  data-no-cursor-hover
+                  className="group inline-flex items-center gap-2 text-base font-semibold text-sky-700 hover:text-sky-900 underline decoration-sky-400/50 underline-offset-4 hover:decoration-sky-600 transition-colors"
+                >
+                  {homeStatement.aiBuildLink.label}
+                  <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>
+                    →
+                  </span>
+                </Link>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </section>
+
       {/* GitHub Projects */}
-      <section id="work" className="py-24 px-6 border-t border-slate-100">
+      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-slate-100">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
           <h2 className="text-3xl font-bold mb-12">Projects</h2>
@@ -287,7 +394,7 @@ export default function HomePage() {
               },
               { 
                 title: 'Netflix Content Data Visualization', 
-                desc: 'Visual breakdown of Netflix catalog by genre, country, release year, and content type — uncovering how streaming strategy has shifted over a decade', 
+                desc: 'Visual breakdown of Netflix catalog by genre, country, release year, and content type, uncovering how streaming strategy has shifted over a decade', 
                 tech: ['Tableau', 'Data Visualization', 'Entertainment Analytics'], 
                 href: 'https://public.tableau.com/app/profile/chandan.pai4658/viz/NetflixContentDatavisualisation/Dashboard1?publish=yes',
                 status: 'live'
@@ -295,15 +402,15 @@ export default function HomePage() {
               
             ].map((proj, i) => (
               <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-between p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group">
-                <div>
+                className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 sm:p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group text-left">
+                <div className="min-w-0">
                   <h3 className="font-semibold text-lg mb-1 group-hover:text-slate-700">{proj.title}</h3>
                   <p className="text-sm text-slate-500 mb-3">{proj.desc}</p>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {proj.tech.map(t => <span key={t} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">{t}</span>)}
                   </div>
                 </div>
-                <span className="text-slate-400 group-hover:text-slate-700 text-xl ml-6">→</span>
+                <span className="text-slate-400 group-hover:text-slate-700 text-xl sm:ml-6 sm:shrink-0 self-end sm:self-auto">→</span>
               </a>
             ))}
           </div>
@@ -311,7 +418,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 pb-[max(3rem,env(safe-area-inset-bottom))]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
           <p className="text-lg text-slate-600 mb-8">
