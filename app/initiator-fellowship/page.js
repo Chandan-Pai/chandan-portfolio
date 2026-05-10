@@ -2,6 +2,7 @@
  
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ExpandableImage from '../components/ExpandableImage';
 
 /** Encode path segments so filenames with spaces or parens work on GitHub Pages. */
 function publicAssetUrl(basePath, relativePath) {
@@ -15,118 +16,6 @@ function publicAssetUrl(basePath, relativePath) {
   return `${base}/${encoded}`;
 }
 
-function ImageWithStats({ src, alt, statValue, statDetail }) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <div
-        className="card cursor-pointer"
-        data-no-cursor-hover
-        data-cursor-expand
-        onClick={() => setIsOpen(true)}
-        style={{ textDecoration: 'none', color: 'inherit' }}
-      >
-        <img src={src} alt={alt} />
-        <section>
-          <h2>{statValue}</h2>
-          <p>{statDetail}</p>
-          <div>
-            <button type="button">Expand</button>
-          </div>
-        </section>
-      </div>
- 
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
-        >
-          <div className="relative max-w-6xl w-full mx-4 flex gap-6">
-            <div className="flex-1">
-              <img
-                src={src}
-                alt={alt}
-                className="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
-            <div className="w-64 flex items-center">
-              <div className="bg-sky-50 border-l-4 border-sky-500 p-6 rounded-lg w-full">
-                <p className="text-sm font-semibold text-sky-900 mb-2">Research Method</p>
-                <p className="text-3xl font-bold text-sky-800 mb-3">{statValue}</p>
-                <p className="text-sm text-sky-700">{statDetail}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
- 
-function ImageModal({ src, alt, isOpen, onClose }) {
-  if (!isOpen) return null;
-  return (
-    <div
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <div className="relative max-w-6xl max-h-[90vh] w-full mx-4">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-contain rounded-lg shadow-2xl"
-          onClick={(e) => e.stopPropagation()}
-        />
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-}
- 
-function HoverableImage({ src, alt, className = "" }) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <div
-        className={`cursor-pointer group relative overflow-hidden rounded border border-slate-300 transition-all duration-300 hover:shadow-lg hover:scale-105 ${className}`}
-        data-no-cursor-hover
-        data-cursor-expand
-        onClick={() => setIsOpen(true)}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-          <span className="text-white/0 group-hover:text-white/100 text-sm font-semibold transition-all duration-300">
-            Click to expand
-          </span>
-        </div>
-      </div>
-      <ImageModal src={src} alt={alt} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </>
-  );
-}
-
-
- 
 export default function InitiatorFellowshipPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const asset = (rel) => publicAssetUrl(BASE_PATH, rel);
@@ -173,7 +62,7 @@ export default function InitiatorFellowshipPage() {
                 <span className="font-semibold text-white">Role:</span> UX Researcher &amp; Accessibility Specialist
               </span>
               <span>
-                <span className="font-semibold text-white">Team:</span> Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja
+                <span className="font-semibold text-white">Team:</span> Chandan Pai, Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Vikram Selvakumaranraja
               </span>
               <span>
                 <span className="font-semibold text-white">Impact:</span> 2.3/5 → 4.7/5 usability • 104% increase • WCAG 2.1 AA
@@ -183,10 +72,10 @@ export default function InitiatorFellowshipPage() {
         </header>
 
         <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
-          <img
+          <ExpandableImage
+            className="my-0 shadow-lg"
             src={asset('images/initiator-fellowship/screenshot-rocks.png')}
             alt="Initiator Fellowship website before and after"
-            className="w-full rounded-xl shadow-lg border border-slate-200/80"
           />
         </div>
  
@@ -220,9 +109,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" />
-              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" />
-              <HoverableImage src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" />
             </div>
           </div>
         </section>
@@ -246,9 +135,9 @@ export default function InitiatorFellowshipPage() {
               ))}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <HoverableImage src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" statValue="HTA" statDetail="Hierarchical Task Analysis" />
-              <HoverableImage src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" statValue="Card Sorting" statDetail="User-Centered Content Organization" />
-              <HoverableImage src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" statValue="User Testing" statDetail="Usability Evaluation" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" />
+              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" />
             </div>
           </div>
         </section>
@@ -313,11 +202,12 @@ export default function InitiatorFellowshipPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 {insight.figs.map((fig) => (
-                  <div key={fig.num} className="relative">
-                    <HoverableImage 
-                      src={fig.src} 
+                  <div key={`${i}-${fig.num}`} className="relative">
+                    <ExpandableImage
+                      className="my-0 h-80 w-full"
+                      imgClassName="h-full w-full object-cover"
+                      src={fig.src}
                       alt={fig.alt}
-                      className="h-80 w-full"
                     />
                     <p className="text-xs text-slate-500 text-center mt-2">Figure {fig.num}</p>
                   </div>
@@ -389,12 +279,13 @@ export default function InitiatorFellowshipPage() {
                 </div>
                 {metric.figs && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {metric.figs.map((fig) => (
-                      <div key={fig.num} className="relative">
-                        <HoverableImage 
-                          src={fig.src} 
+                    {metric.figs.map((fig, fi) => (
+                      <div key={`${i}-${fi}-${String(fig.num)}`} className="relative">
+                        <ExpandableImage
+                          className={`my-0 w-full ${fig.num === 'Old Website' ? 'h-96' : 'h-80'}`}
+                          imgClassName="h-full w-full object-cover"
+                          src={fig.src}
                           alt={fig.alt}
-                          className={fig.num === 'Old Website' ? "h-96 w-full" : "h-80 w-full"}
                         />
                         <p className="text-xs text-slate-500 text-center mt-2">Figure {fig.num}</p>
                       </div>
@@ -467,7 +358,7 @@ export default function InitiatorFellowshipPage() {
             "Good UX research doesn't just find problems. It builds consensus around solutions."
           </blockquote>
           <div className="text-sm text-slate-600">
-            <p className="mb-2"><span className="font-semibold">Team:</span> Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Chandan Pai, Vikram Selvakumaranraja</p>
+            <p className="mb-2"><span className="font-semibold">Team:</span> Chandan Pai, Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Vikram Selvakumaranraja</p>
             <p><span className="font-semibold">Course:</span> IE 4511, December 2024</p>
           </div>
           </div>

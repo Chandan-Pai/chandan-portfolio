@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ExpandableImage from '../components/ExpandableImage';
 
 export default function MercedesServiceManualPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -201,8 +202,16 @@ export default function MercedesServiceManualPage() {
           ))}
         </div>
         <div className="mt-8 space-y-8">
-          <img src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`} alt="AEIOU Field Observation" className="w-full rounded-xl border border-slate-200" />
-          <img src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`} alt="Observation sheets" className="w-full rounded-xl border border-slate-200" />
+          <ExpandableImage
+            className="my-0"
+            src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`}
+            alt="AEIOU Field Observation"
+          />
+          <ExpandableImage
+            className="my-0"
+            src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`}
+            alt="Observation sheets"
+          />
         </div>
         
       </section>
@@ -254,8 +263,18 @@ export default function MercedesServiceManualPage() {
               </tbody>
             </table>
           </div>
-          <img src={`${BASE_PATH}/images/Repair manual/Journey Map.png`} alt="Journey Map" className="w-full rounded-xl border border-slate-200 mt-8" />
-          <img src={`${BASE_PATH}/images/Repair manual/Affinity Diagraming.png`} alt="Affinity Diagram" className="w-full rounded-xl border border-slate-200 mt-6" />    
+          <div className="mt-8 space-y-6">
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Journey Map.png`}
+              alt="Journey Map"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Affinity Diagraming.png`}
+              alt="Affinity Diagram"
+            />
+          </div>
         </div>
       </section>
 
@@ -279,12 +298,13 @@ export default function MercedesServiceManualPage() {
         {/* How it should be drawn - reference image */}
         <div className="mb-12">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">Reference: How the pig should look</h3>
-          <div className="rounded-xl overflow-hidden border border-slate-200 max-w-2xl">
-            <img src={`${BASE_PATH}/images/Repair manual/pig drawing reference.png`} alt="Correct pig drawing reference" className="w-full h-auto" />
-            <div className="bg-sky-100 p-3">
-              <p className="text-xs font-semibold text-sky-900">Target outcome with visual guidance</p>
-            </div>
-          </div>
+          <ExpandableImage
+            className="my-0 max-w-2xl"
+            src={`${BASE_PATH}/images/Repair manual/pig drawing reference.png`}
+            alt="Correct pig drawing reference"
+            caption={<p className="text-xs font-semibold text-sky-900">Target outcome with visual guidance</p>}
+            captionClassName="bg-sky-100 p-3 border-t border-slate-200"
+          />
         </div>
 
         {/* The actual pig drawing instructions */}
@@ -312,18 +332,20 @@ export default function MercedesServiceManualPage() {
         
         {/* Images - horizontal layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-          <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`} alt="Text-only pig instructions" className="w-full h-auto" />
-            <div className="bg-slate-200 p-3">
-              <p className="text-xs font-semibold text-slate-800">Text-only instructions: chaotic results</p>
-            </div>
-          </div>
-          <div className="rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`} alt="Visual-guided pig drawings" className="w-full h-auto" />
-            <div className="bg-sky-100 p-3">
-              <p className="text-xs font-semibold text-sky-900">Visual + text steps: consistent, recognizable</p>
-            </div>
-          </div>
+          <ExpandableImage
+            className="my-0"
+            src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`}
+            alt="Text-only pig instructions"
+            caption={<p className="text-xs font-semibold text-slate-800">Text-only instructions: chaotic results</p>}
+            captionClassName="bg-slate-200 p-3 border-t border-slate-200"
+          />
+          <ExpandableImage
+            className="my-0"
+            src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`}
+            alt="Visual-guided pig drawings"
+            caption={<p className="text-xs font-semibold text-sky-900">Visual + text steps: consistent, recognizable</p>}
+            captionClassName="bg-sky-100 p-3 border-t border-slate-200"
+          />
         </div>
 
         {/* Participatory design summary */}
@@ -383,9 +405,21 @@ export default function MercedesServiceManualPage() {
             ))}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-            <img src={`${BASE_PATH}/images/Repair manual/Age Group Distribution.jpg`} alt="Age group distribution" className="w-full rounded-xl border border-slate-200" />
-            <img src={`${BASE_PATH}/images/Repair manual/Top Frustrations.jpg`} alt="Top frustrations" className="w-full rounded-xl border border-slate-200" />
-            <img src={`${BASE_PATH}/images/Repair manual/where are manuals used.png`} alt="Where manuals are used" className="w-full rounded-xl border border-slate-200" />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Age Group Distribution.jpg`}
+              alt="Age group distribution"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Top Frustrations.jpg`}
+              alt="Top frustrations"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/where are manuals used.png`}
+              alt="Where manuals are used"
+            />
           </div>
         </div>
       </section>
@@ -421,9 +455,11 @@ export default function MercedesServiceManualPage() {
         
         {/* QR Scan Screen */}
         <div className="mb-12">
-          <div className="max-w-md mx-auto rounded-xl overflow-hidden border border-slate-200">
-            <img src={`${BASE_PATH}/images/Repair manual/QR.png`} alt="QR scan screen" className="w-full h-auto" />
-          </div>
+          <ExpandableImage
+            className="my-0 max-w-md mx-auto"
+            src={`${BASE_PATH}/images/Repair manual/QR.png`}
+            alt="QR scan screen"
+          />
           <p className="text-xs text-slate-500 mt-2 text-center">QR scan + format selection screen</p>
         </div>
 
@@ -431,35 +467,43 @@ export default function MercedesServiceManualPage() {
         <div className="mb-12">
           <h4 className="text-lg font-semibold text-slate-900 mb-4">Step-by-Step Navigation</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/Repair manual/STEP1.png`} alt="Step navigation screen 1" className="w-full h-auto" />
-            </div>
-            <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/Repair manual/step2 .png`} alt="Step navigation screen 2" className="w-full h-auto" />
-            </div>
-            <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/Repair manual/step3.png`} alt="Step navigation screen 3" className="w-full h-auto" />
-            </div>
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/STEP1.png`}
+              alt="Step navigation screen 1"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/step2 .png`}
+              alt="Step navigation screen 2"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/step3.png`}
+              alt="Step navigation screen 3"
+            />
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">Safety checklist → step-by-step flow</p>
         </div>
 
         {/* A/B Layout Comparison - 2 Images */}
-        <div className="max-w-2xl mx-auto rounded-xl overflow-hidden border border-slate-200">
+        <div className="max-w-2xl mx-auto">
           <h4 className="text-lg font-semibold text-slate-900 mb-4">A/B Layout Testing</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-            <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/Repair manual/Prototype 1.png`} alt="A/B prototype layout A" className="w-full h-auto" />
-              <div className="bg-slate-50 p-3">
-                <p className="text-xs font-semibold text-slate-700">Layout A: Text-first approach</p>
-              </div>
-            </div>
-            <div className="rounded-xl overflow-hidden border border-slate-200">
-              <img src={`${BASE_PATH}/images/Repair manual/Prototype 2.png`} alt="A/B prototype layout B" className="w-full h-auto" />
-              <div className="bg-slate-50 p-3">
-                <p className="text-xs font-semibold text-slate-700">Layout B: Visual-first approach</p>
-              </div>
-            </div>
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Prototype 1.png`}
+              alt="A/B prototype layout A"
+              caption={<p className="text-xs font-semibold text-slate-700">Layout A: Text-first approach</p>}
+              captionClassName="bg-slate-50 p-3 border-t border-slate-200"
+            />
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Prototype 2.png`}
+              alt="A/B prototype layout B"
+              caption={<p className="text-xs font-semibold text-slate-700">Layout B: Visual-first approach</p>}
+              captionClassName="bg-slate-50 p-3 border-t border-slate-200"
+            />
           </div>
           <p className="text-xs text-slate-500 mt-4 text-center">A/B layouts tested for one-handed phone use during repair tasks</p>
         </div>

@@ -3,6 +3,7 @@ import './globals.css';
 import './project-gutter.css';
 import CursorProvider from './components/CursorProvider';
 import ConditionalSiteContactFooter from './components/ConditionalSiteContactFooter';
+import FirstVisit from './components/FirstVisit';
 import SiteIslandNav from './components/SiteIslandNav';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         }}
       >
         <CursorProvider />
+        <FirstVisit />
         <SiteIslandNav />
         <div
           className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip bg-[rgb(255,255,255)]"

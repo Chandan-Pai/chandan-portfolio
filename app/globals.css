@@ -185,6 +185,25 @@ input, textarea, select, button {
     transform: translateY(-8px);
   }
 }
+
+/* First-visit intro card (FirstVisit.jsx) */
+@keyframes firstVisitSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .first-visit-card {
+    animation: firstVisitSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
 /* Gradient text for name */
 .gradient-text {
   background: linear-gradient(135deg, #1e293b 0%, #64748b 50%, #cbd5e1 100%);

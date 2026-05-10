@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ExpandableImage from '../components/ExpandableImage';
 
 /** Path under `public/` (e.g. `images/campus sync/file.png`). Encodes spaces and `:` so assets work on GitHub Pages and all browsers. */
 function publicUrl(basePath, relativePath) {
@@ -12,21 +13,6 @@ function publicUrl(basePath, relativePath) {
   if (!basePath) return `/${encoded}`;
   const base = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
   return `${base}/${encoded}`;
-}
-
-function HoverableImage({ src, alt, className = '', imgClassName = '' }) {
-  return (
-    <figure
-      className={`group relative my-10 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md ${className}`}
-      data-no-cursor-hover
-    >
-      <img
-        src={src}
-        alt={alt}
-        className={`block w-full h-auto rounded-xl transition-transform duration-300 ease-out group-hover:scale-[1.02] ${imgClassName}`}
-      />
-    </figure>
-  );
 }
 
 /** Live iframe embed; may be blank if campus-sync.org sets X-Frame-Options / CSP frame-ancestors. */
@@ -192,7 +178,7 @@ export default function CampusSyncPage() {
         </header>
 
         <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
+          <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
         </div>
 
         <Section id="problem" title="The Problem">
@@ -208,7 +194,7 @@ export default function CampusSyncPage() {
           <Body>
             The data backed it up. Building hours were scattered across 12 different department websites. Official tunnel maps were static PDFs last updated in 2019. Google Maps routed outdoors. There was no single tool that put it together and students were paying the price every winter.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Winter campus navigation context" />
+          <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Winter campus navigation context" />
         </Section>
 
         <Section id="research" title="How We Found the Real Problem" className="bg-gray-50/80">
@@ -253,7 +239,7 @@ export default function CampusSyncPage() {
           <Body>
             On the ground, students were still reconciling scattered building hours and static PDF maps with what they saw on tunnel walls. Official Gopher Way signage helped orient people, but it could not answer &quot;is this entire route open right now?&quot; That gap is what we designed against.
           </Body>
-          <HoverableImage
+          <ExpandableImage
             src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')}
             alt="Existing Gopher Way tunnel and on-campus wayfinding context students navigated alongside physical signage"
           />
@@ -265,9 +251,9 @@ export default function CampusSyncPage() {
           </Body>
           <p className="text-sm font-medium text-gray-500 mb-3">Selected Figma prototype screens (pre-code)</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
-            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks.png')} alt="Figma prototype screen 1" />
-            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
-            <HoverableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
+            <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks.png')} alt="Figma prototype screen 1" />
+            <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
+            <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
           </div>
           <Body className="font-semibold text-sky-700">November 3: MVP</Body>
           <Body>
@@ -320,16 +306,16 @@ export default function CampusSyncPage() {
           <Body>
             The core innovation isn&apos;t the map. It&apos;s what happens before the map renders. The routing engine queries building access status at routing time, filters out any path that goes through a currently-closed building, then runs pathfinding on the remaining graph. Users never see a route they can&apos;t walk. That&apos;s the feature that changed behavior.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Routing engine logic" />
+          <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/Routing Logic Diagram.png')} alt="Routing engine logic" />
 
           <Subheading>The Visual System</Subheading>
           <Body>
             Maroon lines = tunnels. Gold lines = outdoors. Two colors, zero ambiguity. Round 2 usability testing showed users following routes without realizing they&apos;d gone outside. The original single-color overlay gave no signal. The dual-color system made the distinction impossible to miss, even on a small mobile screen while walking.
           </Body>
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Before and after dual-color route visualization" />
+          <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/Before:after visualization.png')} alt="Before and after dual-color route visualization" />
 
           <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-10 my-10">
-            <HoverableImage
+            <ExpandableImage
               className="my-0 shrink-0 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[260px] mx-auto md:mx-0"
               imgClassName="max-h-[min(380px,50svh)] w-full object-contain object-top"
               src={publicUrl(BASE_PATH, 'images/campus sync/Search first interface.png')}
@@ -350,16 +336,12 @@ export default function CampusSyncPage() {
                 Added in response to a specific pilot testing question: &quot;Is this actually faster than going outside?&quot; Students needed to make that comparison in real time. The time estimate displays prominently for both indoor and outdoor segments, so the decision is instant.
               </Body>
             </div>
-            <figure
-              className="shrink-0 w-full max-w-xs sm:max-w-sm mx-auto md:mx-0 md:mt-2 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm"
-              data-no-cursor-hover
-            >
-              <img
-                src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')}
-                alt="Walking time estimates for indoor vs outdoor route comparison in the product UI"
-                className="block w-full h-auto object-contain max-h-56 md:max-h-64"
-              />
-            </figure>
+            <ExpandableImage
+              className="my-0 shrink-0 w-full max-w-xs sm:max-w-sm mx-auto md:mx-0 md:mt-2"
+              imgClassName="object-contain max-h-56 md:max-h-64"
+              src={publicUrl(BASE_PATH, 'images/campus sync/Walking time estimates.png')}
+              alt="Walking time estimates for indoor vs outdoor route comparison in the product UI"
+            />
           </div>
         </Section>
 
@@ -373,7 +355,7 @@ export default function CampusSyncPage() {
               <Body>
                 Sessions were run on participants&apos; own phones and a shared set of common screen sizes (including narrower devices under 390px width) so layout, tap targets, and route legibility matched real winter use.
               </Body>
-              <HoverableImage
+              <ExpandableImage
                 className="my-6"
                 src={publicUrl(BASE_PATH, 'images/campus sync/device used to check the website.png')}
                 alt="Phones and devices participants used to test CampusSync in usability sessions"
@@ -384,7 +366,7 @@ export default function CampusSyncPage() {
               <Body>
                 In a short follow-up survey (n=10), 90% of participants said they found the website visually appealing, a useful sanity check alongside task metrics that the interface felt credible, not just functional.
               </Body>
-              <HoverableImage
+              <ExpandableImage
                 className="my-6"
                 src={publicUrl(BASE_PATH, 'images/campus sync/visually apealling .png')}
                 alt="Survey results: 90% of respondents found the website visually appealing"
@@ -415,7 +397,7 @@ export default function CampusSyncPage() {
             </li>
           </ul>
 
-          <HoverableImage src={publicUrl(BASE_PATH, 'images/campus sync/usability .png')} alt="Usability testing summary" />
+          <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/usability .png')} alt="Usability testing summary" />
 
           <Body className="mt-8">
             The qualitative feedback was equally useful. The dual-color route visualization was the single most-cited positive feature, described as &quot;immediately obvious&quot; and &quot;the thing that made it actually useful.&quot; The most-cited limitation was Minneapolis/St. Paul routing, which the team had documented as a user misconception before launch. The tunnels don&apos;t connect the campuses. That&apos;s not a missing feature. That&apos;s a geography problem.
@@ -428,7 +410,7 @@ export default function CampusSyncPage() {
           </Body>
           <div className="mt-6 space-y-1 text-sm text-gray-600 border-t border-gray-200 pt-6">
             <p>
-              <span className="font-semibold text-gray-900">Team:</span> Nick Kanning, Chandan Umesh Pai, Saad Saleem, David Tomlinson
+              <span className="font-semibold text-gray-900">Team:</span> Chandan Umesh Pai, Nick Kanning, Saad Saleem, David Tomlinson
             </p>
             <p>
               <span className="font-semibold text-gray-900">Guided by:</span> Prof. Kathryn Wust &amp; Prof. Scott Hareland

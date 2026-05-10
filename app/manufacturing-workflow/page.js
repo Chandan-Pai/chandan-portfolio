@@ -62,7 +62,7 @@ export default function ManufacturingWorkflowPage() {
                 <span className="font-semibold text-white">Role:</span> Industrial Engineer
               </div>
               <span>
-                <span className="font-semibold text-white">Team:</span> Olasubomi Omoyeni, Chandan Pai, Jason Phan
+                <span className="font-semibold text-white">Team:</span> Chandan Pai, Olasubomi Omoyeni, Jason Phan
               </span>
               <span>
                 <span className="font-semibold text-white">Date:</span> December 2024
