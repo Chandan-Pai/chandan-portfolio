@@ -340,10 +340,10 @@ export default function ManufacturingWorkflowPage() {
 
           <div className="flex justify-between items-center pt-8 border-t border-gray-200">
             <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
-              ← Back to portfolio
+              ← Back to Portfolio
             </Link>
-            <Link href="/stay-tuned" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
-              What&apos;s next →
+            <Link href="/user-engagement-analysis" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+              Next Project →
             </Link>
           </div>
         </section>

@@ -203,6 +203,18 @@ export default function HomePage() {
       type: 'image', 
       num: '04' 
     },
+    {
+      id: 'user-engagement-analysis',
+      href: '/user-engagement-analysis',
+      title: 'Quantifying User Engagement',
+      role: 'Data Analyst & Researcher',
+      metric: '8,196 Play Store apps • R² = 0.98 • +29.8% lift (free vs paid)',
+      src: publicAssetUrl(BASE_PATH, 'images/user-engagement-analysis/playstore_engagement_analysis.png'),
+      type: 'image',
+      num: '05',
+      /** Image is portrait (2426×3094); pin a 3:2 frame so the placard height matches the others. */
+      mediaAspect: 'aspect-[3/2]',
+    },
   ];
 
   /** Edit this object to change the statement below Work. */
@@ -284,10 +296,16 @@ export default function HomePage() {
                   style={{ willChange: index === 0 ? 'auto' : 'transform, opacity' }}
                 >
                   <div className="flex flex-col md:flex-row items-stretch">
-                    <div className="w-full md:w-2/3 shrink-0 bg-slate-100 flex items-start justify-center">
+                    <div
+                      className={`w-full md:w-2/3 shrink-0 bg-slate-100 flex items-center justify-center ${project.mediaAspect ?? ''}`}
+                    >
                       {project.type === 'video' ? (
                         <video
-                          className="w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95"
+                          className={
+                            project.mediaAspect
+                              ? 'w-full h-full object-cover block transition-opacity duration-300 group-hover:opacity-95'
+                              : 'w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95'
+                          }
                           autoPlay
                           loop
                           muted
@@ -301,7 +319,11 @@ export default function HomePage() {
                         <img
                           src={project.src}
                           alt={project.title}
-                          className="w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95"
+                          className={
+                            project.mediaAspect
+                              ? 'w-full h-full object-contain object-center p-4 sm:p-6 block transition-opacity duration-300 group-hover:opacity-95'
+                              : 'w-full h-auto max-w-full block transition-opacity duration-300 group-hover:opacity-95'
+                          }
                         />
                       )}
                     </div>
