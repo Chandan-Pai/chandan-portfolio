@@ -96,7 +96,7 @@ export default function InitiatorFellowshipPage() {
                 { title: 'Dual Navigation Bars', desc: 'Confusing layout in half-screen view' },
                 { title: 'No Form Feedback', desc: "Users couldn't tell what they did wrong when submitting" }
               ].map((issue, i) => (
-                <FadeUp key={i} className="border-l-4 border-slate-400 pl-4 py-2">
+                <FadeUp key={i} className="glass-placard border-l-4 border-slate-400 pl-4 py-3 rounded-r-lg">
                   <p className="font-semibold text-slate-200">{issue.title}</p>
                   <p className="text-sm text-slate-400">{issue.desc}</p>
                 </FadeUp>
@@ -122,7 +122,7 @@ export default function InitiatorFellowshipPage() {
                 { title: 'Card Sorting (n=5)', desc: 'Participants organized content to reveal natural information architecture patterns.' },
                 { title: 'User Testing (n=5)', desc: '3 scenarios tested on both old and new sites. Measured task completion time, post-task ratings, qualitative feedback.' }
               ].map((method, i) => (
-                <FadeUp key={i} className="bg-sky-950/40 border border-sky-800 rounded-lg p-4">
+                <FadeUp key={i} className="glass-placard rounded-lg p-4">
                   <p className="font-semibold text-sky-200 mb-2">{method.title}</p>
                   <p className="text-sm text-slate-300">{method.desc}</p>
                 </FadeUp>
@@ -265,7 +265,7 @@ export default function InitiatorFellowshipPage() {
                     <p className="text-slate-300">{metric.solution}</p>
                   </div>
                 </div>
-                <div className="mb-6 bg-gradient-to-r from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-4 sm:p-6">
+                <div className="glass-placard mb-6 border border-sky-700 rounded-lg p-4 sm:p-6">
                   <p className="text-sm text-slate-300 uppercase tracking-wide mb-2">Measured Impact</p>
                   <p className="text-3xl sm:text-4xl font-bold text-sky-300 mb-1">{metric.metric}</p>
                   <p className="text-lg font-semibold text-sky-400">{metric.increase}</p>
@@ -313,7 +313,7 @@ export default function InitiatorFellowshipPage() {
               { title: 'User Testing Report', desc: 'Complete findings, recommendations, and iteration documentation' },
               { title: 'HTA Documentation', desc: 'Task flow analysis for all critical pathways' }
             ].map((item, i) => (
-              <FadeUp key={i} className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <FadeUp key={i} className="glass-placard rounded-lg p-4">
                 <p className="font-semibold mb-2">{item.title}</p>
                 <p className="text-sm text-slate-400">{item.desc}</p>
               </FadeUp>
@@ -348,7 +348,7 @@ export default function InitiatorFellowshipPage() {
           <FadeUp className="prose prose-invert prose-sm max-w-none mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist. It's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
           </FadeUp>
-          <FadeUp as="blockquote" className="text-lg italic text-slate-300 pl-6 border-l-4 border-slate-300 mb-6">
+          <FadeUp as="blockquote" className="glass-placard text-lg italic text-slate-300 pl-6 py-4 border-l-4 border-slate-300 mb-6 rounded-r-lg">
             "Good UX research doesn't just find problems. It builds consensus around solutions."
           </FadeUp>
           <FadeUp className="text-sm text-slate-400">

@@ -146,7 +146,7 @@ export default function UserEngagementAnalysisPage() {
                     'Free vs paid impact was industry-assumed, never statistically validated at per-app scale on this dataset.',
                 },
               ].map((card) => (
-                <FadeUp key={card.title} className="border-l-4 border-rose-400 bg-rose-900/25 pl-4 py-3 rounded-r">
+                <FadeUp key={card.title} className="glass-placard border-l-4 border-rose-400 pl-4 py-3 rounded-r-lg">
                   <p className="font-semibold text-slate-100 mb-1">{card.title}</p>
                   <p className="text-sm text-slate-300 leading-relaxed">{card.desc}</p>
                 </FadeUp>
@@ -193,7 +193,7 @@ export default function UserEngagementAnalysisPage() {
                   outcome: 'n = 800 free · n = 604 paid',
                 },
               ].map((s) => (
-                <FadeUp key={s.step} className="bg-sky-950/40 border border-sky-800 rounded-lg p-5">
+                <FadeUp key={s.step} className="glass-placard rounded-lg p-5">
                   <div className="flex items-baseline gap-3 mb-2">
                     <span className="text-xs font-mono font-bold tracking-widest text-sky-400">{s.step}</span>
                     <p className="font-semibold text-sky-200">{s.title}</p>
@@ -245,7 +245,7 @@ export default function UserEngagementAnalysisPage() {
               ].map((card) => (
                 <FadeUpScale
                   key={card.stat}
-                  className="bg-gradient-to-br from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-6"
+                  className="glass-placard bg-gradient-to-br from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-6"
                 >
                   <p className="text-3xl sm:text-4xl font-bold text-sky-300 mb-3">{card.stat}</p>
                   <p className="text-sm text-slate-300 leading-relaxed">{card.label}</p>
@@ -259,7 +259,7 @@ export default function UserEngagementAnalysisPage() {
         <MotionSection id="limitations" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-6">Research Limitations</FadeUp>
-            <FadeUp className="bg-amber-950/40 border-2 border-amber-700 rounded-lg p-6 max-w-3xl">
+            <FadeUp className="glass-placard border-2 border-amber-700 rounded-lg p-6 max-w-3xl">
               <MotionGrid as="ul" className="space-y-4 text-slate-200" stagger={0.12}>
                 <FadeUp as="li" className="flex gap-3">
                   <span className="text-amber-400 mt-1" aria-hidden>
@@ -295,7 +295,7 @@ export default function UserEngagementAnalysisPage() {
         <MotionSection id="reflection" className="w-full py-12 border-t border-slate-700" stagger={0.25}>
           <div className="project-gutter-x w-full min-w-0">
             <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-6">Reflection</FadeUp>
-            <FadeUp as="blockquote" className="text-xl sm:text-2xl font-semibold italic text-slate-200 mb-6 pl-6 border-l-4 border-sky-500 max-w-3xl">
+            <FadeUp as="blockquote" className="glass-placard text-xl sm:text-2xl font-semibold italic text-slate-200 mb-6 pl-6 py-5 border-l-4 border-sky-500 max-w-3xl rounded-r-lg">
               &ldquo;The most important research skill is knowing when your metric design creates circular reasoning
               &mdash; and flagging it before someone else does. R² = 0.98 sounds impressive. Knowing why to distrust
               it is more impressive.&rdquo;

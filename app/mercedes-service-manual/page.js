@@ -104,35 +104,35 @@ export default function MercedesServiceManualPage() {
               {
                 phase: 'DISCOVER',
                 label: '01',
-                color: 'bg-sky-950/40 border-sky-800',
+                color: 'border-sky-800',
                 accent: 'text-sky-300',
                 items: ['Personal story: why manuals fail', 'AEIOU field observation', 'Stakeholder interviews', 'Qualtrics survey (18-34 yr olds)'],
               },
               {
                 phase: 'DEFINE',
                 label: '02',
-                color: 'bg-slate-800/50 border-slate-600',
+                color: 'border-slate-600',
                 accent: 'text-slate-200',
                 items: ['Journey map (current vs ideal state)', 'Two personas identified', 'Core pain points clustered', 'Problem statement formalized'],
               },
               {
                 phase: 'DEVELOP',
                 label: '03',
-                color: 'bg-slate-800/50 border-slate-600',
+                color: 'border-slate-600',
                 accent: 'text-slate-200',
                 items: ['Participatory design sessions', 'Pig drawing test (key insight)', 'Two prototype concepts', 'QR-scan app selected'],
               },
               {
                 phase: 'DELIVER',
                 label: '04',
-                color: 'bg-cyan-950/40 border-cyan-800',
+                color: 'border-cyan-800',
                 accent: 'text-cyan-300',
                 items: ['Wireframe prototype built', 'Usability testing n=4', 'Think-aloud protocol', 'Iterated on findings'],
               },
             ].map((d, i) => (
               <FadeUp
                 key={i}
-                className={`border ${d.color} p-5 sm:p-6 rounded-xl xl:rounded-none ${i === 0 ? 'xl:rounded-l-xl' : ''} ${i === 3 ? 'xl:rounded-r-xl' : ''}`}
+                className={`glass-placard border ${d.color} p-5 sm:p-6 rounded-xl xl:rounded-none ${i === 0 ? 'xl:rounded-l-xl' : ''} ${i === 3 ? 'xl:rounded-r-xl' : ''}`}
               >
                 <p className={`text-xs font-mono font-bold tracking-widest uppercase mb-1 ${d.accent}`}>{d.label}</p>
                 <p className="text-sm font-bold text-slate-100 mb-4">{d.phase}</p>
@@ -165,7 +165,7 @@ export default function MercedesServiceManualPage() {
             { title: "2D Diagrams Fail Spatial Tasks", desc: "Users can't visualize 3D assembly from flat drawings", icon: "📐" },
             { title: "No Learning Flexibility", desc: "Text-only format doesn't support different comprehension styles", icon: "🎯" },
           ].map((pain, idx) => (
-            <FadeUp key={idx} className="p-6 bg-slate-900 rounded-xl text-white">
+            <FadeUp key={idx} className="glass-placard p-6 rounded-xl text-white">
               <p className="text-3xl mb-4">{pain.icon}</p>
               <h3 className="font-semibold text-sm mb-2">{pain.title}</h3>
               <p className="text-xs text-slate-400 leading-relaxed">{pain.desc}</p>
@@ -191,7 +191,7 @@ export default function MercedesServiceManualPage() {
               color: 'border-slate-400',
             },
           ].map((p, i) => (
-            <FadeUp key={i} className={`border-l-4 ${p.color} pl-4 sm:pl-6 py-4`}>
+            <FadeUp key={i} className={`glass-placard border-l-4 ${p.color} pl-4 sm:pl-6 py-4 rounded-r-lg`}>
               <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">{p.type}</p>
               <h3 className="text-xl font-bold mb-1">{p.name}</h3>
               <p className="text-sm text-slate-400 mb-4">{p.age}</p>
@@ -330,7 +330,7 @@ export default function MercedesServiceManualPage() {
         </FadeUp>
 
         {/* The actual pig drawing instructions */}
-        <FadeUp className="bg-slate-900/50 rounded-xl p-4 sm:p-8 border border-slate-700 mb-8">
+        <FadeUp className="glass-placard rounded-xl p-4 sm:p-8 mb-8">
           <p className="text-sm font-semibold text-slate-300 mb-4">The actual instructions participants received (text-only condition):</p>
           <ol className="space-y-2 text-sm text-slate-400 list-decimal list-inside">
             {[
@@ -384,7 +384,7 @@ export default function MercedesServiceManualPage() {
             { icon: '✅', text: 'Users want control: choose between video, audio, or text based on comfort' },
             { icon: '✅', text: 'Audio guidance noted as beneficial for hands-free operation during repairs' },
           ].map((item, i) => (
-            <FadeUp key={i} className="flex gap-3 p-4 bg-slate-900/50 rounded-lg">
+            <FadeUp key={i} className="glass-placard flex gap-3 p-4 rounded-lg">
               <span className="text-lg flex-shrink-0">{item.icon}</span>
               <p className="text-sm text-slate-300">{item.text}</p>
             </FadeUp>
@@ -421,7 +421,7 @@ export default function MercedesServiceManualPage() {
                 evidence: 'Users immediately understood QR scan workflow in prototype testing.',
               },
             ].map((insight, idx) => (
-              <FadeUp key={idx} className="p-6 border border-slate-700 rounded-xl bg-slate-800">
+              <FadeUp key={idx} className="glass-placard p-6 rounded-xl">
                 <h3 className="font-bold text-white mb-3">{insight.title}</h3>
                 <p className="text-sm text-slate-300 mb-3">{insight.finding}</p>
                 <p className="text-xs text-slate-400 border-t border-slate-700 pt-3 mt-3">
@@ -550,7 +550,7 @@ export default function MercedesServiceManualPage() {
               { quote: '"The question mark visually implies being stuck. That\'s much better than a lightbulb."', change: '? icon chosen over 💡 for help' },
               { quote: '"If steps are clearly defined, then I don\'t think that should be an issue."', change: 'Confirmed step-by-step structure works' },
             ].map((item, i) => (
-              <FadeUp key={i} className="bg-slate-900 rounded-xl p-6 border border-slate-700">
+              <FadeUp key={i} className="glass-placard rounded-xl p-6">
                 <p className="text-slate-300 italic mb-4 text-sm leading-relaxed">{item.quote}</p>
                 <div className="flex gap-2 items-start">
                   <span className="text-sky-600 flex-shrink-0 mt-0.5">→</span>
@@ -572,7 +572,7 @@ export default function MercedesServiceManualPage() {
             <p className="text-lg leading-relaxed text-slate-300 mb-6">
               Better manuals reduce product returns, lower support call volume, prevent user injuries, and support regulatory compliance. This isn't just UX. It's safety, cost savings, and accessibility.
             </p>
-            <blockquote className="text-xl font-semibold text-slate-200 italic border-l-4 border-sky-500 pl-6">
+            <blockquote className="glass-placard text-xl font-semibold text-slate-200 italic border-l-4 border-sky-500 pl-6 py-4 rounded-r-lg">
               "The best manual is the one users never notice they're following."
             </blockquote>
           </FadeUp>
@@ -583,7 +583,7 @@ export default function MercedesServiceManualPage() {
               { icon: '🌍', label: 'Supports accessibility', desc: 'Benefits a broader user base' },
               { icon: '🔄', label: 'Enables iteration', desc: 'Analytics-driven improvement' },
             ].map((item, i) => (
-              <FadeUpScale key={i} className="p-4 bg-sky-950/40 rounded-xl">
+              <FadeUpScale key={i} className="glass-placard p-4 rounded-xl">
                 <p className="text-2xl mb-2">{item.icon}</p>
                 <p className="text-sm font-semibold text-sky-200">{item.label}</p>
                 <p className="text-xs text-slate-400 mt-1">{item.desc}</p>

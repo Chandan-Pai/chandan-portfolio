@@ -79,17 +79,17 @@ export default function ManufacturingWorkflowPage() {
         {/* Key Metrics */}
         <MotionSection className="project-gutter-x w-full min-w-0 py-20" stagger={0.2}>
           <MotionGrid className="grid md:grid-cols-3 gap-6 mb-20" stagger={0.2}>
-            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+            <FadeUpScale className="glass-placard p-8 rounded-lg">
               <p className="text-5xl font-bold text-white mb-2">13.47s</p>
               <p className="text-sm text-slate-400">Takt time per blade assembly</p>
               <p className="text-xs text-slate-400 mt-3">Customer demand: 122,000 blades/month</p>
             </FadeUpScale>
-            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+            <FadeUpScale className="glass-placard p-8 rounded-lg">
               <p className="text-5xl font-bold text-white mb-2">18.2s</p>
               <p className="text-sm text-slate-400">Station 5 bottleneck (blade break)</p>
               <p className="text-xs text-slate-400 mt-3">41% longer than takt time target</p>
             </FadeUpScale>
-            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+            <FadeUpScale className="glass-placard p-8 rounded-lg">
               <p className="text-5xl font-bold text-white mb-2">142</p>
               <p className="text-sm text-slate-400">Average batch size per cycle</p>
               <p className="text-xs text-slate-400 mt-3">Mix of 10mm and 15mm blades</p>
@@ -112,7 +112,7 @@ export default function ManufacturingWorkflowPage() {
                 Through 10 production cycles and time studies using Boston Scientific's MES system, we mapped constraints and quantified improvement opportunities.
               </p>
             </FadeUp>
-            <FadeUp className="bg-slate-900/50 p-8 rounded-lg border border-slate-700">
+            <FadeUp className="glass-placard p-8 rounded-lg">
               <h3 className="font-semibold text-slate-100 mb-4">Process Stages Analyzed</h3>
               <ul className="space-y-3 text-slate-300">
                 <li className="flex items-start gap-3">
@@ -157,7 +157,7 @@ export default function ManufacturingWorkflowPage() {
                     <p className="text-sm font-semibold text-slate-100 mt-2">Takt Time = 13.47 sec/blade</p>
                   </div>
                 </div>
-                <div className="bg-slate-900 p-8 rounded-lg border border-slate-700">
+                <div className="glass-placard p-8 rounded-lg">
                   <h4 className="font-semibold text-slate-100 mb-4">Batch Composition</h4>
                   <div className="space-y-3 text-sm text-slate-400">
                     <div className="p-3 bg-slate-900/50 rounded">
@@ -177,7 +177,7 @@ export default function ManufacturingWorkflowPage() {
 
               {/* Process Balance */}
               <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="bg-slate-900 p-8 rounded-lg border border-slate-700 order-2 md:order-1">
+                <div className="glass-placard p-8 rounded-lg order-2 md:order-1">
                   <h4 className="font-semibold text-slate-100 mb-4">Station Cycle Times</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between items-center p-2 bg-slate-800/80 rounded border border-slate-600">
@@ -223,7 +223,7 @@ export default function ManufacturingWorkflowPage() {
           <FadeUp as="h2" className="text-3xl font-bold mb-12">Waste Identification & Key Insights</FadeUp>
 
           <MotionGrid className="space-y-6" stagger={0.1}>
-            <FadeUp className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
+            <FadeUp className="glass-placard p-8 rounded-lg">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">🔴 Critical Bottleneck: Station 5</h3>
               <p className="text-slate-300 mb-3">
                 Blade break station cycle time of 18.2 seconds exceeds takt time by 4.73 seconds (41% excess). This is the constraint limiting overall throughput.
@@ -231,7 +231,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-slate-400"><strong>Root causes:</strong> Microscope-dependent precision, manual tweezers separation, container non-conformance checks</p>
             </FadeUp>
 
-            <FadeUp className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
+            <FadeUp className="glass-placard p-8 rounded-lg">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">⚠️ Motion & Transportation Waste</h3>
               <p className="text-slate-300 mb-3">
                 Operators engage in unnecessary reaching for tools, searching for supplies, and non-value-added movements across the three stations.
@@ -239,7 +239,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-slate-400"><strong>Opportunity:</strong> Workstation layout optimization could save 2-3 seconds per cycle</p>
             </FadeUp>
 
-            <FadeUp className="p-8 bg-slate-900/50 rounded-lg border border-slate-700">
+            <FadeUp className="glass-placard p-8 rounded-lg">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">⏳ Waiting Waste</h3>
               <p className="text-slate-300 mb-3">
                 Operators experience delays waiting for degreasing machine cycles to complete and for parts to arrive from upstream EDM machining (3.5-hour batches).
@@ -247,7 +247,7 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-sm text-slate-400"><strong>Note:</strong> EDM machine excluded from analysis; it operates independently with 3.5-hour cycle, impractical for real-time observation</p>
             </FadeUp>
 
-            <FadeUp className="p-8 bg-sky-950/40 rounded-lg border border-sky-800">
+            <FadeUp className="glass-placard p-8 rounded-lg border border-sky-800">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">💡 Recent Improvements (Layout Optimization)</h3>
               <p className="text-slate-300 mb-3">
                 Boston Scientific recently repositioned workstations closer together, reducing travel distances between stations.
@@ -263,7 +263,7 @@ export default function ManufacturingWorkflowPage() {
             <FadeUp as="h2" className="text-3xl font-bold mb-12">Recommended Improvements: Station 5 Focus</FadeUp>
 
             <MotionGrid className="grid md:grid-cols-2 gap-8 mb-12">
-              <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+              <FadeUp className="glass-placard p-8 rounded-lg">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="text-lg">⚡</span> Short-term (Weeks 1-4)
                 </h3>
@@ -283,7 +283,7 @@ export default function ManufacturingWorkflowPage() {
                 </ul>
               </FadeUp>
 
-              <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+              <FadeUp className="glass-placard p-8 rounded-lg">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="text-lg">🔄</span> Long-term (Months 2-3)
                 </h3>
@@ -304,7 +304,7 @@ export default function ManufacturingWorkflowPage() {
               </FadeUp>
             </MotionGrid>
 
-            <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+            <FadeUp className="glass-placard p-8 rounded-lg">
               <h3 className="font-semibold text-white mb-4">Impact at Scale</h3>
               <MotionGrid className="grid md:grid-cols-3 gap-4 text-sm" stagger={0.2}>
                 <FadeUpScale>
@@ -336,7 +336,7 @@ export default function ManufacturingWorkflowPage() {
             We quantified improvement opportunities worth 3-4 seconds per cycle through workstation reorganization, visual management, and pull-based flow systems. Implementation could increase throughput by 22-30% without additional capital investment, translating to 426 additional blades per shift or 9,372 blades per month (additional revenue at scale).
           </FadeUp>
 
-          <FadeUp className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 mb-8">
+          <FadeUp className="glass-placard p-6 rounded-lg mb-8">
             <p className="text-sm font-semibold text-slate-100 mb-2">Key Takeaway</p>
             <p className="text-slate-300">
               This analysis demonstrates that visibility into actual cycle times, batch composition, and operator variability is essential for targeting improvement efforts. The blade break station's constraint status was quantifiable, and therefore solvable.
