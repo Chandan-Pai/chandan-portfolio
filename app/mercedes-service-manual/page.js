@@ -72,6 +72,10 @@ export default function MercedesServiceManualPage() {
                 <span className="font-semibold text-white">Output:</span> QR-based app prototype · n=4 validated
               </span>
             </div>
+            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+              <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
+              Solo end-to-end. I defined the research questions, designed the study, recruited participants, ran all sessions, analyzed findings, and built the prototype. Every methodological decision was mine.
+            </p>
           </div>
         </header>
 

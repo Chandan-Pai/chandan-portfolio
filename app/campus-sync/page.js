@@ -174,6 +174,10 @@ export default function CampusSyncPage() {
               <span className="font-semibold text-white">UX Research &amp; Product Design</span>
               <span>December 9, 2025</span>
             </div>
+            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+              <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
+              The project originated from my research proposal. I designed and led the UX research, built the prototypes, and created the final interaction designs. Teammates handled site development, final testing execution, and quantitative data analysis.
+            </p>
           </div>
         </header>
 

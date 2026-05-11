@@ -57,6 +57,10 @@ export default function InitiatorFellowshipPage() {
                 <span className="font-semibold text-white">Impact:</span> 2.3/5 → 4.7/5 usability • 104% increase • WCAG 2.1 AA
               </span>
             </div>
+            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+              <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
+              I led all research decisions, method selection, recruitment criteria, and study design. I conducted the usability sessions and synthesized findings into redesign direction. A teammate (Neha) supported data gathering; others handled documentation.
+            </p>
           </div>
         </header>
 

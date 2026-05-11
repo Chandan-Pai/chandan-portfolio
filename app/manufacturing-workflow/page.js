@@ -68,6 +68,10 @@ export default function ManufacturingWorkflowPage() {
                 <span className="font-semibold text-white">Date:</span> December 2024
               </span>
             </div>
+            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+              <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
+              I conducted all on-floor time studies, collected cycle time data across assembly stations, and produced the workflow documentation and takt time analysis.
+            </p>
           </div>
         </section>
 
