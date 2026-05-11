@@ -43,7 +43,7 @@ export default function ExpandableImage({
   return (
     <>
       <figure
-        className={`group relative my-10 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50 shadow-sm transition-shadow duration-300 hover:shadow-md cursor-zoom-in ${className}`}
+        className={`group relative my-10 overflow-hidden rounded-xl border border-slate-700/90 bg-slate-900/50 shadow-sm transition-shadow duration-300 hover:shadow-md cursor-zoom-in ${className}`}
         role="button"
         tabIndex={0}
         aria-label={alt ? `Expand image: ${alt}` : 'Expand image'}
@@ -65,7 +65,7 @@ export default function ExpandableImage({
           <figcaption
             className={
               captionClassName ||
-              'px-3 py-2 text-xs text-slate-500 bg-white border-t border-slate-200'
+              'px-3 py-2 text-xs text-slate-400 bg-slate-950/90 border-t border-slate-700'
             }
           >
             {caption}
@@ -78,23 +78,71 @@ export default function ExpandableImage({
   );
 }
 
+/**
+ * Two-state lightbox so users can actually read fine print on text-heavy
+ * diagrams (e.g. AEIOU sheet on the Mercedes case study) that get
+ * downscaled to fit a 92vh viewport.
+ *
+ *   • `fit`    (default) — image scales to fit the viewport with object-contain.
+ *                          Best for overview / mostly-image content.
+ *   • `actual` (click)   — image renders at its NATURAL pixel size with
+ *                          `max-w-none`. Container becomes scrollable in both
+ *                          axes so users can pan to any detail at 100% zoom.
+ *
+ * Click on the image toggles between the two. Click on empty area inside
+ * the lightbox (backdrop / overflow gutter) closes via event bubbling.
+ * The close button and Escape (handled in parent) always close.
+ */
 function Lightbox({ src, alt, onClose }) {
+  const [mode, setMode] = useState('fit');
+  const isActual = mode === 'actual';
+
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label={alt ? `Expanded view: ${alt}` : 'Expanded image'}
-      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8 cursor-zoom-out"
+      className="fixed inset-0 z-[1000] bg-black/85 backdrop-blur-sm"
       onClick={onClose}
       data-no-cursor-hover
     >
-      <img
-        src={src}
-        alt={alt}
-        onClick={(e) => e.stopPropagation()}
-        className="max-h-[92vh] max-w-[92vw] object-contain rounded-lg shadow-2xl select-none"
-        draggable={false}
-      />
+      {/*
+        Scroll container fills the viewport. When fit-mode it just centers
+        the contained image; when actual-mode it allows overflow so the user
+        can pan a >viewport image at its native resolution.
+      */}
+      <div
+        className={`absolute inset-0 p-4 sm:p-8 ${
+          isActual
+            ? 'overflow-auto flex items-start justify-start'
+            : 'overflow-hidden flex items-center justify-center'
+        }`}
+      >
+        <img
+          src={src}
+          alt={alt}
+          onClick={(e) => {
+            e.stopPropagation();
+            setMode((m) => (m === 'fit' ? 'actual' : 'fit'));
+          }}
+          className={
+            isActual
+              ? 'block max-w-none rounded-lg shadow-2xl select-none cursor-zoom-out mx-auto my-auto'
+              : 'max-h-[92vh] max-w-[92vw] object-contain rounded-lg shadow-2xl select-none cursor-zoom-in'
+          }
+          draggable={false}
+        />
+      </div>
+      {/*
+        Hint pill explaining the toggle. Sits bottom-center, fades depending
+        on mode so the affordance is discoverable but never in the way.
+      */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur-md"
+      >
+        {isActual ? 'Click image to fit' : 'Click image to view at full size'}
+      </div>
       <button
         type="button"
         onClick={onClose}

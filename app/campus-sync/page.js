@@ -19,20 +19,20 @@ function publicUrl(basePath, relativePath) {
 function LiveCampusSyncEmbed() {
   return (
     <div
-      className="my-10 overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-lg"
+      className="my-10 overflow-hidden rounded-xl border border-slate-700/90 bg-slate-900 shadow-lg"
       data-no-cursor-hover
     >
-      <div className="flex items-center gap-2 border-b border-slate-300/80 bg-slate-200/90 px-3 py-2.5">
+      <div className="flex items-center gap-2 border-b border-slate-700/80 bg-slate-800/90 px-3 py-2.5">
         <span className="flex gap-1.5" aria-hidden="true">
           <span className="size-2.5 rounded-full bg-red-400/90" />
           <span className="size-2.5 rounded-full bg-amber-400/90" />
           <span className="size-2.5 rounded-full bg-green-400/90" />
         </span>
-        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-200/80 bg-white px-3 py-1 font-mono text-xs text-slate-600">
+        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-700/80 bg-slate-900 px-3 py-1 font-mono text-xs text-slate-400">
           https://campus-sync.org
         </div>
       </div>
-      <div className="relative h-[min(70svh,640px)] min-h-[320px] w-full bg-white">
+      <div className="relative h-[min(70svh,640px)] min-h-[320px] w-full bg-slate-900">
         <iframe
           title="CampusSync: live Gopher Way navigation web app"
           src="https://campus-sync.org/"
@@ -41,11 +41,11 @@ function LiveCampusSyncEmbed() {
           referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
-      <p className="border-t border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-500">
+      <p className="border-t border-slate-700 bg-slate-900/50 px-3 py-2 text-xs text-slate-400">
         Live embed. If this area stays blank, framing may be blocked; use{' '}
         <a
           href="https://campus-sync.org"
-          className="font-medium text-sky-700 underline hover:text-sky-800"
+          className="font-medium text-sky-400 underline hover:text-sky-300"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -96,7 +96,7 @@ function Section({ id, title, children, className = '' }) {
     <section id={id} className={`w-full py-14 ${className}`}>
       <div className="project-gutter-x w-full min-w-0">
         {title ? (
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 tracking-tight">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 tracking-tight">{title}</h2>
         ) : null}
         {children}
       </div>
@@ -105,11 +105,11 @@ function Section({ id, title, children, className = '' }) {
 }
 
 function Subheading({ children, className = '' }) {
-  return <h3 className={`text-xl font-semibold text-gray-900 mt-10 mb-3 ${className}`}>{children}</h3>;
+  return <h3 className={`text-xl font-semibold text-slate-100 mt-10 mb-3 ${className}`}>{children}</h3>;
 }
 
 function Body({ children, className = '' }) {
-  return <p className={`text-gray-700 leading-relaxed mb-4 ${className}`}>{children}</p>;
+  return <p className={`text-slate-300 leading-relaxed mb-4 ${className}`}>{children}</p>;
 }
 
 export default function CampusSyncPage() {
@@ -126,19 +126,19 @@ export default function CampusSyncPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
-      <div className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-neutral-950 text-slate-100 antialiased">
+      <div className="min-h-screen bg-neutral-950 text-slate-100">
         <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
             className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
-              isDarkSection ? 'text-white' : 'text-gray-900'
+              isDarkSection ? 'text-white' : 'text-slate-100'
             }`}
           >
             <svg
-              className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              className={`w-4 h-4 shrink-0 text-white`}
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ export default function CampusSyncPage() {
             >
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>
+            <span className={`hidden sm:inline text-sm font-semibold text-white`}>
               Back to Portfolio
             </span>
           </Link>
@@ -197,7 +197,7 @@ export default function CampusSyncPage() {
           <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/images.jpeg')} alt="Winter campus navigation context" />
         </Section>
 
-        <Section id="research" title="How We Found the Real Problem" className="bg-gray-50/80">
+        <Section id="research" title="How We Found the Real Problem" className="bg-slate-900/50">
           <Subheading>Before we opened Figma, we went outside in September with the students.</Subheading>
 
           <Subheading>What We Saw vs. What We Expected</Subheading>
@@ -245,35 +245,35 @@ export default function CampusSyncPage() {
           />
 
           <Subheading>Develop: Three Stages, Three Deployed Versions</Subheading>
-          <Body className="font-semibold text-sky-700">October 15: Figma Prototype</Body>
+          <Body className="font-semibold text-sky-400">October 15: Figma Prototype</Body>
           <Body>
             Full interactive prototype before any code. Round 1 testing immediately surfaced that map-tap input was too slow for users in motion. We rebuilt around search-first input before writing a line of code, saving weeks of implementation rework.
           </Body>
-          <p className="text-sm font-medium text-gray-500 mb-3">Selected Figma prototype screens (pre-code)</p>
+          <p className="text-sm font-medium text-slate-400 mb-3">Selected Figma prototype screens (pre-code)</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
             <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks.png')} alt="Figma prototype screen 1" />
             <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (1).png')} alt="Figma prototype screen 2" />
             <ExpandableImage className="my-0" src={publicUrl(BASE_PATH, 'images/campus sync/screenshot-rocks (2).png')} alt="Figma prototype screen 3" />
           </div>
-          <Body className="font-semibold text-sky-700">November 3: MVP</Body>
+          <Body className="font-semibold text-sky-400">November 3: MVP</Body>
           <Body>
             Live at{' '}
-            <a href="https://campus-sync.org" className="text-sky-700 underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://campus-sync.org" className="text-sky-400 underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               campus-sync.org
             </a>
             . Basic routing, map overlay, and the dual-color system. Maroon for tunnels. Gold for outdoor segments. University of Minnesota brand colors, immediately readable without a legend.
           </Body>
-          <Body className="font-semibold text-sky-700">November 17: Functional Prototype</Body>
+          <Body className="font-semibold text-sky-400">November 17: Functional Prototype</Body>
           <Body>
             Building-hour filtering integrated directly into the routing engine. The algorithm queries current building access status before pathfinding, so it never suggests a route through a locked building. Validated at 90%+ accuracy against 20 manually-verified routes.
           </Body>
 
           <LiveCampusSyncEmbed />
 
-          <Subheading className="mt-14 border-t border-gray-200 pt-12 scroll-mt-24">
+          <Subheading className="mt-14 border-t border-slate-700 pt-12 scroll-mt-24">
             The Decision That Changed Everything
           </Subheading>
-          <p className="text-lg font-semibold text-gray-900 mb-4">Why We Moved from Mobile App to Web Product</p>
+          <p className="text-lg font-semibold text-slate-100 mb-4">Why We Moved from Mobile App to Web Product</p>
           <Body>
             The Figma prototype started as a native mobile app: login screen, bottom navigation bar, map-tap input. It felt like the right instinct: students use their phones, so build for phones. But the first prototype wasn&apos;t really about the interface. It was about answering a more fundamental question: would students actually use a tool like this at all, or would they keep defaulting to going outside?
           </Body>
@@ -293,10 +293,10 @@ export default function CampusSyncPage() {
           </Body>
         </Section>
 
-        <Section id="solution" title="What We Built" className="bg-white">
+        <Section id="solution" title="What We Built" className="bg-slate-900">
           <Body className="text-lg">
             CampusSync is live at{' '}
-            <a href="https://campus-sync.org" className="text-sky-700 font-semibold underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://campus-sync.org" className="text-sky-400 font-semibold underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               campus-sync.org
             </a>
             . No login. No installation. Open it, type where you are, type where you&apos;re going, get a route you can actually trust.
@@ -345,7 +345,7 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        <Section id="devices" title="Devices &amp; visual feedback" className="bg-gray-50/80">
+        <Section id="devices" title="Devices &amp; visual feedback" className="bg-slate-900/50">
           <Body>
             We validated the live product on the hardware students actually carry (not lab desktops) and captured quick visual-appeal signal after task-based sessions.
           </Body>
@@ -375,25 +375,25 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        <Section id="impact" title="What Changed" className="bg-gray-50/80">
+        <Section id="impact" title="What Changed" className="bg-slate-900/50">
           <Body>
             Every metric we defined before building anything, we hit or beat. That matters: these weren&apos;t goals we set after seeing the results.
           </Body>
-          <ul className="list-disc pl-5 space-y-3 text-gray-700 leading-relaxed mb-10">
+          <ul className="list-disc pl-5 space-y-3 text-slate-300 leading-relaxed mb-10">
             <li>
-              <strong className="text-gray-900">SUS Score: 82/100.</strong> The industry average is 68. For a first-semester product with no prior version to iterate from, 82 is a strong result.
+              <strong className="text-slate-100">SUS Score: 82/100.</strong> The industry average is 68. For a first-semester product with no prior version to iterate from, 82 is a strong result.
             </li>
             <li>
-              <strong className="text-gray-900">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections, a known scope exclusion documented before we started building.
+              <strong className="text-slate-100">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections, a known scope exclusion documented before we started building.
             </li>
             <li>
-              <strong className="text-gray-900">Task completion: 45% faster</strong> than the existing combination of PDF maps and scattered building-hours pages.
+              <strong className="text-slate-100">Task completion: 45% faster</strong> than the existing combination of PDF maps and scattered building-hours pages.
             </li>
             <li>
-              <strong className="text-gray-900">Mobile adoption: 70%.</strong> Students used it on their phones while physically navigating. Not at their desks. The mobile-first design decision was validated by the people it was designed for.
+              <strong className="text-slate-100">Mobile adoption: 70%.</strong> Students used it on their phones while physically navigating. Not at their desks. The mobile-first design decision was validated by the people it was designed for.
             </li>
             <li>
-              <strong className="text-gray-900">User satisfaction: 80%+.</strong> Meeting the pre-defined threshold exactly.
+              <strong className="text-slate-100">User satisfaction: 80%+.</strong> Meeting the pre-defined threshold exactly.
             </li>
           </ul>
 
@@ -408,22 +408,22 @@ export default function CampusSyncPage() {
           <Body className="text-lg">
             CampusSync launched December 9, 2025 and is actively serving University of Minnesota students.
           </Body>
-          <div className="mt-6 space-y-1 text-sm text-gray-600 border-t border-gray-200 pt-6">
+          <div className="mt-6 space-y-1 text-sm text-slate-400 border-t border-slate-700 pt-6">
             <p>
-              <span className="font-semibold text-gray-900">Team:</span> Chandan Umesh Pai, Nick Kanning, Saad Saleem, David Tomlinson
+              <span className="font-semibold text-slate-100">Team:</span> Chandan Umesh Pai, Nick Kanning, Saad Saleem, David Tomlinson
             </p>
             <p>
-              <span className="font-semibold text-gray-900">Guided by:</span> Prof. Kathryn Wust &amp; Prof. Scott Hareland
+              <span className="font-semibold text-slate-100">Guided by:</span> Prof. Kathryn Wust &amp; Prof. Scott Hareland
             </p>
           </div>
         </Section>
 
         <section className="w-full border-t border-gray-100 py-10">
           <div className="project-gutter-x w-full min-w-0 flex flex-wrap justify-between gap-4 items-center">
-            <Link href="/" className="text-sky-700 hover:text-sky-800 hover:underline font-semibold text-sm">
+            <Link href="/" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               ← Back to Portfolio
             </Link>
-            <Link href="/mercedes-service-manual" className="text-sky-700 hover:text-sky-800 hover:underline font-semibold text-sm">
+            <Link href="/mercedes-service-manual" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               Next project →
             </Link>
           </div>

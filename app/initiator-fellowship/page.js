@@ -1,7 +1,6 @@
 'use client';
  
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import ExpandableImage from '../components/ExpandableImage';
 
 /** Encode path segments so filenames with spaces or parens work on GitHub Pages. */
@@ -19,32 +18,22 @@ function publicAssetUrl(basePath, relativePath) {
 export default function InitiatorFellowshipPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const asset = (rel) => publicAssetUrl(BASE_PATH, rel);
-  const [isDarkSection, setIsDarkSection] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsDarkSection(window.scrollY < 640);
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
-      <div className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-neutral-950 text-slate-100 antialiased">
+      <div className="min-h-screen bg-neutral-950 text-slate-100">
         {/* Back Button */}
         <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
             href="/"
             aria-label="Back to portfolio"
             data-no-cursor-hover
-            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+            className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all text-white`}
           >
-            <svg className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg className={`w-4 h-4 shrink-0 text-white`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>Back to Portfolio</span>
+            <span className={`hidden sm:inline text-sm font-semibold text-white`}>Back to Portfolio</span>
           </Link>
         </div>
 
@@ -80,9 +69,9 @@ export default function InitiatorFellowshipPage() {
         </div>
  
         {/* OPENING PROBLEM */}
-        <section id="problem" className="w-full py-12 border-t border-slate-200">
+        <section id="problem" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-          <div className="prose prose-sm max-w-none">
+          <div className="prose prose-invert prose-sm max-w-none">
             <p>A potential fellowship applicant visits the Initiator Fellowship website, excited to learn about the program. Within 90 seconds, she closes the tab.</p>
             <p>Not because she wasn't qualified. Not because the program wasn't right for her. But because she couldn't find the eligibility criteria.</p>
             <p>When we tested the site, this pattern repeated. Every single participant struggled with the same task: figure out if they could apply. The information existed, but it was buried at the bottom of a page, hidden in an FAQ section, wrapped in confusing navigation.</p>
@@ -91,10 +80,10 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* PROBLEM SECTION */}
-        <section id="usability-crisis" className="w-full py-12 border-t border-slate-200">
+        <section id="usability-crisis" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
-            <p className="text-lg text-slate-600 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website, their primary recruitment tool, was actively preventing qualified candidates from applying.</p>
+            <p className="text-lg text-slate-400 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website, their primary recruitment tool, was actively preventing qualified candidates from applying.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'WCAG Non-Compliance', desc: 'Color contrast failures, no accessibility standards met' },
@@ -103,8 +92,8 @@ export default function InitiatorFellowshipPage() {
                 { title: 'No Form Feedback', desc: "Users couldn't tell what they did wrong when submitting" }
               ].map((issue, i) => (
                 <div key={i} className="border-l-4 border-slate-400 pl-4 py-2">
-                  <p className="font-semibold text-slate-800">{issue.title}</p>
-                  <p className="text-sm text-slate-600">{issue.desc}</p>
+                  <p className="font-semibold text-slate-200">{issue.title}</p>
+                  <p className="text-sm text-slate-400">{issue.desc}</p>
                 </div>
               ))}
             </div>
@@ -117,10 +106,10 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* RESEARCH APPROACH */}
-        <section id="research" className="w-full py-12 border-t border-slate-200">
+        <section id="research" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
-            <p className="text-lg text-slate-600 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes, not just symptoms.</p>
+            <p className="text-lg text-slate-400 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes, not just symptoms.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'Heuristic Evaluation', desc: "Applied Nielsen's 10 usability principles. Identified violations across consistency, feedback, and recognition heuristics." },
@@ -128,9 +117,9 @@ export default function InitiatorFellowshipPage() {
                 { title: 'Card Sorting (n=5)', desc: 'Participants organized content to reveal natural information architecture patterns.' },
                 { title: 'User Testing (n=5)', desc: '3 scenarios tested on both old and new sites. Measured task completion time, post-task ratings, qualitative feedback.' }
               ].map((method, i) => (
-                <div key={i} className="bg-sky-50 border border-sky-200 rounded-lg p-4">
-                  <p className="font-semibold text-sky-900 mb-2">{method.title}</p>
-                  <p className="text-sm text-slate-700">{method.desc}</p>
+                <div key={i} className="bg-sky-950/40 border border-sky-800 rounded-lg p-4">
+                  <p className="font-semibold text-sky-200 mb-2">{method.title}</p>
+                  <p className="text-sm text-slate-300">{method.desc}</p>
                 </div>
               ))}
             </div>
@@ -143,7 +132,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* KEY INSIGHTS */}
-        <section id="insights" className="w-full py-12 border-t border-slate-200">
+        <section id="insights" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-8">Key Insights</h2>
           {[
@@ -188,16 +177,16 @@ export default function InitiatorFellowshipPage() {
               ] 
             }
           ].map((insight, i) => (
-            <div key={i} className="mb-12 pb-12 border-b border-slate-200 last:border-b-0">
+            <div key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
               <h3 className="text-2xl font-semibold mb-4">{insight.title}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-2">PROBLEM</p>
-                  <p className="text-slate-700">{insight.problem}</p>
+                  <p className="text-sm font-semibold text-slate-400 mb-2">PROBLEM</p>
+                  <p className="text-slate-300">{insight.problem}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-sky-700 mb-2">SOLUTION</p>
-                  <p className="text-slate-700">{insight.solution}</p>
+                  <p className="text-sm font-semibold text-sky-400 mb-2">SOLUTION</p>
+                  <p className="text-slate-300">{insight.solution}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
@@ -209,7 +198,7 @@ export default function InitiatorFellowshipPage() {
                       src={fig.src}
                       alt={fig.alt}
                     />
-                    <p className="text-xs text-slate-500 text-center mt-2">Figure {fig.num}</p>
+                    <p className="text-xs text-slate-400 text-center mt-2">Figure {fig.num}</p>
                   </div>
                 ))}
               </div>
@@ -219,7 +208,7 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* IMPACT METRICS */}
-        <section id="impact" className="w-full py-12 border-t border-slate-200">
+        <section id="impact" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-4xl font-bold mb-8">Impact Metrics</h2>
             {[
@@ -259,23 +248,23 @@ export default function InitiatorFellowshipPage() {
               },
               
             ].map((metric, i) => (
-              <div key={i} className="mb-12 pb-12 border-b border-slate-200 last:border-b-0">
+              <div key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
                 <h3 className="text-2xl font-semibold mb-4">{metric.title}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <p className="text-sm font-semibold text-slate-600 mb-2">CHALLENGE</p>
-                    <p className="text-slate-700">{metric.problem}</p>
+                    <p className="text-sm font-semibold text-slate-400 mb-2">CHALLENGE</p>
+                    <p className="text-slate-300">{metric.problem}</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-sky-700 mb-2">SOLUTION</p>
-                    <p className="text-slate-700">{metric.solution}</p>
+                    <p className="text-sm font-semibold text-sky-400 mb-2">SOLUTION</p>
+                    <p className="text-slate-300">{metric.solution}</p>
                   </div>
                 </div>
-                <div className="mb-6 bg-gradient-to-r from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-4 sm:p-6">
-                  <p className="text-sm text-slate-600 uppercase tracking-wide mb-2">Measured Impact</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-sky-800 mb-1">{metric.metric}</p>
-                  <p className="text-lg font-semibold text-sky-700">{metric.increase}</p>
-                  {metric.detail && <p className="text-sm text-slate-600 mt-3">{metric.detail}</p>}
+                <div className="mb-6 bg-gradient-to-r from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-4 sm:p-6">
+                  <p className="text-sm text-slate-300 uppercase tracking-wide mb-2">Measured Impact</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-sky-300 mb-1">{metric.metric}</p>
+                  <p className="text-lg font-semibold text-sky-400">{metric.increase}</p>
+                  {metric.detail && <p className="text-sm text-slate-300 mt-3">{metric.detail}</p>}
                 </div>
                 {metric.figs && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -287,7 +276,7 @@ export default function InitiatorFellowshipPage() {
                           src={fig.src}
                           alt={fig.alt}
                         />
-                        <p className="text-xs text-slate-500 text-center mt-2">Figure {fig.num}</p>
+                        <p className="text-xs text-slate-400 text-center mt-2">Figure {fig.num}</p>
                       </div>
                     ))}
                   </div>
@@ -298,18 +287,18 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* USER QUOTE */}
-        <section id="quote" className="w-full py-12 border-t border-slate-200">
+        <section id="quote" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Most Impactful Change</h3>
-          <blockquote className="text-2xl font-semibold italic text-slate-800 mb-3 pl-6 border-l-4 border-sky-500">
+          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Most Impactful Change</h3>
+          <blockquote className="text-2xl font-semibold italic text-slate-200 mb-3 pl-6 border-l-4 border-sky-500">
             "The new site made me feel like the fellowship actually wanted me to apply. Everything was clear, organized, and I knew exactly what to do next."
           </blockquote>
-          <p className="text-sm text-slate-600">Participant feedback, Round 3 user testing</p>
+          <p className="text-sm text-slate-400">Participant feedback, Round 3 user testing</p>
           </div>
         </section>
  
         {/* DELIVERABLES */}
-        <section id="deliverables" className="w-full py-12 border-t border-slate-200">
+        <section id="deliverables" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -319,9 +308,9 @@ export default function InitiatorFellowshipPage() {
               { title: 'User Testing Report', desc: 'Complete findings, recommendations, and iteration documentation' },
               { title: 'HTA Documentation', desc: 'Task flow analysis for all critical pathways' }
             ].map((item, i) => (
-              <div key={i} className="bg-slate-50 border border-slate-200 rounded-lg p-4">
+              <div key={i} className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
                 <p className="font-semibold mb-2">{item.title}</p>
-                <p className="text-sm text-slate-600">{item.desc}</p>
+                <p className="text-sm text-slate-400">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -348,16 +337,16 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* REFLECTION */}
-        <section id="reflection" className="w-full py-12 border-t border-slate-200">
+        <section id="reflection" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
           <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
-          <div className="prose prose-sm max-w-none mb-8">
+          <div className="prose prose-invert prose-sm max-w-none mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist. It's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
           </div>
-          <blockquote className="text-lg italic text-slate-700 pl-6 border-l-4 border-slate-300 mb-6">
+          <blockquote className="text-lg italic text-slate-300 pl-6 border-l-4 border-slate-300 mb-6">
             "Good UX research doesn't just find problems. It builds consensus around solutions."
           </blockquote>
-          <div className="text-sm text-slate-600">
+          <div className="text-sm text-slate-400">
             <p className="mb-2"><span className="font-semibold">Team:</span> Chandan Pai, Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Vikram Selvakumaranraja</p>
             <p><span className="font-semibold">Course:</span> IE 4511, December 2024</p>
           </div>
@@ -365,12 +354,12 @@ export default function InitiatorFellowshipPage() {
         </section>
  
         {/* FOOTER NAV */}
-        <footer className="w-full border-t border-slate-200 py-12">
+        <footer className="w-full border-t border-slate-700 py-12">
           <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
-          <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+          <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
             ← Back to Portfolio
           </Link>
-          <Link href="/campus-sync" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+          <Link href="/campus-sync" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
             Next Project →
           </Link>
           </div>

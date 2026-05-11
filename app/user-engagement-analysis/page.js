@@ -29,8 +29,8 @@ export default function UserEngagementAnalysisPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
-      <div className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-neutral-950 text-slate-100 antialiased">
+      <div className="min-h-screen bg-neutral-950 text-slate-100">
         {/* Back Button */}
         <div className="fixed z-50 left-4 sm:left-6" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
           <Link
@@ -38,18 +38,18 @@ export default function UserEngagementAnalysisPage() {
             aria-label="Back to portfolio"
             data-no-cursor-hover
             className={`inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 py-2 sm:px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-md hover:bg-white/30 transition-all ${
-              isDarkSection ? 'text-white' : 'text-gray-900'
+              isDarkSection ? 'text-white' : 'text-slate-100'
             }`}
           >
             <svg
-              className={`w-4 h-4 shrink-0 ${isDarkSection ? 'text-white' : 'text-gray-900'}`}
+              className={`w-4 h-4 shrink-0 text-white`}
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden="true"
             >
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className={`hidden sm:inline text-sm font-semibold ${isDarkSection ? 'text-white' : 'text-gray-900'}`}>
+            <span className={`hidden sm:inline text-sm font-semibold text-white`}>
               Back to Portfolio
             </span>
           </Link>
@@ -121,10 +121,10 @@ export default function UserEngagementAnalysisPage() {
         </header>
 
         {/* PROBLEM */}
-        <section id="problem" className="w-full py-12 border-t border-slate-200">
+        <section id="problem" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">The problem</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
               Three problems had to be solved before the headline question could even be answered honestly.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -145,9 +145,9 @@ export default function UserEngagementAnalysisPage() {
                     'Free vs paid impact was industry-assumed, never statistically validated at per-app scale on this dataset.',
                 },
               ].map((card) => (
-                <div key={card.title} className="border-l-4 border-rose-400 bg-rose-50/40 pl-4 py-3 rounded-r">
-                  <p className="font-semibold text-slate-900 mb-1">{card.title}</p>
-                  <p className="text-sm text-slate-700 leading-relaxed">{card.desc}</p>
+                <div key={card.title} className="border-l-4 border-rose-400 bg-rose-900/25 pl-4 py-3 rounded-r">
+                  <p className="font-semibold text-slate-100 mb-1">{card.title}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{card.desc}</p>
                 </div>
               ))}
             </div>
@@ -155,10 +155,10 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* METHODOLOGY */}
-        <section id="methodology" className="w-full py-12 border-t border-slate-200">
+        <section id="methodology" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Methodology</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
               Four steps, each justified by what the previous one revealed.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,13 +192,13 @@ export default function UserEngagementAnalysisPage() {
                   outcome: 'n = 800 free · n = 604 paid',
                 },
               ].map((s) => (
-                <div key={s.step} className="bg-sky-50 border border-sky-200 rounded-lg p-5">
+                <div key={s.step} className="bg-sky-950/40 border border-sky-800 rounded-lg p-5">
                   <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-xs font-mono font-bold tracking-widest text-sky-700">{s.step}</span>
-                    <p className="font-semibold text-sky-900">{s.title}</p>
+                    <span className="text-xs font-mono font-bold tracking-widest text-sky-400">{s.step}</span>
+                    <p className="font-semibold text-sky-200">{s.title}</p>
                   </div>
-                  <p className="text-sm text-slate-700 mb-3 leading-relaxed">{s.desc}</p>
-                  <p className="text-xs font-mono text-sky-800 bg-white/70 border border-sky-200 rounded px-2 py-1.5 inline-block">
+                  <p className="text-sm text-slate-300 mb-3 leading-relaxed">{s.desc}</p>
+                  <p className="text-xs font-mono text-sky-300 bg-slate-800/90 border border-sky-700 rounded px-2 py-1.5 inline-block">
                     {s.outcome}
                   </p>
                 </div>
@@ -208,11 +208,11 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* INTERACTIVE DASHBOARD */}
-        <section id="dashboard" className="w-full py-12 border-t border-slate-200 bg-slate-50">
+        <section id="dashboard" className="w-full py-12 border-t border-slate-700 bg-slate-900/50">
           <div className="project-gutter-x w-full min-w-0">
             <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-3">Interactive Dashboard</p>
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">Explore the Data</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-3xl">
+            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
               Filter and compare across engagement segments and categories.
             </p>
             <Dashboard />
@@ -220,7 +220,7 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* KEY FINDINGS */}
-        <section id="findings" className="w-full py-12 border-t border-slate-200">
+        <section id="findings" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">Key Findings</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -242,10 +242,10 @@ export default function UserEngagementAnalysisPage() {
               ].map((card) => (
                 <div
                   key={card.stat}
-                  className="bg-gradient-to-br from-slate-100 to-sky-50 border border-sky-200 rounded-lg p-6"
+                  className="bg-gradient-to-br from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-6"
                 >
-                  <p className="text-3xl sm:text-4xl font-bold text-sky-800 mb-3">{card.stat}</p>
-                  <p className="text-sm text-slate-700 leading-relaxed">{card.label}</p>
+                  <p className="text-3xl sm:text-4xl font-bold text-sky-300 mb-3">{card.stat}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{card.label}</p>
                 </div>
               ))}
             </div>
@@ -253,13 +253,13 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* LIMITATIONS */}
-        <section id="limitations" className="w-full py-12 border-t border-slate-200">
+        <section id="limitations" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">Research Limitations</h2>
-            <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-6 max-w-3xl">
-              <ul className="space-y-4 text-slate-800">
+            <div className="bg-amber-950/40 border-2 border-amber-700 rounded-lg p-6 max-w-3xl">
+              <ul className="space-y-4 text-slate-200">
                 <li className="flex gap-3">
-                  <span className="text-amber-600 mt-1" aria-hidden>
+                  <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
                   <span>
@@ -268,7 +268,7 @@ export default function UserEngagementAnalysisPage() {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-amber-600 mt-1" aria-hidden>
+                  <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
                   <span>
@@ -278,7 +278,7 @@ export default function UserEngagementAnalysisPage() {
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-amber-600 mt-1" aria-hidden>
+                  <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
                   <span>Observational study only — correlation, not causation.</span>
@@ -289,15 +289,15 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* REFLECTION */}
-        <section id="reflection" className="w-full py-12 border-t border-slate-200">
+        <section id="reflection" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">Reflection</h2>
-            <blockquote className="text-xl sm:text-2xl font-semibold italic text-slate-800 mb-6 pl-6 border-l-4 border-sky-500 max-w-3xl">
+            <blockquote className="text-xl sm:text-2xl font-semibold italic text-slate-200 mb-6 pl-6 border-l-4 border-sky-500 max-w-3xl">
               &ldquo;The most important research skill is knowing when your metric design creates circular reasoning
               &mdash; and flagging it before someone else does. R² = 0.98 sounds impressive. Knowing why to distrust
               it is more impressive.&rdquo;
             </blockquote>
-            <p className="text-slate-700 leading-relaxed max-w-3xl">
+            <p className="text-slate-300 leading-relaxed max-w-3xl">
               The first version of the report buried R² = 0.98 as the headline number. Catching the feature overlap
               myself, before a reviewer did, turned a quietly weak finding into a clearly framed one &mdash; with an
               honest caveat and a defensible next step.
@@ -306,14 +306,14 @@ export default function UserEngagementAnalysisPage() {
         </section>
 
         {/* FOOTER NAV */}
-        <footer className="w-full border-t border-slate-200 py-12">
+        <footer className="w-full border-t border-slate-700 py-12">
           <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
-            <Link href="/" className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition">
+            <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               ← Back to Portfolio
             </Link>
             <Link
               href="/stay-tuned"
-              className="text-sm font-semibold text-sky-700 hover:text-sky-800 hover:underline transition"
+              className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
             >
               Next Project →
             </Link>
@@ -339,8 +339,8 @@ const PALETTE = {
   negativeRed: '#E24B4A',
   categoryBlue: '#378ADD',
   paidSlate: '#94A3B8',
-  grid: '#E2E8F0',
-  text: '#475569',
+  grid: '#334155',
+  text: '#cbd5e1',
 };
 
 const TOP_METRICS = [
@@ -400,11 +400,11 @@ function MetricCards() {
       {TOP_METRICS.map((m) => (
         <div
           key={m.label}
-          className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-sky-300 transition-all duration-200"
+          className="bg-slate-900 border border-slate-700 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-sky-300 transition-all duration-200"
         >
-          <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">{m.label}</p>
-          <p className="text-2xl sm:text-3xl font-bold text-slate-900">{m.value}</p>
-          <p className="text-xs text-slate-500 mt-1">{m.sub}</p>
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{m.label}</p>
+          <p className="text-2xl sm:text-3xl font-bold text-slate-100">{m.value}</p>
+          <p className="text-xs text-slate-400 mt-1">{m.sub}</p>
         </div>
       ))}
     </div>
@@ -440,19 +440,19 @@ function SegmentChartCard() {
               <CartesianGrid stroke={PALETTE.grid} strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="metric" tick={{ fill: PALETTE.text, fontSize: 12 }} axisLine={{ stroke: PALETTE.grid }} tickLine={false} />
               <YAxis tick={{ fill: PALETTE.text, fontSize: 12 }} axisLine={{ stroke: PALETTE.grid }} tickLine={false} />
-              <Tooltip content={<RechartsTooltip />} cursor={{ fill: 'rgba(15, 23, 42, 0.04)' }} />
+              <Tooltip content={<RechartsTooltip />} cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }} />
               {showHigh ? <Bar dataKey="high" name="High engagement" fill={PALETTE.highBlue} radius={[4, 4, 0, 0]} /> : null}
               {showLow ? <Bar dataKey="low" name="Low engagement" fill={PALETTE.lowBlue} radius={[4, 4, 0, 0]} /> : null}
             </BarChart>
           </ResponsiveContainer>
         </ClientOnly>
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-400">
         <Legend swatchColor={PALETTE.highBlue} label="High engagement" />
         <Legend swatchColor={PALETTE.lowBlue} label="Low engagement" />
       </div>
-      <p className="mt-3 text-sm text-slate-600">
-        <span className="font-semibold text-slate-800">Review volume gap is 900×</span> — the most discriminating
+      <p className="mt-3 text-sm text-slate-400">
+        <span className="font-semibold text-slate-200">Review volume gap is 900×</span> — the most discriminating
         feature between groups.
       </p>
     </ChartCard>
@@ -483,7 +483,7 @@ function RegressionChartCard() {
               />
               <Tooltip
                 content={<RechartsTooltip valueFormatter={(v) => `${v >= 0 ? '+' : ''}${Number(v).toFixed(4)}`} />}
-                cursor={{ fill: 'rgba(15, 23, 42, 0.04)' }}
+                cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }}
               />
               <Bar dataKey="coeff" radius={[0, 4, 4, 0]}>
                 {regressionData.map((entry) => (
@@ -497,7 +497,7 @@ function RegressionChartCard() {
           </ResponsiveContainer>
         </ClientOnly>
       </div>
-      <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500">
+      <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-400">
         <Legend swatchColor={PALETTE.positiveGreen} label="Positive driver" />
         <Legend swatchColor={PALETTE.negativeRed} label="Negative driver" />
       </div>
@@ -523,7 +523,7 @@ function ABTestChartCard() {
               />
               <Tooltip
                 content={<RechartsTooltip valueFormatter={(v) => Number(v).toFixed(3)} />}
-                cursor={{ fill: 'rgba(15, 23, 42, 0.04)' }}
+                cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }}
               />
               <Bar dataKey="score" radius={[6, 6, 0, 0]}>
                 {abData.map((entry, i) => (
@@ -535,8 +535,8 @@ function ABTestChartCard() {
         </ClientOnly>
       </div>
       <div className="mt-4">
-        <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-300 px-3 py-1.5 text-xs font-semibold text-emerald-800">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-600" aria-hidden />
+        <span className="inline-flex items-center gap-2 rounded-full bg-emerald-950/60 border border-emerald-700 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
           +29.8% lift · p &lt; 0.0001 · Welch t-test
         </span>
       </div>
@@ -581,7 +581,7 @@ function CategoryChartCard() {
       }
     >
       {filteredData.length === 0 ? (
-        <p className="py-12 text-center text-sm text-slate-500">No categories match this filter.</p>
+        <p className="py-12 text-center text-sm text-slate-400">No categories match this filter.</p>
       ) : (
         <div style={{ height: chartHeight }}>
           <ClientOnly fallbackHeight={chartHeight}>
@@ -609,7 +609,7 @@ function CategoryChartCard() {
                 />
                 <Tooltip
                   content={<RechartsTooltip valueFormatter={(v) => Number(v).toFixed(2)} />}
-                  cursor={{ fill: 'rgba(15, 23, 42, 0.04)' }}
+                  cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }}
                 />
                 <Bar dataKey="score" fill={PALETTE.categoryBlue} radius={[0, 4, 4, 0]} />
               </BarChart>
@@ -617,7 +617,7 @@ function CategoryChartCard() {
           </ClientOnly>
         </div>
       )}
-      <p className="mt-3 text-xs text-slate-500">
+      <p className="mt-3 text-xs text-slate-400">
         Showing {filteredData.length} of {allCategories.length} categories.
       </p>
     </ChartCard>
@@ -630,11 +630,11 @@ function CategoryChartCard() {
 
 function ChartCard({ title, subtitle, controls, headerTrailing, children }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm">
+    <div className="bg-slate-900 border border-slate-700 rounded-xl p-5 sm:p-6 shadow-sm">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
         <div className="min-w-0">
-          <h3 className="font-semibold text-slate-900">{title}</h3>
-          {subtitle ? <p className="mt-1 text-xs text-slate-500">{subtitle}</p> : null}
+          <h3 className="font-semibold text-slate-100">{title}</h3>
+          {subtitle ? <p className="mt-1 text-xs text-slate-400">{subtitle}</p> : null}
         </div>
         <div className="flex items-center gap-3 shrink-0">
           {headerTrailing}
@@ -670,7 +670,7 @@ function ToggleGroup({ value, onChange, options }) {
   return (
     <div
       role="group"
-      className="inline-flex flex-wrap gap-1 rounded-md border border-slate-200 bg-slate-50 p-0.5 text-xs font-medium"
+      className="inline-flex flex-wrap gap-1 rounded-md border border-slate-700 bg-slate-900/50 p-0.5 text-xs font-medium"
     >
       {options.map((opt) => {
         const active = value === opt.id;
@@ -682,8 +682,8 @@ function ToggleGroup({ value, onChange, options }) {
             aria-pressed={active}
             className={`px-2.5 py-1 rounded transition-colors ${
               active
-                ? 'bg-white text-slate-900 shadow-sm border border-slate-200'
-                : 'text-slate-500 hover:text-slate-700'
+                ? 'bg-slate-800 text-slate-100 shadow-sm border border-sky-700/40'
+                : 'text-slate-400 hover:text-slate-300'
             }`}
           >
             {opt.label}
@@ -710,8 +710,8 @@ function Legend({ swatchColor, label }) {
 function RechartsTooltip({ active, payload, label, valueFormatter }) {
   if (!active || !payload || payload.length === 0) return null;
   return (
-    <div className="rounded-md border border-slate-200 bg-white/95 backdrop-blur-sm shadow-lg px-3 py-2 text-xs">
-      {label ? <p className="font-semibold text-slate-900 mb-1">{label}</p> : null}
+    <div className="rounded-md border border-slate-600 bg-slate-900/95 backdrop-blur-sm shadow-lg px-3 py-2 text-xs">
+      {label ? <p className="font-semibold text-slate-100 mb-1">{label}</p> : null}
       <ul className="space-y-0.5">
         {payload.map((entry) => (
           <li key={entry.dataKey} className="flex items-center gap-2">
@@ -720,8 +720,8 @@ function RechartsTooltip({ active, payload, label, valueFormatter }) {
               style={{ backgroundColor: entry.color || entry.payload?.fill }}
               aria-hidden
             />
-            <span className="text-slate-600">{entry.name || entry.dataKey}:</span>
-            <span className="font-mono text-slate-900">
+            <span className="text-slate-400">{entry.name || entry.dataKey}:</span>
+            <span className="font-mono text-slate-100">
               {valueFormatter ? valueFormatter(entry.value) : entry.value}
             </span>
           </li>

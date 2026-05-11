@@ -230,7 +230,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 antialiased">
+    <main className="min-h-screen bg-neutral-950 text-slate-100 antialiased">
       {/* Hero: full image; mobile clears fixed nav + text limited to left half so portrait stays visible */}
       <header className="relative overflow-hidden bg-neutral-900 max-sm:pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-0">
         <div className="relative w-full">
@@ -281,10 +281,26 @@ export default function HomePage() {
       </header>
 
       {/* Projects Gallery */}
-      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-16">Work</h2>
-          <div className="h-0.5 w-full bg-gray-300 mb-16"></div>
+      <section id="work" className="relative py-16 sm:py-24 px-4 sm:px-6">
+        {/*
+          Decorative back-of-section gradient. Lives behind every placard so
+          their `backdrop-filter` has color/light to refract — without it the
+          frosted glass would read as a flat translucent rectangle on the
+          pure-dark page background.
+        */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-90"
+          aria-hidden
+          style={{
+            background:
+              'radial-gradient(ellipse 90% 55% at 50% 8%, rgba(56,189,248,0.10), transparent 55%),' +
+              'radial-gradient(ellipse 60% 50% at 95% 95%, rgba(99,102,241,0.09), transparent 55%),' +
+              'radial-gradient(ellipse 50% 45% at 5% 80%, rgba(14,165,233,0.07), transparent 55%)',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16 text-slate-100">Work</h2>
+          <div className="h-0.5 w-full bg-slate-700/80 mb-16"></div>
 
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
             <div className="space-y-8">
@@ -292,12 +308,12 @@ export default function HomePage() {
                 <Link
                   key={project.id}
                   href={project.href}
-                  className="group project-link block border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors bg-white transition-shadow duration-300 hover:shadow-2xl"
+                  className="group project-link glass-placard block rounded-2xl overflow-hidden"
                   style={{ willChange: index === 0 ? 'auto' : 'transform, opacity' }}
                 >
                   <div className="flex flex-col md:flex-row items-stretch">
                     <div
-                      className={`w-full md:w-2/3 shrink-0 bg-slate-100 flex items-center justify-center ${project.mediaAspect ?? ''}`}
+                      className={`w-full md:w-2/3 shrink-0 bg-transparent flex items-center justify-center ${project.mediaAspect ?? ''}`}
                     >
                       {project.type === 'video' ? (
                         <video
@@ -330,10 +346,10 @@ export default function HomePage() {
                     <div className="w-full md:w-1/3 p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 min-h-0 min-w-0">
                       <div>
                         <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-snug">{project.title}</h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">{project.metric}</p>
+                        <h3 className="text-2xl font-bold text-slate-100 mb-4 leading-snug">{project.title}</h3>
+                        <p className="text-sm text-slate-400 leading-relaxed">{project.metric}</p>
                       </div>
-                      <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-4 transition-all duration-300">
+                      <div className="flex items-center gap-2 text-sm font-semibold text-slate-200 group-hover:gap-4 transition-all duration-300">
                         <span>View Project</span>
                         <span>→</span>
                       </div>
@@ -350,7 +366,7 @@ export default function HomePage() {
       <section
         id="statement"
         aria-labelledby="home-statement-heading"
-        className="relative py-14 sm:py-20 px-4 sm:px-6 overflow-hidden border-t border-slate-100 bg-gradient-to-b from-white via-slate-50/90 to-white"
+        className="relative py-14 sm:py-20 px-4 sm:px-6 overflow-hidden border-t border-slate-800 bg-gradient-to-b from-neutral-950 via-slate-900/40 to-neutral-950"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -361,18 +377,18 @@ export default function HomePage() {
           aria-hidden
         />
         <div className="relative max-w-4xl mx-auto">
-          <div className="relative rounded-3xl border border-slate-200/90 bg-white/80 backdrop-blur-sm shadow-[0_24px_48px_-12px_rgba(15,23,42,0.12)] p-6 sm:p-12 md:p-14">
+          <div className="relative rounded-3xl border border-slate-700/90 bg-slate-900/70 backdrop-blur-sm shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] p-6 sm:p-12 md:p-14">
             <div
               className="absolute top-0 left-8 right-8 sm:left-12 sm:right-12 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent rounded-full"
               aria-hidden
             />
             <p
               id="home-statement-heading"
-              className="text-xs font-semibold tracking-[0.12em] text-slate-500 mb-8 sm:tracking-[0.16em]"
+              className="text-xs font-semibold tracking-[0.12em] text-slate-400 mb-8 sm:tracking-[0.16em]"
             >
               {homeStatement.label}
             </p>
-            <p className="relative text-xl sm:text-2xl md:text-[1.65rem] font-medium text-slate-800 leading-[1.45] tracking-tight">
+            <p className="relative text-xl sm:text-2xl md:text-[1.65rem] font-medium text-slate-200 leading-[1.45] tracking-tight">
               <span
                 className="absolute -left-1 sm:-left-2 top-0 -translate-y-1 text-5xl sm:text-6xl font-serif text-sky-400/25 leading-none select-none"
                 aria-hidden
@@ -386,7 +402,7 @@ export default function HomePage() {
                 <Link
                   href={homeStatement.aiBuildLink.href}
                   data-no-cursor-hover
-                  className="group inline-flex items-center gap-2 text-base font-semibold text-sky-700 hover:text-sky-900 underline decoration-sky-400/50 underline-offset-4 hover:decoration-sky-600 transition-colors"
+                  className="group inline-flex items-center gap-2 text-base font-semibold text-sky-400 hover:text-sky-300 underline decoration-sky-500/40 underline-offset-4 hover:decoration-sky-400 transition-colors"
                 >
                   {homeStatement.aiBuildLink.label}
                   <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>
@@ -399,11 +415,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GitHub Projects */}
-      <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-slate-100">
+      {/* GitHub Projects (distinct id — duplicate id="work" breaks getElementById / scroll-spy) */}
+      <section id="code-projects" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-slate-800">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">Code & Data</p>
-          <h2 className="text-3xl font-bold mb-12">Projects</h2>
+          <h2 className="text-3xl font-bold mb-12 text-slate-100">Projects</h2>
 
          <div className="space-y-6">
             {[
@@ -424,15 +440,15 @@ export default function HomePage() {
               
             ].map((proj, i) => (
               <a key={i} href={proj.href} target="_blank" rel="noopener noreferrer"
-                className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 sm:p-6 border border-slate-200 rounded-xl hover:border-slate-400 hover:bg-slate-50 transition-all group text-left">
+                className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 sm:p-6 border border-slate-700 rounded-xl hover:border-slate-500 hover:bg-slate-900/80 transition-all group text-left">
                 <div className="min-w-0">
-                  <h3 className="font-semibold text-lg mb-1 group-hover:text-slate-700">{proj.title}</h3>
-                  <p className="text-sm text-slate-500 mb-3">{proj.desc}</p>
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-slate-100 text-slate-200">{proj.title}</h3>
+                  <p className="text-sm text-slate-400 mb-3">{proj.desc}</p>
                   <div className="flex flex-wrap gap-2">
-                    {proj.tech.map(t => <span key={t} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">{t}</span>)}
+                    {proj.tech.map(t => <span key={t} className="px-2 py-0.5 bg-slate-800 text-slate-300 text-xs rounded">{t}</span>)}
                   </div>
                 </div>
-                <span className="text-slate-400 group-hover:text-slate-700 text-xl sm:ml-6 sm:shrink-0 self-end sm:self-auto">→</span>
+                <span className="text-slate-500 group-hover:text-slate-300 text-xl sm:ml-6 sm:shrink-0 self-end sm:self-auto">→</span>
               </a>
             ))}
           </div>
@@ -442,14 +458,14 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 pb-[max(3rem,env(safe-area-inset-bottom))]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
-          <p className="text-lg text-slate-600 mb-8">
+          <h2 className="text-4xl font-bold mb-8 text-slate-100">Let's Connect</h2>
+          <p className="text-lg text-slate-400 mb-8">
             Open to HF/UX roles, industrial engineering positions, and collaborative research opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="mailto:2000chandanpai@gmail.com" 
-              className="px-8 py-4 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition"
+              className="px-8 py-4 bg-sky-600 text-white font-medium rounded-lg hover:bg-sky-500 transition"
             >
               Email Me
             </a>
@@ -457,7 +473,7 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/chandan-umesh-pai/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-medium rounded-lg hover:bg-slate-50 transition"
+              className="px-8 py-4 border-2 border-slate-500 text-slate-100 font-medium rounded-lg hover:bg-slate-800 transition"
             >
               LinkedIn
             </a>

@@ -91,21 +91,21 @@ export default function FirstVisit() {
         onClick={dismiss}
       />
 
-      <div className="first-visit-card relative pointer-events-auto w-full max-w-sm rounded-2xl border border-slate-200/90 bg-white/95 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+      <div className="first-visit-card relative pointer-events-auto w-full max-w-sm rounded-2xl border border-slate-600/80 bg-slate-900/95 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
         <div className="mb-5 flex gap-1.5" role="tablist" aria-label="Intro steps">
           {steps.map((_, i) => (
             <div
               key={i}
-              className={`h-1 rounded-full transition-all duration-300 ${i === step ? 'w-6 bg-slate-900' : 'w-2 bg-slate-200'}`}
+              className={`h-1 rounded-full transition-all duration-300 ${i === step ? 'w-6 bg-sky-400' : 'w-2 bg-slate-600'}`}
               aria-hidden
             />
           ))}
         </div>
 
-        <h2 id="first-visit-title" className="mb-2 text-xl font-bold text-slate-900">
+        <h2 id="first-visit-title" className="mb-2 text-xl font-bold text-slate-100">
           {current.title}
         </h2>
-        <p id="first-visit-body" className="mb-6 text-sm leading-relaxed text-slate-600">
+        <p id="first-visit-body" className="mb-6 text-sm leading-relaxed text-slate-400">
           {current.body}
         </p>
 
@@ -113,7 +113,7 @@ export default function FirstVisit() {
           <button
             type="button"
             onClick={dismiss}
-            className="text-xs text-slate-400 transition hover:text-slate-700"
+            className="text-xs text-slate-500 transition hover:text-slate-300"
           >
             Skip
           </button>
@@ -123,7 +123,7 @@ export default function FirstVisit() {
               if (isLast) dismiss();
               else setStep((s) => s + 1);
             }}
-            className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-700"
+            className="rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-sky-500"
           >
             {current.action}
             {!isLast ? ' →' : ''}
