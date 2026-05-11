@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import ExpandableImage from '../components/ExpandableImage';
+import { MotionHero, MotionSection, MotionBlock, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
 
 export default function MercedesServiceManualPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -50,18 +51,18 @@ export default function MercedesServiceManualPage() {
         </div>
 
         <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
-          <div className="project-gutter-x w-full min-w-0">
-            <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
+          <MotionHero className="project-gutter-x w-full min-w-0">
+            <FadeUp as="p" className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
               HUMF 5874: Human Centered Design
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            </FadeUp>
+            <FadeUp as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Interactive Repair Guidance
-            </h1>
-            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+            </FadeUp>
+            <FadeUp as="ul" className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
               <li>Product research and participatory design for clearer, safer assembly manuals.</li>
               <li>From field observation (AEIOU) through a validated QR-based prototype (usability testing, n=4).</li>
-            </ul>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+            </FadeUp>
+            <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span>
                 <span className="font-semibold text-white">Role:</span> Product Researcher
               </span>
@@ -71,34 +72,34 @@ export default function MercedesServiceManualPage() {
               <span>
                 <span className="font-semibold text-white">Output:</span> QR-based app prototype · n=4 validated
               </span>
-            </div>
-            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
               <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
               Solo end-to-end. I defined the research questions, designed the study, recruited participants, ran all sessions, analyzed findings, and built the prototype. Every methodological decision was mine.
-            </p>
-          </div>
+            </FadeUp>
+          </MotionHero>
         </header>
 
       {/* OPENING STORY */}
-      <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-lg sm:text-2xl leading-relaxed text-slate-300 mb-6">
+      <MotionSection className="project-gutter-x w-full min-w-0 py-20">
+        <FadeUp as="p" className="text-lg sm:text-2xl leading-relaxed text-slate-300 mb-6">
           A technician flips through a 200-page repair manual searching for a wiring diagram buried in Section 7. Oil stains smudge the pages. A critical safety warning sits in 8-point font at the bottom of page 143.
-        </p>
-        <p className="text-lg sm:text-2xl leading-relaxed text-slate-300 mb-6">
+        </FadeUp>
+        <FadeUp as="p" className="text-lg sm:text-2xl leading-relaxed text-slate-300 mb-6">
           Meanwhile, a first-time assembler stares at an instruction sheet, unable to tell which screw goes where because everything is drawn from the same angle.
-        </p>
-        <p className="text-lg sm:text-2xl font-semibold text-slate-100">
+        </FadeUp>
+        <FadeUp as="p" className="text-lg sm:text-2xl font-semibold text-slate-100">
           Both failures share one root cause: manuals are designed for documentation, not for use.
-        </p>
-      </section>
+        </FadeUp>
+      </MotionSection>
 
       {/* DOUBLE DIAMOND PROCESS */}
-      <section className="w-full bg-slate-900/50 border-y border-slate-700 py-16">
+      <MotionSection className="w-full bg-slate-900/50 border-y border-slate-700 py-16">
         <div className="project-gutter-x w-full min-w-0">
-          <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-8">Process</p>
-          <h2 className="text-3xl font-bold mb-12">Double Diamond</h2>
+          <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-8">Process</FadeUp>
+          <FadeUp as="h2" className="text-3xl font-bold mb-12">Double Diamond</FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-0 relative">
+          <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-0 relative">
             {[
               {
                 phase: 'DISCOVER',
@@ -129,7 +130,7 @@ export default function MercedesServiceManualPage() {
                 items: ['Wireframe prototype built', 'Usability testing n=4', 'Think-aloud protocol', 'Iterated on findings'],
               },
             ].map((d, i) => (
-              <div
+              <FadeUp
                 key={i}
                 className={`border ${d.color} p-5 sm:p-6 rounded-xl xl:rounded-none ${i === 0 ? 'xl:rounded-l-xl' : ''} ${i === 3 ? 'xl:rounded-r-xl' : ''}`}
               >
@@ -143,37 +144,37 @@ export default function MercedesServiceManualPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </FadeUp>
             ))}
-          </div>
+          </MotionGrid>
         </div>
-      </section>
+      </MotionSection>
 
       {/* PROBLEM: stat cards instead of images */}
-      <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Discover</p>
-        <h2 className="text-2xl sm:text-4xl font-bold mb-4">Why Repair Manuals Fail Users</h2>
-        <p className="text-lg text-slate-400 mb-12">
+      <MotionSection className="project-gutter-x w-full min-w-0 py-20">
+        <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Discover</FadeUp>
+        <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold mb-4">Why Repair Manuals Fail Users</FadeUp>
+        <FadeUp as="p" className="text-lg text-slate-400 mb-12">
           Repair and assembly manuals are safety-critical documents. Yet they're designed like legal contracts: dense text, unclear visuals, buried warnings. When users can't follow them, they turn to YouTube.
-        </p>
+        </FadeUp>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <MotionGrid className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {[
             { title: "Safety Warnings Overlooked", desc: "Small text, inconsistent placement, no visual hierarchy", icon: "⚠" },
             { title: "Technical Jargon Barriers", desc: "Language assumes expert knowledge, excludes beginners", icon: "📖" },
             { title: "2D Diagrams Fail Spatial Tasks", desc: "Users can't visualize 3D assembly from flat drawings", icon: "📐" },
             { title: "No Learning Flexibility", desc: "Text-only format doesn't support different comprehension styles", icon: "🎯" },
           ].map((pain, idx) => (
-            <div key={idx} className="p-6 bg-slate-900 rounded-xl text-white">
+            <FadeUp key={idx} className="p-6 bg-slate-900 rounded-xl text-white">
               <p className="text-3xl mb-4">{pain.icon}</p>
               <h3 className="font-semibold text-sm mb-2">{pain.title}</h3>
               <p className="text-xs text-slate-400 leading-relaxed">{pain.desc}</p>
-            </div>
+            </FadeUp>
           ))}
-        </div>
+        </MotionGrid>
 
         {/* Two personas as text cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <MotionGrid className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             {
               type: 'Persona 1',
@@ -190,7 +191,7 @@ export default function MercedesServiceManualPage() {
               color: 'border-slate-400',
             },
           ].map((p, i) => (
-            <div key={i} className={`border-l-4 ${p.color} pl-4 sm:pl-6 py-4`}>
+            <FadeUp key={i} className={`border-l-4 ${p.color} pl-4 sm:pl-6 py-4`}>
               <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">{p.type}</p>
               <h3 className="text-xl font-bold mb-1">{p.name}</h3>
               <p className="text-sm text-slate-400 mb-4">{p.age}</p>
@@ -202,9 +203,9 @@ export default function MercedesServiceManualPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </FadeUp>
           ))}
-        </div>
+        </MotionGrid>
         {/*
           Side-by-side with an asymmetric 2:1 ratio. The AEIOU diagram is a
           single wide composition (legend left + Venn right) so it needs the
@@ -214,26 +215,30 @@ export default function MercedesServiceManualPage() {
           down by the taller observation sheet underneath it. Click-to-expand
           (lightbox) still works on either image.
         */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
-          <ExpandableImage
-            className="my-0 sm:col-span-2"
-            src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`}
-            alt="AEIOU Field Observation"
-          />
-          <ExpandableImage
-            className="my-0 sm:col-span-1"
-            src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`}
-            alt="Observation sheets"
-          />
-        </div>
+        <MotionGrid className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+          <FadeUp className="sm:col-span-2">
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/AEIOU Field observations.png`}
+              alt="AEIOU Field Observation"
+            />
+          </FadeUp>
+          <FadeUp className="sm:col-span-1">
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Observation sheets.png`}
+              alt="Observation sheets"
+            />
+          </FadeUp>
+        </MotionGrid>
         
-      </section>
+      </MotionSection>
 
       {/* DEFINE: Journey Map */}
-      <section className="w-full bg-slate-900/50 border-y border-slate-700 py-20">
+      <MotionSection className="w-full bg-slate-900/50 border-y border-slate-700 py-20" stagger={0.1}>
         <div className="project-gutter-x w-full min-w-0">
-          <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Define</p>
-          <h2 className="text-2xl sm:text-4xl font-bold mb-12">Journey Map: Current vs Ideal State</h2>
+          <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Define</FadeUp>
+          <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold mb-12">Journey Map: Current vs Ideal State</FadeUp>
 
           <div className="overflow-x-auto -mx-1 px-1">
             <table className="w-full text-sm min-w-[520px]">
@@ -244,7 +249,7 @@ export default function MercedesServiceManualPage() {
                   <th className="text-left py-3 text-sky-300 font-semibold">Ideal State ✓</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <MotionGrid as="tbody" className="divide-y divide-slate-200" stagger={0.1}>
                 {[
                   {
                     phase: 'Morning Setup',
@@ -267,49 +272,53 @@ export default function MercedesServiceManualPage() {
                     ideal: 'Visual checklist, clear pass/fail criteria, completion confirmation',
                   },
                 ].map((row, i) => (
-                  <tr key={i}>
+                  <FadeUp as="tr" key={i}>
                     <td className="py-4 pr-6 font-semibold text-slate-100 align-top">{row.phase}</td>
                     <td className="py-4 pr-6 text-slate-400 align-top">{row.current}</td>
                     <td className="py-4 text-slate-300 align-top">{row.ideal}</td>
-                  </tr>
+                  </FadeUp>
                 ))}
-              </tbody>
+              </MotionGrid>
             </table>
           </div>
-          <div className="mt-8 space-y-6">
-            <ExpandableImage
-              className="my-0"
-              src={`${BASE_PATH}/images/Repair manual/Journey Map.png`}
-              alt="Journey Map"
-            />
-            <ExpandableImage
-              className="my-0"
-              src={`${BASE_PATH}/images/Repair manual/Affinity Diagraming.png`}
-              alt="Affinity Diagram"
-            />
-          </div>
+          <MotionGrid className="mt-8 space-y-6">
+            <FadeUp>
+              <ExpandableImage
+                className="my-0"
+                src={`${BASE_PATH}/images/Repair manual/Journey Map.png`}
+                alt="Journey Map"
+              />
+            </FadeUp>
+            <FadeUp>
+              <ExpandableImage
+                className="my-0"
+                src={`${BASE_PATH}/images/Repair manual/Affinity Diagraming.png`}
+                alt="Affinity Diagram"
+              />
+            </FadeUp>
+          </MotionGrid>
         </div>
-      </section>
+      </MotionSection>
 
       {/* THE PIG DRAWING TEST (hero moment) */}
-      <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop: Key Insight</p>
-        <h2 className="text-2xl sm:text-4xl font-bold mb-8">The Pig Drawing Test</h2>
+      <MotionSection className="project-gutter-x w-full min-w-0 py-20">
+        <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Develop: Key Insight</FadeUp>
+        <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold mb-8">The Pig Drawing Test</FadeUp>
 
         {/* Narrative text */}
-        <div className="mb-12">
+        <FadeUp className="mb-12">
           <p className="text-lg leading-relaxed text-slate-300 mb-6">
             We gave participants two different sets of instructions: one text-only, one with visuals. Both described drawing a pig.
           </p>
           <p className="text-lg leading-relaxed text-slate-300">
             The results were stark. Text-only instructions produced chaotic, unrecognizable drawings. Visual-guided steps produced consistent, recognizable results.
           </p>
-        </div>
+        </FadeUp>
 
-        
+
 
         {/* How it should be drawn - reference image */}
-        <div className="mb-12">
+        <FadeUp className="mb-12">
           <h3 className="text-lg font-semibold text-slate-100 mb-4">Reference: How the pig should look</h3>
           <ExpandableImage
             className="my-0 max-w-2xl"
@@ -318,10 +327,10 @@ export default function MercedesServiceManualPage() {
             caption={<p className="text-xs font-semibold text-sky-200">Target outcome with visual guidance</p>}
             captionClassName="bg-sky-950/50 p-3 border-t border-sky-800"
           />
-        </div>
+        </FadeUp>
 
         {/* The actual pig drawing instructions */}
-        <div className="bg-slate-900/50 rounded-xl p-4 sm:p-8 border border-slate-700 mb-8">
+        <FadeUp className="bg-slate-900/50 rounded-xl p-4 sm:p-8 border border-slate-700 mb-8">
           <p className="text-sm font-semibold text-slate-300 mb-4">The actual instructions participants received (text-only condition):</p>
           <ol className="space-y-2 text-sm text-slate-400 list-decimal list-inside">
             {[
@@ -341,28 +350,32 @@ export default function MercedesServiceManualPage() {
             ))}
           </ol>
           <p className="text-sm text-slate-300 font-semibold mt-4">→ Result: Every participant produced a different, unrecognizable drawing.</p>
-        </div>
-        
+        </FadeUp>
+
         {/* Images - horizontal layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-          <ExpandableImage
-            className="my-0"
-            src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`}
-            alt="Text-only pig instructions"
-            caption={<p className="text-xs font-semibold text-slate-200">Text-only instructions: chaotic results</p>}
-            captionClassName="bg-slate-800 p-3 border-t border-slate-700"
-          />
-          <ExpandableImage
-            className="my-0"
-            src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`}
-            alt="Visual-guided pig drawings"
-            caption={<p className="text-xs font-semibold text-sky-200">Visual + text steps: consistent, recognizable</p>}
-            captionClassName="bg-sky-950/50 p-3 border-t border-sky-800"
-          />
-        </div>
+        <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+          <FadeUp>
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/Pig drawing test text.jpg`}
+              alt="Text-only pig instructions"
+              caption={<p className="text-xs font-semibold text-slate-200">Text-only instructions: chaotic results</p>}
+              captionClassName="bg-slate-800 p-3 border-t border-slate-700"
+            />
+          </FadeUp>
+          <FadeUp>
+            <ExpandableImage
+              className="my-0"
+              src={`${BASE_PATH}/images/Repair manual/pig drawing test visual.jpg`}
+              alt="Visual-guided pig drawings"
+              caption={<p className="text-xs font-semibold text-sky-200">Visual + text steps: consistent, recognizable</p>}
+              captionClassName="bg-sky-950/50 p-3 border-t border-sky-800"
+            />
+          </FadeUp>
+        </MotionGrid>
 
         {/* Participatory design summary */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             { icon: '❌', text: 'Instructions too vague: users can\'t tell what the product should look like after each step' },
             { icon: '❌', text: 'Too much text, not enough visual guidance at point of need' },
@@ -371,21 +384,21 @@ export default function MercedesServiceManualPage() {
             { icon: '✅', text: 'Users want control: choose between video, audio, or text based on comfort' },
             { icon: '✅', text: 'Audio guidance noted as beneficial for hands-free operation during repairs' },
           ].map((item, i) => (
-            <div key={i} className="flex gap-3 p-4 bg-slate-900/50 rounded-lg">
+            <FadeUp key={i} className="flex gap-3 p-4 bg-slate-900/50 rounded-lg">
               <span className="text-lg flex-shrink-0">{item.icon}</span>
               <p className="text-sm text-slate-300">{item.text}</p>
-            </div>
+            </FadeUp>
           ))}
-        </div>
-      </section>
+        </MotionGrid>
+      </MotionSection>
 
       {/* KEY INSIGHTS */}
-      <section className="w-full bg-slate-900 py-20">
+      <MotionSection className="w-full bg-slate-900 py-20" stagger={0.1}>
         <div className="project-gutter-x w-full min-w-0">
-          <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Key Discoveries</p>
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-12">What the Research Revealed</h2>
+          <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Key Discoveries</FadeUp>
+          <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold text-white mb-12">What the Research Revealed</FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <MotionGrid className="grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.1}>
             {[
               {
                 title: 'Visual-First, Not Text-Heavy',
@@ -408,45 +421,45 @@ export default function MercedesServiceManualPage() {
                 evidence: 'Users immediately understood QR scan workflow in prototype testing.',
               },
             ].map((insight, idx) => (
-              <div key={idx} className="p-6 border border-slate-700 rounded-xl bg-slate-800">
+              <FadeUp key={idx} className="p-6 border border-slate-700 rounded-xl bg-slate-800">
                 <h3 className="font-bold text-white mb-3">{insight.title}</h3>
                 <p className="text-sm text-slate-300 mb-3">{insight.finding}</p>
                 <p className="text-xs text-slate-400 border-t border-slate-700 pt-3 mt-3">
                   <span className="text-slate-400 font-semibold">Evidence: </span>{insight.evidence}
                 </p>
-              </div>
+              </FadeUp>
             ))}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-            <ExpandableImage
+          </MotionGrid>
+          <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/Age Group Distribution.jpg`}
               alt="Age group distribution"
-            />
-            <ExpandableImage
+            /></FadeUp>
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/Top Frustrations.jpg`}
               alt="Top frustrations"
-            />
-            <ExpandableImage
+            /></FadeUp>
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/where are manuals used.png`}
               alt="Where manuals are used"
-            />
-          </div>
+            /></FadeUp>
+          </MotionGrid>
         </div>
-      </section>
+      </MotionSection>
 
       {/* SOLUTION */}
-      <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver: Prototype</p>
-        <h2 className="text-2xl sm:text-4xl font-bold mb-4">Interactive Repair Guidance System</h2>
-        <p className="text-lg text-slate-400 mb-12">
+      <MotionSection className="project-gutter-x w-full min-w-0 py-20">
+        <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Deliver: Prototype</FadeUp>
+        <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold mb-4">Interactive Repair Guidance System</FadeUp>
+        <FadeUp as="p" className="text-lg text-slate-400 mb-12">
           Users scan a QR code on the product part. The app opens directly to that component's manual: no login, no search, no guessing.
-        </p>
+        </FadeUp>
 
         {/* User flow */}
-        <div className="flex items-center gap-2 mb-12 overflow-x-auto pb-4">
+        <MotionGrid className="flex items-center gap-2 mb-12 overflow-x-auto pb-4" stagger={0.1}>
           {[
             'Open App',
             'Scan QR on part',
@@ -455,155 +468,155 @@ export default function MercedesServiceManualPage() {
             'Follow step-by-step',
             'Confirm completion',
           ].map((step, i, arr) => (
-            <div key={i} className="flex items-center gap-2 flex-shrink-0">
+            <FadeUp key={i} className="flex items-center gap-2 flex-shrink-0">
               <div className="bg-slate-800 text-sky-200 text-xs font-medium px-4 py-2 rounded-full whitespace-nowrap">
                 {step}
               </div>
               {i < arr.length - 1 && <span className="text-slate-300">→</span>}
-            </div>
+            </FadeUp>
           ))}
-        </div>
+        </MotionGrid>
 
-        <h3 className="text-xl font-bold mb-6">Prototype Screens</h3>
-        
+        <FadeUp as="h3" className="text-xl font-bold mb-6">Prototype Screens</FadeUp>
+
         {/* QR Scan Screen */}
-        <div className="mb-12">
+        <FadeUp className="mb-12">
           <ExpandableImage
             className="my-0 max-w-md mx-auto"
             src={`${BASE_PATH}/images/Repair manual/QR.png`}
             alt="QR scan screen"
           />
           <p className="text-xs text-slate-400 mt-2 text-center">QR scan + format selection screen</p>
-        </div>
+        </FadeUp>
 
         {/* Step Navigation - 3 Images */}
-        <div className="mb-12">
+        <FadeUp className="mb-12">
           <h4 className="text-lg font-semibold text-slate-100 mb-4">Step-by-Step Navigation</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <ExpandableImage
+          <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/STEP1.png`}
               alt="Step navigation screen 1"
-            />
-            <ExpandableImage
+            /></FadeUp>
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/step2 .png`}
               alt="Step navigation screen 2"
-            />
-            <ExpandableImage
+            /></FadeUp>
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/step3.png`}
               alt="Step navigation screen 3"
-            />
-          </div>
+            /></FadeUp>
+          </MotionGrid>
           <p className="text-xs text-slate-400 mt-2 text-center">Safety checklist → step-by-step flow</p>
-        </div>
+        </FadeUp>
 
         {/* A/B Layout Comparison - 2 Images */}
-        <div className="max-w-2xl mx-auto">
+        <FadeUp className="max-w-2xl mx-auto">
           <h4 className="text-lg font-semibold text-slate-100 mb-4">A/B Layout Testing</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-            <ExpandableImage
+          <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/Prototype 1.png`}
               alt="A/B prototype layout A"
               caption={<p className="text-xs font-semibold text-slate-300">Layout A: Text-first approach</p>}
               captionClassName="bg-slate-900/50 p-3 border-t border-slate-700"
-            />
-            <ExpandableImage
+            /></FadeUp>
+            <FadeUp><ExpandableImage
               className="my-0"
               src={`${BASE_PATH}/images/Repair manual/Prototype 2.png`}
               alt="A/B prototype layout B"
               caption={<p className="text-xs font-semibold text-slate-300">Layout B: Visual-first approach</p>}
-              captionClassName="bg-slate-900/50 p-3 border-t border-slate-700"
-            />
-          </div>
+              captionClassName="bg-slate-900/50 p-3 border-t border-sky-800"
+            /></FadeUp>
+          </MotionGrid>
           <p className="text-xs text-slate-400 mt-4 text-center">A/B layouts tested for one-handed phone use during repair tasks</p>
-        </div>
-      </section>
+        </FadeUp>
+      </MotionSection>
 
       {/* USABILITY TESTING */}
-      <section className="w-full bg-slate-900/50 border-y border-slate-700 py-20">
+      <MotionSection className="w-full bg-slate-900/50 border-y border-slate-700 py-20">
         <div className="project-gutter-x w-full min-w-0">
-          <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Usability Testing</p>
-          <h2 className="text-4xl font-bold mb-4">What We Learned from n=4</h2>
-          <p className="text-lg text-slate-400 mb-12">Think-aloud protocol, scenario-based tasks, post-task reflection.</p>
+          <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Usability Testing</FadeUp>
+          <FadeUp as="h2" className="text-4xl font-bold mb-4">What We Learned from n=4</FadeUp>
+          <FadeUp as="p" className="text-lg text-slate-400 mb-12">Think-aloud protocol, scenario-based tasks, post-task reflection.</FadeUp>
 
           {/* Direct user quotes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <MotionGrid className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
               { quote: '"I got a little confused with the tools and safety checklist… maybe we can simplify that process."', change: 'Merged into "Preparation Checklist"' },
               { quote: '"Layout should be compatible with small phones too."', change: 'Redesigned for mobile-first layout' },
               { quote: '"The question mark visually implies being stuck. That\'s much better than a lightbulb."', change: '? icon chosen over 💡 for help' },
               { quote: '"If steps are clearly defined, then I don\'t think that should be an issue."', change: 'Confirmed step-by-step structure works' },
             ].map((item, i) => (
-              <div key={i} className="bg-slate-900 rounded-xl p-6 border border-slate-700">
+              <FadeUp key={i} className="bg-slate-900 rounded-xl p-6 border border-slate-700">
                 <p className="text-slate-300 italic mb-4 text-sm leading-relaxed">{item.quote}</p>
                 <div className="flex gap-2 items-start">
                   <span className="text-sky-600 flex-shrink-0 mt-0.5">→</span>
                   <p className="text-xs text-sky-300 font-semibold">{item.change}</p>
                 </div>
-              </div>
+              </FadeUp>
             ))}
-          </div>
+          </MotionGrid>
         </div>
-      </section>
+      </MotionSection>
 
       {/* IMPACT */}
-      <section className="project-gutter-x w-full min-w-0 py-20">
-        <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Impact</p>
-        <h2 className="text-2xl sm:text-4xl font-bold mb-12">Why This Matters Beyond One Manual</h2>
+      <MotionSection className="project-gutter-x w-full min-w-0 py-20" stagger={0.2}>
+        <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-4">Impact</FadeUp>
+        <FadeUp as="h2" className="text-2xl sm:text-4xl font-bold mb-12">Why This Matters Beyond One Manual</FadeUp>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <div>
+        <MotionGrid className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12" stagger={0.2}>
+          <FadeUp>
             <p className="text-lg leading-relaxed text-slate-300 mb-6">
               Better manuals reduce product returns, lower support call volume, prevent user injuries, and support regulatory compliance. This isn't just UX. It's safety, cost savings, and accessibility.
             </p>
             <blockquote className="text-xl font-semibold text-slate-200 italic border-l-4 border-sky-500 pl-6">
               "The best manual is the one users never notice they're following."
             </blockquote>
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          </FadeUp>
+          <MotionGrid className="grid grid-cols-2 gap-3 sm:gap-4" stagger={0.15}>
             {[
               { icon: '🏷', label: 'Reduces product returns', desc: 'Saves company resources' },
               { icon: '🛡', label: 'Lowers injury risk', desc: 'Supports regulatory compliance' },
               { icon: '🌍', label: 'Supports accessibility', desc: 'Benefits a broader user base' },
               { icon: '🔄', label: 'Enables iteration', desc: 'Analytics-driven improvement' },
             ].map((item, i) => (
-              <div key={i} className="p-4 bg-sky-950/40 rounded-xl">
+              <FadeUpScale key={i} className="p-4 bg-sky-950/40 rounded-xl">
                 <p className="text-2xl mb-2">{item.icon}</p>
                 <p className="text-sm font-semibold text-sky-200">{item.label}</p>
                 <p className="text-xs text-slate-400 mt-1">{item.desc}</p>
-              </div>
+              </FadeUpScale>
             ))}
-          </div>
-        </div>
-      </section>
+          </MotionGrid>
+        </MotionGrid>
+      </MotionSection>
 
       {/* REFLECTION */}
-      <section className="project-gutter-x w-full min-w-0 py-12 border-t border-slate-700">
-        <h2 className="text-3xl font-bold mb-6">Reflection</h2>
-        <p className="text-lg leading-relaxed text-slate-300 mb-4">
+      <MotionSection className="project-gutter-x w-full min-w-0 py-12 border-t border-slate-700" stagger={0.2}>
+        <FadeUp as="h2" className="text-3xl font-bold mb-6">Reflection</FadeUp>
+        <FadeUp as="p" className="text-lg leading-relaxed text-slate-300 mb-4">
           This project taught me that design research isn't about asking users what they want. It's about watching where they fail and designing systems that prevent those failures. Participatory design revealed problems I never would have found through interviews alone.
-        </p>
-        <p className="text-lg leading-relaxed text-slate-300 mb-8">
+        </FadeUp>
+        <FadeUp as="p" className="text-lg leading-relaxed text-slate-300 mb-8">
           The pig drawing test became the turning point: proof that our hypothesis wasn't theory; it was observable truth. One exercise replaced 20 slides of literature review.
-        </p>
-        <p className="text-sm text-slate-400">
+        </FadeUp>
+        <FadeUp as="p" className="text-sm text-slate-400">
           <span className="font-semibold text-slate-300">Course:</span> HUMF 5874: Human Centered Design, December 2024
-        </p>
-      </section>
+        </FadeUp>
+      </MotionSection>
 
       {/* FOOTER NAV */}
       <footer className="w-full border-t border-slate-700 py-12">
-        <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
-        <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
-          ← Back to Portfolio
-        </Link>
-        <Link href="/manufacturing-workflow" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
-          Next Project →
-        </Link>
-        </div>
+        <MotionBlock className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
+          <FadeUp><Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+            ← Back to Portfolio
+          </Link></FadeUp>
+          <FadeUp><Link href="/manufacturing-workflow" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+            Next Project →
+          </Link></FadeUp>
+        </MotionBlock>
       </footer>
       </div>
     </main>

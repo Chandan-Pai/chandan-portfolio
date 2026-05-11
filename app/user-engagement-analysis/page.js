@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { MotionHero, MotionSection, MotionBlock, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
 import {
   BarChart,
   Bar,
@@ -57,36 +58,36 @@ export default function UserEngagementAnalysisPage() {
 
         {/* HERO */}
         <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
-          <div className="project-gutter-x w-full min-w-0">
-            <p className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
+          <MotionHero className="project-gutter-x w-full min-w-0">
+            <FadeUp as="p" className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
               Behavioral Data Analysis · Google Play Store
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            </FadeUp>
+            <FadeUp as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
               What Actually Drives App Engagement?
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl">
               Behavioral data analysis of 8,196 Google Play Store apps.
-            </p>
+            </FadeUp>
 
             {/* Stat callouts */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 max-w-3xl">
+            <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 max-w-3xl" stagger={0.15}>
               {[
                 { value: '8,196', label: 'Apps analyzed' },
                 { value: 'R² = 0.98', label: 'Model fit' },
                 { value: '+29.8%', label: 'Free vs paid lift' },
               ].map((stat) => (
-                <div
+                <FadeUpScale
                   key={stat.label}
                   className="rounded-lg border border-white/15 bg-white/5 px-4 py-3 backdrop-blur-sm"
                 >
                   <p className="text-2xl sm:text-3xl font-bold text-white leading-tight">{stat.value}</p>
                   <p className="text-xs sm:text-sm text-gray-300 mt-1">{stat.label}</p>
-                </div>
+                </FadeUpScale>
               ))}
-            </div>
+            </MotionGrid>
 
             {/* Tech tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
+            <FadeUp className="flex flex-wrap gap-2 mb-6">
               {['Python', 'Pandas', 'Scikit-learn', 'Scipy', 'Matplotlib'].map((tag) => (
                 <span
                   key={tag}
@@ -95,10 +96,10 @@ export default function UserEngagementAnalysisPage() {
                   {tag}
                 </span>
               ))}
-            </div>
+            </FadeUp>
 
             {/* Meta row */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-2">
+            <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-2">
               <span>
                 <span className="font-semibold text-white">Role:</span> Data Analyst &amp; Researcher
               </span>
@@ -116,18 +117,18 @@ export default function UserEngagementAnalysisPage() {
               >
                 GitHub repo ↗
               </a>
-            </div>
-          </div>
+            </FadeUp>
+          </MotionHero>
         </header>
 
         {/* PROBLEM */}
-        <section id="problem" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="problem" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">The problem</h2>
-            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-4">The problem</FadeUp>
+            <FadeUp as="p" className="text-lg text-slate-400 mb-8 max-w-3xl">
               Three problems had to be solved before the headline question could even be answered honestly.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            </FadeUp>
+            <MotionGrid className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 {
                   title: 'Messy raw data',
@@ -145,23 +146,23 @@ export default function UserEngagementAnalysisPage() {
                     'Free vs paid impact was industry-assumed, never statistically validated at per-app scale on this dataset.',
                 },
               ].map((card) => (
-                <div key={card.title} className="border-l-4 border-rose-400 bg-rose-900/25 pl-4 py-3 rounded-r">
+                <FadeUp key={card.title} className="border-l-4 border-rose-400 bg-rose-900/25 pl-4 py-3 rounded-r">
                   <p className="font-semibold text-slate-100 mb-1">{card.title}</p>
                   <p className="text-sm text-slate-300 leading-relaxed">{card.desc}</p>
-                </div>
+                </FadeUp>
               ))}
-            </div>
+            </MotionGrid>
           </div>
-        </section>
+        </MotionSection>
 
         {/* METHODOLOGY */}
-        <section id="methodology" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="methodology" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Methodology</h2>
-            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-4">Methodology</FadeUp>
+            <FadeUp as="p" className="text-lg text-slate-400 mb-8 max-w-3xl">
               Four steps, each justified by what the previous one revealed.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </FadeUp>
+            <MotionGrid className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
                   step: '01',
@@ -192,7 +193,7 @@ export default function UserEngagementAnalysisPage() {
                   outcome: 'n = 800 free · n = 604 paid',
                 },
               ].map((s) => (
-                <div key={s.step} className="bg-sky-950/40 border border-sky-800 rounded-lg p-5">
+                <FadeUp key={s.step} className="bg-sky-950/40 border border-sky-800 rounded-lg p-5">
                   <div className="flex items-baseline gap-3 mb-2">
                     <span className="text-xs font-mono font-bold tracking-widest text-sky-400">{s.step}</span>
                     <p className="font-semibold text-sky-200">{s.title}</p>
@@ -201,29 +202,31 @@ export default function UserEngagementAnalysisPage() {
                   <p className="text-xs font-mono text-sky-300 bg-slate-800/90 border border-sky-700 rounded px-2 py-1.5 inline-block">
                     {s.outcome}
                   </p>
-                </div>
+                </FadeUp>
               ))}
-            </div>
+            </MotionGrid>
           </div>
-        </section>
+        </MotionSection>
 
         {/* INTERACTIVE DASHBOARD */}
-        <section id="dashboard" className="w-full py-12 border-t border-slate-700 bg-slate-900/50">
+        <MotionSection id="dashboard" className="w-full py-12 border-t border-slate-700 bg-slate-900/50">
           <div className="project-gutter-x w-full min-w-0">
-            <p className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-3">Interactive Dashboard</p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-3">Explore the Data</h2>
-            <p className="text-lg text-slate-400 mb-8 max-w-3xl">
+            <FadeUp as="p" className="text-xs font-mono tracking-widest text-slate-400 uppercase mb-3">Interactive Dashboard</FadeUp>
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-3">Explore the Data</FadeUp>
+            <FadeUp as="p" className="text-lg text-slate-400 mb-8 max-w-3xl">
               Filter and compare across engagement segments and categories.
-            </p>
-            <Dashboard />
+            </FadeUp>
+            <FadeUp>
+              <Dashboard />
+            </FadeUp>
           </div>
-        </section>
+        </MotionSection>
 
         {/* KEY FINDINGS */}
-        <section id="findings" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="findings" className="w-full py-12 border-t border-slate-700" stagger={0.2}>
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">Key Findings</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-8">Key Findings</FadeUp>
+            <MotionGrid className="grid grid-cols-1 md:grid-cols-3 gap-6" stagger={0.2}>
               {[
                 {
                   stat: '#1 Driver',
@@ -240,25 +243,25 @@ export default function UserEngagementAnalysisPage() {
                     'More reviews in high-engagement vs low-engagement apps (510K avg vs 558 avg).',
                 },
               ].map((card) => (
-                <div
+                <FadeUpScale
                   key={card.stat}
                   className="bg-gradient-to-br from-slate-800/70 to-sky-900/40 border border-sky-700 rounded-lg p-6"
                 >
                   <p className="text-3xl sm:text-4xl font-bold text-sky-300 mb-3">{card.stat}</p>
                   <p className="text-sm text-slate-300 leading-relaxed">{card.label}</p>
-                </div>
+                </FadeUpScale>
               ))}
-            </div>
+            </MotionGrid>
           </div>
-        </section>
+        </MotionSection>
 
         {/* LIMITATIONS */}
-        <section id="limitations" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="limitations" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Research Limitations</h2>
-            <div className="bg-amber-950/40 border-2 border-amber-700 rounded-lg p-6 max-w-3xl">
-              <ul className="space-y-4 text-slate-200">
-                <li className="flex gap-3">
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-6">Research Limitations</FadeUp>
+            <FadeUp className="bg-amber-950/40 border-2 border-amber-700 rounded-lg p-6 max-w-3xl">
+              <MotionGrid as="ul" className="space-y-4 text-slate-200" stagger={0.12}>
+                <FadeUp as="li" className="flex gap-3">
                   <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
@@ -266,8 +269,8 @@ export default function UserEngagementAnalysisPage() {
                     Dataset sourced from Kaggle (2019) — may not reflect current Play Store dynamics, ranking
                     algorithms, or post-pandemic install behavior.
                   </span>
-                </li>
-                <li className="flex gap-3">
+                </FadeUp>
+                <FadeUp as="li" className="flex gap-3">
                   <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
@@ -276,48 +279,48 @@ export default function UserEngagementAnalysisPage() {
                     Installs, Rating) with the regression model. Future work: use an independent behavioral outcome
                     variable.
                   </span>
-                </li>
-                <li className="flex gap-3">
+                </FadeUp>
+                <FadeUp as="li" className="flex gap-3">
                   <span className="text-amber-400 mt-1" aria-hidden>
                     ⚠
                   </span>
                   <span>Observational study only — correlation, not causation.</span>
-                </li>
-              </ul>
-            </div>
+                </FadeUp>
+              </MotionGrid>
+            </FadeUp>
           </div>
-        </section>
+        </MotionSection>
 
         {/* REFLECTION */}
-        <section id="reflection" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="reflection" className="w-full py-12 border-t border-slate-700" stagger={0.25}>
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Reflection</h2>
-            <blockquote className="text-xl sm:text-2xl font-semibold italic text-slate-200 mb-6 pl-6 border-l-4 border-sky-500 max-w-3xl">
+            <FadeUp as="h2" className="text-3xl sm:text-4xl font-bold mb-6">Reflection</FadeUp>
+            <FadeUp as="blockquote" className="text-xl sm:text-2xl font-semibold italic text-slate-200 mb-6 pl-6 border-l-4 border-sky-500 max-w-3xl">
               &ldquo;The most important research skill is knowing when your metric design creates circular reasoning
               &mdash; and flagging it before someone else does. R² = 0.98 sounds impressive. Knowing why to distrust
               it is more impressive.&rdquo;
-            </blockquote>
-            <p className="text-slate-300 leading-relaxed max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="text-slate-300 leading-relaxed max-w-3xl">
               The first version of the report buried R² = 0.98 as the headline number. Catching the feature overlap
               myself, before a reviewer did, turned a quietly weak finding into a clearly framed one &mdash; with an
               honest caveat and a defensible next step.
-            </p>
+            </FadeUp>
           </div>
-        </section>
+        </MotionSection>
 
         {/* FOOTER NAV */}
         <footer className="w-full border-t border-slate-700 py-12">
-          <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
-            <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+          <MotionBlock className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
+            <FadeUp><Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               ← Back to Portfolio
-            </Link>
-            <Link
-              href="/stay-tuned"
+            </Link></FadeUp>
+            <FadeUp><Link
+              href="/airpods-adaptive-audio"
               className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
             >
               Next Project →
-            </Link>
-          </div>
+            </Link></FadeUp>
+          </MotionBlock>
         </footer>
       </div>
     </main>

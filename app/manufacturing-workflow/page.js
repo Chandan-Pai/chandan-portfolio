@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { MotionHero, MotionSection, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
 
 export default function ManufacturingWorkflowPage() {
   const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -47,8 +48,8 @@ export default function ManufacturingWorkflowPage() {
 
         {/* Hero Section: aligned with campus-sync case study header */}
         <section className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
-          <div className="project-gutter-x w-full min-w-0">
-            <div className="mb-8">
+          <MotionHero className="project-gutter-x w-full min-w-0">
+            <FadeUp className="mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
                 Boston Scientific Wolverine Blade Manufacturing
               </h1>
@@ -56,8 +57,8 @@ export default function ManufacturingWorkflowPage() {
                 <li>Lean methodology analysis of Wolverine blade medical device assembly.</li>
                 <li>Mapped bottlenecks and optimization opportunities across the line.</li>
               </ul>
-            </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+            </FadeUp>
+            <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <div>
                 <span className="font-semibold text-white">Role:</span> Industrial Engineer
               </div>
@@ -67,39 +68,39 @@ export default function ManufacturingWorkflowPage() {
               <span>
                 <span className="font-semibold text-white">Date:</span> December 2024
               </span>
-            </div>
-            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
               <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
               I conducted all on-floor time studies, collected cycle time data across assembly stations, and produced the workflow documentation and takt time analysis.
-            </p>
-          </div>
+            </FadeUp>
+          </MotionHero>
         </section>
 
         {/* Key Metrics */}
-        <section className="project-gutter-x w-full min-w-0 py-20">
-          <div className="grid md:grid-cols-3 gap-6 mb-20">
-            <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+        <MotionSection className="project-gutter-x w-full min-w-0 py-20" stagger={0.2}>
+          <MotionGrid className="grid md:grid-cols-3 gap-6 mb-20" stagger={0.2}>
+            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
               <p className="text-5xl font-bold text-white mb-2">13.47s</p>
               <p className="text-sm text-slate-400">Takt time per blade assembly</p>
               <p className="text-xs text-slate-400 mt-3">Customer demand: 122,000 blades/month</p>
-            </div>
-            <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+            </FadeUpScale>
+            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
               <p className="text-5xl font-bold text-white mb-2">18.2s</p>
               <p className="text-sm text-slate-400">Station 5 bottleneck (blade break)</p>
               <p className="text-xs text-slate-400 mt-3">41% longer than takt time target</p>
-            </div>
-            <div className="p-8 bg-slate-900 rounded-lg border border-slate-700">
+            </FadeUpScale>
+            <FadeUpScale className="p-8 bg-slate-900 rounded-lg border border-slate-700">
               <p className="text-5xl font-bold text-white mb-2">142</p>
               <p className="text-sm text-slate-400">Average batch size per cycle</p>
               <p className="text-xs text-slate-400 mt-3">Mix of 10mm and 15mm blades</p>
-            </div>
-          </div>
-        </section>
+            </FadeUpScale>
+          </MotionGrid>
+        </MotionSection>
 
         {/* Problem Statement */}
-        <section className="project-gutter-x w-full min-w-0 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
+        <MotionSection className="project-gutter-x w-full min-w-0 py-20">
+          <MotionGrid className="grid md:grid-cols-2 gap-12 items-start">
+            <FadeUp>
               <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
               <p className="text-lg text-slate-300 leading-relaxed mb-4">
                 Boston Scientific's Wolverine cutting balloon blade production requires precision and efficiency. The coronary cutting balloon opens coronary arteries when standard balloon angioplasty cannot address blockages: a critical medical device where manufacturing quality directly impacts patient outcomes.
@@ -110,8 +111,8 @@ export default function ManufacturingWorkflowPage() {
               <p className="text-lg text-slate-300 leading-relaxed">
                 Through 10 production cycles and time studies using Boston Scientific's MES system, we mapped constraints and quantified improvement opportunities.
               </p>
-            </div>
-            <div className="bg-slate-900/50 p-8 rounded-lg border border-slate-700">
+            </FadeUp>
+            <FadeUp className="bg-slate-900/50 p-8 rounded-lg border border-slate-700">
               <h3 className="font-semibold text-slate-100 mb-4">Process Stages Analyzed</h3>
               <ul className="space-y-3 text-slate-300">
                 <li className="flex items-start gap-3">
@@ -127,14 +128,14 @@ export default function ManufacturingWorkflowPage() {
                   <span><strong>Inspection:</strong> Each blade dimensionally verified against specification database using microscope</span>
                 </li>
               </ul>
-            </div>
-          </div>
-        </section>
+            </FadeUp>
+          </MotionGrid>
+        </MotionSection>
 
         {/* Methodology */}
-        <section className="w-full bg-slate-900/40 py-20">
+        <MotionSection className="w-full bg-slate-900/40 py-20">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl font-bold mb-12">Lean Analysis: Data Collection & Methodology</h2>
+            <FadeUp as="h2" className="text-3xl font-bold mb-12">Lean Analysis: Data Collection & Methodology</FadeUp>
 
             <div className="space-y-12">
               {/* Time Study */}
@@ -215,54 +216,54 @@ export default function ManufacturingWorkflowPage() {
               </div>
             </div>
           </div>
-        </section>
+        </MotionSection>
 
         {/* Key Findings */}
-        <section className="project-gutter-x w-full min-w-0 py-20">
-          <h2 className="text-3xl font-bold mb-12">Waste Identification & Key Insights</h2>
+        <MotionSection className="project-gutter-x w-full min-w-0 py-20" stagger={0.1}>
+          <FadeUp as="h2" className="text-3xl font-bold mb-12">Waste Identification & Key Insights</FadeUp>
 
-          <div className="space-y-6">
-            <div className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
+          <MotionGrid className="space-y-6" stagger={0.1}>
+            <FadeUp className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">🔴 Critical Bottleneck: Station 5</h3>
               <p className="text-slate-300 mb-3">
                 Blade break station cycle time of 18.2 seconds exceeds takt time by 4.73 seconds (41% excess). This is the constraint limiting overall throughput.
               </p>
               <p className="text-sm text-slate-400"><strong>Root causes:</strong> Microscope-dependent precision, manual tweezers separation, container non-conformance checks</p>
-            </div>
+            </FadeUp>
 
-            <div className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
+            <FadeUp className="p-8 bg-slate-800/50 rounded-lg border border-slate-600">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">⚠️ Motion & Transportation Waste</h3>
               <p className="text-slate-300 mb-3">
                 Operators engage in unnecessary reaching for tools, searching for supplies, and non-value-added movements across the three stations.
               </p>
               <p className="text-sm text-slate-400"><strong>Opportunity:</strong> Workstation layout optimization could save 2-3 seconds per cycle</p>
-            </div>
+            </FadeUp>
 
-            <div className="p-8 bg-slate-900/50 rounded-lg border border-slate-700">
+            <FadeUp className="p-8 bg-slate-900/50 rounded-lg border border-slate-700">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">⏳ Waiting Waste</h3>
               <p className="text-slate-300 mb-3">
                 Operators experience delays waiting for degreasing machine cycles to complete and for parts to arrive from upstream EDM machining (3.5-hour batches).
               </p>
               <p className="text-sm text-slate-400"><strong>Note:</strong> EDM machine excluded from analysis; it operates independently with 3.5-hour cycle, impractical for real-time observation</p>
-            </div>
+            </FadeUp>
 
-            <div className="p-8 bg-sky-950/40 rounded-lg border border-sky-800">
+            <FadeUp className="p-8 bg-sky-950/40 rounded-lg border border-sky-800">
               <h3 className="text-lg font-semibold text-slate-100 mb-3">💡 Recent Improvements (Layout Optimization)</h3>
               <p className="text-slate-300 mb-3">
                 Boston Scientific recently repositioned workstations closer together, reducing travel distances between stations.
               </p>
               <p className="text-sm text-slate-400"><strong>Results so far:</strong> Faster deionized water refill, improved PPE accessibility, reduced transition times. However, Station 5 remains the constraint.</p>
-            </div>
-          </div>
-        </section>
+            </FadeUp>
+          </MotionGrid>
+        </MotionSection>
 
         {/* Recommendations */}
-        <section className="w-full bg-slate-900 text-white py-20">
+        <MotionSection className="w-full bg-slate-900 text-white py-20">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-3xl font-bold mb-12">Recommended Improvements: Station 5 Focus</h2>
+            <FadeUp as="h2" className="text-3xl font-bold mb-12">Recommended Improvements: Station 5 Focus</FadeUp>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+            <MotionGrid className="grid md:grid-cols-2 gap-8 mb-12">
+              <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="text-lg">⚡</span> Short-term (Weeks 1-4)
                 </h3>
@@ -280,9 +281,9 @@ export default function ManufacturingWorkflowPage() {
                     <span><strong>Expected savings:</strong> 1.5-2 seconds/cycle (8-11% throughput improvement)</span>
                   </li>
                 </ul>
-              </div>
+              </FadeUp>
 
-              <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+              <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="text-lg">🔄</span> Long-term (Months 2-3)
                 </h3>
@@ -300,57 +301,57 @@ export default function ManufacturingWorkflowPage() {
                     <span><strong>Expected savings:</strong> 3-4 seconds/cycle (22-30% throughput improvement)</span>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </FadeUp>
+            </MotionGrid>
 
-            <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
+            <FadeUp className="bg-slate-800 p-8 rounded-lg border border-slate-700">
               <h3 className="font-semibold text-white mb-4">Impact at Scale</h3>
-              <div className="grid md:grid-cols-3 gap-4 text-sm">
-                <div>
+              <MotionGrid className="grid md:grid-cols-3 gap-4 text-sm" stagger={0.2}>
+                <FadeUpScale>
                   <p className="text-slate-400">Current throughput</p>
                   <p className="text-2xl font-bold text-white">1,420 blades/shift</p>
-                </div>
-                <div>
+                </FadeUpScale>
+                <FadeUpScale>
                   <p className="text-slate-400">Target improvement (short-term)</p>
                   <p className="text-2xl font-bold text-sky-300">+114 blades/shift</p>
-                </div>
-                <div>
+                </FadeUpScale>
+                <FadeUpScale>
                   <p className="text-slate-400">Potential (long-term)</p>
                   <p className="text-2xl font-bold text-sky-300">+426 blades/shift</p>
-                </div>
-              </div>
-            </div>
+                </FadeUpScale>
+              </MotionGrid>
+            </FadeUp>
           </div>
-        </section>
+        </MotionSection>
 
         {/* Conclusion */}
-        <section className="project-gutter-x w-full min-w-0 py-20 border-t border-slate-700">
-          <h2 className="text-3xl font-bold mb-8">Conclusion</h2>
-          
-          <p className="text-lg text-slate-300 leading-relaxed mb-6">
+        <MotionSection className="project-gutter-x w-full min-w-0 py-20 border-t border-slate-700">
+          <FadeUp as="h2" className="text-3xl font-bold mb-8">Conclusion</FadeUp>
+
+          <FadeUp as="p" className="text-lg text-slate-300 leading-relaxed mb-6">
             Through systematic lean analysis of the Wolverine blade manufacturing process, we identified Station 5 (blade break) as the production constraint, operating at 18.2 seconds per blade against a takt time target of 13.47 seconds.
-          </p>
+          </FadeUp>
 
-          <p className="text-lg text-slate-300 leading-relaxed mb-8">
+          <FadeUp as="p" className="text-lg text-slate-300 leading-relaxed mb-8">
             We quantified improvement opportunities worth 3-4 seconds per cycle through workstation reorganization, visual management, and pull-based flow systems. Implementation could increase throughput by 22-30% without additional capital investment, translating to 426 additional blades per shift or 9,372 blades per month (additional revenue at scale).
-          </p>
+          </FadeUp>
 
-          <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 mb-8">
+          <FadeUp className="bg-slate-900/50 p-6 rounded-lg border border-slate-700 mb-8">
             <p className="text-sm font-semibold text-slate-100 mb-2">Key Takeaway</p>
             <p className="text-slate-300">
               This analysis demonstrates that visibility into actual cycle times, batch composition, and operator variability is essential for targeting improvement efforts. The blade break station's constraint status was quantifiable, and therefore solvable.
             </p>
-          </div>
+          </FadeUp>
 
-          <div className="flex justify-between items-center pt-8 border-t border-slate-700">
+          <FadeUp className="flex justify-between items-center pt-8 border-t border-slate-700">
             <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               ← Back to Portfolio
             </Link>
             <Link href="/user-engagement-analysis" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               Next Project →
             </Link>
-          </div>
-        </section>
+          </FadeUp>
+        </MotionSection>
       </div>
     </main>
   );

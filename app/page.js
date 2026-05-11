@@ -215,6 +215,16 @@ export default function HomePage() {
       /** Image is portrait (2426×3094); pin a 3:2 frame so the placard height matches the others. */
       mediaAspect: 'aspect-[3/2]',
     },
+    {
+      id: 'airpods-adaptive-audio',
+      href: '/airpods-adaptive-audio',
+      title: 'Invisible AI & Mental Models',
+      role: 'HF Researcher — CDM · Think-Aloud · Endsley SA',
+      metric: 'AirPods Pro Adaptive Audio · n=2 CDM · 3 environments · 5 themes',
+      src: publicAssetUrl(BASE_PATH, 'images/airpods-case-study/Airpod Hero.png'),
+      type: 'image',
+      num: '06',
+    },
   ];
 
   /** Edit this object to change the statement below Work. */

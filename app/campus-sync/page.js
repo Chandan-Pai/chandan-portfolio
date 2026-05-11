@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import ExpandableImage from '../components/ExpandableImage';
+import { MotionHero, MotionBlock, MotionSection, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
 
 /** Path under `public/` (e.g. `images/campus sync/file.png`). Encodes spaces and `:` so assets work on GitHub Pages and all browsers. */
 function publicUrl(basePath, relativePath) {
@@ -93,23 +94,23 @@ function PrototypeIphoneRow({ basePath }) {
 
 function Section({ id, title, children, className = '' }) {
   return (
-    <section id={id} className={`w-full py-14 ${className}`}>
+    <MotionSection id={id} className={`w-full py-14 ${className}`}>
       <div className="project-gutter-x w-full min-w-0">
         {title ? (
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 tracking-tight">{title}</h2>
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 tracking-tight">{title}</FadeUp>
         ) : null}
         {children}
       </div>
-    </section>
+    </MotionSection>
   );
 }
 
 function Subheading({ children, className = '' }) {
-  return <h3 className={`text-xl font-semibold text-slate-100 mt-10 mb-3 ${className}`}>{children}</h3>;
+  return <FadeUp as="h3" className={`text-xl font-semibold text-slate-100 mt-10 mb-3 ${className}`}>{children}</FadeUp>;
 }
 
 function Body({ children, className = '' }) {
-  return <p className={`text-slate-300 leading-relaxed mb-4 ${className}`}>{children}</p>;
+  return <FadeUp as="p" className={`text-slate-300 leading-relaxed mb-4 ${className}`}>{children}</FadeUp>;
 }
 
 export default function CampusSyncPage() {
@@ -154,11 +155,11 @@ export default function CampusSyncPage() {
 
         {/* Hero */}
         <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
-          <div className="project-gutter-x w-full min-w-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <MotionHero className="project-gutter-x w-full min-w-0">
+            <FadeUp as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Campus-Sync: Gopher Tunnel Navigation System
-            </h1>
-            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+            </FadeUp>
+            <FadeUp as="ul" className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
               <li>
                 End-to-end UX research and design for Gopher Way navigation: 50,000+ students, 7+ miles of tunnels and skyways, extreme winter use cases.
               </li>
@@ -169,21 +170,21 @@ export default function CampusSyncPage() {
               <li>
                 Outcomes: 80% satisfaction, SUS 82, 90% routing accuracy, 70% mobile adoption, deployed with daily active users.
               </li>
-            </ul>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+            </FadeUp>
+            <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span className="font-semibold text-white">UX Research &amp; Product Design</span>
               <span>December 9, 2025</span>
-            </div>
-            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
               <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
               The project originated from my research proposal. I designed and led the UX research, built the prototypes, and created the final interaction designs. Teammates handled site development, final testing execution, and quantitative data analysis.
-            </p>
-          </div>
+            </FadeUp>
+          </MotionHero>
         </header>
 
-        <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
+        <MotionBlock className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
           <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/current pdf.png')} alt="Campus tunnel map context" />
-        </div>
+        </MotionBlock>
 
         <Section id="problem" title="The Problem">
           <Body>
@@ -383,23 +384,23 @@ export default function CampusSyncPage() {
           <Body>
             Every metric we defined before building anything, we hit or beat. That matters: these weren&apos;t goals we set after seeing the results.
           </Body>
-          <ul className="list-disc pl-5 space-y-3 text-slate-300 leading-relaxed mb-10">
-            <li>
+          <MotionGrid className="list-disc pl-5 space-y-3 text-slate-300 leading-relaxed mb-10" as="ul" stagger={0.12}>
+            <FadeUp as="li">
               <strong className="text-slate-100">SUS Score: 82/100.</strong> The industry average is 68. For a first-semester product with no prior version to iterate from, 82 is a strong result.
-            </li>
-            <li>
+            </FadeUp>
+            <FadeUp as="li">
               <strong className="text-slate-100">Routing accuracy: ~90%.</strong> Validated against 20 manually-checked routes. The 10% gap is entirely attributable to Minneapolis/St. Paul cross-campus connections, a known scope exclusion documented before we started building.
-            </li>
-            <li>
+            </FadeUp>
+            <FadeUp as="li">
               <strong className="text-slate-100">Task completion: 45% faster</strong> than the existing combination of PDF maps and scattered building-hours pages.
-            </li>
-            <li>
+            </FadeUp>
+            <FadeUp as="li">
               <strong className="text-slate-100">Mobile adoption: 70%.</strong> Students used it on their phones while physically navigating. Not at their desks. The mobile-first design decision was validated by the people it was designed for.
-            </li>
-            <li>
+            </FadeUp>
+            <FadeUp as="li">
               <strong className="text-slate-100">User satisfaction: 80%+.</strong> Meeting the pre-defined threshold exactly.
-            </li>
-          </ul>
+            </FadeUp>
+          </MotionGrid>
 
           <ExpandableImage src={publicUrl(BASE_PATH, 'images/campus sync/usability .png')} alt="Usability testing summary" />
 
@@ -422,16 +423,16 @@ export default function CampusSyncPage() {
           </div>
         </Section>
 
-        <section className="w-full border-t border-gray-100 py-10">
-          <div className="project-gutter-x w-full min-w-0 flex flex-wrap justify-between gap-4 items-center">
-            <Link href="/" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
+        <MotionSection className="w-full border-t border-slate-700 py-10">
+          <MotionGrid className="project-gutter-x w-full min-w-0 flex flex-wrap justify-between gap-4 items-center">
+            <FadeUp><Link href="/" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               ← Back to Portfolio
-            </Link>
-            <Link href="/mercedes-service-manual" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
+            </Link></FadeUp>
+            <FadeUp><Link href="/mercedes-service-manual" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               Next project →
-            </Link>
-          </div>
-        </section>
+            </Link></FadeUp>
+          </MotionGrid>
+        </MotionSection>
       </div>
     </main>
   );

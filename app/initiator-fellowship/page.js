@@ -2,6 +2,7 @@
  
 import Link from 'next/link';
 import ExpandableImage from '../components/ExpandableImage';
+import { MotionHero, MotionSection, MotionBlock, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
 
 /** Encode path segments so filenames with spaces or parens work on GitHub Pages. */
 function publicAssetUrl(basePath, relativePath) {
@@ -38,15 +39,15 @@ export default function InitiatorFellowshipPage() {
         </div>
 
         <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
-          <div className="project-gutter-x w-full min-w-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <MotionHero className="project-gutter-x w-full min-w-0">
+            <FadeUp as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Initiator Fellowship Website Redesign
-            </h1>
-            <ul className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
+            </FadeUp>
+            <FadeUp as="ul" className="list-disc list-outside space-y-2.5 text-gray-200 text-base sm:text-lg leading-snug mb-6 pl-5 sm:pl-6 marker:text-sky-400 max-w-3xl">
               <li>Accessibility-first redesign of the Initiator Fellowship website.</li>
               <li>Bridging WCAG 2.1 AA alignment with navigation people can actually use.</li>
-            </ul>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
+            </FadeUp>
+            <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-6">
               <span>
                 <span className="font-semibold text-white">Role:</span> UX Researcher &amp; Accessibility Specialist
               </span>
@@ -56,89 +57,89 @@ export default function InitiatorFellowshipPage() {
               <span>
                 <span className="font-semibold text-white">Impact:</span> 2.3/5 → 4.7/5 usability • 104% increase • WCAG 2.1 AA
               </span>
-            </div>
-            <p className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
+            </FadeUp>
+            <FadeUp as="p" className="mt-4 text-sm italic text-slate-400 leading-relaxed max-w-3xl">
               <span className="font-semibold not-italic text-slate-300">My Role:</span>{' '}
               I led all research decisions, method selection, recruitment criteria, and study design. I conducted the usability sessions and synthesized findings into redesign direction. A teammate (Neha) supported data gathering; others handled documentation.
-            </p>
-          </div>
+            </FadeUp>
+          </MotionHero>
         </header>
 
-        <div className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
+        <MotionBlock className="project-gutter-x w-full min-w-0 -mt-8 relative z-10">
           <ExpandableImage
             className="my-0 shadow-lg"
             src={asset('images/initiator-fellowship/screenshot-rocks.png')}
             alt="Initiator Fellowship website before and after"
           />
-        </div>
+        </MotionBlock>
  
         {/* OPENING PROBLEM */}
-        <section id="problem" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="problem" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-          <div className="prose prose-invert prose-sm max-w-none">
+          <FadeUp className="prose prose-invert prose-sm max-w-none">
             <p>A potential fellowship applicant visits the Initiator Fellowship website, excited to learn about the program. Within 90 seconds, she closes the tab.</p>
             <p>Not because she wasn't qualified. Not because the program wasn't right for her. But because she couldn't find the eligibility criteria.</p>
             <p>When we tested the site, this pattern repeated. Every single participant struggled with the same task: figure out if they could apply. The information existed, but it was buried at the bottom of a page, hidden in an FAQ section, wrapped in confusing navigation.</p>
+          </FadeUp>
           </div>
-          </div>
-        </section>
+        </MotionSection>
  
         {/* PROBLEM SECTION */}
-        <section id="usability-crisis" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="usability-crisis" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-4">The Usability Crisis</h2>
-            <p className="text-lg text-slate-400 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website, their primary recruitment tool, was actively preventing qualified candidates from applying.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <FadeUp as="h2" className="text-4xl font-bold mb-4">The Usability Crisis</FadeUp>
+            <FadeUp as="p" className="text-lg text-slate-400 mb-8">The Initiator Fellowship supports next-generation social entrepreneurs across Greater Minnesota. But the website, their primary recruitment tool, was actively preventing qualified candidates from applying.</FadeUp>
+            <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'WCAG Non-Compliance', desc: 'Color contrast failures, no accessibility standards met' },
                 { title: 'Hidden Eligibility', desc: 'Application criteria buried in FAQ at page bottom' },
                 { title: 'Dual Navigation Bars', desc: 'Confusing layout in half-screen view' },
                 { title: 'No Form Feedback', desc: "Users couldn't tell what they did wrong when submitting" }
               ].map((issue, i) => (
-                <div key={i} className="border-l-4 border-slate-400 pl-4 py-2">
+                <FadeUp key={i} className="border-l-4 border-slate-400 pl-4 py-2">
                   <p className="font-semibold text-slate-200">{issue.title}</p>
                   <p className="text-sm text-slate-400">{issue.desc}</p>
-                </div>
+                </FadeUp>
               ))}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" />
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" />
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" />
-            </div>
+            </MotionGrid>
+            <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks.png')} alt="Screenshot 1" /></FadeUp>
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(1).png')} alt="Screenshot 2" /></FadeUp>
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/screenshot-rocks(2).png')} alt="Screenshot 3" /></FadeUp>
+            </MotionGrid>
           </div>
-        </section>
- 
+        </MotionSection>
+
         {/* RESEARCH APPROACH */}
-        <section id="research" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="research" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-4">Mixed-Methods UX Research</h2>
-            <p className="text-lg text-slate-400 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes, not just symptoms.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <FadeUp as="h2" className="text-4xl font-bold mb-4">Mixed-Methods UX Research</FadeUp>
+            <FadeUp as="p" className="text-lg text-slate-400 mb-8">We combined heuristic evaluation, task analysis, and user testing to identify root causes, not just symptoms.</FadeUp>
+            <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {[
                 { title: 'Heuristic Evaluation', desc: "Applied Nielsen's 10 usability principles. Identified violations across consistency, feedback, and recognition heuristics." },
                 { title: 'Hierarchical Task Analysis', desc: 'Mapped 4 critical user flows: learning about fellowship, finding eligibility, applying, contacting staff.' },
                 { title: 'Card Sorting (n=5)', desc: 'Participants organized content to reveal natural information architecture patterns.' },
                 { title: 'User Testing (n=5)', desc: '3 scenarios tested on both old and new sites. Measured task completion time, post-task ratings, qualitative feedback.' }
               ].map((method, i) => (
-                <div key={i} className="bg-sky-950/40 border border-sky-800 rounded-lg p-4">
+                <FadeUp key={i} className="bg-sky-950/40 border border-sky-800 rounded-lg p-4">
                   <p className="font-semibold text-sky-200 mb-2">{method.title}</p>
                   <p className="text-sm text-slate-300">{method.desc}</p>
-                </div>
+                </FadeUp>
               ))}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" />
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" />
-              <ExpandableImage className="my-0" src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" />
-            </div>
+            </MotionGrid>
+            <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/graphicaltaskanalysis.png')} alt="HTA diagram" /></FadeUp>
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/Cardsorting.png')} alt="Card sorting" /></FadeUp>
+              <FadeUp><ExpandableImage className="my-0" src={asset('images/initiator-fellowship/timetake(oldwebsite).png')} alt="User testing" /></FadeUp>
+            </MotionGrid>
           </div>
-        </section>
- 
+        </MotionSection>
+
         {/* KEY INSIGHTS */}
-        <section id="insights" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="insights" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-8">Key Insights</h2>
+          <FadeUp as="h2" className="text-4xl font-bold mb-8">Key Insights</FadeUp>
           {[
             { 
               title: 'Disconnected Application Process', 
@@ -181,7 +182,7 @@ export default function InitiatorFellowshipPage() {
               ] 
             }
           ].map((insight, i) => (
-            <div key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
+            <FadeUp key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
               <h3 className="text-2xl font-semibold mb-4">{insight.title}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
@@ -206,15 +207,15 @@ export default function InitiatorFellowshipPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </FadeUp>
           ))}
           </div>
-        </section>
- 
+        </MotionSection>
+
         {/* IMPACT METRICS */}
-        <section id="impact" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="impact" className="w-full py-12 border-t border-slate-700" stagger={0.2}>
           <div className="project-gutter-x w-full min-w-0">
-            <h2 className="text-4xl font-bold mb-8">Impact Metrics</h2>
+            <FadeUp as="h2" className="text-4xl font-bold mb-8">Impact Metrics</FadeUp>
             {[
               {
                 title: 'Average Post-Task Rating Improvement',
@@ -252,7 +253,7 @@ export default function InitiatorFellowshipPage() {
               },
               
             ].map((metric, i) => (
-              <div key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
+              <FadeUpScale key={i} className="mb-12 pb-12 border-b border-slate-700 last:border-b-0">
                 <h3 className="text-2xl font-semibold mb-4">{metric.title}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -285,42 +286,42 @@ export default function InitiatorFellowshipPage() {
                     ))}
                   </div>
                 )}
-              </div>
+              </FadeUpScale>
             ))}
           </div>
-        </section>
- 
+        </MotionSection>
+
         {/* USER QUOTE */}
-        <section id="quote" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="quote" className="w-full py-12 border-t border-slate-700" stagger={0.25}>
           <div className="project-gutter-x w-full min-w-0">
-          <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Most Impactful Change</h3>
-          <blockquote className="text-2xl font-semibold italic text-slate-200 mb-3 pl-6 border-l-4 border-sky-500">
+          <FadeUp as="h3" className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Most Impactful Change</FadeUp>
+          <FadeUp as="blockquote" className="text-2xl font-semibold italic text-slate-200 mb-3 pl-6 border-l-4 border-sky-500">
             "The new site made me feel like the fellowship actually wanted me to apply. Everything was clear, organized, and I knew exactly what to do next."
-          </blockquote>
-          <p className="text-sm text-slate-400">Participant feedback, Round 3 user testing</p>
+          </FadeUp>
+          <FadeUp as="p" className="text-sm text-slate-400">Participant feedback, Round 3 user testing</FadeUp>
           </div>
-        </section>
- 
+        </MotionSection>
+
         {/* DELIVERABLES */}
-        <section id="deliverables" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="deliverables" className="w-full py-12 border-t border-slate-700">
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-8">What We Shipped</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          <FadeUp as="h2" className="text-4xl font-bold mb-8">What We Shipped</FadeUp>
+          <MotionGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             {[
               { title: 'Figma Prototype', desc: 'Interactive high-fidelity prototype with full user flows' },
               { title: 'Accessibility Audit', desc: 'WCAG 2.1 AA compliance documentation' },
               { title: 'User Testing Report', desc: 'Complete findings, recommendations, and iteration documentation' },
               { title: 'HTA Documentation', desc: 'Task flow analysis for all critical pathways' }
             ].map((item, i) => (
-              <div key={i} className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <FadeUp key={i} className="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
                 <p className="font-semibold mb-2">{item.title}</p>
                 <p className="text-sm text-slate-400">{item.desc}</p>
-              </div>
+              </FadeUp>
             ))}
-          </div>
-          
+          </MotionGrid>
+
           {/* PROTOTYPE SCREENSHOTS */}
-          <div className="mb-8 w-full min-w-0">
+          <FadeUp className="mb-8 w-full min-w-0">
             <h3 className="text-2xl font-semibold mb-6">Interactive Prototype Screens</h3>
             
             {/* Interactive Figma Embed */}
@@ -336,37 +337,37 @@ export default function InitiatorFellowshipPage() {
                 allowFullScreen
               />
             </div>
+          </FadeUp>
           </div>
-          </div>
-        </section>
- 
+        </MotionSection>
+
         {/* REFLECTION */}
-        <section id="reflection" className="w-full py-12 border-t border-slate-700">
+        <MotionSection id="reflection" className="w-full py-12 border-t border-slate-700" stagger={0.25}>
           <div className="project-gutter-x w-full min-w-0">
-          <h2 className="text-4xl font-bold mb-6">Designing for Real Impact</h2>
-          <div className="prose prose-invert prose-sm max-w-none mb-8">
+          <FadeUp as="h2" className="text-4xl font-bold mb-6">Designing for Real Impact</FadeUp>
+          <FadeUp className="prose prose-invert prose-sm max-w-none mb-8">
             <p>This project reinforced something critical: accessibility isn't a checklist. It's a design philosophy. Every decision we made started with "Can someone who needs this fellowship actually use this site?" WCAG compliance was the baseline. Usable navigation was the goal. A 104% usability increase meant we achieved both.</p>
-          </div>
-          <blockquote className="text-lg italic text-slate-300 pl-6 border-l-4 border-slate-300 mb-6">
+          </FadeUp>
+          <FadeUp as="blockquote" className="text-lg italic text-slate-300 pl-6 border-l-4 border-slate-300 mb-6">
             "Good UX research doesn't just find problems. It builds consensus around solutions."
-          </blockquote>
-          <div className="text-sm text-slate-400">
+          </FadeUp>
+          <FadeUp className="text-sm text-slate-400">
             <p className="mb-2"><span className="font-semibold">Team:</span> Chandan Pai, Neha Aramkuni, Vaishnavi Venkatasubramanian, Ajaydeep Singh, Vikram Selvakumaranraja</p>
             <p><span className="font-semibold">Course:</span> IE 4511, December 2024</p>
+          </FadeUp>
           </div>
-          </div>
-        </section>
- 
+        </MotionSection>
+
         {/* FOOTER NAV */}
         <footer className="w-full border-t border-slate-700 py-12">
-          <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
-          <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
-            ← Back to Portfolio
-          </Link>
-          <Link href="/campus-sync" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
-            Next Project →
-          </Link>
-          </div>
+          <MotionBlock className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
+            <FadeUp><Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+              ← Back to Portfolio
+            </Link></FadeUp>
+            <FadeUp><Link href="/campus-sync" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+              Next Project →
+            </Link></FadeUp>
+          </MotionBlock>
         </footer>
       </div>
     </main>
