@@ -428,7 +428,7 @@ export default function CampusSyncPage() {
             <FadeUp><Link href="/" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               ← Back to Portfolio
             </Link></FadeUp>
-            <FadeUp><Link href="/mercedes-service-manual" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
+            <FadeUp><Link href="/initiator-fellowship" className="text-sky-400 hover:text-sky-300 hover:underline font-semibold text-sm">
               Next project →
             </Link></FadeUp>
           </MotionGrid>

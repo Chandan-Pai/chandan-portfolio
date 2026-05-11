@@ -347,7 +347,7 @@ export default function ManufacturingWorkflowPage() {
             <Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               ← Back to Portfolio
             </Link>
-            <Link href="/user-engagement-analysis" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+            <Link href="/campus-sync" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               Next Project →
             </Link>
           </FadeUp>

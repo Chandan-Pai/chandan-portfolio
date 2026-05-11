@@ -613,7 +613,7 @@ export default function MercedesServiceManualPage() {
           <FadeUp><Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
             ← Back to Portfolio
           </Link></FadeUp>
-          <FadeUp><Link href="/manufacturing-workflow" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+          <FadeUp><Link href="/airpods-adaptive-audio" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
             Next Project →
           </Link></FadeUp>
         </MotionBlock>

@@ -315,7 +315,7 @@ export default function UserEngagementAnalysisPage() {
               ← Back to Portfolio
             </Link></FadeUp>
             <FadeUp><Link
-              href="/airpods-adaptive-audio"
+              href="/manufacturing-workflow"
               className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
             >
               Next Project →

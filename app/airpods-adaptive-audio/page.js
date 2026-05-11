@@ -992,16 +992,16 @@ function FooterNav() {
     <footer className="w-full border-t border-slate-700 py-12 bg-black">
       <div className="project-gutter-x w-full min-w-0 flex flex-wrap items-center justify-between gap-4">
         <Link
+          href="/mercedes-service-manual"
+          className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
+        >
+          ← Interactive Repair Guidance
+        </Link>
+        <Link
           href="/user-engagement-analysis"
           className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
         >
-          ← User Engagement Analysis
-        </Link>
-        <Link
-          href="/initiator-fellowship"
-          className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition"
-        >
-          Initiator Fellowship →
+          User Engagement Analysis →
         </Link>
       </div>
     </footer>

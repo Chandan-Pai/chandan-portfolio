@@ -364,7 +364,7 @@ export default function InitiatorFellowshipPage() {
             <FadeUp><Link href="/" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               ← Back to Portfolio
             </Link></FadeUp>
-            <FadeUp><Link href="/campus-sync" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
+            <FadeUp><Link href="/mercedes-service-manual" className="text-sm font-semibold text-sky-400 hover:text-sky-300 hover:underline transition">
               Next Project →
             </Link></FadeUp>
           </MotionBlock>
