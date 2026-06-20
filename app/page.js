@@ -204,6 +204,15 @@ export default function HomePage() {
       num: '04',
     },
     {
+      id: 'gesturecanvas',
+      title: 'GestureCanvas',
+      role: 'Interaction Research · In Progress',
+      metric:
+        'Hand gestures to write on a canvas — annotate digital documents without a stylus or keyboard.',
+      num: '05',
+      comingSoon: true,
+    },
+    {
       id: 'user-engagement-analysis',
       href: '/user-engagement-analysis',
       title: 'Quantifying User Engagement',
@@ -211,7 +220,7 @@ export default function HomePage() {
       metric: '8,196 Play Store apps • R² = 0.98 • +29.8% lift (free vs paid)',
       src: publicAssetUrl(BASE_PATH, 'images/user-engagement-analysis/playstore_engagement_analysis.png'),
       type: 'image',
-      num: '05',
+      num: '06',
       /** Image is portrait (2426×3094); pin a 3:2 frame so the placard height matches the others. */
       mediaAspect: 'aspect-[3/2]',
     },
@@ -223,7 +232,7 @@ export default function HomePage() {
       metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade',
       src: publicAssetUrl(BASE_PATH, 'images/wolverine blade assembly.png'),
       type: 'image',
-      num: '06',
+      num: '07',
     },
   ];
 
@@ -314,18 +323,44 @@ export default function HomePage() {
 
           <div className="scene" style={{ perspective: '1400px', perspectiveOrigin: '50% 30%' }}>
             <div className="space-y-8">
-              {projects.map((project, index) => (
-                <Link
-                  key={project.id}
-                  href={project.href}
-                  className="group project-link glass-placard block rounded-2xl overflow-hidden"
-                  style={{ willChange: index === 0 ? 'auto' : 'transform, opacity' }}
-                >
+              {projects.map((project, index) => {
+                const placardClass =
+                  'glass-placard block rounded-2xl overflow-hidden' +
+                  (project.comingSoon ? ' cursor-default' : ' group project-link');
+                const placardStyle = {
+                  willChange: index === 0 ? 'auto' : 'transform, opacity',
+                };
+
+                const placardInner = (
                   <div className="flex flex-col md:flex-row items-stretch">
                     <div
-                      className={`w-full md:w-2/3 shrink-0 bg-transparent flex items-center justify-center ${project.mediaAspect ?? ''}`}
+                      className={`w-full md:w-2/3 shrink-0 bg-transparent flex items-center justify-center ${project.mediaAspect ?? ''} ${project.comingSoon ? 'aspect-[16/10] min-h-[12rem] sm:min-h-[14rem]' : ''}`}
                     >
-                      {project.type === 'video' ? (
+                      {project.comingSoon ? (
+                        <div
+                          className="relative w-full h-full flex flex-col items-center justify-center gap-4 p-8 sm:p-12 bg-gradient-to-br from-violet-950/50 via-slate-900/30 to-sky-950/40"
+                          aria-hidden
+                        >
+                          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_40%,rgba(139,92,246,0.35),transparent_55%),radial-gradient(circle_at_70%_60%,rgba(56,189,248,0.2),transparent_50%)]" />
+                          <svg
+                            className="relative w-16 h-16 sm:w-20 sm:h-20 text-violet-300/80"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.25"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0" />
+                            <path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2" />
+                            <path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8" />
+                            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+                          </svg>
+                          <span className="relative text-xs font-semibold tracking-[0.2em] text-violet-300/90 uppercase">
+                            Coming Soon
+                          </span>
+                        </div>
+                      ) : project.type === 'video' ? (
                         <video
                           className={
                             project.mediaAspect
@@ -355,18 +390,36 @@ export default function HomePage() {
                     </div>
                     <div className="w-full md:w-1/3 p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 min-h-0 min-w-0">
                       <div>
-                        <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">{project.num} | {project.role}</p>
+                        <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">
+                          {project.num} | {project.role}
+                        </p>
                         <h3 className="text-2xl font-bold text-slate-100 mb-4 leading-snug">{project.title}</h3>
                         <p className="text-sm text-slate-400 leading-relaxed">{project.metric}</p>
                       </div>
-                      <div className="flex items-center gap-2 text-sm font-semibold text-slate-200 group-hover:gap-4 transition-all duration-300">
-                        <span>View Project</span>
-                        <span>→</span>
-                      </div>
+                      {project.comingSoon ? (
+                        <div className="inline-flex items-center gap-2 self-start rounded-full border border-violet-500/40 bg-violet-950/30 px-3 py-1.5 text-xs font-semibold tracking-wide text-violet-300 uppercase">
+                          Coming Soon
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2 text-sm font-semibold text-slate-200 group-hover:gap-4 transition-all duration-300">
+                          <span>View Project</span>
+                          <span>→</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </Link>
-              ))}
+                );
+
+                return project.comingSoon ? (
+                  <div key={project.id} className={placardClass} style={placardStyle} aria-label={`${project.title} — coming soon`}>
+                    {placardInner}
+                  </div>
+                ) : (
+                  <Link key={project.id} href={project.href} className={placardClass} style={placardStyle}>
+                    {placardInner}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
