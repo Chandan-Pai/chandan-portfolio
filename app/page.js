@@ -282,9 +282,9 @@ export default function HomePage() {
                 <span className="max-sm:block sm:inline">PAI</span>
               </h1>
               <p className="mt-3 text-left text-[0.6875rem] font-semibold tracking-wide leading-snug text-white uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.9)] sm:mt-6 sm:text-sm sm:tracking-wider sm:tracking-widest sm:leading-relaxed sm:text-white/90 sm:[text-shadow:none]">
-                <span className="max-sm:block">Human Factors Engineer</span>
-                <span className="max-sm:hidden"> • </span>
                 <span className="max-sm:block">UX Researcher</span>
+                <span className="max-sm:hidden"> • </span>
+                <span className="max-sm:block">Human Factors Engineer</span>
               </p>
               <p className="mt-4 text-left text-[0.8125rem] leading-relaxed text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.88)] sm:mt-8 sm:text-lg sm:text-white/90 sm:[text-shadow:none]">
                 Building data-driven design solutions at the intersection of engineering and human behavior
