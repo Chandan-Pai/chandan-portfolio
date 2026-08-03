@@ -225,6 +225,17 @@ export default function HomePage() {
       mediaAspect: 'aspect-[3/2]',
     },
     {
+      id: 'ux-quantitative-analysis',
+      href: '/ux-quantitative-analysis',
+      title: 'Quant UX Validation Suite',
+      role: 'Quantitative UX Researcher',
+      metric: 'Survey · Usability · A/B • live Streamlit dashboard • ROC-AUC ≈ 0.96',
+      src: publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg'),
+      type: 'image',
+      num: '07',
+      mediaAspect: 'aspect-[3/2]',
+    },
+    {
       id: 'boston-scientific',
       href: '/manufacturing-workflow',
       title: 'Manufacturing Process Optimization',
@@ -232,7 +243,7 @@ export default function HomePage() {
       metric: 'Lean workflow analysis • Takt time: 13.47 sec/blade',
       src: publicAssetUrl(BASE_PATH, 'images/wolverine blade assembly.png'),
       type: 'image',
-      num: '07',
+      num: '08',
     },
   ];
 
