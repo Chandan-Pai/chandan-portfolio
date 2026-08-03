@@ -209,7 +209,7 @@ export default function HomePage() {
       title: 'Quant UX Validation Suite',
       role: 'Quantitative UX Researcher',
       metric: 'Survey · Usability · A/B • live Streamlit dashboard • ROC-AUC ≈ 0.96',
-      src: publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg'),
+      src: publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/concept.png'),
       type: 'image',
       num: '05',
       mediaAspect: 'aspect-[3/2]',
@@ -221,7 +221,7 @@ export default function HomePage() {
       role: 'Interaction Research · Live demo',
       metric:
         'Hand gestures to write on a canvas — MediaPipe · annotate without a stylus or keyboard.',
-      src: publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.svg'),
+      src: publicAssetUrl(BASE_PATH, 'images/gesture-canvas/concept.png'),
       type: 'image',
       num: '06',
       mediaAspect: 'aspect-[3/2]',
