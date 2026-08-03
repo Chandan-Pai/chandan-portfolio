@@ -25,7 +25,7 @@ function publicAssetUrl(basePath, relativePath) {
 }
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const heroSrc = publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.png');
+const heroSrc = publicAssetUrl(BASE_PATH, 'images/gesture-canvas/concept.png');
 
 const RESEARCH_QUESTIONS = [
   {

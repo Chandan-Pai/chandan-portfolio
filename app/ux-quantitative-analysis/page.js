@@ -26,7 +26,7 @@ function publicAssetUrl(basePath, relativePath) {
 }
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.png');
+const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/concept.png');
 
 const STUDIES = [
   {
