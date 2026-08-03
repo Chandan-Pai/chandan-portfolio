@@ -24,6 +24,20 @@
       "body": "Interactive repair-guidance research and prototyping, including usability validation, summarized on the Mercedes service manual case study."
     },
     {
+      "id": "project-ux-quantitative-analysis",
+      "title": "Quant UX Validation Suite",
+      "path": "/ux-quantitative-analysis",
+      "tags": ["quant", "quantitative", "uxr", "survey", "usability", "a/b", "streamlit", "validation", "pandas"],
+      "body": "Multi-study quantitative UX validation suite: survey, usability, and A/B pipelines with a live Streamlit dashboard and attributed educational datasets."
+    },
+    {
+      "id": "project-gesture-canvas",
+      "title": "GestureCanvas",
+      "path": "/gesture-canvas",
+      "tags": ["gesture", "mediapipe", "canvas", "interaction", "hand tracking", "demo"],
+      "body": "Browser hand-tracking canvas prototype for gesture UI probing, with a live GitHub Pages demo."
+    },
+    {
       "id": "skills-methods",
       "title": "Skills & methods",
       "path": "/About",
