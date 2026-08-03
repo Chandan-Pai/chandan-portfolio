@@ -165,7 +165,8 @@ export default function QuantUxValidationPage() {
         </div>
       </section>
 
-      <MotionSection className="project-gutter-x py-14 sm:py-20 space-y-14 max-w-4xl">
+      <MotionSection className="project-gutter-x w-full min-w-0 py-14 sm:py-20">
+        <div className="mx-auto max-w-5xl space-y-14">
         <MotionBlock>
           <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
             1. Research problem
@@ -342,6 +343,7 @@ export default function QuantUxValidationPage() {
             </a>
           </FadeUp>
         </MotionBlock>
+        </div>
       </MotionSection>
     </main>
   );
