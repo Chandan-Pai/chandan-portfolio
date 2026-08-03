@@ -204,13 +204,27 @@ export default function HomePage() {
       num: '04',
     },
     {
-      id: 'gesturecanvas',
-      title: 'GestureCanvas',
-      role: 'Interaction Research · In Progress',
-      metric:
-        'Hand gestures to write on a canvas — annotate digital documents without a stylus or keyboard.',
+      id: 'ux-quantitative-analysis',
+      href: '/ux-quantitative-analysis',
+      title: 'Quant UX Validation Suite',
+      role: 'Quantitative UX Researcher',
+      metric: 'Survey · Usability · A/B • live Streamlit dashboard • ROC-AUC ≈ 0.96',
+      src: publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg'),
+      type: 'image',
       num: '05',
-      comingSoon: true,
+      mediaAspect: 'aspect-[3/2]',
+    },
+    {
+      id: 'gesturecanvas',
+      href: '/gesture-canvas',
+      title: 'GestureCanvas',
+      role: 'Interaction Research · Live demo',
+      metric:
+        'Hand gestures to write on a canvas — MediaPipe · annotate without a stylus or keyboard.',
+      src: publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.svg'),
+      type: 'image',
+      num: '06',
+      mediaAspect: 'aspect-[3/2]',
     },
     {
       id: 'user-engagement-analysis',
@@ -220,19 +234,8 @@ export default function HomePage() {
       metric: '8,196 Play Store apps • R² = 0.98 • +29.8% lift (free vs paid)',
       src: publicAssetUrl(BASE_PATH, 'images/user-engagement-analysis/playstore_engagement_analysis.png'),
       type: 'image',
-      num: '06',
-      /** Image is portrait (2426×3094); pin a 3:2 frame so the placard height matches the others. */
-      mediaAspect: 'aspect-[3/2]',
-    },
-    {
-      id: 'ux-quantitative-analysis',
-      href: '/ux-quantitative-analysis',
-      title: 'Quant UX Validation Suite',
-      role: 'Quantitative UX Researcher',
-      metric: 'Survey · Usability · A/B • live Streamlit dashboard • ROC-AUC ≈ 0.96',
-      src: publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg'),
-      type: 'image',
       num: '07',
+      /** Image is portrait (2426×3094); pin a 3:2 frame so the placard height matches the others. */
       mediaAspect: 'aspect-[3/2]',
     },
     {

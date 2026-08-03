@@ -31,6 +31,13 @@
       "body": "Multi-study quantitative UX validation suite: survey, usability, and A/B pipelines with a live Streamlit dashboard and attributed educational datasets."
     },
     {
+      "id": "project-gesture-canvas",
+      "title": "GestureCanvas",
+      "path": "/gesture-canvas",
+      "tags": ["gesture", "mediapipe", "canvas", "interaction", "hand tracking", "demo"],
+      "body": "Browser hand-tracking canvas prototype for gesture UI probing, with a live GitHub Pages demo."
+    },
+    {
       "id": "skills-methods",
       "title": "Skills & methods",
       "path": "/About",
