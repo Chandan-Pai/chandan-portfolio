@@ -34,11 +34,11 @@ const RESEARCH_QUESTIONS = [
   },
   {
     q: 'What feedback states make tracking feel trustworthy vs broken?',
-    why: 'Same problem as invisible AI: when the system fails silently, users invent wrong mental models.',
+    why: 'When the system fails silently, users invent wrong mental models — the same failure pattern as invisible AI states.',
   },
   {
     q: 'Which failure modes are recoverable (retry) vs session-ending?',
-    why: 'Maps to severity ranking you’d use in a usability readout for a hardware + software team.',
+    why: 'Maps to severity ranking you’d hand a hardware + software team in a usability readout.',
   },
 ];
 
@@ -50,13 +50,13 @@ const AI_PHASES = [
   },
   {
     title: 'Ship a demo people can try',
-    mine: 'Pushed for a public GitHub Pages demo so interviewers can experience the interaction, not only screenshots.',
+    mine: 'Pushed for a public GitHub Pages demo so the interaction can be experienced, not only screenshotted.',
     ai: 'Accelerated HTML/JS iteration and deploy friction; I owned interaction design choices and research framing.',
   },
   {
-    title: 'Portfolio case depth',
-    mine: 'Wrote the study as research questions + failure modes (Grace-style product depth), not a tech demo dump.',
-    ai: 'Drafted layout/components in Cursor; I rewrote claims to stay honest about prototype status.',
+    title: 'Case-study framing',
+    mine: 'Wrote the study as research questions + failure modes, not a tech demo dump. Kept honesty about prototype status.',
+    ai: 'Drafted layout/components; I rewrote claims to stay accurate.',
   },
 ];
 
@@ -90,14 +90,14 @@ export default function GestureCanvasPage() {
             built to study learnability, feedback, and failure modes, not to ship a finished tool.
           </FadeUp>
           <FadeUp as="p" className="text-sm text-violet-200/90 mb-8 max-w-3xl leading-relaxed border-l-2 border-violet-500/60 pl-4">
-            Product-focused depth means asking what breaks for users under novel input — the same discipline
-            as hardware HF de-risking, applied to a software interaction concept.
+            The work asks what breaks for users under novel input — discoverability, trust in tracking, and
+            which errors are recoverable.
           </FadeUp>
 
           <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 max-w-3xl" stagger={0.15}>
             {[
               { value: 'MediaPipe', label: 'Hand tracking' },
-              { value: 'Live demo', label: 'Embedded below' },
+              { value: 'Live demo', label: 'Try it below' },
               { value: 'Probe', label: 'Not a finished product' },
             ].map((stat) => (
               <FadeUpScale
@@ -138,10 +138,10 @@ export default function GestureCanvasPage() {
       <section className="project-gutter-x py-10 sm:py-14 border-b border-slate-800">
         <div className="max-w-5xl mx-auto">
           <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">
-            Live product
+            Try the demo
           </FadeUp>
           <FadeUp as="p" className="text-slate-400 text-sm mb-2 max-w-3xl leading-relaxed">
-            GestureCanvas in the browser — allow camera when prompted. Same live-embed chrome as Campus-Sync.
+            Allow camera access when prompted. Watch how feedback (or the lack of it) shapes trust in the tracking.
           </FadeUp>
           <LiveSiteEmbed
             url={DEMO_URL}
@@ -153,111 +153,100 @@ export default function GestureCanvasPage() {
 
       <MotionSection className="project-gutter-x w-full min-w-0 py-14 sm:py-20">
         <div className="mx-auto max-w-5xl space-y-14">
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            1. Why this exists
-          </FadeUp>
-          <FadeUp as="p" className="text-slate-300 leading-relaxed">
-            Gesture and camera-based input look magical in demos and fail quietly in real use. I built a
-            public probe so I can talk about <strong className="text-slate-100">discoverability, feedback,
-            and recoverable errors</strong> with evidence you can feel — not only slides.
-          </FadeUp>
-        </MotionBlock>
+          <MotionBlock>
+            <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+              Why this exists
+            </FadeUp>
+            <FadeUp as="p" className="text-slate-300 leading-relaxed">
+              Gesture and camera-based input look magical in demos and fail quietly in real use. I built a
+              public probe so <strong className="text-slate-100">discoverability, feedback, and recoverable
+              errors</strong> can be discussed with an interaction you can feel — not only slides.
+            </FadeUp>
+          </MotionBlock>
 
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">
-            2. Research questions (the deep cut)
-          </FadeUp>
-          <div className="space-y-4">
-            {RESEARCH_QUESTIONS.map((item) => (
-              <FadeUp key={item.q} className="rounded-2xl border border-slate-700/80 bg-slate-900/50 p-5">
-                <p className="text-lg font-semibold text-slate-100 mb-2">{item.q}</p>
-                <p className="text-sm text-slate-400">{item.why}</p>
-              </FadeUp>
-            ))}
-          </div>
-        </MotionBlock>
+          <MotionBlock>
+            <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">
+              Research questions
+            </FadeUp>
+            <div className="space-y-4">
+              {RESEARCH_QUESTIONS.map((item) => (
+                <FadeUp key={item.q} className="rounded-2xl border border-slate-700/80 bg-slate-900/50 p-5">
+                  <p className="text-lg font-semibold text-slate-100 mb-2">{item.q}</p>
+                  <p className="text-sm text-slate-400">{item.why}</p>
+                </FadeUp>
+              ))}
+            </div>
+          </MotionBlock>
 
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            3. How I’d study it formally
-          </FadeUp>
-          <FadeUp as="ul" className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
-            <li>Think-aloud first-use sessions (n small, high signal) on draw / erase / mode switch.</li>
-            <li>Code errors: lost tracking, lag, unintended strokes, mode confusion.</li>
-            <li>Compare feedback prototypes (cursor ghost, confidence meter, haptic-less visual pulse).</li>
-            <li>Severity + confidence readout for engineering — same grammar as the Quant UX suite.</li>
-          </FadeUp>
-          <FadeUp as="p" className="text-slate-400 text-sm mt-4">
-            Honest status: the live build is the probe. Formal moderated n and coded themes are the next rigor step.
-          </FadeUp>
-        </MotionBlock>
+          <MotionBlock>
+            <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+              How I’d study it formally
+            </FadeUp>
+            <FadeUp as="ul" className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
+              <li>Think-aloud first-use sessions (n small, high signal) on draw / erase / mode switch.</li>
+              <li>Code errors: lost tracking, lag, unintended strokes, mode confusion.</li>
+              <li>Compare feedback prototypes (cursor ghost, confidence meter, visual pulse).</li>
+              <li>Severity + confidence readout for engineering partners.</li>
+            </FadeUp>
+            <FadeUp as="p" className="text-slate-400 text-sm mt-4">
+              Honest status: the live build is the probe. Formal moderated sessions and coded themes are the next rigor step.
+            </FadeUp>
+          </MotionBlock>
 
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            4. AI workflow — collaborator, not author
-          </FadeUp>
-          <FadeUp as="p" className="text-slate-300 leading-relaxed mb-6">
-            AI helped me ship the demo faster. Research questions, prototype honesty, and what “good” means for
-            gesture UX stayed mine. (
-            <Link href="/ai-process" className="text-violet-300 hover:underline">
-              Portfolio AI process
-            </Link>
-            .)
-          </FadeUp>
-          <div className="space-y-4">
-            {AI_PHASES.map((phase, i) => (
-              <FadeUp key={phase.title} className="rounded-2xl border border-slate-700/80 bg-slate-900/40 p-5">
-                <p className="text-xs font-semibold tracking-widest text-violet-300 uppercase mb-2">
-                  Phase {i + 1} · {phase.title}
-                </p>
-                <p className="text-sm text-slate-300 mb-2">
-                  <span className="text-slate-100 font-medium">I owned: </span>
-                  {phase.mine}
-                </p>
-                <p className="text-sm text-slate-400">
-                  <span className="text-slate-200 font-medium">AI helped: </span>
-                  {phase.ai}
-                </p>
-              </FadeUp>
-            ))}
-          </div>
-        </MotionBlock>
+          <MotionBlock>
+            <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+              AI workflow
+            </FadeUp>
+            <FadeUp as="p" className="text-slate-300 leading-relaxed mb-6">
+              AI helped ship the demo faster. Research questions, prototype honesty, and what “good” means for
+              gesture UX stayed mine.
+            </FadeUp>
+            <div className="space-y-4">
+              {AI_PHASES.map((phase, i) => (
+                <FadeUp key={phase.title} className="rounded-2xl border border-slate-700/80 bg-slate-900/40 p-5">
+                  <p className="text-xs font-semibold tracking-widest text-violet-300 uppercase mb-2">
+                    Phase {i + 1} · {phase.title}
+                  </p>
+                  <p className="text-sm text-slate-300 mb-2">
+                    <span className="text-slate-100 font-medium">I owned: </span>
+                    {phase.mine}
+                  </p>
+                  <p className="text-sm text-slate-400">
+                    <span className="text-slate-200 font-medium">AI helped: </span>
+                    {phase.ai}
+                  </p>
+                </FadeUp>
+              ))}
+            </div>
+          </MotionBlock>
 
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            5. What I’d show in an interview
-          </FadeUp>
-          <FadeUp as="ol" className="list-decimal pl-5 space-y-2 text-slate-300 leading-relaxed">
-            <li>Open the live demo and narrate a failure + recovery.</li>
-            <li>Walk the three research questions and how I’d instrument them.</li>
-            <li>Connect to hardware HF: waiting on sensors / tracking quality is a real constraint, like waiting on prototypes.</li>
-          </FadeUp>
-        </MotionBlock>
-
-        <MotionBlock>
-          <FadeUp>
-            <img src={heroSrc} alt="GestureCanvas concept graphic" className="w-full rounded-2xl border border-slate-700/80 mb-6" />
-          </FadeUp>
-          <FadeUp className="flex flex-wrap gap-3">
-            <a
-              href={DEMO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-violet-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-400"
-            >
-              Open live demo
-            </a>
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-slate-400"
-            >
-              View GitHub repo
-            </a>
-          </FadeUp>
-        </MotionBlock>
+          <MotionBlock>
+            <FadeUp>
+              <img
+                src={heroSrc}
+                alt="GestureCanvas concept graphic"
+                className="w-full rounded-2xl border border-slate-700/80 mb-6"
+              />
+            </FadeUp>
+            <FadeUp className="flex flex-wrap gap-3">
+              <a
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-violet-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-400"
+              >
+                Open live demo
+              </a>
+              <a
+                href={REPO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-slate-400"
+              >
+                View GitHub repo
+              </a>
+            </FadeUp>
+          </MotionBlock>
         </div>
       </MotionSection>
     </main>
