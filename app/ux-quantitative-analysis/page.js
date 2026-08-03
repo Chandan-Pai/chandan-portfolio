@@ -10,6 +10,7 @@ import {
   FadeUpScale,
   MotionGrid,
 } from '../components/MotionCaseStudy';
+import LiveSiteEmbed from '../components/LiveSiteEmbed';
 
 const REPO_URL = 'https://github.com/Chandan-Pai/UX-quantitative-analysis';
 const LIVE_URL = 'https://ux-quantitative-analysis-f7wxsl89jopdxvcaycsukx.streamlit.app/';
@@ -26,51 +27,6 @@ function publicAssetUrl(basePath, relativePath) {
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg');
-
-function LiveEmbed({ src, title, openLabel }) {
-  return (
-    <div
-      className="my-6 overflow-hidden rounded-xl border border-slate-700/90 bg-slate-900 shadow-lg"
-      data-no-cursor-hover
-    >
-      <div className="flex items-center gap-2 border-b border-slate-700/80 bg-slate-800/90 px-3 py-2.5">
-        <span className="flex gap-1.5" aria-hidden="true">
-          <span className="size-2.5 rounded-full bg-red-400/90" />
-          <span className="size-2.5 rounded-full bg-amber-400/90" />
-          <span className="size-2.5 rounded-full bg-green-400/90" />
-        </span>
-        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-700/80 bg-slate-900 px-3 py-1 font-mono text-xs text-slate-400">
-          {src}
-        </div>
-        <a
-          href={src}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 text-xs font-semibold text-sky-300 hover:text-sky-200"
-        >
-          Open ↗
-        </a>
-      </div>
-      <div className="relative h-[min(75svh,720px)] min-h-[420px] w-full bg-slate-900">
-        <iframe
-          title={title}
-          src={src}
-          className="absolute inset-0 h-full w-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allow="clipboard-write"
-        />
-      </div>
-      <p className="border-t border-slate-700 bg-slate-900/50 px-3 py-2 text-xs text-slate-400">
-        Embedded live app. If this area stays blank, framing may be blocked — use{' '}
-        <a href={src} className="font-medium text-sky-400 underline hover:text-sky-300" target="_blank" rel="noopener noreferrer">
-          {openLabel}
-        </a>
-        .
-      </p>
-    </div>
-  );
-}
 
 const STUDIES = [
   {
@@ -193,14 +149,20 @@ export default function QuantUxValidationPage() {
         </MotionHero>
       </header>
 
-      <section className="project-gutter-x py-10 border-b border-slate-800 max-w-5xl mx-auto">
-        <FadeUp as="h2" className="text-xl font-bold text-slate-100 mb-2">
-          Try the live validation suite
-        </FadeUp>
-        <FadeUp as="p" className="text-slate-400 text-sm mb-4">
-          Use the sidebar: Survey · Usability · A/B. Filters sit at the top of each study page.
-        </FadeUp>
-        <LiveEmbed src={LIVE_URL} title="Quant UX Validation Suite live Streamlit app" openLabel="the live Streamlit app" />
+      <section className="project-gutter-x py-10 sm:py-14 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">
+            Live product
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-400 text-sm mb-2 max-w-3xl leading-relaxed">
+            Interactive Quant UX Validation Suite — Survey · Usability · A/B. Same browser-chrome embed pattern as Campus-Sync.
+          </FadeUp>
+          <LiveSiteEmbed
+            url={LIVE_URL}
+            title="Quant UX Validation Suite live Streamlit app"
+            linkLabel="the live Streamlit dashboard"
+          />
+        </div>
       </section>
 
       <MotionSection className="project-gutter-x py-14 sm:py-20 space-y-14 max-w-4xl">

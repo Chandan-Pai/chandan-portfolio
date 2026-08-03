@@ -9,6 +9,7 @@ import {
   FadeUpScale,
   MotionGrid,
 } from '../components/MotionCaseStudy';
+import LiveSiteEmbed from '../components/LiveSiteEmbed';
 
 const DEMO_URL = 'https://chandan-pai.github.io/Gesture_canvas/';
 const REPO_URL = 'https://github.com/Chandan-Pai/Gesture_canvas';
@@ -25,51 +26,6 @@ function publicAssetUrl(basePath, relativePath) {
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const heroSrc = publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.svg');
-
-function LiveEmbed({ src, title, openLabel }) {
-  return (
-    <div
-      className="my-6 overflow-hidden rounded-xl border border-slate-700/90 bg-slate-900 shadow-lg"
-      data-no-cursor-hover
-    >
-      <div className="flex items-center gap-2 border-b border-slate-700/80 bg-slate-800/90 px-3 py-2.5">
-        <span className="flex gap-1.5" aria-hidden="true">
-          <span className="size-2.5 rounded-full bg-red-400/90" />
-          <span className="size-2.5 rounded-full bg-amber-400/90" />
-          <span className="size-2.5 rounded-full bg-green-400/90" />
-        </span>
-        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-700/80 bg-slate-900 px-3 py-1 font-mono text-xs text-slate-400">
-          {src}
-        </div>
-        <a
-          href={src}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 text-xs font-semibold text-violet-300 hover:text-violet-200"
-        >
-          Open ↗
-        </a>
-      </div>
-      <div className="relative h-[min(75svh,720px)] min-h-[420px] w-full bg-slate-900">
-        <iframe
-          title={title}
-          src={src}
-          className="absolute inset-0 h-full w-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allow="camera; microphone"
-        />
-      </div>
-      <p className="border-t border-slate-700 bg-slate-900/50 px-3 py-2 text-xs text-slate-400">
-        Embedded live demo (camera permission may be required). If blank, open{' '}
-        <a href={src} className="font-medium text-violet-300 underline hover:text-violet-200" target="_blank" rel="noopener noreferrer">
-          {openLabel}
-        </a>
-        .
-      </p>
-    </div>
-  );
-}
 
 const RESEARCH_QUESTIONS = [
   {
@@ -179,14 +135,20 @@ export default function GestureCanvasPage() {
         </MotionHero>
       </header>
 
-      <section className="project-gutter-x py-10 border-b border-slate-800 max-w-5xl mx-auto">
-        <FadeUp as="h2" className="text-xl font-bold text-slate-100 mb-2">
-          Try the live demo
-        </FadeUp>
-        <FadeUp as="p" className="text-slate-400 text-sm mb-4">
-          Allow camera access when prompted. Watch how feedback (or lack of it) shapes trust in the tracking.
-        </FadeUp>
-        <LiveEmbed src={DEMO_URL} title="GestureCanvas live demo" openLabel="the GestureCanvas demo" />
+      <section className="project-gutter-x py-10 sm:py-14 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto">
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">
+            Live product
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-400 text-sm mb-2 max-w-3xl leading-relaxed">
+            GestureCanvas in the browser — allow camera when prompted. Same live-embed chrome as Campus-Sync.
+          </FadeUp>
+          <LiveSiteEmbed
+            url={DEMO_URL}
+            title="GestureCanvas live demo"
+            linkLabel="chandan-pai.github.io/Gesture_canvas"
+          />
+        </div>
       </section>
 
       <MotionSection className="project-gutter-x py-14 sm:py-20 space-y-14 max-w-4xl">
