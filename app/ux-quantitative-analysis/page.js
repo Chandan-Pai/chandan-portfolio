@@ -2,7 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { MotionHero, MotionSection, MotionBlock, FadeUp, FadeUpScale, MotionGrid } from '../components/MotionCaseStudy';
+import {
+  MotionHero,
+  MotionSection,
+  MotionBlock,
+  FadeUp,
+  FadeUpScale,
+  MotionGrid,
+} from '../components/MotionCaseStudy';
 
 const REPO_URL = 'https://github.com/Chandan-Pai/UX-quantitative-analysis';
 const LIVE_URL = 'https://ux-quantitative-analysis-f7wxsl89jopdxvcaycsukx.streamlit.app/';
@@ -19,6 +26,91 @@ function publicAssetUrl(basePath, relativePath) {
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg');
+
+function LiveEmbed({ src, title, openLabel }) {
+  return (
+    <div
+      className="my-6 overflow-hidden rounded-xl border border-slate-700/90 bg-slate-900 shadow-lg"
+      data-no-cursor-hover
+    >
+      <div className="flex items-center gap-2 border-b border-slate-700/80 bg-slate-800/90 px-3 py-2.5">
+        <span className="flex gap-1.5" aria-hidden="true">
+          <span className="size-2.5 rounded-full bg-red-400/90" />
+          <span className="size-2.5 rounded-full bg-amber-400/90" />
+          <span className="size-2.5 rounded-full bg-green-400/90" />
+        </span>
+        <div className="min-w-0 flex-1 truncate rounded-md border border-slate-700/80 bg-slate-900 px-3 py-1 font-mono text-xs text-slate-400">
+          {src}
+        </div>
+        <a
+          href={src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 text-xs font-semibold text-sky-300 hover:text-sky-200"
+        >
+          Open ↗
+        </a>
+      </div>
+      <div className="relative h-[min(75svh,720px)] min-h-[420px] w-full bg-slate-900">
+        <iframe
+          title={title}
+          src={src}
+          className="absolute inset-0 h-full w-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allow="clipboard-write"
+        />
+      </div>
+      <p className="border-t border-slate-700 bg-slate-900/50 px-3 py-2 text-xs text-slate-400">
+        Embedded live app. If this area stays blank, framing may be blocked — use{' '}
+        <a href={src} className="font-medium text-sky-400 underline hover:text-sky-300" target="_blank" rel="noopener noreferrer">
+          {openLabel}
+        </a>
+        .
+      </p>
+    </div>
+  );
+}
+
+const STUDIES = [
+  {
+    name: 'Survey validation',
+    question: 'When people finish a task, is the experience actually good — or just completable?',
+    metrics: 'SUS, trust, ease, frustration, completion time · success vs fail gaps · device / experience segments',
+    decision:
+      'Treat completion as necessary but not sufficient. Mid SUS with high completion → clarity and trust work before new features.',
+  },
+  {
+    name: 'Usability testing',
+    question: 'Which tasks create the most friction (errors, help, frustration) and should be redesigned first?',
+    metrics: 'Task success, error counts, help rate, time, satisfaction · task friction ranking',
+    decision: 'Rank redesign candidates by errors + frustration, not success rate alone.',
+  },
+  {
+    name: 'A/B experiment',
+    question: 'Does a conversion lift come with an acceptable experience — or higher bounce / worse load?',
+    metrics: 'Conversion %, bounce %, load time, session length, device segments',
+    decision: 'Conversion is primary; bounce and load are quality guards before calling a winner.',
+  },
+];
+
+const AI_PHASES = [
+  {
+    title: 'Frame the research product',
+    mine: 'Chose a validation-suite story (not a notebook dump). Locked honesty: educational synthetic data only, with bold Rafiei / PUX attribution.',
+    ai: 'Cursor helped turn the framing into Streamlit page structure and README / portfolio copy drafts I edited hard.',
+  },
+  {
+    title: 'Build the pipeline',
+    mine: 'Defined clean → analysis-ready → readout. Specified metrics, decision banners, and “empty filter” failure modes that would blank the UI.',
+    ai: 'Implemented cleaners, Plotly charts, and Cloud deploy wiring faster; I reviewed every metric label and statistical claim.',
+  },
+  {
+    title: 'Make it partner-readable',
+    mine: 'Moved filters to the top, forced human axis labels, and severity-style decisions — the same readout posture I’d use with EPD partners.',
+    ai: 'Iterated layout bugs (page_link, clipping, Cloud multipage). AI accelerated fixes; judgment on what “good validation UI” means stayed mine.',
+  },
+];
 
 export default function QuantUxValidationPage() {
   return (
@@ -40,21 +132,26 @@ export default function QuantUxValidationPage() {
       <header className="w-full bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white pt-[max(5.5rem,env(safe-area-inset-top)+3rem)] pb-16 sm:pb-20 md:pt-32 md:pb-24">
         <MotionHero className="project-gutter-x w-full min-w-0">
           <FadeUp as="p" className="text-xs font-mono tracking-widest text-sky-400 uppercase mb-4">
-            Quantitative UX Research · Validation Suite
+            Quantitative UX · Product-decision validation
           </FadeUp>
           <FadeUp as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Quant UX Validation Suite
           </FadeUp>
-          <FadeUp as="p" className="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl">
-            End-to-end quantitative validation across survey, usability testing, and A/B experiment
-            data — cleaned, modeled, and published as a live decision-oriented Streamlit app.
+          <FadeUp as="p" className="text-lg sm:text-xl text-gray-200 leading-relaxed mb-6 max-w-3xl">
+            A deep product-focused study of how quantitative UX should land with partners: not a methods
+            gallery — a repeatable motion from messy data to a ship / fix / watch decision.
+          </FadeUp>
+          <FadeUp as="p" className="text-sm text-sky-200/90 mb-8 max-w-3xl leading-relaxed border-l-2 border-sky-500/60 pl-4">
+            Inspired by HF interview advice that <strong className="text-white">product-domain depth
+            beats generic methods decks</strong>. This suite practices the validation craft I’d bring to
+            Insights / UXR / HF partners — while a separate earbud tip study goes after physical audio-fit depth.
           </FadeUp>
 
           <MotionGrid className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 max-w-3xl" stagger={0.15}>
             {[
-              { value: '3 studies', label: 'Survey · Usability · A/B' },
-              { value: '0.96', label: 'Task-success ROC-AUC' },
-              { value: 'Live app', label: 'Streamlit Community Cloud' },
+              { value: '3 modes', label: 'Survey · Usability · A/B' },
+              { value: '0.96', label: 'Diagnostic ROC-AUC' },
+              { value: 'Live', label: 'Streamlit Cloud embed' },
             ].map((stat) => (
               <FadeUpScale
                 key={stat.label}
@@ -67,122 +164,178 @@ export default function QuantUxValidationPage() {
           </MotionGrid>
 
           <FadeUp className="flex flex-wrap gap-2 mb-6">
-            {['Python', 'Pandas', 'Scikit-learn', 'Scipy', 'Plotly', 'Streamlit'].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-gray-100"
-              >
-                {tag}
-              </span>
-            ))}
+            {['Study design', 'Metrics definition', 'Cleaning pipelines', 'Partner readout UI', 'Streamlit', 'Python'].map(
+              (tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-gray-100"
+                >
+                  {tag}
+                </span>
+              )
+            )}
           </FadeUp>
 
           <FadeUp className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-300 border-t border-white/15 pt-6 mt-2">
             <span>
-              <span className="font-semibold text-white">Role:</span> Quantitative UX Researcher
-            </span>
-            <span>
-              <span className="font-semibold text-white">Team:</span> Solo project
+              <span className="font-semibold text-white">Role:</span> Quantitative UX researcher
             </span>
             <span>
               <span className="font-semibold text-white">Date:</span> August 2026
             </span>
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-sky-300 hover:text-sky-200 hover:underline"
-            >
-              GitHub repo ↗
+            <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-sky-300 hover:underline">
+              GitHub ↗
             </a>
-            <a
-              href={LIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-sky-300 hover:text-sky-200 hover:underline"
-            >
+            <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-sky-300 hover:underline">
               Live dashboard ↗
             </a>
           </FadeUp>
         </MotionHero>
       </header>
 
-      <section className="project-gutter-x py-10 sm:py-14 border-b border-slate-800">
-        <FadeUp>
-          <img
-            src={heroSrc}
-            alt="Quant UX Validation Suite overview graphic showing survey, usability, and A/B pipelines"
-            className="w-full max-w-5xl mx-auto rounded-2xl border border-slate-700/80 shadow-2xl"
-          />
+      <section className="project-gutter-x py-10 border-b border-slate-800 max-w-5xl mx-auto">
+        <FadeUp as="h2" className="text-xl font-bold text-slate-100 mb-2">
+          Try the live validation suite
         </FadeUp>
+        <FadeUp as="p" className="text-slate-400 text-sm mb-4">
+          Use the sidebar: Survey · Usability · A/B. Filters sit at the top of each study page.
+        </FadeUp>
+        <LiveEmbed src={LIVE_URL} title="Quant UX Validation Suite live Streamlit app" openLabel="the live Streamlit app" />
       </section>
 
-      <MotionSection className="project-gutter-x py-14 sm:py-20 space-y-10 max-w-4xl">
+      <MotionSection className="project-gutter-x py-14 sm:py-20 space-y-14 max-w-4xl">
         <MotionBlock>
           <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            Problem
+            1. Research problem
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-300 leading-relaxed mb-4">
+            Teams often show charts without a decision. Partners need: what failed, for whom, how sure we are,
+            and what to change next. The failure mode of “quant UXR portfolios” is a methods collage that never
+            influences a product call.
           </FadeUp>
           <FadeUp as="p" className="text-slate-300 leading-relaxed">
-            Hiring managers and product partners often ask whether a researcher can run quantitative
-            validation end to end — not only charts, but cleaning, comparison, and a clear product
-            decision. This project answers that with a reusable suite pattern.
+            <strong className="text-slate-100">Hypothesis for this study:</strong> a shared readout grammar
+            (decision → KPIs → breaks → segments → method) across survey, usability, and A/B makes validation
+            transferable — the same way a real research ops motion would.
           </FadeUp>
         </MotionBlock>
 
         <MotionBlock>
           <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            Approach
+            2. Study design thinking
+          </FadeUp>
+          <FadeUp as="ul" className="space-y-4 text-slate-300 leading-relaxed">
+            <li>
+              <strong className="text-slate-100">Define metrics before plots.</strong> SUS / trust / frustration
+              each have a direction of “better.” Completion alone is treated as incomplete evidence.
+            </li>
+            <li>
+              <strong className="text-slate-100">Reduce variables in the UI.</strong> Top filter bar scoped to
+              partner-relevant cuts (device, experience, task, country) — not every column in the CSV.
+            </li>
+            <li>
+              <strong className="text-slate-100">Decision banners carry severity.</strong> High / medium / low
+              priority language mirrors how I’d brief design and engineering.
+            </li>
+            <li>
+              <strong className="text-slate-100">Model as diagnostic, not theater.</strong> Logistic task-success
+              check (ROC-AUC ≈ 0.96) shows UX features separate outcomes; it is not framed as a production scorer.
+            </li>
+          </FadeUp>
+        </MotionBlock>
+
+        <MotionBlock>
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">
+            3. Three validation modes (deep cuts)
+          </FadeUp>
+          <div className="space-y-5">
+            {STUDIES.map((study) => (
+              <FadeUp
+                key={study.name}
+                className="rounded-2xl border border-slate-700/80 bg-slate-900/50 p-5 sm:p-6"
+              >
+                <p className="text-xs font-semibold tracking-widest text-sky-400 uppercase mb-2">{study.name}</p>
+                <p className="text-lg font-semibold text-slate-100 mb-3">{study.question}</p>
+                <p className="text-sm text-slate-400 mb-2">
+                  <span className="text-slate-200 font-medium">Measured: </span>
+                  {study.metrics}
+                </p>
+                <p className="text-sm text-slate-300">
+                  <span className="text-slate-100 font-medium">Product decision: </span>
+                  {study.decision}
+                </p>
+              </FadeUp>
+            ))}
+          </div>
+        </MotionBlock>
+
+        <MotionBlock>
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+            4. Pipeline (how the work actually runs)
+          </FadeUp>
+          <FadeUp as="pre" className="overflow-x-auto rounded-xl border border-slate-700 bg-black/40 p-4 text-sm text-sky-200/90 font-mono mb-4">
+{`raw educational CSV
+  → src/clean_*.py (impute, clip, attention checks, labels)
+  → data/processed/*_analysis_ready.csv
+  → Streamlit pages (decision → KPI → break → segment → method)
+  → Community Cloud redeploy on git push`}
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-300 leading-relaxed">
+            Reproducibility mattered as much as charts: cleaners are scripts, not one-off notebook cells, so a
+            new study type can follow the same pattern (feature adoption / funnel next).
+          </FadeUp>
+        </MotionBlock>
+
+        <MotionBlock>
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+            5. AI workflow — collaborator, not author
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-300 leading-relaxed mb-6">
+            Same posture as the rest of my portfolio: AI accelerates implementation; research framing, honesty
+            locks, and partner language stay mine. (See also{' '}
+            <Link href="/ai-process" className="text-sky-400 hover:underline">
+              How I built this portfolio with AI
+            </Link>
+            .)
+          </FadeUp>
+          <div className="space-y-4">
+            {AI_PHASES.map((phase, i) => (
+              <FadeUp key={phase.title} className="rounded-2xl border border-slate-700/80 bg-slate-900/40 p-5">
+                <p className="text-xs font-semibold tracking-widest text-violet-300 uppercase mb-2">
+                  Phase {i + 1} · {phase.title}
+                </p>
+                <p className="text-sm text-slate-300 mb-2">
+                  <span className="text-slate-100 font-medium">I owned: </span>
+                  {phase.mine}
+                </p>
+                <p className="text-sm text-slate-400">
+                  <span className="text-slate-200 font-medium">AI helped: </span>
+                  {phase.ai}
+                </p>
+              </FadeUp>
+            ))}
+          </div>
+        </MotionBlock>
+
+        <MotionBlock>
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+            6. Honesty locks
           </FadeUp>
           <FadeUp as="ul" className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
             <li>
-              <span className="text-slate-100 font-medium">Pipeline:</span> educational raw CSV →
-              cleaning scripts → analysis-ready tables → Streamlit readout.
+              Data from <strong className="text-slate-100">Mohsen Rafiei, Ph.D. / PUX Lab</strong> — synthetic
+              educational datasets, not real product users.
             </li>
-            <li>
-              <span className="text-slate-100 font-medium">Same story on every page:</span> decision
-              banner → KPIs → where it breaks → segments → method.
-            </li>
-            <li>
-              <span className="text-slate-100 font-medium">Studies shipped:</span> survey
-              questionnaire (including a task-success model check), usability testing friction
-              ranking, and A/B variant scorecards with conversion and bounce guards.
-            </li>
+            <li>No claims of live product telemetry or published empirical research on a shipped app.</li>
+            <li>Significance checks are educational diagnostics, not sequential experiment designs.</li>
           </FadeUp>
-        </MotionBlock>
-
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            Outcomes
-          </FadeUp>
-          <FadeUp as="ul" className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
-            <li>Public GitHub repo with reproducible cleaners and processed datasets.</li>
-            <li>Live multipage Streamlit app on Community Cloud for interactive demos.</li>
-            <li>
-              Holdout logistic model on survey task success with ROC-AUC ≈ 0.96 (diagnostic, not a
-              production scorer).
-            </li>
-          </FadeUp>
-        </MotionBlock>
-
-        <MotionBlock>
-          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
-            Data credit &amp; honesty
-          </FadeUp>
-          <FadeUp as="p" className="text-slate-300 leading-relaxed">
-            Survey, usability, and A/B CSVs come from{' '}
-            <strong className="text-slate-100">Mohsen Rafiei, Ph.D.</strong>,{' '}
-            <em>UX Datasets Collection</em> (2025), Perceptual User Experience Lab (PUX Lab). These
-            are <strong className="text-slate-100">synthetically generated educational datasets</strong>
-            — not real product telemetry. Results are for methods practice and portfolio
-            demonstration only.
-          </FadeUp>
-          <FadeUp as="p" className="text-slate-400 text-sm mt-4 leading-relaxed">
-            Source:{' '}
+          <FadeUp as="p" className="text-slate-400 text-sm mt-4">
+            Dataset source:{' '}
             <a
               href="https://github.com/mohsen-rafiei/UX_datasets"
+              className="text-sky-400 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sky-400 hover:underline"
             >
               github.com/mohsen-rafiei/UX_datasets
             </a>
@@ -190,12 +343,30 @@ export default function QuantUxValidationPage() {
         </MotionBlock>
 
         <MotionBlock>
-          <FadeUp className="flex flex-wrap gap-3 pt-4">
+          <FadeUp as="h2" className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+            7. What’s next (domain depth)
+          </FadeUp>
+          <FadeUp as="p" className="text-slate-300 leading-relaxed">
+            This suite trains the <em>validation system</em>. Parallel work — earbud tip fit &amp; comfort —
+            trains <em>audio / wearables domain depth</em> with participant-owned hardware, the kind of
+            product-focused study that shows niche passion in HF interviews.
+          </FadeUp>
+        </MotionBlock>
+
+        <MotionBlock>
+          <FadeUp>
+            <img
+              src={heroSrc}
+              alt="Suite overview graphic"
+              className="w-full rounded-2xl border border-slate-700/80 mb-6"
+            />
+          </FadeUp>
+          <FadeUp className="flex flex-wrap gap-3">
             <a
               href={LIVE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-sky-400 transition-colors"
+              className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-sky-400"
             >
               Open live dashboard
             </a>
@@ -203,7 +374,7 @@ export default function QuantUxValidationPage() {
               href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-slate-400 transition-colors"
+              className="inline-flex items-center rounded-full border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-slate-400"
             >
               View GitHub repo
             </a>

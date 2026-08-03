@@ -46,6 +46,16 @@ const PHASES = [
     title: 'Dark theme + liquid glass',
     note: 'Site-wide dark migration to #0a0a0a with a full contrast audit, liquid-glass nav island with IntersectionObserver-based scroll spy (basePath-aware for prod vs dev), liquid-glass home placards via backdrop-filter, route-transition progress bar, and an asymmetric AEIOU / Observation Sheet grid.',
   },
+  {
+    name: 'Phase 5',
+    title: 'Quant UX Validation Suite',
+    note: 'Decision-first Streamlit suite (survey · usability · A/B): cleaners, partner-readable labels, Community Cloud deploy, and a deep case study with embedded live app + AI workflow honesty. Educational data attributed to Rafiei / PUX.',
+  },
+  {
+    name: 'Phase 6',
+    title: 'GestureCanvas case depth',
+    note: 'Unlocked GestureCanvas from coming-soon into a research-probe case study: research questions, failure modes, embedded live MediaPipe demo, and explicit AI-collaborator vs author split.',
+  },
 ];
 
 function SectionLabel({ children }) {
