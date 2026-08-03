@@ -26,7 +26,7 @@ function publicAssetUrl(basePath, relativePath) {
 }
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.svg');
+const heroSrc = publicAssetUrl(BASE_PATH, 'images/ux-quantitative-analysis/hero.png');
 
 const STUDIES = [
   {
@@ -159,9 +159,17 @@ export default function QuantUxValidationPage() {
           </FadeUp>
           <LiveSiteEmbed
             url={LIVE_URL}
+            embedSrc={`${LIVE_URL}?embed=true`}
             title="Quant UX Validation Suite live Streamlit app"
             linkLabel="the live Streamlit dashboard"
           />
+          <FadeUp>
+            <img
+              src={heroSrc}
+              alt="Quant UX Validation Suite concept graphic"
+              className="mt-8 w-full rounded-2xl border border-slate-700/80"
+            />
+          </FadeUp>
         </div>
       </section>
 
@@ -299,13 +307,6 @@ export default function QuantUxValidationPage() {
           </MotionBlock>
 
           <MotionBlock>
-            <FadeUp>
-              <img
-                src={heroSrc}
-                alt="Suite overview graphic"
-                className="w-full rounded-2xl border border-slate-700/80 mb-6"
-              />
-            </FadeUp>
             <FadeUp className="flex flex-wrap gap-3">
               <a
                 href={LIVE_URL}

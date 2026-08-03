@@ -25,7 +25,7 @@ function publicAssetUrl(basePath, relativePath) {
 }
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const heroSrc = publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.svg');
+const heroSrc = publicAssetUrl(BASE_PATH, 'images/gesture-canvas/hero.png');
 
 const RESEARCH_QUESTIONS = [
   {
@@ -148,6 +148,13 @@ export default function GestureCanvasPage() {
             title="GestureCanvas live demo"
             linkLabel="chandan-pai.github.io/Gesture_canvas"
           />
+          <FadeUp>
+            <img
+              src={heroSrc}
+              alt="GestureCanvas concept graphic"
+              className="mt-8 w-full rounded-2xl border border-slate-700/80"
+            />
+          </FadeUp>
         </div>
       </section>
 
@@ -221,13 +228,6 @@ export default function GestureCanvasPage() {
           </MotionBlock>
 
           <MotionBlock>
-            <FadeUp>
-              <img
-                src={heroSrc}
-                alt="GestureCanvas concept graphic"
-                className="w-full rounded-2xl border border-slate-700/80 mb-6"
-              />
-            </FadeUp>
             <FadeUp className="flex flex-wrap gap-3">
               <a
                 href={DEMO_URL}

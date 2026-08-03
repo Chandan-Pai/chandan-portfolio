@@ -2,14 +2,17 @@
 
 /**
  * Browser-chrome live iframe — same pattern as Campus Sync.
- * May stay blank if the target sets X-Frame-Options / CSP frame-ancestors.
+ * Pass embedSrc when the iframe needs a special query (e.g. Streamlit ?embed=true)
+ * while the chrome / open-link still show the clean public URL.
  */
 export default function LiveSiteEmbed({
   url,
+  embedSrc,
   title,
   linkLabel,
 }) {
-  const displayUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const frameSrc = embedSrc || url;
+  const chromeUrl = url.startsWith('http') ? url : `https://${url.replace(/^https?:\/\//, '')}`;
 
   return (
     <div
@@ -23,13 +26,13 @@ export default function LiveSiteEmbed({
           <span className="size-2.5 rounded-full bg-green-400/90" />
         </span>
         <div className="min-w-0 flex-1 truncate rounded-md border border-slate-700/80 bg-slate-900 px-3 py-1 font-mono text-xs text-slate-400">
-          {url.startsWith('http') ? url : `https://${displayUrl}`}
+          {chromeUrl}
         </div>
       </div>
       <div className="relative h-[min(70svh,640px)] min-h-[320px] w-full bg-slate-900">
         <iframe
           title={title}
-          src={url}
+          src={frameSrc}
           className="absolute inset-0 h-full w-full border-0"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
